@@ -1,0 +1,177 @@
+{
+  "before_snapshot": "log_20261031T184028Z.json",
+  "after_snapshot": "log_20261031T185441Z.json",
+  "source_sha256": "3b08ebe88271306f020cea7d739ad1e718c0287062020b8d16bc993019257db2",
+  "prefix_verified": true,
+  "selected_lines": [
+    {
+      "line": 13917,
+      "text": "(18:54:05,310 utc) [EoGRewardsModel] Iterating over ProcessedLootList:"
+    },
+    {
+      "line": 13919,
+      "text": "(18:54:05,311 utc) [EoGRewardsModel] Received 200 from DefaultSource for this game."
+    },
+    {
+      "line": 13925,
+      "text": "(18:54:05,311 utc) [EoGRewardsModel] Iterating over CardMasteryChangeList:"
+    },
+    {
+      "line": 13932,
+      "text": "(18:54:05,313 utc) [EoGStateRecorder] HandleGameEndRewardsEvent: Received GameRewardsEndMessage"
+    },
+    {
+      "line": 14136,
+      "text": "(18:54:24,095 utc) [ClientServiceRequest] SendAsyncInternal to [servidor]/adventure/v1/run/[ID omitido]/node/14/complete Post"
+    },
+    {
+      "line": 14145,
+      "text": "(18:54:24,526 utc) [ClientServiceRequest] HandleWebRequestCompleted from POST [servidor]/adventure/v1/run/[ID omitido]/node/14/complete: 200"
+    },
+    {
+      "line": 14147,
+      "text": "(18:54:24,692 utc) [ClientServiceRequest] HandleWebRequestCompleted from GET [servidor]/pve/v1/user: 200"
+    },
+    {
+      "line": 14148,
+      "text": "(18:54:24,726 utc) [ClientServiceRequest] HandleWebRequestCompleted from GET [servidor]/progression/v1/user/pve/progression/[ID omitido]: 200"
+    },
+    {
+      "line": 14161,
+      "text": "(18:54:34,750 utc) TextFoundMislocalized on 'NavigationRoot>UIRoot>CMPRunEndOverlayLoader(Clone)>CMPRunRewardsOverlay(Clone)>VisualRoot>MobileSafeArea>VisualRoot>HorizontalLayout>CMP_Reward_ChampExperience(Clone)>VisualRoot>Body>CMPChampionPortraitWithXP>VisualRoot>ChampLevelPositioner>ChampLevelShield>ChampLevelLabel'. 'LocalizedEmptyKey': ''"
+    },
+    {
+      "line": 14162,
+      "text": "UnityEngine.Logger:Log(LogType, Object)"
+    },
+    {
+      "line": 14163,
+      "text": "UnityEngine.Debug:LogError(Object)"
+    },
+    {
+      "line": 14164,
+      "text": "UnityLogAppender:Append(LoggingEvent)"
+    },
+    {
+      "line": 14165,
+      "text": "log4net.Appender.AppenderSkeleton:DoAppend(LoggingEvent)"
+    },
+    {
+      "line": 14166,
+      "text": "log4net.Util.AppenderAttachedImpl:AppendLoopOnAppenders(LoggingEvent)"
+    },
+    {
+      "line": 14167,
+      "text": "log4net.Repository.Hierarchy.Logger:CallAppenders(LoggingEvent)"
+    },
+    {
+      "line": 14168,
+      "text": "log4net.Repository.Hierarchy.Logger:Log(Type, Level, Object, Exception)"
+    },
+    {
+      "line": 14169,
+      "text": "log4net.Core.LogImpl:Error(Object)"
+    },
+    {
+      "line": 14170,
+      "text": "Client.Localization.ClientLocalizationCallbacks:TextFoundMislocalized(TMP_Text, MislocalizedTextType, String)"
+    },
+    {
+      "line": 14171,
+      "text": "Client.Localization.BaseTranslatedTextLocalizer:SetLocalizedStringByKey(String, LocalizationContext, LocalizationOption[])"
+    },
+    {
+      "line": 14172,
+      "text": "Client.Localization.TranslatedTextLocalizer:RefreshTranslationInternal(String)"
+    },
+    {
+      "line": 14173,
+      "text": "Client.Localization.LocalizationManager:SubscribeToLocaleChanges(LocaleChangedCallback)"
+    },
+    {
+      "line": 14174,
+      "text": "Client.Localization.BaseTranslatedTextLocalizer:BaconDependenciesReady()"
+    },
+    {
+      "line": 14175,
+      "text": "Client.Core.DependencyContext:Request(BaconBehaviour, List`1)"
+    },
+    {
+      "line": 14176,
+      "text": "Client.Core.BaconBehaviour:SetupDependencies()"
+    },
+    {
+      "line": 14177,
+      "text": "Client.Core.BaconBehaviour:DoContextSetup_DoNotUseOutsideBaconBehavior()"
+    },
+    {
+      "line": 14178,
+      "text": "Client.Core.BaconBehaviour:Awake()"
+    },
+    {
+      "line": 14179,
+      "text": "UnityEngine.Object:Instantiate(Object, Transform, Boolean)"
+    },
+    {
+      "line": 14180,
+      "text": "UnityEngine.Object:Instantiate(T, Transform)"
+    },
+    {
+      "line": 14181,
+      "text": "<StartRewardsRevealSequence>d__32:MoveNext()"
+    },
+    {
+      "line": 14182,
+      "text": "System.Threading.ExecutionContext:RunInternal(ExecutionContext, ContextCallback, Object, Boolean)"
+    },
+    {
+      "line": 14183,
+      "text": "System.Runtime.CompilerServices.MoveNextRunner:Run()"
+    },
+    {
+      "line": 14184,
+      "text": "System.Threading.Tasks.AwaitTaskContinuation:RunCallback(ContextCallback, Object, Task&)"
+    },
+    {
+      "line": 14185,
+      "text": "System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation:Run(Task, Boolean)"
+    },
+    {
+      "line": 14186,
+      "text": "System.Threading.Tasks.Task:FinishContinuations()"
+    },
+    {
+      "line": 14187,
+      "text": "System.Threading.Tasks.Task`1:TrySetResult(TResult)"
+    },
+    {
+      "line": 14188,
+      "text": "System.Threading.Tasks.TaskCompletionSource`1:SetResult(TResult)"
+    },
+    {
+      "line": 14189,
+      "text": "BaconPlayable:SetHandleDone()"
+    },
+    {
+      "line": 14190,
+      "text": "BaconPlayable:SetDone()"
+    },
+    {
+      "line": 14191,
+      "text": "Client.Script.BaconTimeline:OnTimelineStopped(PlayableDirector)"
+    },
+    {
+      "line": 14195,
+      "text": "(18:54:36,585 utc) [ClientServiceRequest] SendAsyncInternal to [servidor]/adventure/v2/run/[ID omitido] Delete"
+    },
+    {
+      "line": 14203,
+      "text": "(18:54:37,114 utc) [ClientServiceRequest] HandleWebRequestCompleted from DELETE [servidor]/adventure/v2/run/[ID omitido]: 200"
+    },
+    {
+      "line": 14205,
+      "text": "(18:54:37,120 utc) [NavigationProtocolHandler] Requested to Open URI BaconURI [bacon://WorldMap]: Screen = worldmap, Segments = {}, Arguments = {} with LoadSceneMode Single"
+    }
+  ],
+  "limits": "Trechos de log e uma pilha pontual; nao sao trace completo nem corpo da resposta de rede."
+}

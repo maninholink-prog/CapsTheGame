@@ -1,0 +1,425 @@
+[
+  {
+    "id": 1,
+    "name": "Rapier de Nygash (Garandonim)",
+    "source_line": 1,
+    "god_as_source": "Garandonim",
+    "proposed_rarity": "Comum",
+    "effect": "Primeiro golpe de uma unidade equipada por rodada reduz em 1 o ataque do alvo até o fim da rodada, se ele sobreviver.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 2,
+    "name": "Capacete do Véu Emanhecido (Garandonim)",
+    "source_line": 9,
+    "god_as_source": "Garandonim",
+    "proposed_rarity": "Lendária",
+    "effect": "Primeira vez por batalha que seu campeão principal seria alvo de magia adversária, essa magia perde esse alvo; demais alvos permanecem.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 3,
+    "name": "Luvas do Tear Sombrio (Garandonim)",
+    "source_line": 19,
+    "god_as_source": "Garandonim",
+    "proposed_rarity": "Rara",
+    "effect": "Primeira unidade jogada em cada rodada recebe +2 de ataque naquela rodada; seu Nexus sofre 1 de dano.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 4,
+    "name": "Colar do Deus Enganador (Kizamurim)",
+    "source_line": 26,
+    "god_as_source": "Kizamurim",
+    "proposed_rarity": "Lendária",
+    "effect": "Na primeira equipagem de cada lado por batalha, ativa o efeito caótico de uma carta aleatória da mão de cada jogador, seguindo a sequência e as respostas do Colar de Kylast. Esse disparo não pode gerar outro disparo desta Relíquia.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 5,
+    "name": "Olhos do Fundo da Alma (Kizamurim)",
+    "source_line": 34,
+    "god_as_source": "Kizamurim",
+    "proposed_rarity": "Rara",
+    "effect": "No início da primeira rodada de ataque do portador, atordoa uma unidade adversária aleatória até o fim da rodada.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 6,
+    "name": "O Destino Brinca (Kizamurim)",
+    "source_line": 41,
+    "god_as_source": "Kizamurim",
+    "proposed_rarity": "Comum",
+    "effect": "Na primeira rodada, cada lado concede aleatoriamente +1 ou −1 de ataque a uma unidade própria aleatória, só nessa rodada; mínimo zero.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 7,
+    "name": "Lança da Virtude (Vitumirim)",
+    "source_line": 48,
+    "god_as_source": "Vitumirim",
+    "proposed_rarity": "Comum",
+    "effect": "No início de cada rodada, cura 1 da unidade própria ferida com menor vida atual; empate aleatório.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 8,
+    "name": "Lágrimas da Deusa",
+    "source_line": 55,
+    "god_as_source": "Vitumirim",
+    "proposed_rarity": "Lendária",
+    "effect": "Primeira unidade própria não campeã que morrer retorna ao campo com 1 de vida, uma vez por batalha.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 9,
+    "name": "Luz aos Cegos",
+    "source_line": 62,
+    "god_as_source": "Vitumirim",
+    "proposed_rarity": "Rara",
+    "effect": "Primeira unidade própria que seria atordoada em cada batalha ignora esse atordoamento.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 10,
+    "name": "Colar da Esperança",
+    "source_line": 71,
+    "god_as_source": "Sperimir",
+    "proposed_rarity": "Comum",
+    "effect": "Reduz em 2 a primeira ocorrência de dano ao próprio Nexus em cada batalha, mínimo zero.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 11,
+    "name": "Peitoral do Orgulho",
+    "source_line": 78,
+    "god_as_source": "Sperimir",
+    "proposed_rarity": "Rara",
+    "effect": "Campeão principal do portador não pode ser atordoado; em encontro sem campeão, protege a unidade inimiga principal designada.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 12,
+    "name": "Rosas da Coroa Passada",
+    "source_line": 85,
+    "god_as_source": "Sperimir",
+    "proposed_rarity": "Lendária",
+    "effect": "Primeira entrada de um campeão na batalha concede +2 de ataque às outras unidades próprias presentes até o fim da batalha.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 13,
+    "name": "Martelo do Fogo Berrante",
+    "source_line": 94,
+    "god_as_source": "Bizento",
+    "proposed_rarity": "Rara",
+    "effect": "Primeiro equipamento do portador em cada rodada recebe +1 de dano adicional durante a batalha.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 14,
+    "name": "Braveheart, o Machado Adaptativo",
+    "source_line": 101,
+    "god_as_source": "Bizento",
+    "proposed_rarity": "Comum",
+    "effect": "Primeira evolução de um campeão na batalha concede a ele +1 de ataque e +1 de vida até o fim da batalha.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 15,
+    "name": "Capacete da Fúria Bárbara",
+    "source_line": 108,
+    "god_as_source": "Bizento",
+    "proposed_rarity": "Lendária",
+    "effect": "Dobra o bônus numérico de dano das armas utilizadas; não dobra ataque base nem efeitos secundários.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 16,
+    "name": "Um Banquete em uma Gota",
+    "source_line": 115,
+    "god_as_source": "Mulian",
+    "proposed_rarity": "Comum",
+    "effect": "Ao entrar no nó de descanso, a primeira cura recebida ali recupera 3 de vida adicional do Nexus, limitada à vida máxima.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 17,
+    "name": "A Lança do Sol do Amanhecer",
+    "source_line": 122,
+    "god_as_source": "Mulian",
+    "proposed_rarity": "Lendária",
+    "effect": "Primeira vez que uma unidade equipada atacar em cada rodada, cura 2 de vida de todas as suas unidades antes dos golpes.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 18,
+    "name": "Flauta da Princesa da Natureza",
+    "source_line": 129,
+    "god_as_source": "Mulian",
+    "proposed_rarity": "Reserva — Rara sugerida",
+    "effect": "Primeira unidade adversária não campeã que entrar em campo em cada rodada tem −2 de ataque naquela rodada, mínimo zero.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 19,
+    "name": "Fios do Cabelo de Guifidiam",
+    "source_line": 136,
+    "god_as_source": "Guifidiam",
+    "proposed_rarity": "Lendária",
+    "effect": "Primeira unidade adversária não campeã morta em cada batalha concede 50 moedas temporárias ao portador; nunca gold permanente.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 20,
+    "name": "Rapieira do Príncipe Belo",
+    "source_line": 143,
+    "god_as_source": "Guifidiam",
+    "proposed_rarity": "Rara",
+    "effect": "Primeira vez por rodada que uma unidade própria sobrevive a dano de magia adversária, causa 2 de dano ao Nexus adversário.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 21,
+    "name": "Tomo da Luz",
+    "source_line": 150,
+    "god_as_source": "Guifidiam",
+    "proposed_rarity": "Comum",
+    "effect": "Primeira magia própria resolvida em cada rodada concede +1 de ataque a uma unidade própria aleatória até o fim da rodada.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 22,
+    "name": "Botas Leves como o Ar",
+    "source_line": 157,
+    "god_as_source": "Govinam",
+    "proposed_rarity": "Comum",
+    "effect": "Primeira unidade jogada por rodada recebe Ataque Rápido até o fim da rodada.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 23,
+    "name": "Colar de Pedras Salinas",
+    "source_line": 164,
+    "god_as_source": "Govinam",
+    "proposed_rarity": "Rara",
+    "effect": "Início de batalha: crie na mão um Auxiliar Tritão 2/2 de custo 1, temporário, sem tipo campeão. Não inicia em campo.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 24,
+    "name": "A Espada que Flui como Ar",
+    "source_line": 171,
+    "god_as_source": "Govinam",
+    "proposed_rarity": "Lendária",
+    "effect": "Primeira vez em cada batalha que o campeão principal atacar, ele não pode ser bloqueado por unidades com ataque menor que o dele nessa declaração; demais regras permanecem.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 25,
+    "name": "Chapéu da Rainha das Fadas",
+    "source_line": 178,
+    "god_as_source": "Nily",
+    "proposed_rarity": "Lendária sugerida — trio incompleto",
+    "effect": "Primeira magia própria de cura ou de armadura em cada rodada custa 1 mana a menos, mínimo zero, e aumenta em 1 sua cura ou vida concedida.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 26,
+    "name": "Cajados de Tulipas",
+    "source_line": 185,
+    "god_as_source": "Mulian",
+    "proposed_rarity": "Reserva — Comum sugerida",
+    "effect": "No fim da rodada, cura 1 de vida de uma unidade própria ferida aleatória.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 27,
+    "name": "Manto dos Pequenos Seres",
+    "source_line": 196,
+    "god_as_source": "Mulian",
+    "proposed_rarity": "Reserva — Rara sugerida",
+    "effect": "Primeira vez por batalha que o campeão principal sobreviver a dano, retorna à mão; equipamentos seguem as regras normais de retorno. Não se aplica se morrer pelo dano.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 28,
+    "name": "Máscara dos 9 Abundantes",
+    "source_line": 203,
+    "god_as_source": "Bazigueno",
+    "proposed_rarity": "Lendária sugerida — trio incompleto",
+    "effect": "No início da sua rodada de ataque, todas as suas unidades recebem +1 de ataque e +1 de vida até o fim da rodada; bônus de vida não é cura.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 29,
+    "name": "Zarabatana da Pele do Rei",
+    "source_line": 210,
+    "god_as_source": "Bazigueno",
+    "proposed_rarity": "Rara sugerida — trio incompleto",
+    "effect": "Primeiro golpe de uma unidade própria equipada por rodada causa 1 de dano adicional às unidades imediatamente adjacentes ao alvo, sem efeito lateral no Nexus.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 30,
+    "name": "Guardião da Natureza",
+    "source_line": 217,
+    "god_as_source": "Mulian",
+    "proposed_rarity": "Rara",
+    "effect": "Em cada rodada, reduz em 1 o primeiro dano que cada unidade própria receberia, mínimo zero.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 31,
+    "name": "Colar do Imortal em Pedra",
+    "source_line": 224,
+    "god_as_source": "Medurian",
+    "proposed_rarity": "Lendária sugerida — trio incompleto",
+    "effect": "Primeira morte do campeão principal na batalha invoca em seu lugar um Golem de Pedra 3/6 sem tipo campeão, se houver espaço; equipamentos do campeão retornam normalmente.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 32,
+    "name": "Pequeno Golem",
+    "source_line": 231,
+    "god_as_source": "Medurian",
+    "proposed_rarity": "Comum sugerida — trio incompleto",
+    "effect": "Ao começar a batalha, crie na mão um Pequeno Golem 1/3 de custo 1, temporário e sem tipo campeão.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 33,
+    "name": "Olhos de Águia",
+    "source_line": 240,
+    "god_as_source": "Virdurian",
+    "proposed_rarity": "Comum",
+    "effect": "Primeiro golpe de uma unidade própria equipada em cada rodada causa +1 de dano ao bloqueador; não aumenta dano ao Nexus.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 34,
+    "name": "Manto das Asas da Rainha",
+    "source_line": 247,
+    "god_as_source": "Virdurian",
+    "proposed_rarity": "Lendária",
+    "effect": "Primeiro ataque do campeão principal em cada rodada permite ao portador designar seu bloqueador entre unidades adversárias aptas a bloquear, antes das demais escolhas de bloqueio. Sem alvo elegível, não força bloqueio.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 35,
+    "name": "Pique do Vento",
+    "source_line": 254,
+    "god_as_source": "Virdurian",
+    "proposed_rarity": "Rara",
+    "effect": "Primeira unidade adversária que sobreviver ao golpe do campeão principal em cada rodada recebe −2 de ataque até o fim da rodada, mínimo zero.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 36,
+    "name": "Katana do Pesadelo",
+    "source_line": 261,
+    "god_as_source": "Garandonim",
+    "proposed_rarity": "Reserva — Lendária sugerida",
+    "effect": "Primeiro golpe do campeão principal contra unidade não campeã em cada batalha destrói o alvo se causar ao menos 1 de dano; sem efeito contra Nexus.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 37,
+    "name": "A Anulação",
+    "source_line": 268,
+    "god_as_source": "Garandonim",
+    "proposed_rarity": "Reserva — Lendária sugerida",
+    "effect": "Anula a primeira magia adversária da batalha que teria uma unidade própria como alvo; vale para o efeito inteiro e não se repete naquela batalha.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 38,
+    "name": "O Vortece",
+    "source_line": 275,
+    "god_as_source": "Garandonim",
+    "proposed_rarity": "Reserva — Rara sugerida",
+    "effect": "Primeiro inimigo não campeão que bloquear o campeão principal na batalha fica atordoado até o fim da rodada seguinte, após resolver esse combate; não cancela seu bloqueio já resolvido.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 39,
+    "name": "O Sol",
+    "source_line": 282,
+    "god_as_source": "Solas",
+    "proposed_rarity": "Lendária sugerida — trio incompleto",
+    "effect": "Primeira vez que o campeão principal atacar em cada batalha, causa 3 de dano a todas as unidades adversárias antes dos golpes.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 40,
+    "name": "Mercúrio",
+    "source_line": 289,
+    "god_as_source": "Garandonim",
+    "proposed_rarity": "Reserva — Comum sugerida",
+    "effect": "Fim de cada rodada: causa 1 de dano a uma unidade adversária aleatória e 1 ao próprio Nexus; sem unidade adversária, mantém o dano ao próprio Nexus.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 41,
+    "name": "Phoenix",
+    "source_line": 296,
+    "god_as_source": "Autoria não nomeada — fênix primordial",
+    "proposed_rarity": "Lendária sugerida — vínculo pendente",
+    "effect": "Primeira morte do campeão principal na batalha o faz retornar com vida cheia e causa 1 de dano às unidades adversárias, uma vez por batalha, sujeito a espaço livre.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 42,
+    "name": "Artefato: O Coração de Saol",
+    "source_line": 303,
+    "god_as_source": "Saol",
+    "proposed_rarity": "Lendária sugerida — trio incompleto",
+    "effect": "Primeira entrada do campeão principal em cada batalha cura 3 do próprio Nexus e causa 3 de dano a uma unidade adversária aleatória, se houver.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 43,
+    "name": "A Criatura Refeita",
+    "source_line": 310,
+    "god_as_source": "Saol",
+    "proposed_rarity": "Rara sugerida — trio incompleto",
+    "effect": "Na primeira rodada, crie na mão duas Criaturas Refeitas 2/2 de custo 1, temporárias e sem tipo campeão; respeite a mão máxima.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 44,
+    "name": "A Pena da Vida",
+    "source_line": 317,
+    "god_as_source": "Solas",
+    "proposed_rarity": "Rara sugerida — trio incompleto",
+    "effect": "Primeira unidade própria não campeã morta em cada batalha retorna com vida cheia, uma vez por batalha, sujeito a espaço livre.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 45,
+    "name": "O Relógio da Desintegração Temporal",
+    "source_line": 326,
+    "god_as_source": "Divindade não nomeada na fonte",
+    "proposed_rarity": "Rara sugerida — vínculo pendente",
+    "effect": "Primeira vez por batalha que o campeão principal sobreviver a dano, restaura a vida dele ao valor imediatamente anterior àquela ocorrência; não desfaz outros efeitos nem mortes.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 46,
+    "name": "A Máscara do Abismo",
+    "source_line": 333,
+    "god_as_source": "Deuses antigos — sem nome individual",
+    "proposed_rarity": "Comum sugerida — vínculo pendente",
+    "effect": "Primeira magia adversária que tenha o campeão principal como alvo custa 1 mana adicional; custo informado antes da confirmação.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  },
+  {
+    "id": 47,
+    "name": "O Fragmento do Infinito",
+    "source_line": 340,
+    "god_as_source": "Entidade primordial não nomeada",
+    "proposed_rarity": "Lendária sugerida — vínculo pendente",
+    "effect": "Primeira magia de custo pago 5 ou maior resolvida pelo portador em cada batalha cria uma cópia temporária dela na mão com custo zero nessa rodada; cópia não dispara este efeito.",
+    "status": "Efeito e classificação aprovados pelo autor; manter ressalvas de vínculo e organização indicadas"
+  }
+]

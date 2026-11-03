@@ -1,0 +1,4061 @@
+{
+  "source_sha256": "7ded0a61cc39b4a29d2ba7c41d9e1480df78d80ae27f0aa36659b8bb25a9922d",
+  "record_count": 43685,
+  "complete_records": 43642,
+  "edge_count": 137474,
+  "tables": [
+    {
+      "key": 4142457,
+      "offset": 6124489,
+      "incoming": [
+        {
+          "source": 221944472,
+          "target": 4142457,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2569938140,
+      "offset": 6131918,
+      "incoming": [
+        {
+          "source": 2251852109,
+          "target": 2569938140,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4236840100,
+      "offset": 6133579,
+      "incoming": [
+        {
+          "source": 683572677,
+          "target": 4236840100,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1389006786,
+      "offset": 6134169,
+      "incoming": [
+        {
+          "source": 751014703,
+          "target": 1389006786,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3201133469,
+      "offset": 6136197,
+      "incoming": [
+        {
+          "source": 756691844,
+          "target": 3201133469,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1032044782,
+      "offset": 6136240,
+      "incoming": [
+        {
+          "source": 3196105779,
+          "target": 1032044782,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1351183836,
+      "offset": 6137780,
+      "incoming": [
+        {
+          "source": 3446897229,
+          "target": 1351183836,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3245816228,
+      "offset": 6140269,
+      "incoming": [
+        {
+          "source": 3386962629,
+          "target": 3245816228,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 17645447,
+      "offset": 6148212,
+      "incoming": [
+        {
+          "source": 1024782894,
+          "target": 17645447,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2014564949,
+      "offset": 6149669,
+      "incoming": [
+        {
+          "source": 127312438,
+          "target": 2014564949,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 510647945,
+      "offset": 6150221,
+      "incoming": [
+        {
+          "source": 1843700218,
+          "target": 510647945,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4117720495,
+      "offset": 6153393,
+      "incoming": [
+        {
+          "source": 3200071660,
+          "target": 4117720495,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3341838995,
+      "offset": 6153966,
+      "incoming": [
+        {
+          "source": 3682800630,
+          "target": 3341838995,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2837826333,
+      "offset": 6155436,
+      "incoming": [
+        {
+          "source": 1472013482,
+          "target": 2837826333,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3942140189,
+      "offset": 6156544,
+      "incoming": [
+        {
+          "source": 3500999835,
+          "target": 3942140189,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 850466521,
+      "offset": 6160466,
+      "incoming": [
+        {
+          "source": 3333868024,
+          "target": 850466521,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1809284514,
+      "offset": 6162279,
+      "incoming": [
+        {
+          "source": 72086799,
+          "target": 1809284514,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2310566191,
+      "offset": 6163137,
+      "incoming": [
+        {
+          "source": 233229898,
+          "target": 2310566191,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 594670912,
+      "offset": 6163901,
+      "incoming": [
+        {
+          "source": 384142585,
+          "target": 594670912,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 475181478,
+      "offset": 6164956,
+      "incoming": [
+        {
+          "source": 2197310299,
+          "target": 475181478,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3104151418,
+      "offset": 6167121,
+      "incoming": [
+        {
+          "source": 1747676311,
+          "target": 3104151418,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3323946090,
+      "offset": 6168178,
+      "incoming": [
+        {
+          "source": 3489838279,
+          "target": 3323946090,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2310984246,
+      "offset": 6168863,
+      "incoming": [
+        {
+          "source": 1186139883,
+          "target": 2310984246,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 927639166,
+      "offset": 6169405,
+      "incoming": [
+        {
+          "source": 1723676803,
+          "target": 927639166,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3349897094,
+      "offset": 6171527,
+      "incoming": [
+        {
+          "source": 3955909947,
+          "target": 3349897094,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3424537881,
+      "offset": 6172277,
+      "incoming": [
+        {
+          "source": 3606385464,
+          "target": 3424537881,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1537271362,
+      "offset": 6178327,
+      "incoming": [
+        {
+          "source": 2665876911,
+          "target": 1537271362,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3690630732,
+      "offset": 6179692,
+      "incoming": [
+        {
+          "source": 4196506365,
+          "target": 3690630732,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2753818966,
+      "offset": 6181060,
+      "incoming": [
+        {
+          "source": 3724545803,
+          "target": 2753818966,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3103001560,
+      "offset": 6181713,
+      "incoming": [
+        {
+          "source": 2365807201,
+          "target": 3103001560,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 262842270,
+      "offset": 6192723,
+      "incoming": [
+        {
+          "source": 4162397347,
+          "target": 262842270,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 36415814,
+      "offset": 6193322,
+      "incoming": [
+        {
+          "source": 921134331,
+          "target": 36415814,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 184050180,
+      "offset": 6194380,
+      "incoming": [
+        {
+          "source": 149010981,
+          "target": 184050180,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 318021090,
+      "offset": 6195388,
+      "incoming": [
+        {
+          "source": 185789007,
+          "target": 318021090,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4003930996,
+      "offset": 6197826,
+      "incoming": [
+        {
+          "source": 4182636309,
+          "target": 4003930996,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1556375014,
+      "offset": 6198430,
+      "incoming": [
+        {
+          "source": 1604805787,
+          "target": 1556375014,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 607727882,
+      "offset": 6199451,
+      "incoming": [
+        {
+          "source": 1074318951,
+          "target": 607727882,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 427852661,
+      "offset": 6213337,
+      "incoming": [
+        {
+          "source": 411072844,
+          "target": 427852661,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 129862952,
+      "offset": 6213887,
+      "incoming": [
+        {
+          "source": 978603441,
+          "target": 129862952,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2392932311,
+      "offset": 6216350,
+      "incoming": [
+        {
+          "source": 4207640162,
+          "target": 2392932311,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1100429566,
+      "offset": 6217158,
+      "incoming": [
+        {
+          "source": 1123438339,
+          "target": 1100429566,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4126141735,
+      "offset": 6218966,
+      "incoming": [
+        {
+          "source": 705624050,
+          "target": 4126141735,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3721108743,
+      "offset": 6220076,
+      "incoming": [
+        {
+          "source": 3065576146,
+          "target": 3721108743,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3085174775,
+      "offset": 6222652,
+      "incoming": [
+        {
+          "source": 3706100354,
+          "target": 3085174775,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4048785327,
+      "offset": 6223528,
+      "incoming": [
+        {
+          "source": 3054457034,
+          "target": 4048785327,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2724477075,
+      "offset": 6231928,
+      "incoming": [
+        {
+          "source": 3826205350,
+          "target": 2724477075,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4241206819,
+      "offset": 6233093,
+      "incoming": [
+        {
+          "source": 93357430,
+          "target": 4241206819,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3217692855,
+      "offset": 6234199,
+      "incoming": [
+        {
+          "source": 1105669954,
+          "target": 3217692855,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2714852175,
+      "offset": 6234303,
+      "incoming": [
+        {
+          "source": 1573343338,
+          "target": 2714852175,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3749976171,
+      "offset": 6236385,
+      "incoming": [
+        {
+          "source": 1659638830,
+          "target": 3749976171,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2681520322,
+      "offset": 6243211,
+      "incoming": [
+        {
+          "source": 55290927,
+          "target": 2681520322,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1469215562,
+      "offset": 6245101,
+      "incoming": [
+        {
+          "source": 585566119,
+          "target": 1469215562,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1551909482,
+      "offset": 6246648,
+      "incoming": [
+        {
+          "source": 1669972679,
+          "target": 1551909482,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3701690714,
+      "offset": 6248722,
+      "incoming": [
+        {
+          "source": 2031480183,
+          "target": 3701690714,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1998258414,
+      "offset": 6248765,
+      "incoming": [
+        {
+          "source": 4060738611,
+          "target": 1998258414,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3521867538,
+      "offset": 6251827,
+      "incoming": [
+        {
+          "source": 2235870399,
+          "target": 3521867538,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3420963126,
+      "offset": 6260848,
+      "incoming": [
+        {
+          "source": 3378714091,
+          "target": 3420963126,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1529995681,
+      "offset": 6261373,
+      "incoming": [
+        {
+          "source": 3840189488,
+          "target": 1529995681,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1108177668,
+      "offset": 6263425,
+      "incoming": [
+        {
+          "source": 3433018149,
+          "target": 1108177668,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2107789041,
+      "offset": 6268289,
+      "incoming": [
+        {
+          "source": 2417737472,
+          "target": 2107789041,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2689448159,
+      "offset": 6270273,
+      "incoming": [
+        {
+          "source": 3144346298,
+          "target": 2689448159,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 596439369,
+      "offset": 6270858,
+      "incoming": [
+        {
+          "source": 2185311912,
+          "target": 596439369,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3432954373,
+      "offset": 6273473,
+      "incoming": [
+        {
+          "source": 631614172,
+          "target": 3432954373,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4117260239,
+      "offset": 6274578,
+      "incoming": [
+        {
+          "source": 3148902634,
+          "target": 4117260239,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4146807953,
+      "offset": 6275690,
+      "incoming": [
+        {
+          "source": 1337290144,
+          "target": 4146807953,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3792424185,
+      "offset": 6276810,
+      "incoming": [
+        {
+          "source": 1498922520,
+          "target": 3792424185,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3624144939,
+      "offset": 6277884,
+      "incoming": [
+        {
+          "source": 4217292270,
+          "target": 3624144939,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3878215331,
+      "offset": 6278984,
+      "incoming": [
+        {
+          "source": 4024855030,
+          "target": 3878215331,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2797911597,
+      "offset": 6292596,
+      "incoming": [
+        {
+          "source": 3394383572,
+          "target": 2797911597,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 966863129,
+      "offset": 6292805,
+      "incoming": [
+        {
+          "source": 3598274360,
+          "target": 966863129,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1455833381,
+      "offset": 6294656,
+      "incoming": [
+        {
+          "source": 779493628,
+          "target": 1455833381,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4200981549,
+      "offset": 6296253,
+      "incoming": [
+        {
+          "source": 797361364,
+          "target": 4200981549,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1250371093,
+      "offset": 6296908,
+      "incoming": [
+        {
+          "source": 3041811692,
+          "target": 1250371093,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1410822919,
+      "offset": 6306716,
+      "incoming": [
+        {
+          "source": 198164690,
+          "target": 1410822919,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2031644233,
+      "offset": 6308362,
+      "incoming": [
+        {
+          "source": 201948072,
+          "target": 2031644233,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2601635187,
+      "offset": 6309695,
+      "incoming": [
+        {
+          "source": 478874246,
+          "target": 2601635187,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 560953689,
+      "offset": 6315828,
+      "incoming": [
+        {
+          "source": 851325048,
+          "target": 560953689,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2816847126,
+      "offset": 6317913,
+      "incoming": [
+        {
+          "source": 418529483,
+          "target": 2816847126,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2990110151,
+      "offset": 6318979,
+      "incoming": [
+        {
+          "source": 3327636626,
+          "target": 2990110151,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 614248281,
+      "offset": 6319083,
+      "incoming": [
+        {
+          "source": 2013615736,
+          "target": 614248281,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2001306657,
+      "offset": 6320711,
+      "incoming": [
+        {
+          "source": 4077341360,
+          "target": 2001306657,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1223677307,
+      "offset": 6321403,
+      "incoming": [
+        {
+          "source": 825875518,
+          "target": 1223677307,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2637832913,
+      "offset": 6323543,
+      "incoming": [
+        {
+          "source": 853113056,
+          "target": 2637832913,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4145958142,
+      "offset": 6325082,
+      "incoming": [
+        {
+          "source": 1055228675,
+          "target": 4145958142,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4038384817,
+      "offset": 6326204,
+      "incoming": [
+        {
+          "source": 1099705280,
+          "target": 4038384817,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3459673143,
+      "offset": 6327340,
+      "incoming": [
+        {
+          "source": 1931505346,
+          "target": 3459673143,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3521069173,
+      "offset": 6327985,
+      "incoming": [
+        {
+          "source": 1466826316,
+          "target": 3521069173,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2722269878,
+      "offset": 6328591,
+      "incoming": [
+        {
+          "source": 2342959979,
+          "target": 2722269878,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 144824378,
+      "offset": 6339382,
+      "incoming": [
+        {
+          "source": 880671063,
+          "target": 144824378,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 206822414,
+      "offset": 6340788,
+      "incoming": [
+        {
+          "source": 2891426131,
+          "target": 206822414,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1287120141,
+      "offset": 6342628,
+      "incoming": [
+        {
+          "source": 2755772084,
+          "target": 1287120141,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4099981396,
+      "offset": 6344423,
+      "incoming": [
+        {
+          "source": 1618331125,
+          "target": 4099981396,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2774128098,
+      "offset": 6345935,
+      "incoming": [
+        {
+          "source": 3276202575,
+          "target": 2774128098,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3020580545,
+      "offset": 6346714,
+      "incoming": [
+        {
+          "source": 1471667024,
+          "target": 3020580545,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3899650538,
+      "offset": 6348537,
+      "incoming": [
+        {
+          "source": 1635499591,
+          "target": 3899650538,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4265274772,
+      "offset": 6349645,
+      "incoming": [
+        {
+          "source": 2539352373,
+          "target": 4265274772,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2774512717,
+      "offset": 6358878,
+      "incoming": [
+        {
+          "source": 4241318644,
+          "target": 2774512717,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1755923081,
+      "offset": 6360018,
+      "incoming": [
+        {
+          "source": 3571819752,
+          "target": 1755923081,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2704955609,
+      "offset": 6360898,
+      "incoming": [
+        {
+          "source": 175561720,
+          "target": 2704955609,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 923600943,
+      "offset": 6361674,
+      "incoming": [
+        {
+          "source": 2744040778,
+          "target": 923600943,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2305305601,
+      "offset": 6363892,
+      "incoming": [
+        {
+          "source": 1075074960,
+          "target": 2305305601,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1461612620,
+      "offset": 6365292,
+      "incoming": [
+        {
+          "source": 1502432509,
+          "target": 1461612620,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1150753972,
+      "offset": 6366032,
+      "incoming": [
+        {
+          "source": 1766498389,
+          "target": 1150753972,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 189740537,
+      "offset": 6379604,
+      "incoming": [
+        {
+          "source": 940035864,
+          "target": 189740537,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2527051479,
+      "offset": 6381960,
+      "incoming": [
+        {
+          "source": 2293470562,
+          "target": 2527051479,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2883043323,
+      "offset": 6382861,
+      "incoming": [
+        {
+          "source": 488245950,
+          "target": 2883043323,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1668529527,
+      "offset": 6383408,
+      "incoming": [
+        {
+          "source": 576130050,
+          "target": 1668529527,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2063945153,
+      "offset": 6385345,
+      "incoming": [
+        {
+          "source": 1421253200,
+          "target": 2063945153,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1911122189,
+      "offset": 6385923,
+      "incoming": [
+        {
+          "source": 2256069300,
+          "target": 1911122189,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2115872479,
+      "offset": 6386983,
+      "incoming": [
+        {
+          "source": 2837416122,
+          "target": 2115872479,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3991039855,
+      "offset": 6391727,
+      "incoming": [
+        {
+          "source": 3260498314,
+          "target": 3991039855,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3255611888,
+      "offset": 6393443,
+      "incoming": [
+        {
+          "source": 3987369897,
+          "target": 3255611888,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3270938001,
+      "offset": 6394586,
+      "incoming": [
+        {
+          "source": 1491099296,
+          "target": 3270938001,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 708771549,
+      "offset": 6394638,
+      "incoming": [
+        {
+          "source": 2204325572,
+          "target": 708771549,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1803529039,
+      "offset": 6402222,
+      "incoming": [
+        {
+          "source": 3362136170,
+          "target": 1803529039,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1353814944,
+      "offset": 6414036,
+      "incoming": [
+        {
+          "source": 1640225113,
+          "target": 1353814944,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1060567691,
+      "offset": 6414897,
+      "incoming": [
+        {
+          "source": 403013454,
+          "target": 1060567691,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1626811403,
+      "offset": 6416470,
+      "incoming": [
+        {
+          "source": 3933261006,
+          "target": 1626811403,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 507822683,
+      "offset": 6417057,
+      "incoming": [
+        {
+          "source": 3205158942,
+          "target": 507822683,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4213358306,
+      "offset": 6419607,
+      "incoming": [
+        {
+          "source": 2209903439,
+          "target": 4213358306,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1203870403,
+      "offset": 6420139,
+      "incoming": [
+        {
+          "source": 1854717974,
+          "target": 1203870403,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 934355911,
+      "offset": 6425459,
+      "incoming": [
+        {
+          "source": 3914994322,
+          "target": 934355911,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2345662108,
+      "offset": 6428669,
+      "incoming": [
+        {
+          "source": 1151050509,
+          "target": 2345662108,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3614920691,
+      "offset": 6430453,
+      "incoming": [
+        {
+          "source": 1197379846,
+          "target": 3614920691,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4132840795,
+      "offset": 6431587,
+      "incoming": [
+        {
+          "source": 1834644254,
+          "target": 4132840795,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3064129875,
+      "offset": 6432177,
+      "incoming": [
+        {
+          "source": 2499553894,
+          "target": 3064129875,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3813952675,
+      "offset": 6433751,
+      "incoming": [
+        {
+          "source": 3961686006,
+          "target": 3813952675,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3985108417,
+      "offset": 6434381,
+      "incoming": [
+        {
+          "source": 3431610960,
+          "target": 3985108417,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2964004597,
+      "offset": 6435828,
+      "incoming": [
+        {
+          "source": 2652192972,
+          "target": 2964004597,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2940291195,
+      "offset": 6436491,
+      "incoming": [
+        {
+          "source": 3748661054,
+          "target": 2940291195,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4190798047,
+      "offset": 6456898,
+      "incoming": [
+        {
+          "source": 1994977978,
+          "target": 4190798047,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 651275385,
+      "offset": 6456941,
+      "incoming": [
+        {
+          "source": 2583914904,
+          "target": 651275385,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1407879237,
+      "offset": 6457677,
+      "incoming": [
+        {
+          "source": 1104064796,
+          "target": 1407879237,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4251998461,
+      "offset": 6463159,
+      "incoming": [
+        {
+          "source": 960624100,
+          "target": 4251998461,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3143084338,
+      "offset": 6468910,
+      "incoming": [
+        {
+          "source": 2405594591,
+          "target": 3143084338,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4072131726,
+      "offset": 6470144,
+      "incoming": [
+        {
+          "source": 2901560787,
+          "target": 4072131726,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2748427248,
+      "offset": 7081115,
+      "incoming": [
+        {
+          "source": 1519974825,
+          "target": 2748427248,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 24273101,
+      "offset": 7359084,
+      "incoming": [
+        {
+          "source": 2191288913,
+          "target": 24273101,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 156541135,
+      "offset": 7359142,
+      "incoming": [
+        {
+          "source": 4272645771,
+          "target": 156541135,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 251153952,
+      "offset": 7359200,
+      "incoming": [
+        {
+          "source": 2420531392,
+          "target": 251153952,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 458097376,
+      "offset": 7359258,
+      "incoming": [
+        {
+          "source": 497074748,
+          "target": 458097376,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1101721794,
+      "offset": 7359316,
+      "incoming": [
+        {
+          "source": 2179152734,
+          "target": 1101721794,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1868002700,
+      "offset": 7359374,
+      "incoming": [
+        {
+          "source": 32988748,
+          "target": 1868002700,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1894541684,
+      "offset": 7359432,
+      "incoming": [
+        {
+          "source": 2202303044,
+          "target": 1894541684,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2112497017,
+      "offset": 7359490,
+      "incoming": [
+        {
+          "source": 2508486185,
+          "target": 2112497017,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2190858728,
+      "offset": 7359548,
+      "incoming": []
+    },
+    {
+      "key": 2197405715,
+      "offset": 7359606,
+      "incoming": [
+        {
+          "source": 465984231,
+          "target": 2197405715,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2622956919,
+      "offset": 7359664,
+      "incoming": [
+        {
+          "source": 1118726739,
+          "target": 2622956919,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2769138575,
+      "offset": 7359722,
+      "incoming": [
+        {
+          "source": 4160187083,
+          "target": 2769138575,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2860438467,
+      "offset": 7359780,
+      "incoming": [
+        {
+          "source": 107121611,
+          "target": 2860438467,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3130066163,
+      "offset": 7359838,
+      "incoming": [
+        {
+          "source": 3947554451,
+          "target": 3130066163,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3604400710,
+      "offset": 7359896,
+      "incoming": [
+        {
+          "source": 958953654,
+          "target": 3604400710,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3605832415,
+      "offset": 7359954,
+      "incoming": [
+        {
+          "source": 2515124667,
+          "target": 3605832415,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3641308864,
+      "offset": 7360012,
+      "incoming": [
+        {
+          "source": 536379172,
+          "target": 3641308864,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 108291432,
+      "offset": 7360070,
+      "incoming": []
+    },
+    {
+      "key": 912520959,
+      "offset": 7360128,
+      "incoming": [
+        {
+          "source": 1831510183,
+          "target": 912520959,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1117069940,
+      "offset": 7360186,
+      "incoming": [
+        {
+          "source": 233329584,
+          "target": 1117069940,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1420349401,
+      "offset": 7360244,
+      "incoming": [
+        {
+          "source": 3741273929,
+          "target": 1420349401,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2206368394,
+      "offset": 7360302,
+      "incoming": [
+        {
+          "source": 2807612278,
+          "target": 2206368394,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2318981639,
+      "offset": 7360360,
+      "incoming": [
+        {
+          "source": 1074361763,
+          "target": 2318981639,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2370520268,
+      "offset": 7360418,
+      "incoming": [
+        {
+          "source": 3801546140,
+          "target": 2370520268,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2636365295,
+      "offset": 7360476,
+      "incoming": [
+        {
+          "source": 3189004891,
+          "target": 2636365295,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2746146004,
+      "offset": 7360534,
+      "incoming": [
+        {
+          "source": 197823940,
+          "target": 2746146004,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2836630908,
+      "offset": 7360592,
+      "incoming": [
+        {
+          "source": 3470330160,
+          "target": 2836630908,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2856545039,
+      "offset": 7360650,
+      "incoming": [
+        {
+          "source": 262535163,
+          "target": 2856545039,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2972882999,
+      "offset": 7360708,
+      "incoming": [
+        {
+          "source": 1771975767,
+          "target": 2972882999,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 114411152,
+      "offset": 7360766,
+      "incoming": [
+        {
+          "source": 2297236520,
+          "target": 114411152,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 719991478,
+      "offset": 7360824,
+      "incoming": [
+        {
+          "source": 2502534318,
+          "target": 719991478,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1201960168,
+      "offset": 7360882,
+      "incoming": [
+        {
+          "source": 529359996,
+          "target": 1201960168,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1354262224,
+      "offset": 7360940,
+      "incoming": [
+        {
+          "source": 524998452,
+          "target": 1354262224,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2321109555,
+      "offset": 7360998,
+      "incoming": [
+        {
+          "source": 4058475355,
+          "target": 2321109555,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2808569771,
+      "offset": 7361056,
+      "incoming": [
+        {
+          "source": 1287643659,
+          "target": 2808569771,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2966668880,
+      "offset": 7361114,
+      "incoming": [
+        {
+          "source": 1990491484,
+          "target": 2966668880,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3357733995,
+      "offset": 7361172,
+      "incoming": [
+        {
+          "source": 3858348487,
+          "target": 3357733995,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3622957331,
+      "offset": 7361230,
+      "incoming": [
+        {
+          "source": 3983536711,
+          "target": 3622957331,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3720311131,
+      "offset": 7361288,
+      "incoming": [
+        {
+          "source": 3436106515,
+          "target": 3720311131,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3743329831,
+      "offset": 7361346,
+      "incoming": [
+        {
+          "source": 22303005,
+          "target": 3743329831,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 22303005,
+          "target": 3743329831,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 22303005,
+          "target": 3743329831,
+          "path": "[0]/CardSlots[2]",
+          "source_complete": true
+        },
+        {
+          "source": 1382412389,
+          "target": 3743329831,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 1382412389,
+          "target": 3743329831,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 597815811,
+          "target": 3743329831,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3836802344,
+      "offset": 7361404,
+      "incoming": [
+        {
+          "source": 2628923736,
+          "target": 3836802344,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4117032936,
+      "offset": 7361462,
+      "incoming": [
+        {
+          "source": 2089046932,
+          "target": 4117032936,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4292061077,
+      "offset": 7361520,
+      "incoming": [
+        {
+          "source": 2785699969,
+          "target": 4292061077,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 194928486,
+      "offset": 7361578,
+      "incoming": []
+    },
+    {
+      "key": 89596964,
+      "offset": 7361636,
+      "incoming": [
+        {
+          "source": 1716715060,
+          "target": 89596964,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 642442801,
+      "offset": 7361685,
+      "incoming": [
+        {
+          "source": 2745876001,
+          "target": 642442801,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 918172325,
+      "offset": 7361734,
+      "incoming": [
+        {
+          "source": 1112320973,
+          "target": 918172325,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1008617357,
+      "offset": 7361783,
+      "incoming": [
+        {
+          "source": 458590865,
+          "target": 1008617357,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1251826429,
+      "offset": 7361832,
+      "incoming": [
+        {
+          "source": 3417773530,
+          "target": 1251826429,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1574584489,
+      "offset": 7361884,
+      "incoming": [
+        {
+          "source": 3417773530,
+          "target": 1574584489,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2651328491,
+      "offset": 7361927,
+      "incoming": [
+        {
+          "source": 3370637807,
+          "target": 2651328491,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2805352321,
+      "offset": 7361976,
+      "incoming": [
+        {
+          "source": 59876269,
+          "target": 2805352321,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3530571936,
+      "offset": 7362025,
+      "incoming": [
+        {
+          "source": 2267957924,
+          "target": 3530571936,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3687145753,
+      "offset": 7362074,
+      "incoming": [
+        {
+          "source": 297475173,
+          "target": 3687145753,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3849364037,
+      "offset": 7362123,
+      "incoming": [
+        {
+          "source": 1531171981,
+          "target": 3849364037,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3897673966,
+      "offset": 7362172,
+      "incoming": [
+        {
+          "source": 4258573194,
+          "target": 3897673966,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3899154763,
+      "offset": 7362221,
+      "incoming": [
+        {
+          "source": 803803999,
+          "target": 3899154763,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3914830107,
+      "offset": 7362270,
+      "incoming": [
+        {
+          "source": 3872005023,
+          "target": 3914830107,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3947112211,
+      "offset": 7362319,
+      "incoming": [
+        {
+          "source": 3581101151,
+          "target": 3947112211,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4194148825,
+      "offset": 7362368,
+      "incoming": [
+        {
+          "source": 1397009017,
+          "target": 4194148825,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 177064535,
+      "offset": 7362417,
+      "incoming": [
+        {
+          "source": 2138226887,
+          "target": 177064535,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 433477534,
+      "offset": 7362475,
+      "incoming": [
+        {
+          "source": 4161545722,
+          "target": 433477534,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 746980550,
+      "offset": 7362533,
+      "incoming": [
+        {
+          "source": 2678604074,
+          "target": 746980550,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1088354350,
+      "offset": 7362591,
+      "incoming": [
+        {
+          "source": 2810780630,
+          "target": 1088354350,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1511669235,
+      "offset": 7362649,
+      "incoming": [
+        {
+          "source": 2778458079,
+          "target": 1511669235,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1682728663,
+      "offset": 7362707,
+      "incoming": [
+        {
+          "source": 982035123,
+          "target": 1682728663,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1819127293,
+      "offset": 7362765,
+      "incoming": [
+        {
+          "source": 3777970121,
+          "target": 1819127293,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1951471043,
+      "offset": 7362823,
+      "incoming": [
+        {
+          "source": 1685855271,
+          "target": 1951471043,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2039370526,
+      "offset": 7362881,
+      "incoming": [
+        {
+          "source": 1995372026,
+          "target": 2039370526,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2394200943,
+      "offset": 7362939,
+      "incoming": [
+        {
+          "source": 1743210635,
+          "target": 2394200943,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2504775648,
+      "offset": 7362997,
+      "incoming": [
+        {
+          "source": 4204409268,
+          "target": 2504775648,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2849864476,
+      "offset": 7363055,
+      "incoming": [
+        {
+          "source": 3094793090,
+          "target": 2849864476,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3231076278,
+      "offset": 7363113,
+      "incoming": [
+        {
+          "source": 1980428594,
+          "target": 3231076278,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3772211745,
+      "offset": 7363171,
+      "incoming": [
+        {
+          "source": 96532849,
+          "target": 3772211745,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3796909062,
+      "offset": 7363229,
+      "incoming": [
+        {
+          "source": 3606339854,
+          "target": 3796909062,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3859618740,
+      "offset": 7363287,
+      "incoming": [
+        {
+          "source": 336682696,
+          "target": 3859618740,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3982815271,
+      "offset": 7363345,
+      "incoming": [
+        {
+          "source": 4147707543,
+          "target": 3982815271,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4192734709,
+      "offset": 7363403,
+      "incoming": [
+        {
+          "source": 135648441,
+          "target": 4192734709,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 189880712,
+      "offset": 7363461,
+      "incoming": [
+        {
+          "source": 2858254276,
+          "target": 189880712,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 238552879,
+      "offset": 7363519,
+      "incoming": [
+        {
+          "source": 282046527,
+          "target": 238552879,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 302192240,
+      "offset": 7363577,
+      "incoming": [
+        {
+          "source": 3035435372,
+          "target": 302192240,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 474147896,
+      "offset": 7363635,
+      "incoming": [
+        {
+          "source": 3212457008,
+          "target": 474147896,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 556763964,
+      "offset": 7363693,
+      "incoming": [
+        {
+          "source": 3753795964,
+          "target": 556763964,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 925344831,
+      "offset": 7363751,
+      "incoming": [
+        {
+          "source": 4281462535,
+          "target": 925344831,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 981142119,
+      "offset": 7363809,
+      "incoming": [
+        {
+          "source": 3665147155,
+          "target": 981142119,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1068672067,
+      "offset": 7363867,
+      "incoming": [
+        {
+          "source": 1109854767,
+          "target": 1068672067,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1842598420,
+      "offset": 7363925,
+      "incoming": [
+        {
+          "source": 391139124,
+          "target": 1842598420,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2532138061,
+      "offset": 7363983,
+      "incoming": [
+        {
+          "source": 1797984813,
+          "target": 2532138061,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2601289890,
+      "offset": 7364041,
+      "incoming": [
+        {
+          "source": 2167192910,
+          "target": 2601289890,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3043966896,
+      "offset": 7364099,
+      "incoming": [
+        {
+          "source": 2247151284,
+          "target": 3043966896,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3180420243,
+      "offset": 7364157,
+      "incoming": [
+        {
+          "source": 725655163,
+          "target": 3180420243,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3318507163,
+      "offset": 7364215,
+      "incoming": [
+        {
+          "source": 2563335023,
+          "target": 3318507163,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3629686073,
+      "offset": 7364273,
+      "incoming": [
+        {
+          "source": 4208008309,
+          "target": 3629686073,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4042363152,
+      "offset": 7364331,
+      "incoming": [
+        {
+          "source": 1983386716,
+          "target": 4042363152,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4108372539,
+      "offset": 7364389,
+      "incoming": [
+        {
+          "source": 1096814039,
+          "target": 4108372539,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4231911310,
+      "offset": 7364447,
+      "incoming": [
+        {
+          "source": 4178146294,
+          "target": 4231911310,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 317220163,
+      "offset": 7364505,
+      "incoming": [
+        {
+          "source": 3477964049,
+          "target": 317220163,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 578411612,
+      "offset": 7364563,
+      "incoming": [
+        {
+          "source": 315136508,
+          "target": 578411612,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 592541723,
+      "offset": 7364621,
+      "incoming": [
+        {
+          "source": 1101032783,
+          "target": 592541723,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 849031316,
+      "offset": 7364679,
+      "incoming": [
+        {
+          "source": 4103228216,
+          "target": 849031316,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1067684935,
+      "offset": 7364737,
+      "incoming": [
+        {
+          "source": 2520028347,
+          "target": 1067684935,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1334747682,
+      "offset": 7364795,
+      "incoming": [
+        {
+          "source": 2410847740,
+          "target": 1334747682,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1712866941,
+      "offset": 7364853,
+      "incoming": [
+        {
+          "source": 233939743,
+          "target": 1712866941,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1839380036,
+      "offset": 7364911,
+      "incoming": [
+        {
+          "source": 2856189912,
+          "target": 1839380036,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2190117463,
+      "offset": 7364969,
+      "incoming": [
+        {
+          "source": 454612983,
+          "target": 2190117463,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2280316791,
+      "offset": 7365027,
+      "incoming": [
+        {
+          "source": 2910738647,
+          "target": 2280316791,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2681010108,
+      "offset": 7365085,
+      "incoming": [
+        {
+          "source": 3869255340,
+          "target": 2681010108,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2800582180,
+      "offset": 7365143,
+      "incoming": [
+        {
+          "source": 2217196828,
+          "target": 2800582180,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2990315538,
+      "offset": 7365201,
+      "incoming": [
+        {
+          "source": 1330440842,
+          "target": 2990315538,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3091825185,
+      "offset": 7365259,
+      "incoming": [
+        {
+          "source": 458874465,
+          "target": 3091825185,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3595279295,
+      "offset": 7365317,
+      "incoming": [
+        {
+          "source": 3966247155,
+          "target": 3595279295,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3847601430,
+      "offset": 7365375,
+      "incoming": [
+        {
+          "source": 3944170750,
+          "target": 3847601430,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4027253572,
+      "offset": 7365433,
+      "incoming": [
+        {
+          "source": 1649070244,
+          "target": 4027253572,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4153405397,
+      "offset": 7365491,
+      "incoming": [
+        {
+          "source": 3665926129,
+          "target": 4153405397,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 370307208,
+      "offset": 7365549,
+      "incoming": [
+        {
+          "source": 3745299436,
+          "target": 370307208,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 397834123,
+      "offset": 7365607,
+      "incoming": [
+        {
+          "source": 3785400511,
+          "target": 397834123,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 662641668,
+      "offset": 7365665,
+      "incoming": [
+        {
+          "source": 2566836996,
+          "target": 662641668,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 875227288,
+      "offset": 7365723,
+      "incoming": [
+        {
+          "source": 3747027428,
+          "target": 875227288,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2020648947,
+      "offset": 7365946,
+      "incoming": [
+        {
+          "source": 2082885387,
+          "target": 2020648947,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2195290099,
+      "offset": 7366004,
+      "incoming": [
+        {
+          "source": 553040471,
+          "target": 2195290099,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2684681735,
+      "offset": 7366062,
+      "incoming": [
+        {
+          "source": 3316310679,
+          "target": 2684681735,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2718211666,
+      "offset": 7366120,
+      "incoming": [
+        {
+          "source": 1251833782,
+          "target": 2718211666,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2786644261,
+      "offset": 7366178,
+      "incoming": [
+        {
+          "source": 1377408565,
+          "target": 2786644261,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 2274266807,
+          "target": 2786644261,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3180008972,
+      "offset": 7366236,
+      "incoming": [
+        {
+          "source": 986163740,
+          "target": 3180008972,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3406530983,
+      "offset": 7366294,
+      "incoming": [
+        {
+          "source": 3205950003,
+          "target": 3406530983,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3591187488,
+      "offset": 7366352,
+      "incoming": [
+        {
+          "source": 3372595628,
+          "target": 3591187488,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3764387640,
+      "offset": 7366410,
+      "incoming": [
+        {
+          "source": 1217087852,
+          "target": 3764387640,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3810769239,
+      "offset": 7366468,
+      "incoming": [
+        {
+          "source": 2729483263,
+          "target": 3810769239,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4293577125,
+      "offset": 7366526,
+      "incoming": [
+        {
+          "source": 3728260181,
+          "target": 4293577125,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 670533751,
+      "offset": 7366584,
+      "incoming": [
+        {
+          "source": 221052743,
+          "target": 670533751,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 756990696,
+      "offset": 7366642,
+      "incoming": [
+        {
+          "source": 301626588,
+          "target": 756990696,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1434059216,
+      "offset": 7366700,
+      "incoming": [
+        {
+          "source": 1940685328,
+          "target": 1434059216,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2320292398,
+      "offset": 7366758,
+      "incoming": [
+        {
+          "source": 4034903142,
+          "target": 2320292398,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2768707486,
+      "offset": 7366816,
+      "incoming": [
+        {
+          "source": 3066227936,
+          "target": 2768707486,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2831086287,
+      "offset": 7366874,
+      "incoming": [
+        {
+          "source": 3613777027,
+          "target": 2831086287,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3208388856,
+      "offset": 7366932,
+      "incoming": [
+        {
+          "source": 1234179612,
+          "target": 3208388856,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3391029565,
+      "offset": 7366990,
+      "incoming": [
+        {
+          "source": 3607710209,
+          "target": 3391029565,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3623598051,
+      "offset": 7367048,
+      "incoming": [
+        {
+          "source": 77638847,
+          "target": 3623598051,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3651075217,
+      "offset": 7367106,
+      "incoming": [
+        {
+          "source": 1543567281,
+          "target": 3651075217,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3907047895,
+      "offset": 7367164,
+      "incoming": [
+        {
+          "source": 985400807,
+          "target": 3907047895,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3927069872,
+      "offset": 7367222,
+      "incoming": [
+        {
+          "source": 3627028288,
+          "target": 3927069872,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4149968520,
+      "offset": 7367280,
+      "incoming": [
+        {
+          "source": 2467631200,
+          "target": 4149968520,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 873933320,
+      "offset": 7367366,
+      "incoming": [
+        {
+          "source": 3644616680,
+          "target": 873933320,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2939542960,
+      "offset": 7367452,
+      "incoming": [
+        {
+          "source": 556843524,
+          "target": 2939542960,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3022551870,
+      "offset": 7367510,
+      "incoming": [
+        {
+          "source": 4128688810,
+          "target": 3022551870,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3289317810,
+      "offset": 7367568,
+      "incoming": [
+        {
+          "source": 4183252650,
+          "target": 3289317810,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 218527171,
+      "offset": 7367710,
+      "incoming": [
+        {
+          "source": 1521053051,
+          "target": 218527171,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 950525970,
+      "offset": 7367759,
+      "incoming": [
+        {
+          "source": 3909231258,
+          "target": 950525970,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1911740800,
+      "offset": 7367808,
+      "incoming": [
+        {
+          "source": 401879292,
+          "target": 1911740800,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1953970582,
+      "offset": 7367857,
+      "incoming": [
+        {
+          "source": 3942665530,
+          "target": 1953970582,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2316340691,
+      "offset": 7367906,
+      "incoming": [
+        {
+          "source": 892055527,
+          "target": 2316340691,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3173102726,
+      "offset": 7367955,
+      "incoming": [
+        {
+          "source": 3275673150,
+          "target": 3173102726,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3929606881,
+      "offset": 7368079,
+      "incoming": [
+        {
+          "source": 3510491169,
+          "target": 3929606881,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3962915068,
+      "offset": 7368203,
+      "incoming": [
+        {
+          "source": 131160492,
+          "target": 3962915068,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 986459772,
+      "offset": 7368327,
+      "incoming": [
+        {
+          "source": 131160492,
+          "target": 986459772,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 997622438,
+      "offset": 7368385,
+      "incoming": [
+        {
+          "source": 3525299385,
+          "target": 997622438,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 3525299385,
+          "target": 997622438,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 3525299385,
+          "target": 997622438,
+          "path": "[0]/CardSlots[2]",
+          "source_complete": true
+        },
+        {
+          "source": 3525299385,
+          "target": 997622438,
+          "path": "[0]/CardSlots[3]",
+          "source_complete": true
+        },
+        {
+          "source": 1365723162,
+          "target": 997622438,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1599644260,
+      "offset": 7368443,
+      "incoming": [
+        {
+          "source": 4267134248,
+          "target": 1599644260,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2105615374,
+      "offset": 7368501,
+      "incoming": [
+        {
+          "source": 3788241710,
+          "target": 2105615374,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2356673170,
+      "offset": 7368559,
+      "incoming": [
+        {
+          "source": 3185710434,
+          "target": 2356673170,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2768473835,
+      "offset": 7368617,
+      "incoming": [
+        {
+          "source": 1521053051,
+          "target": 2768473835,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 3275673150,
+          "target": 2768473835,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2800395113,
+      "offset": 7368684,
+      "incoming": [
+        {
+          "source": 3117692575,
+          "target": 2800395113,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2836287936,
+      "offset": 7368742,
+      "incoming": [
+        {
+          "source": 3510491169,
+          "target": 2836287936,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2944972759,
+      "offset": 7368809,
+      "incoming": [
+        {
+          "source": 3525299385,
+          "target": 2944972759,
+          "path": "[0]/CardSlots[4]",
+          "source_complete": true
+        },
+        {
+          "source": 1464017943,
+          "target": 2944972759,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1205026831,
+      "offset": 7368867,
+      "incoming": [
+        {
+          "source": 2668377819,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[2]",
+          "source_complete": true
+        },
+        {
+          "source": 1892344687,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 1892344687,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 1892344687,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[2]",
+          "source_complete": true
+        },
+        {
+          "source": 3425447235,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[2]",
+          "source_complete": true
+        },
+        {
+          "source": 3425447235,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[3]",
+          "source_complete": true
+        },
+        {
+          "source": 1717405452,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[4]",
+          "source_complete": true
+        },
+        {
+          "source": 2649910961,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[2]",
+          "source_complete": true
+        },
+        {
+          "source": 2649910961,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[3]",
+          "source_complete": true
+        },
+        {
+          "source": 2649910961,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[4]",
+          "source_complete": true
+        },
+        {
+          "source": 2531954674,
+          "target": 1205026831,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2260307036,
+      "offset": 7368925,
+      "incoming": [
+        {
+          "source": 1892344687,
+          "target": 2260307036,
+          "path": "[0]/CardSlots[4]",
+          "source_complete": true
+        },
+        {
+          "source": 1628623369,
+          "target": 2260307036,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3999126182,
+      "offset": 7368983,
+      "incoming": [
+        {
+          "source": 1892344687,
+          "target": 3999126182,
+          "path": "[0]/CardSlots[3]",
+          "source_complete": true
+        },
+        {
+          "source": 3425447235,
+          "target": 3999126182,
+          "path": "[0]/CardSlots[4]",
+          "source_complete": true
+        },
+        {
+          "source": 2471589139,
+          "target": 3999126182,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4246306962,
+      "offset": 7369041,
+      "incoming": [
+        {
+          "source": 1101888597,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 1101888597,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 2668377819,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 2668377819,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 3425447235,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 3425447235,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 1717405452,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 1717405452,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 1717405452,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[2]",
+          "source_complete": true
+        },
+        {
+          "source": 1717405452,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[3]",
+          "source_complete": true
+        },
+        {
+          "source": 2649910961,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        },
+        {
+          "source": 2649910961,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[1]",
+          "source_complete": true
+        },
+        {
+          "source": 1086559663,
+          "target": 4246306962,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 3142932507,
+      "offset": 7403632,
+      "incoming": [
+        {
+          "source": 4124699813,
+          "target": 3142932507,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2645005598,
+      "offset": 8127928,
+      "incoming": [
+        {
+          "source": 2567278115,
+          "target": 2645005598,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2640075882,
+      "offset": 8129157,
+      "incoming": [
+        {
+          "source": 372534471,
+          "target": 2640075882,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2980135720,
+      "offset": 8129707,
+      "incoming": [
+        {
+          "source": 3648385969,
+          "target": 2980135720,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1759045272,
+      "offset": 8130978,
+      "incoming": [
+        {
+          "source": 663668513,
+          "target": 1759045272,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2643881458,
+      "offset": 8132476,
+      "incoming": [
+        {
+          "source": 2740702367,
+          "target": 2643881458,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1684690782,
+      "offset": 8133770,
+      "incoming": [
+        {
+          "source": 958886499,
+          "target": 1684690782,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4089233657,
+      "offset": 8137748,
+      "incoming": [
+        {
+          "source": 3610497560,
+          "target": 4089233657,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4279201811,
+      "offset": 8138858,
+      "incoming": [
+        {
+          "source": 3988522534,
+          "target": 4279201811,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2580266307,
+      "offset": 8139969,
+      "incoming": [
+        {
+          "source": 774235798,
+          "target": 2580266307,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 914929543,
+      "offset": 8140021,
+      "incoming": [
+        {
+          "source": 1877596498,
+          "target": 914929543,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 939313707,
+      "offset": 8342822,
+      "incoming": [
+        {
+          "source": 2137108021,
+          "target": 939313707,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1296978181,
+      "offset": 8343010,
+      "incoming": [
+        {
+          "source": 604328163,
+          "target": 1296978181,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2502424408,
+      "offset": 8344394,
+      "incoming": [
+        {
+          "source": 2035239810,
+          "target": 2502424408,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 2719602366,
+      "offset": 8344705,
+      "incoming": [
+        {
+          "source": 2547458132,
+          "target": 2719602366,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 1131398203,
+      "offset": 8379886,
+      "incoming": [
+        {
+          "source": 3333195685,
+          "target": 1131398203,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    },
+    {
+      "key": 4018562960,
+      "offset": 8388523,
+      "incoming": [
+        {
+          "source": 3392081884,
+          "target": 4018562960,
+          "path": "[0]/CardSlots[0]",
+          "source_complete": true
+        }
+      ]
+    }
+  ]
+}

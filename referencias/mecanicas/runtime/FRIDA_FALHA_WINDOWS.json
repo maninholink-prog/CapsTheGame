@@ -1,0 +1,16 @@
+[
+  {
+    "TimeCreated": "2026-10-31T09:17:48.3170073-03:00",
+    "Id": 1001,
+    "RecordId": 54551,
+    "ProviderName": "Windows Error Reporting",
+    "Message": "Falha no bucket 1934397117455562205, tipo 5\r\nNome do Evento: BEX64\r\nResposta: Não disponível\r\nID do CAB: 0\r\n\r\nAssinatura do problema:\r\nP1: LoR.exe\r\nP2: 2022.3.62.32686\r\nP3: 69026ebf\r\nP4: frida-agent.dll\r\nP5: 0.0.0.0\r\nP6: 6ac8e912\r\nP7: 0000000000fa389d\r\nP8: c0000409\r\nP9: 0000000000000007\r\nP10: \r\n\r\nArquivos anexados:\r\n\\\\?\\C:\\ProgramData\\Microsoft\\Windows\\WER\\Temp\\WER.419aaba4-4156-4553-ad5d-f4afa0d3e740.tmp.dmp\r\n\\\\?\\C:\\ProgramData\\Microsoft\\Windows\\WER\\Temp\\WER.9f5cb1c1-a043-4095-b376-a650f7d897d0.tmp.WERInternalMetadata.xml\r\n\\\\?\\C:\\ProgramData\\Microsoft\\Windows\\WER\\Temp\\WER.e7067c89-bc68-421f-ab5e-010a3bc93238.tmp.csv\r\n\\\\?\\C:\\ProgramData\\Microsoft\\Windows\\WER\\Temp\\WER.c560f904-9f92-4da6-96c9-28bba547979b.tmp.txt\r\n\\\\?\\C:\\ProgramData\\Microsoft\\Windows\\WER\\Temp\\WER.a5c2064c-5c99-4c44-a640-43204312c080.tmp.xml\r\n\r\nEsses arquivos talvez estejam disponíveis em:\r\n\\\\?\\C:\\ProgramData\\Microsoft\\Windows\\WER\\ReportArchive\\AppCrash_LoR.exe_5456eba7318944f344f1de507b152caae0babf8d_6f304bed_fd1d096e-55d1-4daa-a3b5-8639170ba6c9\r\n\r\nSímbolo da análise: \r\nVerificando novamente se há uma solução: 0\r\nID do Relatório: a32b9d08-00ca-4610-a160-4ae37ad1e15b\r\nStatus do Relatório: 268435456\r\nBucket com hash: 38a0c6f9a9f6aa024ad85bedf07a75ddGuid do CAB: 0"
+  },
+  {
+    "TimeCreated": "2026-10-31T09:17:43.0856017-03:00",
+    "Id": 1000,
+    "RecordId": 54550,
+    "ProviderName": "Application Error",
+    "Message": "Nome do aplicativo com falha: LoR.exe, versão: 2022.3.62.32686, carimbo de data/hora: 0x69026ebf\r\nNome do módulo com falha: frida-agent.dll, versão: 0.0.0.0, carimbo de data/hora: 0x6ac8e912\r\nCódigo de exceção: 0xc0000409\r\nDeslocamento de falha: 0x0000000000fa389d\r\nID do processo com falha: 0x56E4\r\nHora de início do aplicativo com falha: 0x1DD6931BF9C605D\r\nCaminho do aplicativo com falha: C:\\Riot Games\\LoR\\live\\Game\\LoR.exe\r\nCaminho do módulo com falha: C:\\Users\\Bruxo\\AppData\\Local\\Temp\\frida-f58117018b38f616dbda8c1364d4995d\\x86_64\\frida-agent.dll\r\nID do relatório: a32b9d08-00ca-4610-a160-4ae37ad1e15b\r\nNome completo do pacote com falha: \r\nID do aplicativo relativo ao pacote com falha: "
+  }
+]

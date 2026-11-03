@@ -1,0 +1,14 @@
+import {it,expect} from 'vitest';
+import {createRun,finishBattle,recruit as rawRecruit,reward,nextBattle,runBattle} from '../../src/run/run.js';
+// Controlled package fixtures: the production offer is still three random allies.
+function recruit(r:ReturnType<typeof createRun>,hero:string){return rawRecruit({...r,allies:[hero]},hero);}
+function won(run:ReturnType<typeof createRun>,hp=13,winner:'p1'|'p2'|'draw'='p1'){const s=runBattle(run);s.phase='ended';s.winner=winner;s.players.p1.nexus=hp;return finishBattle(run,s);}
+it('requires real ended battle and allows each transition only once',()=>{const r=createRun(1);expect(()=>finishBattle(r,runBattle(r))).toThrow();const done=won(r);expect(done.stage).toBe('recruit');expect(done.allies).toHaveLength(3);expect(()=>finishBattle(done,runBattle(r))).toThrow();expect(r.deck).toHaveLength(20);});
+it('recruits six cards, persists life, resets battle temporaries and does not absorb generated cards',()=>{const r=won(createRun(7),9);const joined=recruit(r,'abe');expect(joined.deck).toHaveLength(26);expect(joined.group).toEqual(['kylast','abe']);const started=nextBattle(joined);const b=runBattle(started);expect(b.players.p1.nexus).toBe(9);expect(b.players.p1.reserve).toBe(0);expect(b.players.p1.board).toEqual([]);expect(b.round).toBe(0);expect(b.allyProgress).toBeUndefined();expect(b.players.p1.deck.length+b.players.p1.hand.length).toBe(26);expect(()=>recruit(joined,'arcata')).toThrow();});
+it('second victory offers legal distinct rewards in pairs or permits refusal; last victory ends run',()=>{let r=nextBattle(recruit(won(createRun(4)),'arcata'));r=won(r);expect(r.stage).toBe('reward');expect(new Set(r.rewards).size).toBe(r.rewards.length);const id=r.rewards[0];r=reward(r,id);expect(r.deck.filter(c=>c.definitionId===id)).toHaveLength(2);r=nextBattle(r);r=won(r);expect(r.stage).toBe('won');expect(()=>nextBattle(r)).toThrow();});
+it('loss ends run, draw counts as win with 1 nexus, wrong battle identity rejected',()=>{expect(won(createRun(1),0,'p2').stage).toBe('lost');expect(won(createRun(1),0,'draw').nexus).toBe(1);const r=createRun(9);const b=runBattle(createRun(8));b.phase='ended';b.winner='p1';expect(()=>finishBattle(r,b)).toThrow();});
+it('reward rejects cards outside offered list and cannot be granted twice',()=>{let r=nextBattle(recruit(won(createRun(4)),'rubel'));r=won(r);expect(()=>reward(r,'kylast')).toThrow();const after=reward(r,null);expect(after.deck).toEqual(r.deck);expect(()=>reward(after,null)).toThrow();});
+
+import {runCatalog} from '../../src/run/run.js';
+it('ordinary rewards cannot silently add a champion outside the group',()=>{for(let seed=0;seed<12;seed++){const r=won(nextBattle(recruit(won(createRun(seed)),'abe')));for(const id of r.rewards){const d=runCatalog[id];expect(d.kind==='unit'&&!!d.champion).toBe(false);}}});
+

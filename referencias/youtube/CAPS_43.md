@@ -1,0 +1,31 @@
+# CAPS 43 — retirada das catacumbas e BrightBloom
+
+Fonte: https://www.youtube.com/watch?v=9DTTpmq1OMA
+
+Cobertura: todo o texto local disponível lido até **2:51:50**, incluindo encerramento. Leitura textual, não reprodução audiovisual integral. Frente Hana, Youro, Virex, Hadrin e Nira; continuidade de CAPS 41. Horários abaixo são intervalos aproximados da transcrição automática.
+
+## Acontecimentos e evidências
+
+- [0–20 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=0): grupo reorganiza recursos após a morte de Vein. Hana oferece poções; mesa corrige descanso curto anterior. Hana guia os corredores, Virex rastreia mortos-vivos, mas os vestígios generalizados não indicam um caminho único. Marcam o percurso. Youro abandona a concentração anterior para encantar as flechas de Virex com fogo; duração discutida de uma hora.
+- [20–40 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=1200): uma saída de madeira leva para fora, e voltam à bifurcação. Um fosso separa o grupo de uma passagem elevada. Hana improvisa gancho, corda e ancoragem, apoiada por Guidance de Hadrin; reencontra o porão da mansão. A parede dificulta fixar pitons. Não registrar que Youro cruzou inicialmente sobre o ombro dela.
+- [40–60 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=2400): Virex prende Youro a um arnês; Hana o puxa. A subida de Virex exige ajuda e melhora da ancoragem. Nira escorrega, mas a corda a segura e os colegas conseguem içá-la. Hadrin também sobe com ajuda. Todos os cinco chegam vivos. A cena evidencia resgate coletivo, não travessia individual fácil.
+- [60–70 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=3600): Hana recolhe dois livros ilegíveis para levar a Thotph. Hadrin identifica um caixão recentemente usado. Carta selada provoca os invasores, chama Vein de servo útil morto por eles e anuncia um presente. São afirmações do remetente; não demonstram onisciência. Outro caixão contém um urso de pelúcia empoeirado. Ligação com Serafine é suspeita, não identificação de propriedade confirmada.
+- [70–80 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=4200): exploram laboratório e sala cirúrgica. Youro recolhe alho; Hana leva instrumentos médicos pensando em atendimento de emergência. Não há identificação desses objetos como artefatos. Tentativa de usar vegetação como ponte é recusada pelas condições do lugar; livros permanecem sem tradução.
+- [80–95 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=4800): Hana abre portas com Eldritch Blast. Ogre morto-vivo guarda o outro lado; ataques à distância não resolvem a passagem. Virex atira, Hadrin usa Sacred Flame e Youro tenta magia de insetos/veneno. Encantamento de fogo das flechas já expirou. O grupo descansa; depois, o ogre parece recomposto. Comparação com costura não prova que tenham visto alguém repará-lo. Hipótese de dano radiante impedir recuperação não é confirmada.
+- [95–120 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=5700): veem também outros mortos-vivos e escolhem retirar-se. Hana usa Fly em colegas, recuperando recursos entre deslocamentos; Youro usa Misty Step. Não transportar uma limitação anterior de Fly apenas pessoal para esta cena, que mostra alvos aliados. Hana não tem o colar de viagem necessário para uma retirada conjunta à mansão. Ela lamenta o fracasso da missão e o impacto em sua busca pela filha. Virex explica que o riso após a morte de Vein veio de adrenalina e de sua relação com vampiros, não de achar a morte engraçada.
+- [120–140 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=7200): recuperam as montarias, que sobreviveram a lobos. Thor perdeu um chifre; lagarto está ferido; Quebra-crânio está ileso perto de lobo com crânio esmagado. Hadrin cura os feridos, sem regenerar o chifre. Judite não estava com essas montarias; comentários de possível morte não confirmam destino. Token de aranha/Arcata no mapa é erro da interface, não aparição do personagem. Ideia de incendiar a mansão não é executada.
+- [140–155 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=8400): chegam à noite a BrightBloom, capital élfica de estudo e magia da natureza. Hospedagem e alimentação, com montarias acomodadas. Hana procura templo de Medúria e comida do subterrâneo, sem sucesso local; isso não implica inexistência da divindade ou de sua cultura. Youro não está perto de seu bosque natal só porque a cidade é florestal.
+- [155–170 min](https://www.youtube.com/watch?v=9DTTpmq1OMA&t=9300): Youro agradece a Basingueno/Bazigueno em templo de árvore antiga, com cervo, pantera e tigre representando aspectos de natureza e animais. Declara devoção principal a Malacapenia e respeito aos filhos: registrar como sua oração/crença. Encontra um velho dragonborn negro sem nome, que diz ter usado símbolos semelhantes e se transforma em guaxinim, depois em criatura alada. Identidade e espécie final não confirmadas. Visita templo de Mulian, oferece cenoura, agradece e é acolhido. Armadura não responde nem pesa; silêncio não equivale a autorização divina explícita. Malacapenia é cultuada na natureza, sem templo construído indicado ali. Retorna à pousada.
+
+## Estado e consequências
+
+Cinco sobreviventes em BrightBloom; Serafine continua desaparecida, missão de resgate inconclusa. Hana guarda livros não traduzidos e material médico. Montarias recuperadas, Thor com perda de chifre. Youro demonstra busca ativa de reconciliação religiosa e reverência a mais de uma divindade. Virex ganha contexto para sua reação a Vein; Hana assume logística, magia de mobilidade e cuidado do grupo.
+
+## Artefatos, dúvidas e limites
+
+Banquete e armadura de Youro já têm referências em 48 Armas; a sessão não demonstra um poder novo que autorize reescrever seus verbetes. Não identificar o velho metamórfico como deus, nem o ursinho como de Serafine, sem confirmação. Livros, selo da carta, identidade do remetente e mecanismo de recomposição dos guardiões permanecem pendentes. Imagens e geometria exata do mapa não conferidas. Sem proposta nova de adaptação neste registro.
+
+
+## Confirmação posterior — CAPS 45
+
+O urso do caixão estava na mochila de **Nira**, confirmado pelo rastreamento do lobo e retirada do objeto. A menina de Altamira o chama de Ted; entrega desencadeia ritual/transformação. Isso não confirma propriedade de Serafine. [Evidência no 45](CAPS_45.md).

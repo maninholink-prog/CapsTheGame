@@ -1,0 +1,29 @@
+{
+  "attempts": 2,
+  "victories": 2,
+  "kingPhases": 2,
+  "results": [
+    {
+      "hero": "kylast",
+      "seed": 1,
+      "result": "won",
+      "battles": 3,
+      "enteredKing": true,
+      "endedKing": true,
+      "nexus": 11,
+      "stones": 150,
+      "xp": 218
+    },
+    {
+      "hero": "kylast",
+      "seed": 2,
+      "result": "won",
+      "battles": 4,
+      "enteredKing": true,
+      "endedKing": true,
+      "nexus": 10,
+      "stones": 150,
+      "xp": 193
+    }
+  ]
+}

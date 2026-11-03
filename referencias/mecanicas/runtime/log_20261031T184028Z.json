@@ -1,0 +1,28 @@
+{
+  "captured_at_utc": "2026-10-31T18:40:28.146823+00:00",
+  "source": "C:\\Users\\Bruxo\\AppData\\Local\\Riot Games\\Legends of Runeterra\\Logs\\lor_client_2026-10-31T15-38-34_6604.log",
+  "size": 209067,
+  "sha256": "5bac425a5aae8807de1d1ee165b703ee281b5ff988417004131e112b4215d84e",
+  "line_count": 1789,
+  "markers": [
+    {
+      "line": 1263,
+      "markers": [
+        "AdventureServiceManager"
+      ],
+      "states": [
+        "Ready"
+      ]
+    },
+    {
+      "line": 1358,
+      "markers": [
+        "AdventureServiceManager"
+      ],
+      "states": [
+        "Initialized"
+      ]
+    }
+  ],
+  "limitations": "Somente marcadores textuais; ausencia nao prova ausencia de execucao. Sem captura de argumentos ou atribuicoes."
+}

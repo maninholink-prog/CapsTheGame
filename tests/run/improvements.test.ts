@@ -1,0 +1,10 @@
+import {it,expect} from 'vitest';
+import {createRun,runBattle,runCatalog} from '../../src/run/run.js';
+import {enterUnit} from '../../src/battle/units.js';
+import {insertChampionCopy} from '../../src/battle/arsenal.js';
+import {observeBattle} from '../../src/ai/observation.js';
+import {applyCommand} from '../../src/battle/commands.js';
+import {compatible} from '../../src/run/improvements.js';
+it('improved definitions affect both own copies, not enemy, and generated champion inherits',()=>{const r=createRun(1);r.improvements.kylast=['attack','health','mana'];const b=runBattle(r);const own=[...b.players.p1.hand,...b.players.p1.deck].filter(c=>b.definitions[c.definitionId].baseId==='kylast');expect(own).toHaveLength(2);expect(b.definitions[own[0].definitionId]).toMatchObject({attack:4,health:7,cost:4});expect(b.definitions.kylast).toMatchObject({attack:3,health:5,cost:5});insertChampionCopy(b,'p1','kylast','x');expect(b.players.p1.deck.find(c=>c.generated)?.definitionId).toBe(own[0].definitionId);});
+it('special purchase draws on every entry with fatigue and never duplicates special',()=>{const r=createRun(4);r.improvements.damian=['draw'];let b=runBattle(r);b.phase='actions';const card=[...b.players.p1.hand,...b.players.p1.deck].find(c=>b.definitions[c.definitionId].baseId==='damian')!;b.players.p1.hand=[];b.players.p1.deck=[{instanceId:'draw',definitionId:'kylast'}];enterUnit(b,'p1',card,0,[]);expect(b.players.p1.hand[0].instanceId).toBe('draw');enterUnit(b,'p1',{...card,instanceId:'second'},1,[]);expect(b.players.p1.fatigue).toBe(1);expect(compatible(runCatalog.damian,'draw',['draw'])).toBe(false);});
+it('AI does not see hidden variant definitions; revealed upgraded card exposes its actual rules',()=>{const r=createRun(2);r.improvements.damian=['health'];const b=runBattle(r);const alias=b.runAliases!.p1!.damian;expect(observeBattle(b,'p2').definitions).not.toHaveProperty(alias);const card=[...b.players.p1.hand,...b.players.p1.deck].find(c=>c.definitionId===alias)!;enterUnit(b,'p1',card,0,[]);expect(observeBattle(b,'p2').definitions[alias]).toMatchObject({health:6});});

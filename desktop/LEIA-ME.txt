@@ -1,0 +1,16 @@
+C.A.P.S. — versão portátil Windows x64, protótipo 0.1.0
+
+Abra C.A.P.S.exe. Não precisa instalar Node, abrir terminal ou iniciar servidor.
+Mantenha o executável junto das demais pastas e arquivos deste pacote.
+Para levar a outro lugar, copie a pasta inteira. Se recebeu o ZIP, extraia-o antes de abrir.
+
+PERFIL
+O progresso é salvo neste computador em %APPDATA%\CAPS-Game.
+O perfil do navegador não é transferido automaticamente.
+No jogo antigo: Perfil e progresso > Exportar backup.
+No executável: Restaurar backup na tela inicial ou no Perfil e progresso.
+As atualizações que usam o mesmo local de perfil preservam o progresso.
+Exporte um backup antes de substituir versões.
+
+Este protótipo não possui assinatura digital nem atualização automática.
+Runtime Electron oficial 45.2.1; licenças incluídas no pacote.

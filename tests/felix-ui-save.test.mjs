@@ -1,0 +1,30 @@
+import {it,expect} from 'vitest';
+import {writeFileSync} from 'node:fs';
+import {createProfile} from '../src/profile/profile.ts';
+import {startAccount} from '../src/profile/rewards.ts';
+import {createMapRun,enterNode} from '../src/run/adventure.ts';
+import {runBattle} from '../src/run/run.ts';
+import {sessionFromBattle} from '../src/ui/session.ts';
+import {encodeSave,decodeSave} from '../src/profile/storage.ts';
+import {render as renderBattle} from '../src/ui/render.ts';
+import {freshDraft} from '../src/ui/forms.ts';
+it('round trips a new narrative adventure through the public backup format',()=>{
+ let run=createMapRun(42,'kylast');
+ let profile=createProfile('QA — Félix','kylast',42,0);
+ run.collection=Object.keys(profile.collection);
+ profile=startAccount(profile,run,'felix-ui-42');
+ run=enterNode(run,'start');
+ const session=sessionFromBattle(runBattle(run),run.battleSeed);
+ const raw=encodeSave({profile,run,session});
+ expect(decodeSave(raw).session.state.encounter.id).toBe(run.encounters.start);
+ if(process.env.CAPS_FELIX_UI)writeFileSync(process.env.CAPS_FELIX_UI,raw);
+});
+it('shows live king energy and Felix upgrade progress',()=>{
+ const run=enterNode(createMapRun(42,'kylast'),'start');
+ const session=sessionFromBattle(runBattle(run),run.battleSeed);
+ session.state.encounter.phase='king';session.state.encounter.energy=4;
+ expect(renderBattle(session,freshDraft())).toContain('Energia 4/6');
+ session.state.encounter.phase='felix';
+ session.state.laboratory={deathRounds:{},upgrades:{p2:3},auraUnits:{},weaponRounds:{}};
+ expect(renderBattle(session,freshDraft())).toContain('Upgrades 3/4');
+});

@@ -1,0 +1,70 @@
+CONTEXTO ESSENCIAL: CONTINUIDADE DO PROJETO CAPS
+Registro da conversa em 29/10/2026
+
+Este arquivo complementa 01-Resumo-instalacao-REA-Ghidra-LoR.txt.
+
+O PROJETO NÃO COMEÇA DO ZERO
+
+Este trabalho é uma mudança de direção do projeto CAPS que já havíamos
+começado, inicialmente inspirado em Slay the Spire.
+
+Não estamos começando um projeto sem relação com o anterior.
+Queremos aproveitar o universo, a história, os personagens e o trabalho
+já desenvolvido para o CAPS, avaliando o que continua útil.
+
+A nova referência de gameplay será:
+- Combate inspirado em Legends of Runeterra.
+- Estrutura single player roguelite inspirada no Caminho dos Campeões.
+- Unidades persistentes na mesa, ataque, bloqueio, mana e respostas.
+- Jornada com encontros, escolhas, poderes e melhorias no deck.
+
+Essa direção foi escolhida pelo usuário por parecer mais coerente com
+a ideia que deseja desenvolver para o CAPS.
+
+ANTES DE PROPOR MUDANÇAS
+
+1. Recuperar as conversas, documentos e arquivos anteriores do CAPS.
+2. Identificar o que já foi definido e o que era apenas uma hipótese.
+3. Revisar o protótipo existente antes de decidir o que reaproveitar.
+4. Não apagar ou substituir o trabalho anterior automaticamente.
+
+VÍDEOS E HISTÓRIA DO UNIVERSO
+
+A análise dos vídeos que já estávamos realizando deve continuar.
+Eles são referência para entender a história e o universo do CAPS.
+
+Recuperar os links, arquivos e anotações dos vídeos anteriores.
+Quando o conteúdo visual for relevante, assistir às cenas, além de
+consultar falas ou transcrições.
+
+Registrar:
+- Personagens, suas motivações e relações.
+- Acontecimentos e sua ordem.
+- Lugares, grupos e conflitos.
+- Regras e limites do universo.
+- Elementos que possam orientar cartas, poderes e encontros.
+
+Separar claramente:
+- O que aparece ou é dito nos vídeos.
+- A interpretação feita a partir deles.
+- Ideias novas propostas para o jogo.
+
+Sempre que possível, associar as observações ao vídeo e ao momento
+correspondente, para permitir conferência.
+
+PAPEL DE CADA REFERÊNCIA
+
+O LoR serve como referência de sistemas e combate.
+Os materiais do CAPS orientam a história, a identidade e o conteúdo.
+
+INFORMAÇÕES QUE AINDA PRECISAM SER RECUPERADAS
+
+Os links dos vídeos e o histórico anterior do CAPS não estão incluídos
+nestes resumos. Eles não foram consultados nesta conversa.
+
+Recuperá-los no computador principal; pedir ao usuário somente o que
+não estiver disponível. Não inventar personagens, acontecimentos,
+conclusões sobre os vídeos ou decisões anteriores do projeto.
+
+Retomar o CAPS levando em conta essa mudança de direção, preservando
+o que já foi construído e o que faz sentido para o novo formato.

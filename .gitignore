@@ -1,0 +1,20 @@
+
+# Ferramentas locais de pesquisa e downloads
+/tools/
+/node_modules/
+/coverage/
+/dist/
+/tmp/npm-bootstrap/
+
+# Builds, releases e dependências reproduzíveis
+/release/
+
+# Dados locais de pesquisa, downloads e temporários
+/tmp/
+
+# Arquivo agregado excede o limite prático do GitHub (100 MB); manter no disco
+/referencias/mecanicas/LOR_TODOS_REGISTROS.json
+
+# Arquivos locais e logs
+.env*
+*.log

@@ -1,0 +1,155 @@
+{
+  "captured_at_utc": "2026-10-31T18:54:41.269661+00:00",
+  "source": "C:\\Users\\Bruxo\\AppData\\Local\\Riot Games\\Legends of Runeterra\\Logs\\lor_client_2026-10-31T15-38-34_6604.log",
+  "size": 1195348,
+  "sha256": "3b08ebe88271306f020cea7d739ad1e718c0287062020b8d16bc993019257db2",
+  "line_count": 14264,
+  "markers": [
+    {
+      "line": 1263,
+      "markers": [
+        "AdventureServiceManager"
+      ],
+      "states": [
+        "Ready"
+      ]
+    },
+    {
+      "line": 1358,
+      "markers": [
+        "AdventureServiceManager"
+      ],
+      "states": [
+        "Initialized"
+      ]
+    },
+    {
+      "line": 2763,
+      "markers": [
+        "AdventureServiceManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 7331,
+      "markers": [
+        "ProcessedLootList"
+      ],
+      "states": []
+    },
+    {
+      "line": 7569,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 7570,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 9420,
+      "markers": [
+        "ProcessedLootList"
+      ],
+      "states": []
+    },
+    {
+      "line": 9759,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 9760,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 9882,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 9885,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 9886,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 11319,
+      "markers": [
+        "ProcessedLootList"
+      ],
+      "states": []
+    },
+    {
+      "line": 11620,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 11621,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 11705,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 11708,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 11709,
+      "markers": [
+        "AdventureManager"
+      ],
+      "states": []
+    },
+    {
+      "line": 13917,
+      "markers": [
+        "ProcessedLootList"
+      ],
+      "states": []
+    },
+    {
+      "line": 14161,
+      "markers": [
+        "CMPRunEndOverlayLoader",
+        "CMPRunRewardsOverlay"
+      ],
+      "states": []
+    }
+  ],
+  "limitations": "Somente marcadores textuais; ausencia nao prova ausencia de execucao. Sem captura de argumentos ou atribuicoes."
+}

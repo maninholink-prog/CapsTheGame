@@ -1,0 +1,13 @@
+# Korakacoins e lojas
+
+01/11/2026. Escopo autorizado: economia temporária e lojas sobre mapa Comum, sem perfil permanente ou salvamento. Nomes definidos pelo autor: Korakacoins (temporários), Pedras Filosofais (permanentes, antigo gold). Saldo permanente não implementado aqui.
+
+Ganho aprovado nesta sessão: interpolação linear 20→35 pelas posições do caminho Comum, arredondamento ao inteiro mais próximo; intermediário 2×, final 3×. Profundidade das casas corresponde à posição percorrida, não à soma de nós alternativos. Saldo inicial zero, só vitória/empate concede recompensa de batalha; derrota não concede ganho parcial. Recompensa repetida após reviver é possível porque restaura snapshot e muda drops, sem manter ganhos abandonados. Fallback sem cartas elegíveis concede o valor comum daquela posição.
+
+Lojas ocupam duas das cinco casas de evento existentes: padrão na convergência antes do intermediário, especializada na convergência antes do final. Tipos visíveis; outros eventos aparecem como interrogação até entrar, conforme regra aprovada encontrada no registro. Demais três eventos são descanso/suprimentos/resgate distribuídos por semente.
+
+Padrão: até três cartas, duas melhorias predeterminadas, cura5/40, completa/100, carga/180, remoção de par/60. Especializada: até três cartas Épicas/Lendárias, três melhorias Raras/especiais, sem serviços. Ofertas únicas (exceto cura parcial e remoção repetíveis), sem reroll. Catálogo pequeno: mostrar menos opções elegíveis, nunca inventar cartas ou duplicar ofertas. Compra de carta por par segundo raridade:40/70/110/160. Melhoria custa50/90/140, mais carta se nova. Melhoria em identidade já presente não adiciona cópias. Limite3; campeão protegido de remoção. Catálogo de seis melhorias aprovado em CAMPANHA.md: ataque1, vida2, arma dano1, mana-1 mínimo0, ataque1/vida2, comprar ao entrar (não repetível).
+
+Melhorias pertencem ao deck mestre e duram a run. Batalha usa variantes de definições só para J1 (baseId para identidade), preservando inimigo e catálogo original; cópias geradas herdam; magia de campeão não herda atributos da unidade. Compra ao entrar usa compra normal/fadiga, inclusive Colar/retorno. Definições privadas de variantes fora das zonas visíveis não entram na observação da IA.
+
+Snapshots incluem Korakacoins, melhorias e estado de lojas. Conteúdo de ofertas é gerado deterministicamente por seed+nó, independente do RNG de drops. Checkpoint restaura compras/estoque de lojas comuns; retry restaura entrada. Consumo de reviver permanece monotônico. Recursos temporários deixam de ser utilizáveis ao encerrar; zerar saldo/cargas, preservar resumo de total obtido/gasto para inspeção; sem maestria ainda.

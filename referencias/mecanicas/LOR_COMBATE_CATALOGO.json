@@ -1,0 +1,448 @@
+[
+  {
+    "type_index": 3615,
+    "declaring_type": -1,
+    "method_count": 5,
+    "method_start": 23756,
+    "name": "BaseAddManaEvent",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      "get_AppliedIncrement",
+      "set_AppliedIncrement",
+      "get_ShouldTriggerDiscreteRefillListeners",
+      "get_ShouldTriggerPerManaRefillListeners",
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3639,
+    "declaring_type": -1,
+    "method_count": 2,
+    "method_start": 23908,
+    "name": "EventAddMana",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "ApplyState"
+    ]
+  },
+  {
+    "type_index": 3640,
+    "declaring_type": -1,
+    "method_count": 5,
+    "method_start": 23910,
+    "name": "EventAddMaxMana",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      "get_AppliedIncrement",
+      "set_AppliedIncrement",
+      "RequiresCurrentStats",
+      ".ctor",
+      "ApplyState"
+    ]
+  },
+  {
+    "type_index": 3642,
+    "declaring_type": -1,
+    "method_count": 2,
+    "method_start": 23916,
+    "name": "EventAddSpellMana",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "ApplyState"
+    ]
+  },
+  {
+    "type_index": 3658,
+    "declaring_type": -1,
+    "method_count": 2,
+    "method_start": 23950,
+    "name": "EventBankMana",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "ApplyState"
+    ]
+  },
+  {
+    "type_index": 3687,
+    "declaring_type": -1,
+    "method_count": 3,
+    "method_start": 24060,
+    "name": "EventClearBuffsAtRoundEnd",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      "ApplyState",
+      "DoPostProcessRecalc",
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3690,
+    "declaring_type": -1,
+    "method_count": 2,
+    "method_start": 24071,
+    "name": "EventCombatFinished",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      "ApplyState",
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3691,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 24073,
+    "name": "EventCombatStarted",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3717,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 24151,
+    "name": "EventDrawingCardAtRoundBegin",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3731,
+    "declaring_type": -1,
+    "method_count": 12,
+    "method_start": 24186,
+    "name": "EventGrantAttackToken",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      "get_PlayerID",
+      "set_PlayerID",
+      "get_Grant",
+      "set_Grant",
+      "get_IsRally",
+      "set_IsRally",
+      "get_IsScout",
+      "set_IsScout",
+      ".ctor",
+      "ApplyState",
+      "GetSourcePlayerID",
+      "GetTargetPlayerID"
+    ]
+  },
+  {
+    "type_index": 3747,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 24256,
+    "name": "EventLaneCombatFinished",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3748,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 24257,
+    "name": "EventLaneCombatStarted",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3750,
+    "declaring_type": -1,
+    "method_count": 2,
+    "method_start": 24264,
+    "name": "EventManaSpentThisTurn",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "PopulateEventFields"
+    ]
+  },
+  {
+    "type_index": 3781,
+    "declaring_type": -1,
+    "method_count": 3,
+    "method_start": 24376,
+    "name": "EventRefillMana",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      "RequiresCurrentStats",
+      ".ctor",
+      "ApplyState"
+    ]
+  },
+  {
+    "type_index": 3787,
+    "declaring_type": -1,
+    "method_count": 3,
+    "method_start": 24396,
+    "name": "EventRemoveFromCombat",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "ApplyState",
+      "ApplyStateAndTable"
+    ]
+  },
+  {
+    "type_index": 3798,
+    "declaring_type": -1,
+    "method_count": 2,
+    "method_start": 24434,
+    "name": "EventRoundBegin",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "ApplyState"
+    ]
+  },
+  {
+    "type_index": 3799,
+    "declaring_type": -1,
+    "method_count": 2,
+    "method_start": 24436,
+    "name": "EventRoundComplete",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "ApplyState"
+    ]
+  },
+  {
+    "type_index": 3800,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 24438,
+    "name": "EventRoundEnd",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3801,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 24439,
+    "name": "EventRoundReady",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3829,
+    "declaring_type": -1,
+    "method_count": 3,
+    "method_start": 24529,
+    "name": "EventSpendMana",
+    "namespace": "Shared.Game",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "ApplyState",
+      "HandleTelemetry"
+    ]
+  },
+  {
+    "type_index": 3934,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 24877,
+    "name": "CardMoveBackAfterCombatGameplayMoment",
+    "namespace": "Shared.Game.Moments",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3986,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 25018,
+    "name": "ManaBankGameplayMoment",
+    "namespace": "Shared.Game.Moments",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3987,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 25019,
+    "name": "ManaPhaseGameplayMoment",
+    "namespace": "Shared.Game.Moments",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 3988,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 25020,
+    "name": "ManaRefillGameplayMoment",
+    "namespace": "Shared.Game.Moments",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 4006,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 25068,
+    "name": "ResolveCombatGameplayMoment",
+    "namespace": "Shared.Game.Moments",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 4012,
+    "declaring_type": -1,
+    "method_count": 8,
+    "method_start": 25084,
+    "name": "RoundBeginGameplayMoment",
+    "namespace": "Shared.Game.Moments",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      "get_DeathCount",
+      "set_DeathCount",
+      "get_DamageCount",
+      "set_DamageCount",
+      "get_RoundNumber",
+      "set_RoundNumber",
+      ".ctor",
+      "CacheAdditionalInformation"
+    ]
+  },
+  {
+    "type_index": 4013,
+    "declaring_type": -1,
+    "method_count": 8,
+    "method_start": 25092,
+    "name": "RoundEndGameplayMoment",
+    "namespace": "Shared.Game.Moments",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      "get_DeathCount",
+      "set_DeathCount",
+      "get_DamageCount",
+      "set_DamageCount",
+      "get_RoundNumber",
+      "set_RoundNumber",
+      ".ctor",
+      "CacheAdditionalInformation"
+    ]
+  },
+  {
+    "type_index": 4020,
+    "declaring_type": -1,
+    "method_count": 1,
+    "method_start": 25110,
+    "name": "SkirmishRoundGameplayMoment",
+    "namespace": "Shared.Game.Moments",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor"
+    ]
+  },
+  {
+    "type_index": 4041,
+    "declaring_type": -1,
+    "method_count": 6,
+    "method_start": 25157,
+    "name": "EventPayArbitraryManaCost",
+    "namespace": "Shared.Game.Events",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "GetManaCost",
+      "CanSpendSpellMana",
+      "GetDevManaCost",
+      "GetSpellManaCost",
+      "GetLifeCost"
+    ]
+  },
+  {
+    "type_index": 4120,
+    "declaring_type": -1,
+    "method_count": 4,
+    "method_start": 26253,
+    "name": "CardCombatStateEffect",
+    "namespace": "Shared.Cards.CardEffects",
+    "nested_type_count": 0,
+    "nested_type_start": -1,
+    "methods": [
+      ".ctor",
+      "CanBeSilenced",
+      "UnsilenceEffect",
+      "ComputeHash"
+    ]
+  }
+]

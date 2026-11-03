@@ -1,0 +1,9 @@
+# CAPS Extra — jantar e pista de Arkibald
+
+30/10/2026. `M0PuYlCWtNY` lido integralmente até **23:12**, encerramento narrativo em 20:39, músicas excluídas. **Posição narrativa entre 47 e 49**, não depois de 53: conclusão adicional do jantar no abrigo após problema subterrâneo, antes de visita ao monastério. Não recupera cena da saída do poço ausente no 47.
+
+- [2:09–8:50](https://www.youtube.com/watch?v=M0PuYlCWtNY&t=129): Ronal/Ronan menciona Arkibald no monastério. Rubel deixa cair utensílio, reconhece nome e relata ter viajado com mercador até dez anos, quando foi deixado em monastério sem entender motivo. Busca dele o levou a procurar Thotph e conhecer grupo. Ronal afirma velho amigo agora dedicado à religião, relato de terceiro.
+- [8:50–14:40](https://www.youtube.com/watch?v=M0PuYlCWtNY&t=530): mapa aponta passagem na terceira montanha próxima de Stone Hollow, pântano de areia perigoso, evitar noite. Grafia de topônimo incerta; mapa visual não conferido. Mestre situa noite de quatro para cinco de Basilune, pouco mais de dois meses para prazo discutido. Arcata também menciona cinco meses em outra fala; não unificar prazos sem identificar referente.
+- [14:40–20:39](https://www.youtube.com/watch?v=M0PuYlCWtNY&t=880): Arcata quer aperfeiçoar antídoto antes de voltar à família, teme não conseguir sair novamente. Preferem retornar à casa próxima de Thotph após jantar, sem impor hospedagem ao abrigo. Menina entrega esculturas de madeira dos quatro: Kylast armado, Arcata em chamas, Rubel em oração, Abe com máquinas. Presentes afetivos, sem magia demonstrada. Crianças brincam e leem, mais velha ainda menos alegre. Rubel reconhece paralelo com próprio recomeço e quer visitas futuras; cura definitiva de crianças/família ainda pendente.
+
+Sem artefato novo identificado em 48 Armas; sem adaptação implementada. Pista de Arkibald antecede 49, cuja abertura a pressupunha.

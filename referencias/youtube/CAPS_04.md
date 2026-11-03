@@ -1,0 +1,34 @@
+# CAPS 4 — ruínas, libertação e o pedido de Serra
+
+Leitura textual concluída em 22/10/2026: 0:00–2:10:59, todo o arquivo `rodhvYT1XpU.txt`. Legendas automáticas; sem reprodução audiovisual integral. Nomes e detalhes incertos permanecem sinalizados.
+
+## Continuidade e acontecimentos
+
+- [0:00–5:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=0): a abertura ocorre **depois da vitória** no combate cortado pela exportação de CAPS 3. O grupo comenta que matou a criatura e que a presença divina sombria desapareceu. Isso confirma o resultado por continuidade, sem recuperar os turnos ausentes. Os personagens estão exaustos e vários não suportariam outro combate.
+- [5:00–20:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=300): encontram roupas antigas, adagas, moedas, joias e armadura enferrujada. Arcata chega às ruínas e, ao abrir uma porta diante de Youro em forma de tigre, lança fogo por reflexo antes de reconhecê-lo. Informa que a família local é conhecida como amaldiçoada há anos e a cidade já estava arruinada quando ele chegou. O grupo passa a interpretar a cidade anterior como ilusão ou aprisionamento, em vez de uma transformação física instantânea.
+- [15:00–25:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=900): Arcata percebe resíduo de magia que se dissipa, sem saber seu mecanismo. Os companheiros identificam a criatura derrotada como **Dorval** na recapitulação. Rosas começam a aparecer entre os jardins. A máscara/ capacete da estátua continua sendo parte esculpida, sem artefato físico obtido.
+- [25:00–45:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=1500): exploração das casas, prisão, igreja e loja de alquimia. Arcata identifica sete poções: três de cura menor, uma de respirar sob a água, uma de heroísmo e duas de veneno. As três de cura ficam com Kylast; Arcata entrega a de heroísmo na negociação por um kit básico de alquimia, que recebe com entusiasmo. Nem todo destinatário das demais poções fica claro. Encontram ferramentas de arrombamento e materiais de metal, entre outros objetos.
+- [45:00–60:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=2700): percebem ovos, teias e corpos envolvidos por aranhas. Debatem explorar mais ou descansar; escolhem um cômodo da mansão aparentemente sem teias, fecham acessos e organizam descanso/vigia. O perigo das aranhas é concreto, mas não houve ainda extermínio.
+- [60:00–65:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=3600): participantes que viveram a experiência anterior têm um sonho com rosas, o príncipe e pessoas da cidade ascendendo. Acordam mais aliviados. A interpretação de libertação das almas reaparece na conversa com Thotph; não presumir que Arcata, ausente da experiência anterior, tenha tido o mesmo sonho.
+- [65:00–80:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=3900): Barnabé traz mensagem de Thotph e pedras que, quebradas, levam à casa dele. Um goblin precisa de ajuda. Enquanto o grupo debate partir, Zorath volta para buscar um barril de cerveja, é atacado por uma aranha e usa sua pedra para escapar. Todos chegam à casa de Thotph. Não registrar abandono definitivo do monge nem resolução da infestação.
+- [80:00–95:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=4800): a casa de Thotph é uma grande construção ligada a uma árvore, com pequenos golems. Ele apresenta **Serra**, goblin que fugiu da captura de sua comunidade. Serra relata que seres com partes mecânicas levaram o rei, a princesa e seus amigos para uma mansão. A oferta de contrato antecedeu a captura, segundo ele; não houve aceitação voluntária confirmada.
+- [95:00–105:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=5700): o grupo fala a Thotph sobre a cidade e as almas libertadas; ele diz que ajuda e encaminha quem o procura. Uma joia do grupo é deixada com ele para análise: ele a reconhece como canalizadora de magia, mas os efeitos específicos ficam para depois. Divide-se dinheiro encontrado nas ruínas, adotando 36 moedas por participante presente. Thotph também oferece poções grandes de vida. O barril e equipamentos ficam guardados nos quartos.
+- [105:00–120:00](https://www.youtube.com/watch?v=rodhvYT1XpU&t=6300): Serra guia a viagem e conta histórias de sua comunidade. Seu nome anterior era José; a serra que encontrou inspirou seu novo nome. Fala da princesa com nome transcrito como Gami e do rei que o encontrou quando bebê. No assentamento veem destruição por força bruta, sem sinais diretos de magia identificados.
+- [120:00–2:10:59](https://www.youtube.com/watch?v=rodhvYT1XpU&t=7200): diante da mansão, examinam a aproximação. A vegetação morta é atribuída a falta de cuidado. Descobrem que a iluminação é elétrica/mecânica, comum em cidades dos anões segundo o interlocutor, e não necessariamente mágica. Debatem disfarce, conversa ou confronto. **A sessão termina antes de entrar**, para permitir que a jogadora ausente participe da sequência. Um eventual sinal com três raios de fogo é discutido como plano futuro, sem execução.
+
+## Personagens: observações deste episódio
+
+- **Kylast:** insiste no descanso e na segurança depois de combates difíceis; põe limites às propostas arriscadas dos companheiros. Esse comportamento complementa sua força na linha de frente. Não confundir contundência numa discussão com agressividade constante.
+- **Arcata:** curiosidade por magia e alquimia explicitamente demonstrada; alegra-se com o kit e pede ensino a Thotph. O fogo serve como luz, ferramenta e resposta reflexa, além de arma. Também sugere recuperar o grupo antes de enfrentar aranhas. A conversa sobre autismo é comentário dos participantes; não diagnosticar o personagem com base nela.
+- **Youro:** continua em tigre após a luta, ajuda a perceber o ambiente, depois retorna ao gato. Preocupa-se com uso excessivo de madeira e equilíbrio da região, mas discute se é necessário enfrentar as aranhas. Conhecer animais não equivale a saber automaticamente tudo sobre eles.
+- **Hadrin:** é o anão clérigo/ferreiro destes episódios iniciais, conforme ficha e apresentação. Sua função de suporte, fé em Vitumirim e identificação como anão distinguem-no de Rubel. A semelhança de divindade não autoriza fundir os dois personagens. Alguns falantes ainda requerem conferência pontual.
+- **Zorath:** busca o barril apesar do risco e escapa usando a pedra. Isso é uma escolha desta cena, não prova de que toda sua personalidade seja centrada em bebida.
+
+## Pendências para CAPS 5
+
+1. Entrada na mansão e responsáveis pelos sequestros.
+2. Resgate dos goblins e origem/uso das partes mecânicas.
+3. Resultado futuro da análise da joia por Thotph.
+4. Confirmação escrita de nomes da família do príncipe, da deusa da esperança e dos artefatos citados.
+
+**Próximo:** CAPS 5, `UuONdrUzUHU`. A vitória sobre Dorval e a libertação das almas são confirmadas nesta continuação, mas o fim ausente de CAPS 3 continua sem leitura direta.

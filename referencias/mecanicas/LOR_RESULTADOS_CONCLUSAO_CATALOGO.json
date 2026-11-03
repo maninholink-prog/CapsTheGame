@@ -1,0 +1,1192 @@
+{
+  "metadata_sha256": "ff241d8b71d2b008d9ba9af2e3ee7805e9f7a37f808ce871e9d286981cba1dcd",
+  "types": [
+    {
+      "type_index": 7297,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 1,
+        "method_start": 37117,
+        "name": "RunCompletedResultDto",
+        "namespace": "Adventure.Core",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [
+        {
+          "declaring_type": 7297,
+          "name": "Rewards"
+        },
+        {
+          "declaring_type": 7297,
+          "name": "Scores"
+        },
+        {
+          "declaring_type": 7297,
+          "name": "WeeklyAdventureInfoIfApplicable"
+        }
+      ],
+      "methods": [
+        {
+          "index": 37117,
+          "name": ".ctor",
+          "parameter_names": []
+        }
+      ]
+    },
+    {
+      "type_index": 7299,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 1,
+        "method_start": 37119,
+        "name": "UpdateResultDto",
+        "namespace": "Adventure.Core",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [],
+      "methods": [
+        {
+          "index": 37119,
+          "name": ".ctor",
+          "parameter_names": []
+        }
+      ]
+    },
+    {
+      "type_index": 7300,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 1,
+        "method_start": 37120,
+        "name": "WeeklyAdventureRunCompletedResultDto",
+        "namespace": "Adventure.Core",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [
+        {
+          "declaring_type": 7300,
+          "name": "RunScore"
+        },
+        {
+          "declaring_type": 7300,
+          "name": "WeeklyAdventureScoreDto"
+        }
+      ],
+      "methods": [
+        {
+          "index": 37120,
+          "name": ".ctor",
+          "parameter_names": []
+        }
+      ]
+    },
+    {
+      "type_index": 8477,
+      "type": {
+        "declaring_type": 8486,
+        "method_count": 2,
+        "method_start": 42678,
+        "name": "<MarkNodeComplete>d__43",
+        "namespace": "",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [
+        {
+          "declaring_type": 8477,
+          "name": "<>1__state"
+        },
+        {
+          "declaring_type": 8477,
+          "name": "<>t__builder"
+        },
+        {
+          "declaring_type": 8477,
+          "name": "<>4__this"
+        },
+        {
+          "declaring_type": 8477,
+          "name": "run"
+        },
+        {
+          "declaring_type": 8477,
+          "name": "nodeId"
+        },
+        {
+          "declaring_type": 8477,
+          "name": "<>u__1"
+        }
+      ],
+      "methods": [
+        {
+          "index": 42678,
+          "name": "MoveNext",
+          "parameter_names": []
+        },
+        {
+          "index": 42679,
+          "name": "SetStateMachine",
+          "parameter_names": [
+            "stateMachine"
+          ]
+        }
+      ]
+    },
+    {
+      "type_index": 8486,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 33,
+        "method_start": 42622,
+        "name": "AdventureServiceManager",
+        "namespace": "Client.ServiceManagers",
+        "nested_type_count": 18,
+        "nested_type_start": 2106
+      },
+      "fields": [
+        {
+          "declaring_type": 8486,
+          "name": "ControllerName"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ClientFeatureToggles"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "DataLoader"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ShardConfigManager"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "RgdsDatabase"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "InventoryServiceManager"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ChatManager"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ServiceRequestManager"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "CardMastery"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "Initialized"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "Config"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "<CampaignSummaries>k__BackingField"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "<WeeklyAdventures>k__BackingField"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "LeaderboardSummaries"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "AdventureCampaignSummariesInlet"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "WeeklyAdventuresInlet"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "AdventureLeaderboardSummariesInlet"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ShortRequestPolicyTimeoutSeconds"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "LongRequestPolicyTimeoutSeconds"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ServiceRequestPolicy"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "LongServiceRequestPolicy"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "MinimumFriendLeaderboardRequestBatchSize"
+        }
+      ],
+      "methods": [
+        {
+          "index": 42622,
+          "name": "get_CampaignSummaries",
+          "parameter_names": []
+        },
+        {
+          "index": 42623,
+          "name": "set_CampaignSummaries",
+          "parameter_names": [
+            "value"
+          ]
+        },
+        {
+          "index": 42624,
+          "name": "get_WeeklyAdventures",
+          "parameter_names": []
+        },
+        {
+          "index": 42625,
+          "name": "set_WeeklyAdventures",
+          "parameter_names": [
+            "value"
+          ]
+        },
+        {
+          "index": 42626,
+          "name": "BaconDependenciesReady",
+          "parameter_names": []
+        },
+        {
+          "index": 42627,
+          "name": "InitIfReady",
+          "parameter_names": []
+        },
+        {
+          "index": 42628,
+          "name": "OnServiceRequestsReady",
+          "parameter_names": []
+        },
+        {
+          "index": 42629,
+          "name": "OnPlayerCardMasteryUpdated",
+          "parameter_names": [
+            "playerCardMastery"
+          ]
+        },
+        {
+          "index": 42630,
+          "name": "CreateOrUpdateWeeklyAdventure",
+          "parameter_names": [
+            "dto",
+            "updateInlet"
+          ]
+        },
+        {
+          "index": 42631,
+          "name": "CreateOrUpdateCampaignSummary",
+          "parameter_names": [
+            "dto",
+            "updateInlet"
+          ]
+        },
+        {
+          "index": 42632,
+          "name": "FetchAllCampaignSummaries",
+          "parameter_names": []
+        },
+        {
+          "index": 42633,
+          "name": "RefreshCampaignSummaries",
+          "parameter_names": []
+        },
+        {
+          "index": 42634,
+          "name": "GetMultipleAdventureCampaignSummaries",
+          "parameter_names": [
+            "adventureCampaignSummaries"
+          ]
+        },
+        {
+          "index": 42635,
+          "name": "GetAdventureCampaignSummary",
+          "parameter_names": [
+            "adventureCampaignSummary"
+          ]
+        },
+        {
+          "index": 42636,
+          "name": "GetOrCreateAdventureRun",
+          "parameter_names": [
+            "adventureConfigGdsGuid",
+            "playableEntityGdsGuid",
+            "currentContractSelections",
+            "expectsAdventure",
+            "forceRefresh"
+          ]
+        },
+        {
+          "index": 42637,
+          "name": "DeleteAdventureRunCmp",
+          "parameter_names": [
+            "playableEntity",
+            "config"
+          ]
+        },
+        {
+          "index": 42638,
+          "name": "DeleteAdventureRun",
+          "parameter_names": [
+            "run"
+          ]
+        },
+        {
+          "index": 42639,
+          "name": "SurrenderAdventureRun",
+          "parameter_names": [
+            "config",
+            "playableEntity"
+          ]
+        },
+        {
+          "index": 42640,
+          "name": "TravelToNode",
+          "parameter_names": [
+            "run",
+            "node"
+          ]
+        },
+        {
+          "index": 42641,
+          "name": "MarkNodeComplete",
+          "parameter_names": [
+            "run",
+            "nodeId"
+          ]
+        },
+        {
+          "index": 42642,
+          "name": "SelectChoice",
+          "parameter_names": [
+            "run",
+            "node",
+            "choiceSelectionDto"
+          ]
+        },
+        {
+          "index": 42643,
+          "name": "TrySetExpectedPowerGuid",
+          "parameter_names": [
+            "encounter",
+            "choiceSelectionDto"
+          ]
+        },
+        {
+          "index": 42644,
+          "name": "SelectChoiceForDetachedEncounter",
+          "parameter_names": [
+            "run",
+            "encounter",
+            "choiceSelectionDto"
+          ]
+        },
+        {
+          "index": 42645,
+          "name": "RerollOptionsInChoiceForNode",
+          "parameter_names": [
+            "run",
+            "node",
+            "choiceIndex"
+          ]
+        },
+        {
+          "index": 42646,
+          "name": "RerollOptionsInChoiceForDetachedEncounter",
+          "parameter_names": [
+            "run",
+            "encounter",
+            "choiceIndex"
+          ]
+        },
+        {
+          "index": 42647,
+          "name": "VerifyRunNotFinishedForRequest",
+          "parameter_names": [
+            "run"
+          ]
+        },
+        {
+          "index": 42648,
+          "name": "SkipAdventure",
+          "parameter_names": [
+            "campaignId",
+            "adventureId",
+            "playableId",
+            "levelUpPlayable"
+          ]
+        },
+        {
+          "index": 42649,
+          "name": "CreateLeaderboardEntryData",
+          "parameter_names": [
+            "dto",
+            "isFriend"
+          ]
+        },
+        {
+          "index": 42650,
+          "name": "GetFriendLeaderboardEntries",
+          "parameter_names": [
+            "queueName"
+          ]
+        },
+        {
+          "index": 42651,
+          "name": "GetLeaderboardPage",
+          "parameter_names": [
+            "queueName",
+            "startRank"
+          ]
+        },
+        {
+          "index": 42652,
+          "name": ".ctor",
+          "parameter_names": []
+        },
+        {
+          "index": 42653,
+          "name": ".cctor",
+          "parameter_names": []
+        },
+        {
+          "index": 42654,
+          "name": "<BaconDependenciesReady>b__28_0",
+          "parameter_names": []
+        }
+      ]
+    },
+    {
+      "type_index": 9740,
+      "type": {
+        "declaring_type": 9758,
+        "method_count": 2,
+        "method_start": 49469,
+        "name": "<HandleBattleCompletionForCurrentNode>d__115",
+        "namespace": "",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [
+        {
+          "declaring_type": 9740,
+          "name": "<>1__state"
+        },
+        {
+          "declaring_type": 9740,
+          "name": "<>t__builder"
+        },
+        {
+          "declaring_type": 9740,
+          "name": "<>4__this"
+        },
+        {
+          "declaring_type": 9740,
+          "name": "<updateResultDtos>5__2"
+        },
+        {
+          "declaring_type": 9740,
+          "name": "<>u__1"
+        },
+        {
+          "declaring_type": 9740,
+          "name": "<>u__2"
+        }
+      ],
+      "methods": [
+        {
+          "index": 49469,
+          "name": "MoveNext",
+          "parameter_names": []
+        },
+        {
+          "index": 49470,
+          "name": "SetStateMachine",
+          "parameter_names": [
+            "stateMachine"
+          ]
+        }
+      ]
+    },
+    {
+      "type_index": 9745,
+      "type": {
+        "declaring_type": 9758,
+        "method_count": 2,
+        "method_start": 49479,
+        "name": "<HandleUpdateResults>d__121",
+        "namespace": "",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [
+        {
+          "declaring_type": 9745,
+          "name": "<>1__state"
+        },
+        {
+          "declaring_type": 9745,
+          "name": "<>t__builder"
+        },
+        {
+          "declaring_type": 9745,
+          "name": "item"
+        },
+        {
+          "declaring_type": 9745,
+          "name": "<>4__this"
+        },
+        {
+          "declaring_type": 9745,
+          "name": "<>7__wrap1"
+        },
+        {
+          "declaring_type": 9745,
+          "name": "<>u__1"
+        }
+      ],
+      "methods": [
+        {
+          "index": 49479,
+          "name": "MoveNext",
+          "parameter_names": []
+        },
+        {
+          "index": 49480,
+          "name": "SetStateMachine",
+          "parameter_names": [
+            "stateMachine"
+          ]
+        }
+      ]
+    },
+    {
+      "type_index": 9758,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 69,
+        "method_start": 49376,
+        "name": "AdventureManager",
+        "namespace": "Client.Adventure",
+        "nested_type_count": 29,
+        "nested_type_start": 2737
+      },
+      "fields": [
+        {
+          "declaring_type": 9758,
+          "name": "WorldRoot"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "UIRoot"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "AdventureServiceManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "AdventureContractServiceManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "MetaProgressionServiceManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DataLoader"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "RgdsDatabase"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "NavHandler"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SessionManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SceneTransitionHandler"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "MapInputStrategy"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "OnboardingManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "RunInitializedEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "MapFocusChangedEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DetachedEncounterUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "NodeTravelEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "MapUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "NodeRevealEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "NodeMadeTraverseableEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DynamicValuesUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DeckUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "PowerUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "LevelUpEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "ToastEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "RunCompletedEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "AdventureAnimationEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CenterCameraOnPlayerEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentMapFocus>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CurrentAdventureConfigGuid"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CurrentAdventurePlayableGuid"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "ExpectsExistingAdventure"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "ViewAssetHandles"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentDisplayableConfig>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentConfig>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentRun>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentContractSelections>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "AnimationInProgress"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "TravelInProgress"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "TravelConfirmedByServer"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "TravelCompletedOnClient"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CurrentPath"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "WeeklyAdventures"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "PendingResultsToProcess"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CurrentResultsItemBeingVisualized"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "LastNodeSelectedId"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<LastChoiceSelectionDto>k__BackingField"
+        }
+      ],
+      "methods": [
+        {
+          "index": 49376,
+          "name": "get_CurrentMapFocus",
+          "parameter_names": []
+        },
+        {
+          "index": 49377,
+          "name": "set_CurrentMapFocus",
+          "parameter_names": [
+            "value"
+          ]
+        },
+        {
+          "index": 49378,
+          "name": "get_CurrentDisplayableConfig",
+          "parameter_names": []
+        },
+        {
+          "index": 49379,
+          "name": "set_CurrentDisplayableConfig",
+          "parameter_names": [
+            "value"
+          ]
+        },
+        {
+          "index": 49380,
+          "name": "get_CurrentConfig",
+          "parameter_names": []
+        },
+        {
+          "index": 49381,
+          "name": "set_CurrentConfig",
+          "parameter_names": [
+            "value"
+          ]
+        },
+        {
+          "index": 49382,
+          "name": "get_CurrentRun",
+          "parameter_names": []
+        },
+        {
+          "index": 49383,
+          "name": "set_CurrentRun",
+          "parameter_names": [
+            "value"
+          ]
+        },
+        {
+          "index": 49384,
+          "name": "get_CurrentContractSelections",
+          "parameter_names": []
+        },
+        {
+          "index": 49385,
+          "name": "set_CurrentContractSelections",
+          "parameter_names": [
+            "value"
+          ]
+        },
+        {
+          "index": 49386,
+          "name": "get_CurrentRunChampionGuid",
+          "parameter_names": []
+        },
+        {
+          "index": 49387,
+          "name": "get_CurrentAdventureMap",
+          "parameter_names": []
+        },
+        {
+          "index": 49388,
+          "name": "get_PublicUIRoot",
+          "parameter_names": []
+        },
+        {
+          "index": 49389,
+          "name": "get_CurrentNode",
+          "parameter_names": []
+        },
+        {
+          "index": 49390,
+          "name": "get_LastChoiceSelectionDto",
+          "parameter_names": []
+        },
+        {
+          "index": 49391,
+          "name": "set_LastChoiceSelectionDto",
+          "parameter_names": [
+            "value"
+          ]
+        },
+        {
+          "index": 49392,
+          "name": "BaconDependenciesReady",
+          "parameter_names": []
+        },
+        {
+          "index": 49393,
+          "name": "BaconOnDestroy",
+          "parameter_names": []
+        },
+        {
+          "index": 49394,
+          "name": "BaconUpdate",
+          "parameter_names": []
+        },
+        {
+          "index": 49395,
+          "name": "LoadNavArguments",
+          "parameter_names": []
+        },
+        {
+          "index": 49396,
+          "name": "StartAsyncInit",
+          "parameter_names": []
+        },
+        {
+          "index": 49397,
+          "name": "InitAsync",
+          "parameter_names": []
+        },
+        {
+          "index": 49398,
+          "name": "InstantiateViewsAsync",
+          "parameter_names": [
+            "adventureConfig"
+          ]
+        },
+        {
+          "index": 49399,
+          "name": "EndCurrentRun",
+          "parameter_names": []
+        },
+        {
+          "index": 49400,
+          "name": "ReturnToWorldMap",
+          "parameter_names": []
+        },
+        {
+          "index": 49401,
+          "name": "ReturnToMonthlyAdventures",
+          "parameter_names": []
+        },
+        {
+          "index": 49402,
+          "name": "GetCurrentDeckList",
+          "parameter_names": []
+        },
+        {
+          "index": 49403,
+          "name": "GetCurrentDeckCode",
+          "parameter_names": []
+        },
+        {
+          "index": 49404,
+          "name": "GetDeckCount",
+          "parameter_names": []
+        },
+        {
+          "index": 49405,
+          "name": "GetOnMonthlyAdventure",
+          "parameter_names": []
+        },
+        {
+          "index": 49406,
+          "name": "GetPowersCountToDisplayToPlayer",
+          "parameter_names": []
+        },
+        {
+          "index": 49407,
+          "name": "SurrenderRun",
+          "parameter_names": []
+        },
+        {
+          "index": 49408,
+          "name": "SurrenderRunTask",
+          "parameter_names": []
+        },
+        {
+          "index": 49409,
+          "name": "RetireRun",
+          "parameter_names": []
+        },
+        {
+          "index": 49410,
+          "name": "SelectNode",
+          "parameter_names": [
+            "node"
+          ]
+        },
+        {
+          "index": 49411,
+          "name": "TravelToNode",
+          "parameter_names": [
+            "node"
+          ]
+        },
+        {
+          "index": 49412,
+          "name": "TrySkipClientAnimationForCurrentTravel",
+          "parameter_names": []
+        },
+        {
+          "index": 49413,
+          "name": "HandleMapTravelUpdateResult",
+          "parameter_names": [
+            "travelResult"
+          ]
+        },
+        {
+          "index": 49414,
+          "name": "CheckTravelComplete",
+          "parameter_names": []
+        },
+        {
+          "index": 49415,
+          "name": "SkipTravelDueToServerCorrection",
+          "parameter_names": [
+            "skipToNodeId"
+          ]
+        },
+        {
+          "index": 49416,
+          "name": "PathsMatch",
+          "parameter_names": [
+            "nodePath",
+            "idPath"
+          ]
+        },
+        {
+          "index": 49417,
+          "name": "OnPlayerTokenArrivedAtNode",
+          "parameter_names": [
+            "node"
+          ]
+        },
+        {
+          "index": 49418,
+          "name": "TryUpdateCurrentFocus",
+          "parameter_names": [
+            "node",
+            "encounter",
+            "force"
+          ]
+        },
+        {
+          "index": 49419,
+          "name": "PlayLevelUpAnimationBeforeChangingFocus",
+          "parameter_names": [
+            "newFocus"
+          ]
+        },
+        {
+          "index": 49420,
+          "name": "ForceClearCurrentFocus",
+          "parameter_names": []
+        },
+        {
+          "index": 49421,
+          "name": "CacheLastSelectedChoice",
+          "parameter_names": [
+            "choiceSelectionDto"
+          ]
+        },
+        {
+          "index": 49422,
+          "name": "SelectChoice",
+          "parameter_names": [
+            "node",
+            "choiceSelectionDto"
+          ]
+        },
+        {
+          "index": 49423,
+          "name": "SelectChoiceForDetachedEncounter",
+          "parameter_names": [
+            "encounter",
+            "choiceSelectionDto"
+          ]
+        },
+        {
+          "index": 49424,
+          "name": "RerollOptionsInChoice",
+          "parameter_names": [
+            "focusToReroll",
+            "choiceIndex"
+          ]
+        },
+        {
+          "index": 49425,
+          "name": "CreateErrorToastDto",
+          "parameter_names": [
+            "locKey"
+          ]
+        },
+        {
+          "index": 49426,
+          "name": "CheckForAutomaticConditions",
+          "parameter_names": [
+            "firstCheckOfSession"
+          ]
+        },
+        {
+          "index": 49427,
+          "name": "CheckForMapAnimations",
+          "parameter_names": [
+            "firstCheckOfSession"
+          ]
+        },
+        {
+          "index": 49428,
+          "name": "SendMapIntroAnimationEvent",
+          "parameter_names": []
+        },
+        {
+          "index": 49429,
+          "name": "SendReturnToInProgressMapEvent",
+          "parameter_names": []
+        },
+        {
+          "index": 49430,
+          "name": "DoRespawnDialog",
+          "parameter_names": []
+        },
+        {
+          "index": 49431,
+          "name": "SendRespawnAnimationEvent",
+          "parameter_names": []
+        },
+        {
+          "index": 49432,
+          "name": "HandleBattleCompletionForCurrentNode",
+          "parameter_names": []
+        },
+        {
+          "index": 49433,
+          "name": "HandleDetachedEncounters",
+          "parameter_names": []
+        },
+        {
+          "index": 49434,
+          "name": "HandleRunLoss",
+          "parameter_names": []
+        },
+        {
+          "index": 49435,
+          "name": "QueueUpdatesForHandling",
+          "parameter_names": [
+            "updateResultDtos"
+          ]
+        },
+        {
+          "index": 49436,
+          "name": "QueueUpdatesForHandlingAndForget",
+          "parameter_names": [
+            "updateResultDtos"
+          ]
+        },
+        {
+          "index": 49437,
+          "name": "DoAnimationsForResultsAndThenProcess",
+          "parameter_names": [
+            "item"
+          ]
+        },
+        {
+          "index": 49438,
+          "name": "HandleUpdateResults",
+          "parameter_names": [
+            "item"
+          ]
+        },
+        {
+          "index": 49439,
+          "name": "HandleMapUpdateResult",
+          "parameter_names": [
+            "mapUpdateDto"
+          ]
+        },
+        {
+          "index": 49440,
+          "name": "HandleDetachedEncounterResult",
+          "parameter_names": [
+            "detachedEncounterResultDto"
+          ]
+        },
+        {
+          "index": 49441,
+          "name": "HandleDeckUpdateResult",
+          "parameter_names": [
+            "deckUpdateResultDto"
+          ]
+        },
+        {
+          "index": 49442,
+          "name": "OnTap",
+          "parameter_names": []
+        },
+        {
+          "index": 49443,
+          "name": ".ctor",
+          "parameter_names": []
+        },
+        {
+          "index": 49444,
+          "name": "<HandleDetachedEncounters>b__116_1",
+          "parameter_names": []
+        }
+      ]
+    }
+  ],
+  "limits": "Declaracoes e nomes de parametros; sem tipos nativos ou corpos de metodos."
+}

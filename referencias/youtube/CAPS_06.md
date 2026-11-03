@@ -1,0 +1,47 @@
+# CAPS 6 — a cabeça na montanha e as botas
+
+Leitura textual concluída em 22/10/2026: **0:00–2:54:34**, todo o arquivo `1NXrjipiGWM.txt`. Fonte: legenda automática, sem reprodução audiovisual integral. Nomes próprios e texto visual dos enigmas permanecem sujeitos a conferência.
+
+## Acontecimentos com horários
+
+| Horário aproximado | Registro | Limites |
+|---|---|---|
+| [0:00–20:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=0) | Depois do descanso na casa de Thotph, Hadrin ora com a lágrima. Youro procura ervas e encontra o jardim de Thotph; pede autorização em vez de colher sem consentimento. Thotph permite o uso. O grupo se prepara para investigar uma cabeça gigante que jorra água numa montanha perto de um lago congelado no Norte. Recebem pedras de retorno e atravessam um portal. | A ligação com um deus do gelo é hipótese inicial de Thotph, não identificação definitiva do artefato. Kylast conhece a região, mas não aquele lago específico. |
+| [20:00–40:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=1200) | Na neve, Youro e a barda se deslocam com mais facilidade; os demais afundam. Identificam animais e rastros comuns da região. O gelo parece grosso, mas discutem não concentrar peso. Dois conjuntos de vultos submersos se aproximam quando os personagens pisam no lago. | Não interpretar o teste de sobrevivência como conhecimento universal de Kylast sobre o Norte. A vantagem concedida é específica da região nesta sessão. |
+| [40:00–55:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=2400) | Arcata usa fogo como teste; os vultos não seguem a chama, que começa a derreter o gelo. Depois a mão mágica da barda é usada como isca: uma criatura aquática rompe o gelo, a ataca e volta à água. O grupo opta por contornar e escalar. | A criatura é descrita como tendo cerca de 70 cm; espécie não identificada. Não houve combate vencido contra os vultos nem conversa efetiva com eles. |
+| [55:00–80:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=3300) | Acesso por pedras e paredões exige cordas, ajuda e Guidance. Hadrin e Youro escorregam em trechos diferentes; Hadrin prende a perna entre pedra e estátua e precisa de nova ajuda. O grupo chega inteiro à boca da cabeça, entrada de uma estrutura. | Não há morte, amputação ou lesão permanente confirmada nessa travessia. As ameaças e provocações entre jogadores não equivalem a ataques reais entre protagonistas. |
+| [80:00–90:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=4800) | Uma corrente de água sobe em vez de descer. Arcata toca nela e é levado ao alto; os demais o seguem. Saem numa sala sem ficar molhados. Uma pequena criatura voadora aponta uma inscrição e mecanismos. Arcata demonstra grande entusiasmo pela experiência mágica. | Texto sobre línguas e funcionamento de magias é discutido na mesa; não converter cada explicação improvisada em regra universal. |
+| [90:00–100:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=5400) | Interpretam um enigma sobre veias, sangue, sol, asas, luz, sombra e lua. Acionam alavancas na ordem **cobra → globo → relógio de sol → pássaro**, abrindo a porta. | Há hipóteses anteriores com ordem diferente. A ordem aqui registrada é a efetivamente executada com sucesso. A transcrição não substitui o texto visual integral da inscrição. |
+| [100:00–110:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=6000) | Encontram um espelho atravessável e um caminho de nuvens sobre grande queda. Ao espiar pelo espelho, veem aves numa sala. Youro testa uma nuvem preso por corda, verificando que sustenta peso. Debatem caminhos e silêncio; preparam proteção e transformação. | Os dois acessos parecem conectar áreas do mesmo conjunto; o grupo ainda não compreende toda a disposição. Não tratar nuvens como seguras em qualquer contexto da campanha. |
+| [110:00–126:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=6600) | Entram pelo espelho e enfrentam quatro aves agressivas. Gritos provocam medo em Kylast, mas a armadura ajuda a suportar ataques. Espadas, maça, adaga, chama sagrada e mísseis mágicos encerram a luta. Youro em forma de tigre tem dificuldade de atravessar a entrada e participa pouco desse combate. | A espécie não foi estabelecida. O tigre não é automaticamente a melhor solução em espaço apertado; guardar essa limitação para futura adaptação. |
+| [126:00–135:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=7560) | Encontram **52 moedas de ouro**, um pergaminho identificado como Ray of Frost e um caldeirão com líquido de cura. O pergaminho é entregue a Arcata, que demonstra alegria. Ele identifica a cura; recolhem o suficiente para três frascos. Veem pela janela uma criatura maior. | Ray of Frost é identificação da sessão, sem decidir como será aprendido ou convertido em carta. Não fixar potência das poções além da descrição disponível. |
+| [135:00–151:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=8100) | Voltam e atravessam pelas nuvens, usando cordas e Guidance para saltar. Youro em tigre quase cai; Kylast o segura e os demais ajudam a puxar. Arcata também precisa de auxílio. Zorath manifesta receio da altura. | As falhas não produzem morte ou queda até o fundo. O medo de Zorath é observado nesta situação; não concluir que seja incapaz de agir em altura, pois consegue prosseguir. |
+| [151:00–165:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=9060) | Uma grande criatura alada bloqueia a passagem e reage à aproximação, sem atacar de imediato. Youro tenta comunicar-se, mas o mestre esclarece que não é uma besta. O grupo percebe um filhote no ninho. Rejeita matar a mãe apenas para passar. Ração e aproximação não resolvem; Command, apoiado por um resultado previsto de Arcata, a afasta brevemente. | Não identificar a espécie como wyvern só por comparação dos participantes. Falar com animais não funciona automaticamente com qualquer monstro. O comando não domestica nem neutraliza a criatura permanentemente. |
+| [165:00–170:00](https://www.youtube.com/watch?v=1NXrjipiGWM&t=9900) | A barda alcança as botas sobre o móvel com Mage Hand. A criatura não a ataca por isso. Ao tocar nas botas, tem visão individual de uma montanha e de um grande **drake sem asas**, que se apresenta como dono delas e permite seu uso. Retorna com as botas calçadas. O grupo as associa a botas leves que permitem flutuar. | Nome ouvido como “tarias” e nome do drake depois transcrito como “govin” ainda exigem fonte escrita. Não nomear automaticamente Talárias ou uma divindade conhecida. Os efeitos completos estavam no inventário da sessão e não foram lidos aqui; não inventar voo ilimitado. |
+| [170:00–2:54:34](https://www.youtube.com/watch?v=1NXrjipiGWM&t=10200) | Todos usam pedras para retornar a Thotph. Ele reconhece as botas e associa o drake a um dos principais pais da vida. Oferece quatro possíveis investigações: piratas que acharam algo estranho em Alar; bruxa ligada a acontecimentos aleatórios numa cidade a Nordeste; criança amaldiçoada; catacumba surgida no deserto. A sessão termina na discussão das opções. | Não há escolha definitiva nem início de uma dessas missões. Grafia de Alar e da entidade precisa de confirmação. Não houve apropriação do filhote nem morte da mãe. |
+
+## Artefatos e progressão narrativa
+
+- **Botas:** obtidas pela barda do elenco inicial, não por Thalion. Aquisição envolve um encontro pessoal com a entidade; os outros só observam o resultado externo. Descrição de flutuação e maior facilidade nos testes é parcial.
+- **Lágrima:** Hadrin continua a orar com ela; não há nova ativação confirmada neste episódio.
+- **Joia e cristais:** sem nova análise concluída ou fusão com equipamento demonstrada nesta sessão.
+
+## Personalidade e combate: novas evidências
+
+- Arcata se encanta com a água ascendente e o pergaminho, inclusive sendo uma magia de gelo: seu interesse é magia em geral. Declara querer estudar alquimia antes de manipular ingredientes sem conhecimento.
+- Youro pede permissão para colher no jardim de Thotph e oferece ajuda a Arcata com ervas. Adapta a pelagem ao frio. Sua forma felina habitual não concede automaticamente todas as capacidades mecânicas de uma besta; o mestre diferencia aparência e transformação.
+- Kylast usa conhecimento local com limites, auxilia nas cordas e segura o tigre. A marca de guerreiro protetor se apoia tanto em resgates quanto em ataques.
+- Hadrin fornece Guidance, proteção e cura; suas falhas de escalada coexistem com contribuição decisiva para os testes dos outros. Não reduzi-lo a humor sobre bebida ou estatura.
+- A barda testa abordagens mágicas e consegue recuperar as botas sem atacar a criatura protetora. Sua preocupação com o cabelo é recorrente nas cenas de água e frio, mas não define sua motivação inteira.
+- Zorath demonstra temor nos saltos sobre o abismo e mesmo assim atravessa; no combate usa maça e golpes desarmados.
+
+## Possibilidades para o jogo — propostas
+
+1. Enigma que altera o caminho e abre acesso, sem obrigar combate.
+2. Formas grandes oferecem força, mas dificultam passagens estreitas.
+3. Um guardião protetor pode ser contornado com percepção e interação, sem precisar ser morto para obter o item.
+4. Escolha entre quatro rumores pode inspirar ramificações de uma partida, mas a estrutura de atos ainda não foi definida.
+
+## Retomada
+
+Próximo: **CAPS 7 (`vM0PrI7vb0c`)**. Conferir qual rumor é escolhido, nome e funcionamento das botas e consequências da aquisição. Não adivinhar a missão seguinte a partir de votos informais no fim deste vídeo.

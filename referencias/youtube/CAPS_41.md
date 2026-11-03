@@ -1,0 +1,28 @@
+# CAPS 41
+
+Fonte: https://www.youtube.com/watch?v=6SlrAP5nrEg
+
+Todo o texto local disponível lido até 2:24:38, incluindo encerramento. Leitura de transcrição automática, sem revisão audiovisual integral. Horários abaixo aproximados; grafias incertas e falantes ambíguos permanecem pendentes.
+
+## Acontecimentos
+
+- [0–15 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=180): retorna a frente Hana, Youro, Hadrin, Nira e Virex diante da mansão de Vein, retomando CAPS 37, não a frente do laboratório de CAPS 40. Gribold e o corvo dificultam a passagem. O corvo diz obedecer ao magistrado, acima de Vein; finalmente libera ao ouvir a intenção de quebrar a maldição. Isso é declaração do corvo, sem identificação segura do magistrado.
+- [15–25 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=900): risadas vêm das paredes; alguns ouvem uma voz chamando-os de alimento. Vein toca piano e, ao ser interrompido, diz que não pretendia ter de matá-los. A escuridão os leva a uma sala de ritual, presos a bancos, com sangue pelo chão.
+- [25–35 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=1500): Serafine dorme sobre o altar. Uma entidade de dentes afiados anuncia sua morte e transformação em sua dama; Vein segura uma daga e age como marionete. Tentativas de apelo não o libertam. Hana declara haver parte do espírito de uma filha na espada e pede ajuda; após Religion, recupera fala/movimento por breve momento. Ao tentar impedir o golpe fisicamente, novo comando da entidade a imobiliza. Não fixar identidade da filha ou mecanismo completo de possessão. Hadrin menciona Coração de Pedra Luz: ilumina, mas não desfaz a prisão.
+- [35–45 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=2100): a entidade parte como morcegos levando Serafine e manda Vein eliminar o grupo. Os cinco ficam livres e começa o combate. Virex invoca uma fera; Youro, alossauro, segura Vein com a boca, mas ele escapa em morcegos. Hadrin tenta Resistance no inimigo para ajudá-lo a resistir ao controle, sem resultado demonstrado.
+- [45–60 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=2700): Vein fere Virex, que usa arco e Hunter’s Mark mesmo pressionado de perto. Hadrin erra Guiding Bolt e atinge a fera aliada; cura Virex. Vein derruba Virex e controla Hana. Nira cura o companheiro caído. Discussões de ações e magias são arbitragem da mesa, não regras universais de D&D.
+- [60–80 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=3600): Hana controlada lança Hunger of Hadar contra o grupo. Youro sai da área e tenta atacar Vein. Hadrin usa Spirit Guardians radiante e Spiritual Weapon; o dano radiante deixa lesão que não cicatriza como as anteriores. Hadrin resiste ao domínio. Hana recupera controle e encerra a concentração; depois combate com espada e Green-Flame Blade. Não atribuir essas ações a Arcata, apesar do nome antigo na interface.
+- [80–100 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=4800): Virex acerta flechas; Youro abandona a transformação e invoca elemental de fogo, depois usa Thorn Whip. Vein retoma regeneração, invoca quatro corvos e falha novamente ao controlar Hadrin. Nira tenta atacar com smite sem acertar. Hana mata um corvo; Hadrin cura e usa a Espada da Causa Justa.
+- [100–110 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=6000): o golpe de Hadrin dissolve Vein e os corvos em cinzas; o mestre confirma a morte. Hadrin lamenta não ter previsto o desfecho. O grupo ora e mantém o objetivo de resgatar Serafine. Não há saque nas cinzas. Estátua desgastada não é identificada; pedras vermelhas mágicas brotam do chão. Não equipará-las a pedras filosofais. Um caixão esconde escadas.
+- [110–125 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=6600): Youro usa o banquete de Mulian para cinco pessoas; agradece e pede respeito à refeição. A mesa lê recuperação de 2d8+5, remoção de condições e vantagem contra medo/efeitos mentais por uma hora; recebe também descanso curto. Nome cruzado com 48 Armas: Um Banquete em uma Gota. Não assumir que os benefícios durarão até qualquer encontro futuro. Hana come levantando só parte da máscara. O elemental expira pelo tempo transcorrido. Planejam proteções e Hana guia, com Youro no ombro.
+- [125–142 min](https://www.youtube.com/watch?v=6SlrAP5nrEg&t=7500): passagem leva ao exterior chuvoso, abaixo da ponte/entrada, com desnível de cerca de 25 m. Youro usa Pass without Trace; armaduras continuam impondo desvantagem e o bônus é +10. Debatem cordas/voo, sem subida concluída. Evitam Gribold e corvos; Hana lidera entrada em outro túnel com Youro no ombro. Encerramento antes de explorar seu destino; música até 2:24:38.
+
+## Consequências, limites e dúvidas
+
+Vein morto; Serafine viva quando levada, destino do ritual pendente. Os cinco protagonistas sobrevivem. Virex caiu e foi curado, não morreu. Não identificar a entidade como divindade, nem fechar seu nome pela legenda. Suspeita de vampirismo e comportamentos de morcegos/regeneração não autorizam uma ficha completa. Reação ao radiante foi observada, sem converter em vulnerabilidade numérica permanente.
+
+A descrição de movimentos no mapa foi recuperada apenas das falas; geometria exata, aparência da entidade e inscrições da estátua precisam de conferência visual. Falas jocosas do narrador/jogadores não estabelecem relações românticas. A oração de Hana é transcrita como “Medir”; manter referência anterior a Medúria, sem corrigir a fonte.
+
+## Possibilidades de adaptação — propostas
+
+Controle temporário de uma unidade aliada, dano radiante interrompendo recuperação e banquete de preparação são referências de encontro/efeitos para futura adaptação. Nenhuma carta, estatística ou regra aprovada neste registro.

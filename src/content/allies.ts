@@ -1,0 +1,27 @@
+import {expansionChampionSpells} from './expansion.js';
+import type { CardCatalog, TargetRule } from './schema.js';
+const ally:TargetRule={kind:'unit',side:'ally',min:1,max:1};
+const none:TargetRule={kind:'unit',side:'ally',min:0,max:0};
+export const upgradeIds=['upgrade-reinforce','upgrade-elusive','upgrade-quick','upgrade-double'];
+export const allyCatalog:CardCatalog={
+ abe:{id:'abe',name:'Abe Gravo',kind:'unit',champion:'abe',cost:4,attack:2,health:5,regions:['south','west'],rarity:'ultradimensional',text:'Ao entrar e no início da rodada, fabrique: escolha um entre três Upgrades. Evoluo ao resolver 6 Upgrades. Evoluído 3/6: Upgrades custam 1 a menos (mínimo 1) enquanto estou em campo.'},
+ aranha:{id:'aranha',name:'Aranha Arranha',kind:'unit',cost:2,attack:1,health:3,ability:'spider',exclusiveChampion:'abe',regions:['west'],rarity:'common',text:'Quando recebo um Upgrade, ganho +1 de ataque adicional nesta batalha.'},
+ project:{id:'project',name:'Projeto de Melhoria',kind:'spell',cost:2,speed:'burst',target:none,effect:{type:'fabricate'},exclusiveChampion:'abe',regions:['west'],rarity:'common',text:'Escolha um entre três Upgrades aleatórios distintos e crie o escolhido na mão.'},
+ engineering:{id:'engineering',regions:['west'],name:'Engenharia de Campo',kind:'spell',cost:3,speed:'fast',target:ally,effect:{type:'reinforce'},fabricate:true,championCopy:'abe',text:'Conceda +1/+1 a um aliado, sem curar, e fabrique um Upgrade. Embaralhe uma cópia de Abe no deck.'},
+ 'upgrade-reinforce':{id:'upgrade-reinforce',regions:['west'],name:'Reforço Estrutural',kind:'spell',cost:1,speed:'burst',target:ally,effect:{type:'upgrade'},upgrade:true,text:'+1 de ataque e +1 de vida máxima, preservando o dano sofrido.'},
+ 'upgrade-elusive':{id:'upgrade-elusive',regions:['west'],name:'Propulsores',kind:'spell',cost:3,speed:'burst',target:ally,effect:{type:'upgrade',keyword:'elusive'},upgrade:true,text:'Concede Elusivo nesta batalha. Só pode ser bloqueado por Elusivo.'},
+ 'upgrade-quick':{id:'upgrade-quick',regions:['west'],name:'Reflexos Mecânicos',kind:'spell',cost:2,speed:'burst',target:ally,effect:{type:'upgrade',keyword:'quick'},upgrade:true,text:'Concede Ataque Rápido: no ataque, golpeia antes do bloqueador.'},
+ 'upgrade-double':{id:'upgrade-double',regions:['west'],name:'Motor de Combate',kind:'spell',cost:5,speed:'burst',target:ally,effect:{type:'upgrade',keyword:'double'},upgrade:true,text:'Concede Ataque Duplo: dois golpes no mesmo ataque, primeiro rápido. Não acumula com Kylast. Se concedido após declarar o ataque, vale a partir do próximo ataque.'},
+ arcata:{id:'arcata',name:'Arcata',kind:'unit',champion:'arcata',cost:4,attack:2,health:4,regions:['north','east'],rarity:'ultradimensional',text:'Combustão: sua segunda magia de Fogo resolvida na rodada causa 1 ao Vínculo inimigo enquanto estou em campo. Evoluo após 6 magias de Fogo resolvidas. Evoluído 3/5: suas magias de Fogo causam +1 por alvo.'},
+ 'fire-bolt':{id:'fire-bolt',name:'Raio de Fogo',kind:'spell',cost:1,speed:'fast',target:{kind:'character',side:'enemy',min:1,max:1},effect:{type:'damage',amount:1},fire:true,regions:['east'],rarity:'common',text:'Fogo. Causa 1 de dano a uma unidade ou Vínculo inimigo.'},
+ 'burning-hands':{id:'burning-hands',name:'Mãos Flamejantes',kind:'spell',cost:3,speed:'slow',target:{kind:'unit',side:'enemy',min:1,max:3},effect:{type:'damage',amount:2},fire:true,regions:['east'],rarity:'rare',text:'Fogo. Causa 2 de dano a até três unidades inimigas escolhidas.'},
+ fireball:{id:'fireball',regions:['east'],name:'Bola de Fogo',kind:'spell',cost:5,speed:'slow',target:none,effect:{type:'damage',amount:3},area:'enemies',fire:true,championCopy:'arcata',text:'Fogo. Causa 3 a todas as unidades inimigas. Embaralhe uma cópia de Arcata no deck.'},
+ rubel:{id:'rubel',name:'Rubel',kind:'unit',champion:'rubel',cost:4,attack:1,health:5,regions:['north','east'],rarity:'ultradimensional',text:'Ao entrar, cure 2 de um aliado ou seu Vínculo (permite resposta). Evoluo ao recuperar 10 de vida enquanto estou em campo. Evoluído 3/8: dobro suas curas; ao evoluir e no início da rodada, cure 2 de todos os aliados e seu Vínculo.'},
+ 'healing-word':{id:'healing-word',name:'Palavra Curativa',kind:'spell',cost:1,speed:'burst',target:ally,effect:{type:'heal',amount:2},regions:['north'],rarity:'common',text:'Cura 2 de uma unidade aliada.'},
+ prayer:{id:'prayer',name:'Oração de Cura',kind:'spell',cost:3,speed:'slow',target:none,effect:{type:'heal',amount:2},area:'allies',regions:['north'],rarity:'rare',text:'Cura 2 de todas as unidades aliadas.'},
+ 'cure-wounds':{id:'cure-wounds',regions:['north'],name:'Cura de Ferimentos',kind:'spell',cost:3,speed:'fast',target:{kind:'character',side:'ally',min:1,max:1},effect:{type:'heal',amount:4},championCopy:'rubel',text:'Cura 4 de uma unidade aliada ou seu Vínculo. Embaralhe uma cópia de Rubel no deck.'},
+ 'rubel-entry':{id:'rubel-entry',name:'Bênção de entrada',kind:'spell',cost:0,speed:'fast',target:{kind:'character',side:'ally',min:1,max:1},effect:{type:'heal',amount:2},text:'Cura de entrada de Rubel. Permite resposta.'},
+ 'rubel-wave':{id:'rubel-wave',name:'Cura coletiva de Rubel',kind:'spell',cost:0,speed:'fast',target:none,effect:{type:'heal',amount:2},area:'all-friendly',text:'Cura 2 de todas as unidades aliadas e seu Vínculo; dobrada enquanto Rubel evoluído estiver em campo.'},
+};
+export const championSpells:Record<string,string>={...expansionChampionSpells,abe:'engineering',arcata:'fireball',rubel:'cure-wounds'};
+

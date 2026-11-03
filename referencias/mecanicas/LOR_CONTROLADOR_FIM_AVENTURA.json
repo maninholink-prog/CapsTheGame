@@ -1,0 +1,2933 @@
+{
+  "sources": [
+    {
+      "path": "C:\\Riot Games\\LoR\\live\\PatcherData\\PatchableFiles\\AssetBundles\\monobehavior.bbq",
+      "sha256": "53cdecacd6b1ef0fb6552f54274f87ebbf105bb77dcd88469aadd89a70c173eb"
+    },
+    {
+      "path": "C:\\Riot Games\\LoR\\live\\PatcherData\\PatchableFiles\\AssetBundles\\00\\c9c611ea0ea0edab3e23b11d6abe53.bbq",
+      "sha256": "f85f07a00989ca4410624e270b954cb23164c302c37cdade4948f7843108fc82"
+    },
+    {
+      "path": "C:\\Riot Games\\LoR\\live\\PatcherData\\PatchableFiles\\AssetBundles\\fc\\bbddbcfd1ac916f42b21fc77365ea0.bbq",
+      "sha256": "4c1bc46fc9da307f2b733a8e6bf6b9169d45619d681f115ceba6abee8c0db973"
+    },
+    {
+      "path": "C:\\Riot Games\\LoR\\live\\PatcherData\\PatchableFiles\\AssetBundles\\c8\\159ec68f6a63c7f0691de93f77a2a8.bbq",
+      "sha256": "a08a985ebb627b92c5dea6d94cbc6ab9ec1cee12b62a435f6fabed6097279961"
+    }
+  ],
+  "components": [
+    {
+      "file": "CAB-5dcae9823c2087c10b470b1859770043",
+      "path_id": -8864795573315344068,
+      "script": {
+        "m_Name": "CMPRunEndOverlayLoader",
+        "m_ExecutionOrder": 0,
+        "m_PropertiesHash": {
+          "bytes[0]": 237,
+          "bytes[1]": 173,
+          "bytes[2]": 52,
+          "bytes[3]": 224,
+          "bytes[4]": 199,
+          "bytes[5]": 217,
+          "bytes[6]": 121,
+          "bytes[7]": 55,
+          "bytes[8]": 117,
+          "bytes[9]": 191,
+          "bytes[10]": 103,
+          "bytes[11]": 112,
+          "bytes[12]": 235,
+          "bytes[13]": 63,
+          "bytes[14]": 89,
+          "bytes[15]": 252
+        },
+        "m_ClassName": "CMPRunEndOverlayLoader",
+        "m_Namespace": "",
+        "m_AssemblyName": "Assembly-CSharp"
+      },
+      "data": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": -8864795575594427109
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 2497316132790990698
+        },
+        "m_Name": "",
+        "RewardsOverlaySoftRef": {
+          "guid": "6309b8978da800b489204cad5cc1aef3",
+          "AssetPath": "Assets/AssetLibrary/UI/CardMetaProgression/EndOfRun/CMPRunRewardsOverlay.prefab"
+        },
+        "RewardsChestOverlaySoftRef": {
+          "guid": "8154dd89a40f0944693b4b5b5982d799",
+          "AssetPath": "Assets/AssetLibrary/Adventure/UI/Prefabs/CMPRunRewardsChestOverlay.prefab"
+        },
+        "RunSummaryOverlaySoftRef": {
+          "guid": "1a4eb8c1341a2f7478229b2b5a6a44ce",
+          "AssetPath": "Assets/AssetLibrary/UI/CardMetaProgression/EndOfRun/CMPRunSummaryOverlay.prefab"
+        },
+        "QuestRelicOverlaySoftRef": {
+          "guid": "6852e7b5d54f08e4bb2e895666230a67",
+          "AssetPath": "Assets/AssetLibrary/Adventure/UI/Prefabs/CMPRunQuestRelicOverlay.prefab"
+        },
+        "MailOverlaySoftRef": {
+          "guid": "af329a5d5ae8c2e4883d40adafa58604",
+          "AssetPath": "Assets/AssetLibrary/UI/CardMetaProgression/EndOfRun/CMPRunRewardsMailOverlay.prefab"
+        },
+        "BackgroundPlayable": {
+          "m_FileID": 0,
+          "m_PathID": -8864795572492041508
+        },
+        "Banner": {
+          "m_FileID": 0,
+          "m_PathID": -8864795575046944470
+        },
+        "BannerPlayable": {
+          "m_FileID": 0,
+          "m_PathID": -8864795574962481548
+        },
+        "AdventureNameLabel": {
+          "m_FileID": 0,
+          "m_PathID": -8864795576167487805
+        },
+        "VictoryDefeatLabel": {
+          "m_FileID": 0,
+          "m_PathID": -8864795574797828248
+        },
+        "PlayerNameLabel": {
+          "m_FileID": 0,
+          "m_PathID": -8864795574650851800
+        },
+        "LegendLevelLabel": {
+          "m_FileID": 0,
+          "m_PathID": -8864795572482510420
+        },
+        "HealthScoreGuid": "04e099ce-49ba-475f-95e6-806673696827",
+        "CompletionTier": {
+          "m_FileID": 0,
+          "m_PathID": -8864795575316592143
+        }
+      }
+    },
+    {
+      "file": "CAB-5e1a189d0910a3450a080adf927ef966",
+      "path_id": 467968965494115368,
+      "script": {
+        "m_Name": "CMPRunRewardsOverlay",
+        "m_ExecutionOrder": 0,
+        "m_PropertiesHash": {
+          "bytes[0]": 29,
+          "bytes[1]": 139,
+          "bytes[2]": 135,
+          "bytes[3]": 163,
+          "bytes[4]": 156,
+          "bytes[5]": 244,
+          "bytes[6]": 202,
+          "bytes[7]": 12,
+          "bytes[8]": 251,
+          "bytes[9]": 43,
+          "bytes[10]": 122,
+          "bytes[11]": 246,
+          "bytes[12]": 35,
+          "bytes[13]": 100,
+          "bytes[14]": 173,
+          "bytes[15]": 37
+        },
+        "m_ClassName": "CMPRunRewardsOverlay",
+        "m_Namespace": "",
+        "m_AssemblyName": "Assembly-CSharp"
+      },
+      "data": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 467968965377743249
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 4197041614863854264
+        },
+        "m_Name": "",
+        "VisualRootCanvasGroup": {
+          "m_FileID": 0,
+          "m_PathID": 467968965289305495
+        },
+        "PlayedChampPortrait": {
+          "m_FileID": 0,
+          "m_PathID": 467968966031413186
+        },
+        "PlayerNameLocalizer": {
+          "m_FileID": 0,
+          "m_PathID": 467968964974154007
+        },
+        "AdventureNameText": {
+          "m_FileID": 0,
+          "m_PathID": 467968965770618186
+        },
+        "ContinueButton": {
+          "m_FileID": 0,
+          "m_PathID": 467968966764532427
+        },
+        "RewardCardLayout": {
+          "m_FileID": 0,
+          "m_PathID": 467968966161186565
+        },
+        "CMPChampXPCardPrefabPrototype": {
+          "m_FileID": 3,
+          "m_PathID": -1365355887497669023
+        },
+        "CMPChampBonusXPCardPrefabPrototype": {
+          "m_FileID": 0,
+          "m_PathID": 5859364359143475938
+        },
+        "LegendLevelXpRewardCardPrefab": {
+          "m_FileID": 16,
+          "m_PathID": -3610285108307866996
+        },
+        "HealthScoreGuid": "04e099ce-49ba-475f-95e6-806673696827",
+        "RewardAssets": [
+          {
+            "LootType": 47,
+            "RewardCardPrefab": {
+              "m_FileID": 3,
+              "m_PathID": 5851426684032341084
+            }
+          },
+          {
+            "LootType": 51,
+            "RewardCardPrefab": {
+              "m_FileID": 3,
+              "m_PathID": 7032487968407704292
+            }
+          },
+          {
+            "LootType": 44,
+            "RewardCardPrefab": {
+              "m_FileID": 0,
+              "m_PathID": -1757102740708956907
+            }
+          },
+          {
+            "LootType": 12,
+            "RewardCardPrefab": {
+              "m_FileID": 3,
+              "m_PathID": 5804768884015095253
+            }
+          },
+          {
+            "LootType": 48,
+            "RewardCardPrefab": {
+              "m_FileID": 0,
+              "m_PathID": 5473013246171377501
+            }
+          },
+          {
+            "LootType": 61,
+            "RewardCardPrefab": {
+              "m_FileID": 3,
+              "m_PathID": 5804768884015095253
+            }
+          },
+          {
+            "LootType": 64,
+            "RewardCardPrefab": {
+              "m_FileID": 3,
+              "m_PathID": 3903436430156492788
+            }
+          },
+          {
+            "LootType": 65,
+            "RewardCardPrefab": {
+              "m_FileID": 3,
+              "m_PathID": -5725222157692994323
+            }
+          },
+          {
+            "LootType": 66,
+            "RewardCardPrefab": {
+              "m_FileID": 3,
+              "m_PathID": -648160714174945795
+            }
+          },
+          {
+            "LootType": 67,
+            "RewardCardPrefab": {
+              "m_FileID": 3,
+              "m_PathID": -4698723608657549675
+            }
+          },
+          {
+            "LootType": 54,
+            "RewardCardPrefab": {
+              "m_FileID": 23,
+              "m_PathID": -1254590080902172098
+            }
+          },
+          {
+            "LootType": 70,
+            "RewardCardPrefab": {
+              "m_FileID": 3,
+              "m_PathID": 5804768884015095253
+            }
+          },
+          {
+            "LootType": 55,
+            "RewardCardPrefab": {
+              "m_FileID": 0,
+              "m_PathID": -7403466868622365724
+            }
+          }
+        ],
+        "Timing": {
+          "RewardsEntryDelayInMilliseconds": 0,
+          "RewardsStaggerInMilliseconds": 300,
+          "NestedLootDelayInMilliseconds": 500000
+        },
+        "CompletionTier": {
+          "m_FileID": 0,
+          "m_PathID": 467968965888296187
+        },
+        "ScreenTransitionPlayable": {
+          "m_FileID": 0,
+          "m_PathID": 467968964350043092
+        }
+      }
+    },
+    {
+      "file": "CAB-5508e796c1d329db757fb2e16704d204",
+      "path_id": 2075471722224558753,
+      "script": {
+        "m_Name": "CMPEndOfRunSummaryOverlay",
+        "m_ExecutionOrder": 0,
+        "m_PropertiesHash": {
+          "bytes[0]": 157,
+          "bytes[1]": 162,
+          "bytes[2]": 136,
+          "bytes[3]": 237,
+          "bytes[4]": 133,
+          "bytes[5]": 145,
+          "bytes[6]": 159,
+          "bytes[7]": 219,
+          "bytes[8]": 15,
+          "bytes[9]": 248,
+          "bytes[10]": 185,
+          "bytes[11]": 81,
+          "bytes[12]": 42,
+          "bytes[13]": 153,
+          "bytes[14]": 155,
+          "bytes[15]": 200
+        },
+        "m_ClassName": "CMPEndOfRunSummaryOverlay",
+        "m_Namespace": "",
+        "m_AssemblyName": "Assembly-CSharp"
+      },
+      "data": {
+        "m_GameObject": {
+          "m_FileID": 0,
+          "m_PathID": 2075471719397111138
+        },
+        "m_Enabled": 1,
+        "m_Script": {
+          "m_FileID": 1,
+          "m_PathID": 5041180166993992733
+        },
+        "m_Name": "",
+        "PlayedChampPortrait": {
+          "m_FileID": 0,
+          "m_PathID": 2075471721592462888
+        },
+        "FeaturedCard": {
+          "m_FileID": 0,
+          "m_PathID": 2075471720991797159
+        },
+        "ContinueButton": {
+          "m_FileID": 0,
+          "m_PathID": 2075471719254666206
+        },
+        "CompletionTimeContainer": {
+          "m_FileID": 0,
+          "m_PathID": 2075471718322570510
+        },
+        "CurrentCompletionTime": {
+          "m_FileID": 0,
+          "m_PathID": 2075471721192269856
+        },
+        "CompletionTimeLabel": {
+          "m_FileID": 0,
+          "m_PathID": 2075471719014475377
+        },
+        "CurrentChampion": {
+          "m_FileID": 0,
+          "m_PathID": 2075471722057287441
+        },
+        "CurrentChampNewRecord": {
+          "m_FileID": 0,
+          "m_PathID": 2075471721458082962
+        },
+        "ChampPortrait": {
+          "m_FileID": 0,
+          "m_PathID": 2075471720595924684
+        },
+        "ChampInfo": {
+          "m_FileID": 0,
+          "m_PathID": 2075471718959083153
+        },
+        "FastestTimeRecordContainer": {
+          "m_FileID": 0,
+          "m_PathID": 2075471719545616249
+        },
+        "FastestCompletionTime": {
+          "m_FileID": 0,
+          "m_PathID": 2075471720773194389
+        },
+        "FastestChampion": {
+          "m_FileID": 0,
+          "m_PathID": 2075471719069379059
+        },
+        "HealthScoreGuid": "04e099ce-49ba-475f-95e6-806673696827",
+        "Health": {
+          "m_FileID": 0,
+          "m_PathID": 2075471721469854281
+        },
+        "DynamicValueLabels": [
+          {
+            "ValueType": 4,
+            "Label": {
+              "m_FileID": 0,
+              "m_PathID": 2075471721303391945
+            },
+            "OptionalVisualRoot": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            }
+          },
+          {
+            "ValueType": 21,
+            "Label": {
+              "m_FileID": 0,
+              "m_PathID": 2075471720457644083
+            },
+            "OptionalVisualRoot": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            }
+          },
+          {
+            "ValueType": 18,
+            "Label": {
+              "m_FileID": 0,
+              "m_PathID": 2075471721475235275
+            },
+            "OptionalVisualRoot": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            }
+          },
+          {
+            "ValueType": 2,
+            "Label": {
+              "m_FileID": 0,
+              "m_PathID": 2075471718288324242
+            },
+            "OptionalVisualRoot": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            }
+          },
+          {
+            "ValueType": 1,
+            "Label": {
+              "m_FileID": 0,
+              "m_PathID": 2075471720563161187
+            },
+            "OptionalVisualRoot": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            }
+          }
+        ],
+        "SpeedScoreGuid": "08b64b5b-fc28-401a-b867-85ca7767d43c",
+        "CompletionTier": {
+          "m_FileID": 0,
+          "m_PathID": 2075471722251179936
+        }
+      }
+    }
+  ],
+  "scan_errors": [],
+  "metadata": [
+    {
+      "index": 271,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 4,
+        "method_start": 1262,
+        "name": "CMPRewardCard",
+        "namespace": "",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [
+        {
+          "declaring_type": 271,
+          "name": "Playable"
+        },
+        {
+          "declaring_type": 271,
+          "name": "RewardRenderer"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 271,
+          "name": "Init"
+        },
+        {
+          "declaring_type": 271,
+          "name": "BaconAwake"
+        },
+        {
+          "declaring_type": 271,
+          "name": "OnAnimActivateComplete"
+        },
+        {
+          "declaring_type": 271,
+          "name": ".ctor"
+        }
+      ]
+    },
+    {
+      "index": 272,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 2,
+        "method_start": 1266,
+        "name": "CMPRewardRendererBase",
+        "namespace": "",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [],
+      "methods": [
+        {
+          "declaring_type": 272,
+          "name": "InitializeRewardVisuals"
+        },
+        {
+          "declaring_type": 272,
+          "name": ".ctor"
+        }
+      ]
+    },
+    {
+      "index": 287,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 33,
+        "method_start": 1293,
+        "name": "CMPRunEndOverlayLoader",
+        "namespace": "",
+        "nested_type_count": 3,
+        "nested_type_start": 106
+      },
+      "fields": [
+        {
+          "declaring_type": 287,
+          "name": "HEADER_VICTORY_LOC_KEY"
+        },
+        {
+          "declaring_type": 287,
+          "name": "HEADER_DEFEAT_LOC_KEY"
+        },
+        {
+          "declaring_type": 287,
+          "name": "RewardsOverlaySoftRef"
+        },
+        {
+          "declaring_type": 287,
+          "name": "RewardsChestOverlaySoftRef"
+        },
+        {
+          "declaring_type": 287,
+          "name": "RunSummaryOverlaySoftRef"
+        },
+        {
+          "declaring_type": 287,
+          "name": "QuestRelicOverlaySoftRef"
+        },
+        {
+          "declaring_type": 287,
+          "name": "MailOverlaySoftRef"
+        },
+        {
+          "declaring_type": 287,
+          "name": "BackgroundPlayable"
+        },
+        {
+          "declaring_type": 287,
+          "name": "Banner"
+        },
+        {
+          "declaring_type": 287,
+          "name": "BannerPlayable"
+        },
+        {
+          "declaring_type": 287,
+          "name": "AdventureNameLabel"
+        },
+        {
+          "declaring_type": 287,
+          "name": "VictoryDefeatLabel"
+        },
+        {
+          "declaring_type": 287,
+          "name": "PlayerNameLabel"
+        },
+        {
+          "declaring_type": 287,
+          "name": "LegendLevelLabel"
+        },
+        {
+          "declaring_type": 287,
+          "name": "HealthScoreGuid"
+        },
+        {
+          "declaring_type": 287,
+          "name": "CompletionTier"
+        },
+        {
+          "declaring_type": 287,
+          "name": "AdventureManager"
+        },
+        {
+          "declaring_type": 287,
+          "name": "ModalHost"
+        },
+        {
+          "declaring_type": 287,
+          "name": "ClientLocalizationManager"
+        },
+        {
+          "declaring_type": 287,
+          "name": "DataLoader"
+        },
+        {
+          "declaring_type": 287,
+          "name": "MailManager"
+        },
+        {
+          "declaring_type": 287,
+          "name": "KeybindingsManager"
+        },
+        {
+          "declaring_type": 287,
+          "name": "LayerManager"
+        },
+        {
+          "declaring_type": 287,
+          "name": "AdventureIconLookup"
+        },
+        {
+          "declaring_type": 287,
+          "name": "RewardsOverlayAssetHandle"
+        },
+        {
+          "declaring_type": 287,
+          "name": "RewardsChestOverlayAssetHandle"
+        },
+        {
+          "declaring_type": 287,
+          "name": "RunSummaryOverlayAssetHandle"
+        },
+        {
+          "declaring_type": 287,
+          "name": "QuestRelicOverlayAssetHandle"
+        },
+        {
+          "declaring_type": 287,
+          "name": "MailOverlayAssetHandle"
+        },
+        {
+          "declaring_type": 287,
+          "name": "RewardsOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "RewardsChestOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "RunSummary"
+        },
+        {
+          "declaring_type": 287,
+          "name": "QuestRelicOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "MailRewardsOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "GameName"
+        },
+        {
+          "declaring_type": 287,
+          "name": "MethodQueue"
+        },
+        {
+          "declaring_type": 287,
+          "name": "HasCMPRewardMails"
+        },
+        {
+          "declaring_type": 287,
+          "name": "EnqueuedMailRewardOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "InitialRunEndAsyncEnd"
+        },
+        {
+          "declaring_type": 287,
+          "name": "BannerIsHidden"
+        },
+        {
+          "declaring_type": 287,
+          "name": "LayerHost_Dialog_Transform"
+        },
+        {
+          "declaring_type": 287,
+          "name": "LegendLevelProgress"
+        },
+        {
+          "declaring_type": 287,
+          "name": "MailTypesToClaim"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 287,
+          "name": "BaconDependenciesReady"
+        },
+        {
+          "declaring_type": 287,
+          "name": "OnLevelProgressUpdated"
+        },
+        {
+          "declaring_type": 287,
+          "name": "BaconOnDestroy"
+        },
+        {
+          "declaring_type": 287,
+          "name": "OnRunComplete"
+        },
+        {
+          "declaring_type": 287,
+          "name": "OnRunEndAsync"
+        },
+        {
+          "declaring_type": 287,
+          "name": "EnqueueMailRewardsOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "OnMailCollectionModel"
+        },
+        {
+          "declaring_type": 287,
+          "name": "LoadRunEndOverlays"
+        },
+        {
+          "declaring_type": 287,
+          "name": "CheckIfLootListHasChest"
+        },
+        {
+          "declaring_type": 287,
+          "name": "InstantiateRewardsOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "InstantiateRewardsChestOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "InstantiateQuestRelicOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "InstantiateSummaryOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "InstantiateMailRewardsOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "ShowRewardsOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "ShowRewardsChestOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "ShowQuestRelicOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "ShowMailRewardsOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "FindLayerHostDialog"
+        },
+        {
+          "declaring_type": 287,
+          "name": "ShowBanner"
+        },
+        {
+          "declaring_type": 287,
+          "name": "HideBanner"
+        },
+        {
+          "declaring_type": 287,
+          "name": "SetupBanner"
+        },
+        {
+          "declaring_type": 287,
+          "name": "DisplayAdventureTierScore"
+        },
+        {
+          "declaring_type": 287,
+          "name": "SetupHeaderText"
+        },
+        {
+          "declaring_type": 287,
+          "name": "ShowRunSummary"
+        },
+        {
+          "declaring_type": 287,
+          "name": "ProcessMethodQueue"
+        },
+        {
+          "declaring_type": 287,
+          "name": "CloseRunSummaryDisposable"
+        },
+        {
+          "declaring_type": 287,
+          "name": "CloseRewardsSummary"
+        },
+        {
+          "declaring_type": 287,
+          "name": "CloseRewardsChestOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "CloseQuestRelicOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": "CloseMailRewardsOverlay"
+        },
+        {
+          "declaring_type": 287,
+          "name": ".ctor"
+        },
+        {
+          "declaring_type": 287,
+          "name": "<BaconDependenciesReady>b__43_0"
+        }
+      ]
+    },
+    {
+      "index": 301,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 12,
+        "method_start": 1359,
+        "name": "CMPRunRewardsOverlay",
+        "namespace": "",
+        "nested_type_count": 6,
+        "nested_type_start": 111
+      },
+      "fields": [
+        {
+          "declaring_type": 301,
+          "name": "VisualRootCanvasGroup"
+        },
+        {
+          "declaring_type": 301,
+          "name": "PlayedChampPortrait"
+        },
+        {
+          "declaring_type": 301,
+          "name": "PlayerNameLocalizer"
+        },
+        {
+          "declaring_type": 301,
+          "name": "AdventureNameText"
+        },
+        {
+          "declaring_type": 301,
+          "name": "ContinueButton"
+        },
+        {
+          "declaring_type": 301,
+          "name": "RewardCardLayout"
+        },
+        {
+          "declaring_type": 301,
+          "name": "CMPChampXPCardPrefabPrototype"
+        },
+        {
+          "declaring_type": 301,
+          "name": "CMPChampBonusXPCardPrefabPrototype"
+        },
+        {
+          "declaring_type": 301,
+          "name": "LegendLevelXpRewardCardPrefab"
+        },
+        {
+          "declaring_type": 301,
+          "name": "HealthScoreGuid"
+        },
+        {
+          "declaring_type": 301,
+          "name": "RewardAssets"
+        },
+        {
+          "declaring_type": 301,
+          "name": "Timing"
+        },
+        {
+          "declaring_type": 301,
+          "name": "CompletionTier"
+        },
+        {
+          "declaring_type": 301,
+          "name": "ScreenTransitionPlayable"
+        },
+        {
+          "declaring_type": 301,
+          "name": "AdventureIconLookup"
+        },
+        {
+          "declaring_type": 301,
+          "name": "CardTextManager"
+        },
+        {
+          "declaring_type": 301,
+          "name": "InventoryServiceManager"
+        },
+        {
+          "declaring_type": 301,
+          "name": "RewardsTimelinePlayables"
+        },
+        {
+          "declaring_type": 301,
+          "name": "Exiting"
+        },
+        {
+          "declaring_type": 301,
+          "name": "LegendLevelExpGuid"
+        },
+        {
+          "declaring_type": 301,
+          "name": "ActiveProgressForChapteredLevelCurves"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 301,
+          "name": "BaconDependenciesReady"
+        },
+        {
+          "declaring_type": 301,
+          "name": "OnLevelProgressUpdated"
+        },
+        {
+          "declaring_type": 301,
+          "name": "IsAtMaxLevel"
+        },
+        {
+          "declaring_type": 301,
+          "name": "BaconAwake"
+        },
+        {
+          "declaring_type": 301,
+          "name": "BaconOnDestroy"
+        },
+        {
+          "declaring_type": 301,
+          "name": "Init"
+        },
+        {
+          "declaring_type": 301,
+          "name": "SetupHeaderText"
+        },
+        {
+          "declaring_type": 301,
+          "name": "DisplayAdventureTierScore"
+        },
+        {
+          "declaring_type": 301,
+          "name": "OnAnimActivateComplete"
+        },
+        {
+          "declaring_type": 301,
+          "name": "FinilizeRewardsSequence"
+        },
+        {
+          "declaring_type": 301,
+          "name": "StartRewardsRevealSequence"
+        },
+        {
+          "declaring_type": 301,
+          "name": ".ctor"
+        }
+      ]
+    },
+    {
+      "index": 303,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 18,
+        "method_start": 1383,
+        "name": "CMPRunSummaryOverlay",
+        "namespace": "",
+        "nested_type_count": 1,
+        "nested_type_start": 117
+      },
+      "fields": [
+        {
+          "declaring_type": 303,
+          "name": "HEADER_VICTORY_LOC_KEY"
+        },
+        {
+          "declaring_type": 303,
+          "name": "HEADER_DEFEAT_LOC_KEY"
+        },
+        {
+          "declaring_type": 303,
+          "name": "HEADER_VICTORY_CONTEXT_KEY"
+        },
+        {
+          "declaring_type": 303,
+          "name": "HEADER_PLAYER_CONTEXT_KEY"
+        },
+        {
+          "declaring_type": 303,
+          "name": "PlayedChampPortrait"
+        },
+        {
+          "declaring_type": 303,
+          "name": "PlayedChampLocalizer"
+        },
+        {
+          "declaring_type": 303,
+          "name": "PlayerNameLocalizer"
+        },
+        {
+          "declaring_type": 303,
+          "name": "AdventureNameText"
+        },
+        {
+          "declaring_type": 303,
+          "name": "FeaturedCard"
+        },
+        {
+          "declaring_type": 303,
+          "name": "DynamicValueLabels"
+        },
+        {
+          "declaring_type": 303,
+          "name": "BadgeContainer"
+        },
+        {
+          "declaring_type": 303,
+          "name": "BadgePrefab"
+        },
+        {
+          "declaring_type": 303,
+          "name": "BadgeUnknownPrefab"
+        },
+        {
+          "declaring_type": 303,
+          "name": "ContinueButton"
+        },
+        {
+          "declaring_type": 303,
+          "name": "IntroOutroPlayable"
+        },
+        {
+          "declaring_type": 303,
+          "name": "CompletionStamp"
+        },
+        {
+          "declaring_type": 303,
+          "name": "AdventureManager"
+        },
+        {
+          "declaring_type": 303,
+          "name": "LocalizationManager"
+        },
+        {
+          "declaring_type": 303,
+          "name": "CardPreviewManager"
+        },
+        {
+          "declaring_type": 303,
+          "name": "AdventureIconLookup"
+        },
+        {
+          "declaring_type": 303,
+          "name": "CardStatesByPower"
+        },
+        {
+          "declaring_type": 303,
+          "name": "PlayerName"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 303,
+          "name": "BaconAwake"
+        },
+        {
+          "declaring_type": 303,
+          "name": "BaconDependenciesReady"
+        },
+        {
+          "declaring_type": 303,
+          "name": "BaconOnDestroy"
+        },
+        {
+          "declaring_type": 303,
+          "name": "Init"
+        },
+        {
+          "declaring_type": 303,
+          "name": "OnCloseButtonClicked"
+        },
+        {
+          "declaring_type": 303,
+          "name": "OnAuthStateChanged"
+        },
+        {
+          "declaring_type": 303,
+          "name": "OnRunInitialized"
+        },
+        {
+          "declaring_type": 303,
+          "name": "SetupHeaderText"
+        },
+        {
+          "declaring_type": 303,
+          "name": "SetupFeaturedCard"
+        },
+        {
+          "declaring_type": 303,
+          "name": "SetupPlayedChampion"
+        },
+        {
+          "declaring_type": 303,
+          "name": "SetupBadges"
+        },
+        {
+          "declaring_type": 303,
+          "name": "SetupSeals"
+        },
+        {
+          "declaring_type": 303,
+          "name": "SortCardsByPower"
+        },
+        {
+          "declaring_type": 303,
+          "name": "SubscribeOnFinished"
+        },
+        {
+          "declaring_type": 303,
+          "name": "HandleLeftClick"
+        },
+        {
+          "declaring_type": 303,
+          "name": "HandleRightClick"
+        },
+        {
+          "declaring_type": 303,
+          "name": "HandleLongPress"
+        },
+        {
+          "declaring_type": 303,
+          "name": ".ctor"
+        }
+      ]
+    },
+    {
+      "index": 378,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 20,
+        "method_start": 1744,
+        "name": "CMPEndOfRunSummaryOverlay",
+        "namespace": "",
+        "nested_type_count": 1,
+        "nested_type_start": 147
+      },
+      "fields": [
+        {
+          "declaring_type": 378,
+          "name": "PlayedChampPortrait"
+        },
+        {
+          "declaring_type": 378,
+          "name": "FeaturedCard"
+        },
+        {
+          "declaring_type": 378,
+          "name": "ContinueButton"
+        },
+        {
+          "declaring_type": 378,
+          "name": "CompletionTimeContainer"
+        },
+        {
+          "declaring_type": 378,
+          "name": "CurrentCompletionTime"
+        },
+        {
+          "declaring_type": 378,
+          "name": "CompletionTimeLabel"
+        },
+        {
+          "declaring_type": 378,
+          "name": "CurrentChampion"
+        },
+        {
+          "declaring_type": 378,
+          "name": "CurrentChampNewRecord"
+        },
+        {
+          "declaring_type": 378,
+          "name": "ChampPortrait"
+        },
+        {
+          "declaring_type": 378,
+          "name": "ChampInfo"
+        },
+        {
+          "declaring_type": 378,
+          "name": "FastestTimeRecordContainer"
+        },
+        {
+          "declaring_type": 378,
+          "name": "FastestCompletionTime"
+        },
+        {
+          "declaring_type": 378,
+          "name": "FastestChampion"
+        },
+        {
+          "declaring_type": 378,
+          "name": "HealthScoreGuid"
+        },
+        {
+          "declaring_type": 378,
+          "name": "Health"
+        },
+        {
+          "declaring_type": 378,
+          "name": "DynamicValueLabels"
+        },
+        {
+          "declaring_type": 378,
+          "name": "SpeedScoreGuid"
+        },
+        {
+          "declaring_type": 378,
+          "name": "CompletionTier"
+        },
+        {
+          "declaring_type": 378,
+          "name": "AdventureManager"
+        },
+        {
+          "declaring_type": 378,
+          "name": "AdventureServiceManager"
+        },
+        {
+          "declaring_type": 378,
+          "name": "LocalizationManager"
+        },
+        {
+          "declaring_type": 378,
+          "name": "CardPreviewManager"
+        },
+        {
+          "declaring_type": 378,
+          "name": "AdventureIconLookup"
+        },
+        {
+          "declaring_type": 378,
+          "name": "CardStatesByPower"
+        },
+        {
+          "declaring_type": 378,
+          "name": "PlayerName"
+        },
+        {
+          "declaring_type": 378,
+          "name": "AdventureCampaignSummaries"
+        },
+        {
+          "declaring_type": 378,
+          "name": "PlayerCardMetaProgressionSnapshot"
+        },
+        {
+          "declaring_type": 378,
+          "name": "PlayerConstellationMaps"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 378,
+          "name": "BaconDependenciesReady"
+        },
+        {
+          "declaring_type": 378,
+          "name": "BaconOnDestroy"
+        },
+        {
+          "declaring_type": 378,
+          "name": "Init"
+        },
+        {
+          "declaring_type": 378,
+          "name": "OnCloseButtonClicked"
+        },
+        {
+          "declaring_type": 378,
+          "name": "OnAuthStateChanged"
+        },
+        {
+          "declaring_type": 378,
+          "name": "OnPlayerCardMetaProgressionUpdate"
+        },
+        {
+          "declaring_type": 378,
+          "name": "RefreshUI"
+        },
+        {
+          "declaring_type": 378,
+          "name": "OnPlayerConstellationMapsUpdate"
+        },
+        {
+          "declaring_type": 378,
+          "name": "OnRunInitialized"
+        },
+        {
+          "declaring_type": 378,
+          "name": "SetupTimeScores"
+        },
+        {
+          "declaring_type": 378,
+          "name": "SetupFeaturedCard"
+        },
+        {
+          "declaring_type": 378,
+          "name": "SetupPlayedChampion"
+        },
+        {
+          "declaring_type": 378,
+          "name": "DisplayAdventureTierScore"
+        },
+        {
+          "declaring_type": 378,
+          "name": "SortCardsByPower"
+        },
+        {
+          "declaring_type": 378,
+          "name": "SubscribeOnFinished"
+        },
+        {
+          "declaring_type": 378,
+          "name": "HandleLeftClick"
+        },
+        {
+          "declaring_type": 378,
+          "name": "HandleRightClick"
+        },
+        {
+          "declaring_type": 378,
+          "name": "HandleLongPress"
+        },
+        {
+          "declaring_type": 378,
+          "name": ".ctor"
+        },
+        {
+          "declaring_type": 378,
+          "name": "<BaconDependenciesReady>b__28_0"
+        }
+      ]
+    },
+    {
+      "index": 7285,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 11,
+        "method_start": 37091,
+        "name": "AdventureRun",
+        "namespace": "Adventure.Core",
+        "nested_type_count": 2,
+        "nested_type_start": 1777
+      },
+      "fields": [
+        {
+          "declaring_type": 7285,
+          "name": "Id"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "Map"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "Playable"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "Powers"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "DynamicValues"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "DetachedEncounters"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "FinalScores"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "RewardsDto"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "DisplayableAdventureConfig"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "AdventureConfigGuid"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "CampaignConfigGuid"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "AdventureModularDifficultyEntries"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "CardCodeToState"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 7285,
+          "name": "get_AllCards"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "get_Deck"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "IsBrandNew"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "get_IsFinished"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "get_IsVictory"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "get_IsFailure"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "CreateFromDto"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "RemoveDetachedEncounter"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "GetCardInDeck"
+        },
+        {
+          "declaring_type": 7285,
+          "name": "UpdateCard"
+        },
+        {
+          "declaring_type": 7285,
+          "name": ".ctor"
+        }
+      ]
+    },
+    {
+      "index": 7286,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 1,
+        "method_start": 37107,
+        "name": "AdventureRunDto",
+        "namespace": "Adventure.Core",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [
+        {
+          "declaring_type": 7286,
+          "name": "Id"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "PlayableGdsGuid"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "Deck"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "Powers"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "DynamicValues"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "Map"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "DetachedEncounters"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "FinalScores"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "Rewards"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "AdventureConfigGuid"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "CampaignConfigGuid"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "WeeklyAdventureInfo"
+        },
+        {
+          "declaring_type": 7286,
+          "name": "AdventureModularDifficultyEntries"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 7286,
+          "name": ".ctor"
+        }
+      ]
+    },
+    {
+      "index": 7287,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 1,
+        "method_start": 37108,
+        "name": "AdventureRunRewardsDto",
+        "namespace": "Adventure.Core",
+        "nested_type_count": 0,
+        "nested_type_start": -1
+      },
+      "fields": [
+        {
+          "declaring_type": 7287,
+          "name": "ProcessedLootList"
+        },
+        {
+          "declaring_type": 7287,
+          "name": "CardMasteryChangeList"
+        },
+        {
+          "declaring_type": 7287,
+          "name": "CardMetaProgressionChangeList"
+        },
+        {
+          "declaring_type": 7287,
+          "name": "QuestRelicRewards"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 7287,
+          "name": ".ctor"
+        }
+      ]
+    },
+    {
+      "index": 8486,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 33,
+        "method_start": 42622,
+        "name": "AdventureServiceManager",
+        "namespace": "Client.ServiceManagers",
+        "nested_type_count": 18,
+        "nested_type_start": 2106
+      },
+      "fields": [
+        {
+          "declaring_type": 8486,
+          "name": "ControllerName"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ClientFeatureToggles"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "DataLoader"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ShardConfigManager"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "RgdsDatabase"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "InventoryServiceManager"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ChatManager"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ServiceRequestManager"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "CardMastery"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "Initialized"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "Config"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "<CampaignSummaries>k__BackingField"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "<WeeklyAdventures>k__BackingField"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "LeaderboardSummaries"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "AdventureCampaignSummariesInlet"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "WeeklyAdventuresInlet"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "AdventureLeaderboardSummariesInlet"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ShortRequestPolicyTimeoutSeconds"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "LongRequestPolicyTimeoutSeconds"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "ServiceRequestPolicy"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "LongServiceRequestPolicy"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "MinimumFriendLeaderboardRequestBatchSize"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 8486,
+          "name": "get_CampaignSummaries"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "set_CampaignSummaries"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "get_WeeklyAdventures"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "set_WeeklyAdventures"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "BaconDependenciesReady"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "InitIfReady"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "OnServiceRequestsReady"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "OnPlayerCardMasteryUpdated"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "CreateOrUpdateWeeklyAdventure"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "CreateOrUpdateCampaignSummary"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "FetchAllCampaignSummaries"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "RefreshCampaignSummaries"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "GetMultipleAdventureCampaignSummaries"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "GetAdventureCampaignSummary"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "GetOrCreateAdventureRun"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "DeleteAdventureRunCmp"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "DeleteAdventureRun"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "SurrenderAdventureRun"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "TravelToNode"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "MarkNodeComplete"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "SelectChoice"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "TrySetExpectedPowerGuid"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "SelectChoiceForDetachedEncounter"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "RerollOptionsInChoiceForNode"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "RerollOptionsInChoiceForDetachedEncounter"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "VerifyRunNotFinishedForRequest"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "SkipAdventure"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "CreateLeaderboardEntryData"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "GetFriendLeaderboardEntries"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "GetLeaderboardPage"
+        },
+        {
+          "declaring_type": 8486,
+          "name": ".ctor"
+        },
+        {
+          "declaring_type": 8486,
+          "name": ".cctor"
+        },
+        {
+          "declaring_type": 8486,
+          "name": "<BaconDependenciesReady>b__28_0"
+        }
+      ]
+    },
+    {
+      "index": 9758,
+      "type": {
+        "declaring_type": -1,
+        "method_count": 69,
+        "method_start": 49376,
+        "name": "AdventureManager",
+        "namespace": "Client.Adventure",
+        "nested_type_count": 29,
+        "nested_type_start": 2737
+      },
+      "fields": [
+        {
+          "declaring_type": 9758,
+          "name": "WorldRoot"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "UIRoot"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "AdventureServiceManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "AdventureContractServiceManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "MetaProgressionServiceManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DataLoader"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "RgdsDatabase"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "NavHandler"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SessionManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SceneTransitionHandler"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "MapInputStrategy"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "OnboardingManager"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "RunInitializedEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "MapFocusChangedEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DetachedEncounterUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "NodeTravelEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "MapUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "NodeRevealEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "NodeMadeTraverseableEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DynamicValuesUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DeckUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "PowerUpdateEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "LevelUpEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "ToastEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "RunCompletedEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "AdventureAnimationEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CenterCameraOnPlayerEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentMapFocus>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CurrentAdventureConfigGuid"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CurrentAdventurePlayableGuid"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "ExpectsExistingAdventure"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "ViewAssetHandles"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentDisplayableConfig>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentConfig>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentRun>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<CurrentContractSelections>k__BackingField"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "AnimationInProgress"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "TravelInProgress"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "TravelConfirmedByServer"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "TravelCompletedOnClient"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CurrentPath"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "WeeklyAdventures"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "PendingResultsToProcess"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CurrentResultsItemBeingVisualized"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "LastNodeSelectedId"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<LastChoiceSelectionDto>k__BackingField"
+        }
+      ],
+      "methods": [
+        {
+          "declaring_type": 9758,
+          "name": "get_CurrentMapFocus"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "set_CurrentMapFocus"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "get_CurrentDisplayableConfig"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "set_CurrentDisplayableConfig"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "get_CurrentConfig"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "set_CurrentConfig"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "get_CurrentRun"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "set_CurrentRun"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "get_CurrentContractSelections"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "set_CurrentContractSelections"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "get_CurrentRunChampionGuid"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "get_CurrentAdventureMap"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "get_PublicUIRoot"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "get_CurrentNode"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "get_LastChoiceSelectionDto"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "set_LastChoiceSelectionDto"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "BaconDependenciesReady"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "BaconOnDestroy"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "BaconUpdate"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "LoadNavArguments"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "StartAsyncInit"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "InitAsync"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "InstantiateViewsAsync"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "EndCurrentRun"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "ReturnToWorldMap"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "ReturnToMonthlyAdventures"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "GetCurrentDeckList"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "GetCurrentDeckCode"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "GetDeckCount"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "GetOnMonthlyAdventure"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "GetPowersCountToDisplayToPlayer"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SurrenderRun"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SurrenderRunTask"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "RetireRun"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SelectNode"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "TravelToNode"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "TrySkipClientAnimationForCurrentTravel"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "HandleMapTravelUpdateResult"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CheckTravelComplete"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SkipTravelDueToServerCorrection"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "PathsMatch"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "OnPlayerTokenArrivedAtNode"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "TryUpdateCurrentFocus"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "PlayLevelUpAnimationBeforeChangingFocus"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "ForceClearCurrentFocus"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CacheLastSelectedChoice"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SelectChoice"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SelectChoiceForDetachedEncounter"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "RerollOptionsInChoice"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CreateErrorToastDto"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CheckForAutomaticConditions"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "CheckForMapAnimations"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SendMapIntroAnimationEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SendReturnToInProgressMapEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DoRespawnDialog"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "SendRespawnAnimationEvent"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "HandleBattleCompletionForCurrentNode"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "HandleDetachedEncounters"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "HandleRunLoss"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "QueueUpdatesForHandling"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "QueueUpdatesForHandlingAndForget"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "DoAnimationsForResultsAndThenProcess"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "HandleUpdateResults"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "HandleMapUpdateResult"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "HandleDetachedEncounterResult"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "HandleDeckUpdateResult"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "OnTap"
+        },
+        {
+          "declaring_type": 9758,
+          "name": ".ctor"
+        },
+        {
+          "declaring_type": 9758,
+          "name": "<HandleDetachedEncounters>b__116_1"
+        }
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "method": 1262,
+      "name": "grantable"
+    },
+    {
+      "method": 1262,
+      "name": "count"
+    },
+    {
+      "method": 1262,
+      "name": "progressDelta"
+    },
+    {
+      "method": 1262,
+      "name": "skipPlayable"
+    },
+    {
+      "method": 1266,
+      "name": "lootObject"
+    },
+    {
+      "method": 1266,
+      "name": "count"
+    },
+    {
+      "method": 1266,
+      "name": "progressionDelta"
+    },
+    {
+      "method": 1294,
+      "name": "activeProgressForChapteredLevelCurves"
+    },
+    {
+      "method": 1299,
+      "name": "unreadMailCollectionModel"
+    },
+    {
+      "method": 1302,
+      "name": "prefab"
+    },
+    {
+      "method": 1303,
+      "name": "prefab"
+    },
+    {
+      "method": 1304,
+      "name": "prefab"
+    },
+    {
+      "method": 1305,
+      "name": "prefab"
+    },
+    {
+      "method": 1306,
+      "name": "prefab"
+    },
+    {
+      "method": 1314,
+      "name": "playerName"
+    },
+    {
+      "method": 1314,
+      "name": "adventureConfig"
+    },
+    {
+      "method": 1314,
+      "name": "run"
+    },
+    {
+      "method": 1315,
+      "name": "score"
+    },
+    {
+      "method": 1316,
+      "name": "playerName"
+    },
+    {
+      "method": 1316,
+      "name": "config"
+    },
+    {
+      "method": 1325,
+      "name": "auth"
+    },
+    {
+      "method": 1360,
+      "name": "activeProgressForChapteredLevelCurves"
+    },
+    {
+      "method": 1364,
+      "name": "localizationManager"
+    },
+    {
+      "method": 1364,
+      "name": "dataLoader"
+    },
+    {
+      "method": 1364,
+      "name": "playerName"
+    },
+    {
+      "method": 1364,
+      "name": "adventureConfig"
+    },
+    {
+      "method": 1364,
+      "name": "run"
+    },
+    {
+      "method": 1364,
+      "name": "onContinueClicked"
+    },
+    {
+      "method": 1365,
+      "name": "localizationManager"
+    },
+    {
+      "method": 1365,
+      "name": "playerName"
+    },
+    {
+      "method": 1365,
+      "name": "config"
+    },
+    {
+      "method": 1365,
+      "name": "run"
+    },
+    {
+      "method": 1366,
+      "name": "score"
+    },
+    {
+      "method": 1368,
+      "name": "clickCallback"
+    },
+    {
+      "method": 1369,
+      "name": "rewardsDto"
+    },
+    {
+      "method": 1369,
+      "name": "dataLoader"
+    },
+    {
+      "method": 1369,
+      "name": "onContinueClicked"
+    },
+    {
+      "method": 1386,
+      "name": "onFinished"
+    },
+    {
+      "method": 1388,
+      "name": "authState"
+    },
+    {
+      "method": 1390,
+      "name": "localizationManager"
+    },
+    {
+      "method": 1390,
+      "name": "playerName"
+    },
+    {
+      "method": 1390,
+      "name": "config"
+    },
+    {
+      "method": 1390,
+      "name": "run"
+    },
+    {
+      "method": 1394,
+      "name": "config"
+    },
+    {
+      "method": 1394,
+      "name": "run"
+    },
+    {
+      "method": 1395,
+      "name": "cardA"
+    },
+    {
+      "method": 1395,
+      "name": "cardB"
+    },
+    {
+      "method": 1396,
+      "name": "onFinish"
+    },
+    {
+      "method": 1397,
+      "name": "cardState"
+    },
+    {
+      "method": 1398,
+      "name": "cardState"
+    },
+    {
+      "method": 1399,
+      "name": "cardState"
+    },
+    {
+      "method": 1746,
+      "name": "onFinished"
+    },
+    {
+      "method": 1748,
+      "name": "authState"
+    },
+    {
+      "method": 1749,
+      "name": "metaProgression"
+    },
+    {
+      "method": 1751,
+      "name": "constellationMaps"
+    },
+    {
+      "method": 1753,
+      "name": "adventureConfig"
+    },
+    {
+      "method": 1753,
+      "name": "run"
+    },
+    {
+      "method": 1756,
+      "name": "score"
+    },
+    {
+      "method": 1757,
+      "name": "cardA"
+    },
+    {
+      "method": 1757,
+      "name": "cardB"
+    },
+    {
+      "method": 1758,
+      "name": "onFinish"
+    },
+    {
+      "method": 1759,
+      "name": "cardState"
+    },
+    {
+      "method": 1760,
+      "name": "cardState"
+    },
+    {
+      "method": 1761,
+      "name": "cardState"
+    },
+    {
+      "method": 1763,
+      "name": "summaries"
+    },
+    {
+      "method": 37097,
+      "name": "dto"
+    },
+    {
+      "method": 37097,
+      "name": "dataLoader"
+    },
+    {
+      "method": 37097,
+      "name": "rgdsDatabase"
+    },
+    {
+      "method": 37098,
+      "name": "adventureEncounterDto"
+    },
+    {
+      "method": 37099,
+      "name": "cardCode"
+    },
+    {
+      "method": 37100,
+      "name": "cardDto"
+    },
+    {
+      "method": 37100,
+      "name": "rgdsDatabase"
+    },
+    {
+      "method": 42623,
+      "name": "value"
+    },
+    {
+      "method": 42625,
+      "name": "value"
+    },
+    {
+      "method": 42629,
+      "name": "playerCardMastery"
+    },
+    {
+      "method": 42630,
+      "name": "dto"
+    },
+    {
+      "method": 42630,
+      "name": "updateInlet"
+    },
+    {
+      "method": 42631,
+      "name": "dto"
+    },
+    {
+      "method": 42631,
+      "name": "updateInlet"
+    },
+    {
+      "method": 42634,
+      "name": "adventureCampaignSummaries"
+    },
+    {
+      "method": 42635,
+      "name": "adventureCampaignSummary"
+    },
+    {
+      "method": 42636,
+      "name": "adventureConfigGdsGuid"
+    },
+    {
+      "method": 42636,
+      "name": "playableEntityGdsGuid"
+    },
+    {
+      "method": 42636,
+      "name": "currentContractSelections"
+    },
+    {
+      "method": 42636,
+      "name": "expectsAdventure"
+    },
+    {
+      "method": 42636,
+      "name": "forceRefresh"
+    },
+    {
+      "method": 42637,
+      "name": "playableEntity"
+    },
+    {
+      "method": 42637,
+      "name": "config"
+    },
+    {
+      "method": 42638,
+      "name": "run"
+    },
+    {
+      "method": 42639,
+      "name": "config"
+    },
+    {
+      "method": 42639,
+      "name": "playableEntity"
+    },
+    {
+      "method": 42640,
+      "name": "run"
+    },
+    {
+      "method": 42640,
+      "name": "node"
+    },
+    {
+      "method": 42641,
+      "name": "run"
+    },
+    {
+      "method": 42641,
+      "name": "nodeId"
+    },
+    {
+      "method": 42642,
+      "name": "run"
+    },
+    {
+      "method": 42642,
+      "name": "node"
+    },
+    {
+      "method": 42642,
+      "name": "choiceSelectionDto"
+    },
+    {
+      "method": 42643,
+      "name": "encounter"
+    },
+    {
+      "method": 42643,
+      "name": "choiceSelectionDto"
+    },
+    {
+      "method": 42644,
+      "name": "run"
+    },
+    {
+      "method": 42644,
+      "name": "encounter"
+    },
+    {
+      "method": 42644,
+      "name": "choiceSelectionDto"
+    },
+    {
+      "method": 42645,
+      "name": "run"
+    },
+    {
+      "method": 42645,
+      "name": "node"
+    },
+    {
+      "method": 42645,
+      "name": "choiceIndex"
+    },
+    {
+      "method": 42646,
+      "name": "run"
+    },
+    {
+      "method": 42646,
+      "name": "encounter"
+    },
+    {
+      "method": 42646,
+      "name": "choiceIndex"
+    },
+    {
+      "method": 42647,
+      "name": "run"
+    },
+    {
+      "method": 42648,
+      "name": "campaignId"
+    },
+    {
+      "method": 42648,
+      "name": "adventureId"
+    },
+    {
+      "method": 42648,
+      "name": "playableId"
+    },
+    {
+      "method": 42648,
+      "name": "levelUpPlayable"
+    },
+    {
+      "method": 42649,
+      "name": "dto"
+    },
+    {
+      "method": 42649,
+      "name": "isFriend"
+    },
+    {
+      "method": 42650,
+      "name": "queueName"
+    },
+    {
+      "method": 42651,
+      "name": "queueName"
+    },
+    {
+      "method": 42651,
+      "name": "startRank"
+    },
+    {
+      "method": 49377,
+      "name": "value"
+    },
+    {
+      "method": 49379,
+      "name": "value"
+    },
+    {
+      "method": 49381,
+      "name": "value"
+    },
+    {
+      "method": 49383,
+      "name": "value"
+    },
+    {
+      "method": 49385,
+      "name": "value"
+    },
+    {
+      "method": 49391,
+      "name": "value"
+    },
+    {
+      "method": 49398,
+      "name": "adventureConfig"
+    },
+    {
+      "method": 49410,
+      "name": "node"
+    },
+    {
+      "method": 49411,
+      "name": "node"
+    },
+    {
+      "method": 49413,
+      "name": "travelResult"
+    },
+    {
+      "method": 49415,
+      "name": "skipToNodeId"
+    },
+    {
+      "method": 49416,
+      "name": "nodePath"
+    },
+    {
+      "method": 49416,
+      "name": "idPath"
+    },
+    {
+      "method": 49417,
+      "name": "node"
+    },
+    {
+      "method": 49418,
+      "name": "node"
+    },
+    {
+      "method": 49418,
+      "name": "encounter"
+    },
+    {
+      "method": 49418,
+      "name": "force"
+    },
+    {
+      "method": 49419,
+      "name": "newFocus"
+    },
+    {
+      "method": 49421,
+      "name": "choiceSelectionDto"
+    },
+    {
+      "method": 49422,
+      "name": "node"
+    },
+    {
+      "method": 49422,
+      "name": "choiceSelectionDto"
+    },
+    {
+      "method": 49423,
+      "name": "encounter"
+    },
+    {
+      "method": 49423,
+      "name": "choiceSelectionDto"
+    },
+    {
+      "method": 49424,
+      "name": "focusToReroll"
+    },
+    {
+      "method": 49424,
+      "name": "choiceIndex"
+    },
+    {
+      "method": 49425,
+      "name": "locKey"
+    },
+    {
+      "method": 49426,
+      "name": "firstCheckOfSession"
+    },
+    {
+      "method": 49427,
+      "name": "firstCheckOfSession"
+    },
+    {
+      "method": 49435,
+      "name": "updateResultDtos"
+    },
+    {
+      "method": 49436,
+      "name": "updateResultDtos"
+    },
+    {
+      "method": 49437,
+      "name": "item"
+    },
+    {
+      "method": 49438,
+      "name": "item"
+    },
+    {
+      "method": 49439,
+      "name": "mapUpdateDto"
+    },
+    {
+      "method": 49440,
+      "name": "detachedEncounterResultDto"
+    },
+    {
+      "method": 49441,
+      "name": "deckUpdateResultDto"
+    }
+  ],
+  "signature_limits": {
+    "field_types_available": false,
+    "parameter_types_available": false,
+    "return_types_available": false
+  }
+}

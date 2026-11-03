@@ -1,0 +1,748 @@
+[
+  {
+    "type": "DeckRules",
+    "offset": 4172937,
+    "values": {
+      "DeckMustBeNull": true,
+      "EnforceCardRules": false,
+      "EnforceOwnershipRules": false,
+      "format": 1778927797,
+      "GdsGuid": "2834598a-e68c-4e01-9171-e3c1cf2c892f"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 4179406,
+    "values": {
+      "DeckMustBeNull": true,
+      "EnforceCardRules": false,
+      "EnforceOwnershipRules": false,
+      "format": 1778927797,
+      "GdsGuid": "53c7afb5-f1d7-4768-9e53-d390ddbb8951"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11395260,
+    "values": {
+      "DeckMustBeNull": true,
+      "EnforceCardRules": false,
+      "EnforceOwnershipRules": false,
+      "format": 1778927797,
+      "GdsGuid": "89bb6fbc-18eb-4cda-a3d0-b8ae4bac45fb"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11395806,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "339397e3-3e12-4208-aabe-873f78088ab8"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11395868,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "db26e29a-0074-4173-8d2f-1cba54e82ea9"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11395994,
+    "values": {
+      "DeckMustBeNull": true,
+      "format": 1778927797,
+      "GdsGuid": "6971092c-e85c-4b5f-9972-c2ecb5642e28"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11397820,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "06e679b3-0026-4595-86a4-7fc6f28b2a98"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11402059,
+    "values": {
+      "AllowQuickplayDeck": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 6,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "03000000030000000300000002000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "101b2b0e-ad1a-4cef-99cc-4a673ab9734c"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11402198,
+    "values": {
+      "DeckMustBeNull": true,
+      "format": 1778927797,
+      "GdsGuid": "de4d6cac-a3c9-4e40-af94-d26a9497507f"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11403605,
+    "values": {
+      "DeckMustBeNull": true,
+      "format": 1778927797,
+      "GdsGuid": "33614f86-4e0b-4193-9704-b92951031fa9"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11406758,
+    "values": {
+      "DeckMustBeNull": true,
+      "format": 1778927797,
+      "GdsGuid": "e2e3a337-2085-4705-8bc6-4d6e90d9ba57"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11406869,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "59fd5a26-b11d-4293-9ac5-377df154292b"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11408342,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "0945d8bd-57ca-4e43-a0f6-15c14aa00173"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11411770,
+    "values": {
+      "AllowQuickplayDeck": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 6,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "03000000030000000300000002000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "99e1808e-1c76-4806-8cbd-c797f072567c"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11413520,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "ee6bc6e9-a502-4901-a2a4-7ea960ff209b"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11413582,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "67c83985-d342-43f9-aed5-134b92ce89b7"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11415255,
+    "values": {
+      "AllowQuickplayDeck": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 1,
+      "MaximumChampions": 1,
+      "MinimumChampions": 1,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "020000000100000001000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "74f015e7-26e8-40ba-82f3-148e523b4292"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11416636,
+    "values": {
+      "DeckMustBeNull": true,
+      "format": 1778927797,
+      "GdsGuid": "9521a420-d9a6-49a4-91d0-8ffb0be48a60"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "AddManaPhaseConfig",
+    "offset": 11416766,
+    "values": {
+      "AddToMana": 4,
+      "AddToMax": 0,
+      "StartingMana": 4,
+      "StartingSpellMana": 3,
+      "MaxMana": 10,
+      "GdsGuid": "53e80d90-c898-44fb-bf56-9f11c4042637"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11416864,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "d0f470e1-a44a-4037-844a-be49a2596762"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11416926,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "386d4c25-5d1c-4b05-8ea4-d3cbcc32a688"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11418353,
+    "values": {
+      "EnforceCardRules": false,
+      "EnforceOwnershipRules": false,
+      "format": 1778927797,
+      "GdsGuid": "97a44897-74b3-4181-ae5b-4afcc8a4d671"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11420944,
+    "values": {
+      "DeckMustBeNull": true,
+      "format": 1778927797,
+      "GdsGuid": "ef809b6a-14cd-4624-adea-0f7a35979262"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11421012,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "7e34c749-ab40-4cb1-b400-53100d496504"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11422177,
+    "values": {
+      "DeckMustBeNull": true,
+      "format": 1778927797,
+      "GdsGuid": "bb1405ab-cc6b-4232-8526-4c91e9fdb790"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11422245,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "50a0f16f-212f-4c06-92d8-94fee287d06e"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11423770,
+    "values": {
+      "AllowQuickplayDeck": true,
+      "AllowMultiFactionCards": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 6,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "03000000030000000300000002000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "ea9d73fd-aa2b-4fe8-8b0f-3e1f36771c62"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11423915,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "c07df5af-0d1c-4214-ac37-4f8719dda8a9"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11423977,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "ec2decc2-41b8-4ded-9289-ffbaba369ce3"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11424039,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "b7e1be1f-4b78-4e12-8e81-85d8d2f26ae7"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 11424101,
+    "values": {
+      "format": 1778927797,
+      "GdsGuid": "3effa1f2-2b7a-4afa-9ae4-c932a5cd072f"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "MulliganPhaseConfig",
+    "offset": 13021313,
+    "values": {
+      "UNPARSED_TYPE": 134
+    },
+    "fully_consumed": false
+  },
+  {
+    "type": "AddManaPhaseConfig",
+    "offset": 13021723,
+    "values": {
+      "MaxMana": 10,
+      "GdsGuid": "16b12268-1f5b-41f7-bdc6-f431259bed92"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "RegionConfig",
+    "offset": 13022167,
+    "values": {
+      "Regions": {
+        "container_type": 132,
+        "raw": "1d000000113773c6c2ba8be2d87765caa290b21d547a62fa0facaa56489666b0ead7e7801ca89cc06eed70eca3ebf7808bca836079fa5711555fdd5bbf7e365690b7c5966fb6a5fbff4e1e5d6b6cfe192340d610c0753400a63bfc2c149a68c5fe26208cb4a12edda1fc48cdbc1734ace631b2d4ad2c5856"
+      }
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "MulliganPhaseConfig",
+    "offset": 13022657,
+    "values": {
+      "UNPARSED_TYPE": 134
+    },
+    "fully_consumed": false
+  },
+  {
+    "type": "MulliganPhaseConfig",
+    "offset": 13023043,
+    "values": {
+      "UNPARSED_TYPE": 134
+    },
+    "fully_consumed": false
+  },
+  {
+    "type": "RegionConfig",
+    "offset": 13023264,
+    "values": {
+      "AllowSharedRegions": true,
+      "Regions": {
+        "container_type": 132,
+        "raw": "27000000113773c64b34f60939c6b004a290b21d547a62fa0facaa562f5a9d9dbf017c7447417a54e300e04580d3bb57cf9df1994563f27c555fdd5bbf7e365690b7c596eb4cd39573d29cca6b6cfe197f896f0d4cef2841a63bfc2c149a68c5fe26208cb4a12edda1fc48cdbc1734ac5cfeb2e672ed6e6a0de0d641a6b10a4f37f8bd761532d7ecbebb97689d3d89fee631b2d4ad2c5856ec17f95d2b588c3d"
+      }
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "AddManaPhaseConfig",
+    "offset": 13023599,
+    "values": {
+      "AddToMana": 3,
+      "AddToMax": 0,
+      "StartingMana": 3,
+      "StartingSpellMana": 3,
+      "MaxMana": 10,
+      "GdsGuid": "7aad7428-e7a5-40f8-9eef-c9b5e72ff4a5"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "MulliganPhaseConfig",
+    "offset": 13024109,
+    "values": {
+      "UNPARSED_TYPE": 134
+    },
+    "fully_consumed": false
+  },
+  {
+    "type": "AddManaPhaseConfig",
+    "offset": 13024313,
+    "values": {
+      "GdsGuid": "078cb69c-f9d2-4610-81a8-65d6c97a0e7b"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "MulliganPhaseConfig",
+    "offset": 13024453,
+    "values": {
+      "UNPARSED_TYPE": 134
+    },
+    "fully_consumed": false
+  },
+  {
+    "type": "MulliganPhaseConfig",
+    "offset": 13024818,
+    "values": {
+      "UNPARSED_TYPE": 134
+    },
+    "fully_consumed": false
+  },
+  {
+    "type": "MulliganPhaseConfig",
+    "offset": 13024920,
+    "values": {
+      "UNPARSED_TYPE": 134
+    },
+    "fully_consumed": false
+  },
+  {
+    "type": "MulliganPhaseConfig",
+    "offset": 13025294,
+    "values": {
+      "UNPARSED_TYPE": 134
+    },
+    "fully_consumed": false
+  },
+  {
+    "type": "AddManaPhaseConfig",
+    "offset": 13025489,
+    "values": {
+      "AddToMana": 0,
+      "AddToMax": 0,
+      "StartingMana": 4,
+      "MaxMana": 10,
+      "GdsGuid": "320cc52c-a978-4195-a5b1-dc56ccfd79ac"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "AddManaPhaseConfig",
+    "offset": 13026168,
+    "values": {
+      "StartingMana": 3,
+      "MaxMana": 10,
+      "GdsGuid": "d28944d8-54f7-418c-ba1d-934b39d3acc7"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "RegionConfig",
+    "offset": 13026629,
+    "values": {
+      "AllowSharedRegions": true,
+      "Regions": {
+        "container_type": 132,
+        "raw": "22000000113773c64b34f60939c6b004a290b21d547a62fa0facaa562f5a9d9dbf017c7447417a54e300e04580d3bb578bca836079fa5711555fdd5bbf7e365690b7c5966fb6a5fbff4e1e5d6b6cfe192340d610c0753400a63bfc2c149a68c5fe26208cb4a12edda1fc48cdbc1734ac5cfeb2e672ed6e6a0de0d641a6b10a4fe631b2d4ad2c5856ec17f95d"
+      }
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "MulliganPhaseConfig",
+    "offset": 13026795,
+    "values": {
+      "UNPARSED_TYPE": 134
+    },
+    "fully_consumed": false
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14034028,
+    "values": {
+      "NameLocKey": "client_Deckbuilder_RulesFilters_FreeBuild",
+      "NameUppercaseLocKey": "client_Deckbuilder_RulesFilters_FreeBuild_Name_UpperCase",
+      "DescriptionLocKey": "client_Deckbuilder_RulesFilters_FreeBuild_Description",
+      "AllowMultiFactionCards": true,
+      "ShowInDeckCollectionRulesFilter": true,
+      "MaxCards": 100,
+      "MinCards": 10,
+      "MaxCopies": 3,
+      "MaximumChampions": 20,
+      "MaxFactions": 100,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "6400000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "58cd706e-9efb-4fbd-b9a0-ff3c0dc9a31c"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14034732,
+    "values": {
+      "NameLocKey": "client_Deckbuilder_RulesFilters_NormalRules",
+      "NameUppercaseLocKey": "client_Deckbuilder_RulesFilters_NormalRules_UpperCase",
+      "DescriptionLocKey": "client_Deckbuilder_RulesFilters_NormalDescription",
+      "AllowMultiFactionCards": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 6,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "0b0000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000"
+      },
+      "format": 1397410809,
+      "GdsGuid": "f95f3a06-1f8e-4ae7-b386-319df5a48214"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14035069,
+    "values": {
+      "NameLocKey": "client_Deckbuilder_RulesFilters_ChampsUnlimited_Name",
+      "NameUppercaseLocKey": "client_Deckbuilder_RulesFilters_ChampsUnlimited_Name_Uppercase",
+      "DescriptionLocKey": "client_Deckbuilder_RulesFilters_ChampsUnlimited_Description",
+      "AllowMultiFactionCards": true,
+      "ShowInDeckCollectionRulesFilter": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 40,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "0b0000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "5dbc9d8a-2efc-4c8f-9785-c65dad3137ac"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14035493,
+    "values": {
+      "NameLocKey": "client_Formats_EvenCostCards_name",
+      "NameUppercaseLocKey": "client_Formats_EvenCostCards_name_upper",
+      "DescriptionLocKey": "client_Formats_EvenCostCards_description",
+      "AllowMultiFactionCards": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 40,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "0b0000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000"
+      },
+      "format": 2879258372,
+      "GdsGuid": "b0838b84-24a4-42a1-9683-8ca179c09322"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14035797,
+    "values": {
+      "NameLocKey": "client_Deckbuilder_RulesFilters_RisingTides",
+      "NameUppercaseLocKey": "client_Deckbuilder_RulesFilters_UpperCase_RisingTides",
+      "DescriptionLocKey": "client_Deckbuilder_RulesFilters_RisingTidesDescription",
+      "AllowMultiFactionCards": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 6,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "0b0000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "59bf8b1e-19f0-42de-9404-33bb64e7dff7"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14036139,
+    "values": {
+      "NameLocKey": "client_Deckbuilder_RulesFilters_Singleton",
+      "NameUppercaseLocKey": "client_MainMenu_QueueName_Singleton",
+      "DescriptionLocKey": "client_Deckbuilder_RulesFilters_SingletonDescription",
+      "AllowMultiFactionCards": true,
+      "ShowInDeckCollectionRulesFilter": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 1,
+      "MaximumChampions": 6,
+      "MaxFactions": 3,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "03000000010000000100000001000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "510140f9-e6f6-47db-8ab4-d8f489a41373"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14036433,
+    "values": {
+      "EnforceCardRules": false,
+      "EnforceOwnershipRules": false,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 20,
+      "MaximumChampions": 9,
+      "MaxFactions": 3,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "03000000140000001400000014000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "b59a2714-3fc3-4dc5-99d5-9da540cdf5d2"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14036578,
+    "values": {
+      "NameLocKey": "client_Formats_CommonsOnly_name",
+      "NameUppercaseLocKey": "client_Formats_CommonsOnly_name_upper",
+      "DescriptionLocKey": "client_Formats_CommonsOnly_description",
+      "AllowMultiFactionCards": true,
+      "ShowInDeckCollectionRulesFilter": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 4,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "0b0000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000"
+      },
+      "format": 1878828356,
+      "GdsGuid": "25b83cd0-d659-42a2-9a1a-b72a810e1f45"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14036882,
+    "values": {
+      "NameLocKey": "client_Deckbuilder_RulesFilters_STANDARD_30HEALTH_Name",
+      "NameUppercaseLocKey": "client_Deckbuilder_RulesFilters_STANDARD_30HEALTH_UpperCase",
+      "DescriptionLocKey": "client_Deckbuilder_RulesFilters_STANDARD_30HEALTH_Description",
+      "AllowMultiFactionCards": true,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 6,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "0a00000003000000030000000300000003000000030000000300000003000000030000000300000003000000"
+      },
+      "format": 1397410809,
+      "GdsGuid": "cde99e51-8342-4f9e-bbb6-0dbfc9fa483a"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14037244,
+    "values": {
+      "EnforceCardRules": false,
+      "EnforceOwnershipRules": false,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 6,
+      "MaxFactions": 3,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "03000000030000000300000002000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "99054d33-8a86-4202-ae11-eb682c83f3f7"
+    },
+    "fully_consumed": true
+  },
+  {
+    "type": "DeckRules",
+    "offset": 14037389,
+    "values": {
+      "NameLocKey": "client_Deckbuilder_RulesFilters_EternalRules",
+      "NameUppercaseLocKey": "client_Deckbuilder_RulesFilters_Eternal_UpperCase",
+      "DescriptionLocKey": "client_Deckbuilder_RulesFilters_EternalDescription",
+      "AllowMultiFactionCards": true,
+      "ShowInDeckCollectionRulesFilter": true,
+      "FilterUIPosition": 1,
+      "MaxCards": 40,
+      "MinCards": 40,
+      "MaxCopies": 3,
+      "MaximumChampions": 6,
+      "MaxFactions": 2,
+      "FactionMaxCardCounts": {
+        "container_type": 6,
+        "raw": "0b0000000300000003000000030000000300000003000000030000000300000003000000030000000300000003000000"
+      },
+      "format": 1778927797,
+      "GdsGuid": "2788a0a9-f6a1-425c-83e4-2afac9986a46"
+    },
+    "fully_consumed": true
+  }
+]

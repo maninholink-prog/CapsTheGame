@@ -1,0 +1,362 @@
+RESUMO PARA O CODEX DO COMPUTADOR PRINCIPAL
+Registro da conversa em 29/10/2026
+
+Leia também o arquivo 02-Continuidade-CAPS-e-videos.txt. Ele esclarece que
+este trabalho é a continuidade do projeto CAPS e uma mudança da referência
+de gameplay, anteriormente baseada em Slay the Spire.
+
+OBJETIVO
+
+Desenvolver um jogo próprio de cartas single player, inspirado no combate de
+Legends of Runeterra e na estrutura roguelite do Caminho dos Campeões.
+
+Preferências do usuário:
+- Unidades que permanecem na mesa.
+- Ataque, bloqueio, mana e respostas às ações.
+- Jornada com encontros, recompensas, poderes e melhorias no deck.
+- Começar pequeno, sem buscar o nível de produção da Riot.
+
+Estamos usando engenharia reversa para estudar a instalação local do LoR
+e orientar uma implementação própria. Nenhum arquivo original do jogo foi
+alterado. Não foram feitas alterações de memória, injeções ou intervenções
+na conta.
+
+O computador principal pode estar sem ferramentas. Verifique o que já
+existe antes de instalar. Não reutilize cegamente os caminhos do outro PC.
+
+============================================================
+1. FERRAMENTAS INSTALADAS E TESTADAS NO OUTRO COMPUTADOR
+============================================================
+
+REA — Reverse Engineer Anything
+Repositório oficial: https://github.com/morluto/rea
+Pacote oficial: rea-agents
+Versão instalada e testada: 6.8.0
+Fornece ferramentas de análise e uma conexão MCP com o Codex.
+Também foram instaladas as instruções de investigação fornecidas pelo REA.
+
+Ghidra
+Projeto oficial: https://github.com/NationalSecurityAgency/ghidra
+Versão instalada e testada: 12.1.4
+Essa versão foi escolhida por ser compatível com o REA instalado.
+Não atualizar automaticamente sem conferir a compatibilidade.
+
+Java
+Eclipse Temurin JDK 21.0.13+9, Windows x64.
+É o JDK completo, não apenas o JRE.
+Foi extraído numa pasta de ferramentas, sem alterar o Java dos outros programas.
+
+Node.js
+Usamos o Node 24.22.1 que já vinha no ambiente do Codex.
+No computador novo, verificar Node compatível e npm.
+Se necessário, instalar uma distribuição oficial: https://nodejs.org/
+O pacote REA 6.8.0 declara as versões compatíveis:
+^22.23.4 || ^24.22.1 || >=26.12.1
+
+GITHUB E GIT
+Não instalamos um programa chamado "GitHub" nem clonamos o repositório.
+GitHub foi a fonte dos projetos e dos arquivos oficiais.
+Git não é necessário para instalar pelo pacote rea-agents.
+
+============================================================
+2. PREPARAÇÃO DO COMPUTADOR PRINCIPAL — WINDOWS
+============================================================
+
+Antes de começar, instalar/abrir o aplicativo Codex e entrar na conta.
+Escolher uma pasta permanente, por exemplo:
+C:\Users\<usuario>\Documents\LoRResearch\tools
+
+IMPORTANTE: substituir <usuario> e os caminhos abaixo pelos caminhos reais.
+
+A) Verificar Node e npm no PowerShell:
+
+node --version
+npm.cmd --version
+
+Usar npm.cmd e npx.cmd no Windows pode evitar problemas de execução dos
+atalhos PowerShell.
+
+B) Baixar e extrair o Ghidra oficial:
+
+https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.4_build/ghidra_12.1.4_PUBLIC_20260921.zip
+
+SHA-256 esperado:
+ddac49f903da9d5bac833e5cc79395098b9c33cfd3279be5f31bd00387d2d4db
+
+A pasta extraída deve conter:
+ghidra_12.1.4_PUBLIC\Ghidra\application.properties
+ghidra_12.1.4_PUBLIC\support\analyzeHeadless.bat
+
+C) Baixar e extrair o Java oficial:
+
+https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_x64_windows_hotspot_21.0.13_9.zip
+
+SHA-256 esperado:
+a4dbaa05fca4bd89d84584e58c459bd732efebb1722af80ab13c6516832004f9
+
+A pasta extraída se chama:
+jdk-21.0.13+9
+
+Verificar cada download com:
+Get-FileHash -LiteralPath "<caminho-do-arquivo.zip>" -Algorithm SHA256
+
+Os dois downloads somam aproximadamente 775 MB.
+No outro PC houve lentidão e quedas de conexão. Concluímos os downloads em
+partes e verificamos os hashes completos antes de extrair. Com internet
+melhor, preferir o download direto normal; não repetir a complexidade sem
+necessidade.
+
+D) Configurar os caminhos na sessão do PowerShell:
+
+$env:GHIDRA_INSTALL_DIR = "C:\Users\<usuario>\Documents\LoRResearch\tools\ghidra_12.1.4_PUBLIC"
+$env:JAVA_HOME = "C:\Users\<usuario>\Documents\LoRResearch\tools\jdk-21.0.13+9"
+
+Verificar o Java:
+& "$env:JAVA_HOME\bin\java.exe" -version
+& "$env:JAVA_HOME\bin\javac.exe" -version
+
+Essas atribuições são da sessão atual. O setup do REA deve registrar os
+caminhos verificados na configuração do agente.
+
+E) Configurar o REA para o Codex:
+
+Primeiro visualizar o plano:
+npx.cmd -y rea-agents@6.8.0 setup --client codex --dry-run --json
+
+Conferir os caminhos e aplicar:
+npx.cmd -y rea-agents@6.8.0 setup --client codex --yes --json
+
+O setup registra o MCP do REA no Codex, instala suas instruções, preserva
+configurações não relacionadas e cria backups. Pode registrar os caminhos
+verificados de Ghidra e Java.
+
+Não é necessário configurar Claude, Cursor ou outros agentes.
+Esse método por npx pode baixar o pacote e mantê-lo no cache; não instala
+necessariamente um comando "rea" global. Continue usando a versão fixada.
+
+F) Validar:
+
+npx.cmd -y rea-agents@6.8.0 doctor --provider ghidra --json
+npx.cmd -y rea-agents@6.8.0 doctor --client codex --json
+
+Teste básico de inicialização:
+& "$env:GHIDRA_INSTALL_DIR\support\analyzeHeadless.bat"
+
+Sem argumentos, ele deve mostrar "Headless Analyzer Usage".
+Isso testa a inicialização, não a análise completa de um jogo.
+
+Reiniciar o Codex depois da configuração. Confirmar que as ferramentas do
+REA aparecem e consultar binary_session para verificar o Ghidra disponível.
+Instalar apenas a skill não significa que o MCP esteja conectado.
+
+Instalações locais não são copiadas automaticamente para outro computador
+só porque ele usa o mesmo login ou domínio.
+
+============================================================
+3. O QUE FOI VALIDADO NO OUTRO COMPUTADOR
+============================================================
+
+- REA 6.8.0 instalado e respondendo pelo MCP.
+- Ghidra 12.1.4 instalado.
+- Java e javac 21.0.13 funcionando.
+- Inicialização do Ghidra funcionando.
+- Diagnóstico do REA reconhecendo Ghidra como disponível.
+- Configuração do Codex atualizada com backup.
+
+============================================================
+4. INSTALAÇÃO DO LOR E IDENTIDADE DOS ARQUIVOS
+============================================================
+
+No outro PC, o jogo estava em:
+C:\Riot Games\LoR
+
+Arquivos principais:
+C:\Riot Games\LoR\live\Game\GameAssembly.dll
+C:\Riot Games\LoR\live\Game\LoR_Data\il2cpp_data\Metadata\global-metadata.dat
+
+É uma instalação Unity IL2CPP.
+
+GameAssembly.dll
+Tamanho: 56.072.928 bytes
+SHA-256:
+93673081f7c74805d1d2ffdd45bac8c101d1b7c56e007e852ccee1edc5edea9f
+
+global-metadata.dat
+Tamanho: 14.603.296 bytes
+Versão dos metadados: 31
+SHA-256:
+ff241d8b71d2b008d9ba9af2e3ee7805e9f7a37f808ce871e9d286981cba1dcd
+
+Uma atualização do jogo pode mudar hashes e índices. Verificar novamente.
+
+============================================================
+5. RESULTADOS CONFIRMADOS DA INSPEÇÃO
+============================================================
+
+O REA leu os metadados:
+- 74 módulos/assemblies.
+- 19.267 tipos.
+- 107.315 métodos declarados.
+
+Isso NÃO significa código recuperado para esses métodos. Obtivemos nomes,
+campos, agrupamentos e outras declarações.
+
+Criamos um catálogo selecionado com 1.922 tipos relevantes e 6.135 métodos
+declarados, além dos campos e propriedades associados.
+
+COMBATE
+
+Shared.Game.BaseGameState:
+Estado da partida, rodadas, turnos, prioridade, pilha, regiões, eventos,
+combate, alvos e vitória.
+
+BaconData.Game.CardData:
+Definição da carta, incluindo custo, ataque, vida, tipo e palavras-chave.
+
+Shared.Cards.CardState:
+Estado da carta durante a partida: dano, efeitos, alvos, ações disponíveis,
+ataque e bloqueio.
+
+Ações declaradas:
+ActionPlaySpell, ActionSummonCard, ActionDeclareAttacker,
+ActionDeclareBlocker e ActionEndTurn.
+
+Efeitos separados:
+CardStatEffect, CardKeywordEffect, CardScriptEffect e CardSilencedEffect.
+
+Durações nomeadas:
+Indefinite, Round, Combat e Aura.
+
+Zonas nomeadas:
+Deck, Hand, BackRow, Attack, Defense, Spell, Nexus, Graveyard,
+Obliterated, entre outras. São zonas de jogo, não as facções de Runeterra.
+
+Há métodos de clonagem e ressincronização para IA e previsão.
+Não recuperamos o algoritmo completo da IA.
+
+ROGUELITE / AVENTURA
+
+AdventureMap:
+Nós, caminhos, posição atual, início, miniboss, chefe e acessibilidade.
+
+AdventureRun:
+Personagem, mapa, cartas, poderes, recursos e resultados da jornada.
+
+AdventureDynamicValue:
+Vida, ouro, experiência, nível, vitórias, derrotas, rerrolagens,
+revives e outros contadores.
+
+AdventureBattleEncounterData / AdventureScalableBattleEncounterData:
+Vida inicial do inimigo, mana, mana de feitiço, mão inicial, deck,
+tabuleiro inicial, melhorias e scripts de comportamento da IA.
+
+Tipos de escolha separados:
+Cartas, poderes, melhorias, lojas, remoção de cartas, batalhas e
+escolhas sequenciais.
+
+AdventureServiceManager:
+Operações como iniciar/obter jornada, viajar para nó, escolher
+recompensa e rerrolar opções.
+
+AdventureManager:
+Coordena estado da jornada, atualizações e apresentação. Tem campos como
+TravelConfirmedByServer e TravelCompletedOnClient.
+
+INTERPRETAÇÃO
+
+Há evidências de separação entre dados estáticos, estado da partida,
+ações/eventos, efeitos/scripts, estado da jornada, interface e serviços.
+
+A participação do servidor aparece nas declarações. Não concluímos que
+toda a lógica do single player esteja no computador.
+
+============================================================
+6. LIMITAÇÃO NO CÓDIGO NATIVO
+============================================================
+
+A tentativa de ligar os metadados ao GameAssembly.dll falhou:
+
+invalid-method-pointer:
+method 6 points outside unambiguous executable file data
+at 0x1802ef840
+
+Investigação estática:
+- As seções .text e il2cpp têm marcador de código, mas não a flag
+  de memória executável no arquivo.
+- Existe uma seção .stub.
+- GameAssembly.dll importa stub.dll e a função packman.
+
+Isso explica a rejeição imediata do validador. Não prova, sozinho,
+como o carregamento ou a proteção funcionam em execução.
+
+Não alteramos flags nem o DLL original. Não recuperamos corpos das funções.
+
+Uma inspeção de segmentos pelo Ghidra foi iniciada, mas o usuário pediu
+pausa antes de confirmarmos o resultado e a limpeza da sessão.
+No computador novo, começar com uma sessão nova. Não presumir que exista
+uma análise completa ou um snapshot utilizável.
+
+============================================================
+7. CONTEÚDO DO JOGO E PRÓXIMO PASSO
+============================================================
+
+Na última confirmação, o LoR tinha sido instalado, mas ainda NÃO havia sido
+aberto até a tela principal.
+
+Em LoR_Data\StreamingAssets\EmbeddedGamePlayData encontramos:
+- GamePlayData.bin: 13.457 bytes.
+- TitleScreenGamePlayData.bin: 15.191 bytes.
+- LocalizedText_pt_br.bin: 20.290 bytes.
+
+Os arquivos começam com a assinatura PROP. Não foram decodificados.
+Os tamanhos sugerem conteúdo inicial limitado; confirmar depois de abrir
+e atualizar o jogo.
+
+Próximo passo:
+1. Abrir o LoR normalmente e fazer login.
+2. Concluir as atualizações até a tela principal.
+3. Identificar dados locais adicionais.
+4. Continuar a inspeção estática.
+
+============================================================
+8. ARQUIVOS DO COMPUTADOR ANTERIOR
+============================================================
+
+Pasta da conversa:
+C:\Users\Marcela\Documents\Codex\2026-10-29\ca-2
+
+Catálogo para transferir, se possível:
+outputs\LoR-catalogo-estruturas.json
+
+Evidências completas da primeira inspeção, aproximadamente 19 MB:
+work\lor-analysis\initial-evidence.json
+
+Script que gerou e verificou o catálogo:
+work\lor-analysis\catalog.mjs
+
+Se não transferir esses arquivos, refazer com o REA:
+1. inspect_desktop_application na pasta do LoR.
+2. inspect_il2cpp_metadata no global-metadata.dat.
+3. Começar SEM binary_path, pois a associação com o DLL falhou.
+4. Exportar as evidências.
+5. Consultar as estruturas de combate e aventura.
+
+Os IDs de evidência retida da sessão antiga não existem automaticamente
+no computador novo. Usar novos IDs ou importar evidências conforme o
+contrato das ferramentas disponíveis.
+
+============================================================
+9. REGRAS DE CONTINUIDADE
+============================================================
+
+Priorizar combate, efeitos, jornada, encontros e recompensas.
+Diferenciar declarações observadas de comportamento confirmado.
+Registrar hipóteses e limitações.
+Não afirmar que nomes de métodos provam a ordem de execução.
+Não afirmar valores de balanceamento sem ler os dados correspondentes.
+Não confundir metadados com código-fonte recuperado.
+
+Não construir o jogo inteiro ainda. Primeiro consolidar o entendimento
+e recuperar o contexto anterior do CAPS; depois definir um protótipo pequeno.
+
+A análise foi pausada a pedido do usuário. Este é o ponto de retomada.

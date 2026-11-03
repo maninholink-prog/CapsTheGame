@@ -1,0 +1,1484 @@
+{
+  "source_sha256": "7ded0a61cc39b4a29d2ba7c41d9e1480df78d80ae27f0aa36659b8bb25a9922d",
+  "cases": [
+    {
+      "pack": {
+        "type_names": [
+          "CardPack"
+        ],
+        "offset": 6906498,
+        "key": 351351332,
+        "fields": [
+          {
+            "names": [
+              "CardPackConfig"
+            ],
+            "hash": 4085250708,
+            "type": 132,
+            "value": 1717405452
+          },
+          {
+            "names": [
+              "FactionPacks"
+            ],
+            "hash": 1601470031,
+            "type": 128,
+            "value": {
+              "element_type": 132,
+              "items": [
+                2858040019,
+                580283635,
+                1393218731,
+                2566368176,
+                1356271976,
+                242038555,
+                359250909,
+                533009336,
+                2284024960,
+                3996444150
+              ]
+            }
+          },
+          {
+            "names": [
+              "LootName"
+            ],
+            "hash": 470197108,
+            "type": 16,
+            "value": "client_MGS_Loot_Relic_defaultText"
+          },
+          {
+            "names": [
+              "LootDescription"
+            ],
+            "hash": 3664975547,
+            "type": 16,
+            "value": "client_MGS_Loot_Relic_description"
+          },
+          {
+            "names": [
+              "LootUnlockTitleName"
+            ],
+            "hash": 1874324228,
+            "type": 16,
+            "value": "client_MGS_Loot_Relic_defaultText"
+          },
+          {
+            "names": [
+              "LootTier"
+            ],
+            "hash": 4270211847,
+            "type": 6,
+            "value": 3
+          },
+          {
+            "names": [
+              "LootAssets"
+            ],
+            "hash": 2015196214,
+            "type": 130,
+            "value": {
+              "type_hash": 2015196214,
+              "type_names": [
+                "LootAssets"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "BaseLootAnimationProfileHQPath"
+                  ],
+                  "hash": 1208480145,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/LootAnimations/LootAnimationProfiles/CardPacks/Capsules/Capsule_Standard_LootProfile.asset"
+                },
+                {
+                  "names": [
+                    "Ceremony3DPrefabPath"
+                  ],
+                  "hash": 1936516355,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/UI/Loot/Capsules/Base/Generic/Prefabs/Capsule_Base_Generic.prefab"
+                },
+                {
+                  "names": [
+                    "PurchaseHistoryIconPrefab"
+                  ],
+                  "hash": 4066949849,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/UI/Loot/Capsules/Base/Generic/Prefabs/Capsule_Base_Rare_Icon.prefab"
+                }
+              ]
+            }
+          },
+          {
+            "names": [
+              "InsightsName"
+            ],
+            "hash": 1996231019,
+            "type": 16,
+            "value": "Capsule"
+          },
+          {
+            "names": [
+              "IsLootContainer"
+            ],
+            "hash": 1921530066,
+            "type": 1,
+            "value": true
+          },
+          {
+            "names": [
+              "GdsGuid"
+            ],
+            "hash": 3960691610,
+            "type": 16,
+            "value": "85450173-ed9a-53f5-9b83-d93d3ad88bf1"
+          }
+        ],
+        "fully_consumed": true
+      },
+      "configuration": {
+        "type_names": [
+          "CardPackConfig"
+        ],
+        "offset": 7226860,
+        "key": 1717405452,
+        "fields": [
+          {
+            "names": [
+              "CardSlots"
+            ],
+            "hash": 3460610016,
+            "type": 128,
+            "value": {
+              "element_type": 132,
+              "items": [
+                4246306962,
+                4246306962,
+                4246306962,
+                4246306962,
+                1205026831
+              ]
+            }
+          },
+          {
+            "names": [
+              "BonusLoot"
+            ],
+            "hash": 3818639022,
+            "type": 130,
+            "value": {
+              "type_hash": 2170075625,
+              "type_names": [
+                "LootTable"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "PercentChanceToRollNothing"
+                  ],
+                  "hash": 2865038181,
+                  "type": 10,
+                  "value": 100.0
+                }
+              ]
+            }
+          }
+        ],
+        "fully_consumed": true
+      },
+      "slot_tables": [
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7369041,
+          "key": 4246306962,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 4228852341
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        },
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7368867,
+          "key": 1205026831,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 587922982
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        }
+      ],
+      "localized_name": "CÁPSULA",
+      "localized_description": "UMA CÁPSULA BÁSICA QUE CONTÉM QUATRO CARTAS COMUNS E UMA RARA."
+    },
+    {
+      "pack": {
+        "type_names": [
+          "CardPack"
+        ],
+        "offset": 6909624,
+        "key": 1285997336,
+        "fields": [
+          {
+            "names": [
+              "CardPackConfig"
+            ],
+            "hash": 4085250708,
+            "type": 132,
+            "value": 529359996
+          },
+          {
+            "names": [
+              "FactionPacks"
+            ],
+            "hash": 1601470031,
+            "type": 128,
+            "value": {
+              "element_type": 132,
+              "items": [
+                2858040019,
+                580283635,
+                1393218731,
+                2566368176,
+                1356271976,
+                242038555,
+                359250909,
+                533009336,
+                2284024960
+              ]
+            }
+          },
+          {
+            "names": [
+              "LootName"
+            ],
+            "hash": 470197108,
+            "type": 16,
+            "value": "client_MGS_Loot_Relic_defaultText"
+          },
+          {
+            "names": [
+              "LootDescription"
+            ],
+            "hash": 3664975547,
+            "type": 16,
+            "value": "client_MGS_Loot_Relic_description"
+          },
+          {
+            "names": [
+              "LootUnlockTitleName"
+            ],
+            "hash": 1874324228,
+            "type": 16,
+            "value": "client_MGS_Loot_Relic_defaultText"
+          },
+          {
+            "names": [
+              "LootTier"
+            ],
+            "hash": 4270211847,
+            "type": 6,
+            "value": 3
+          },
+          {
+            "names": [
+              "LootAssets"
+            ],
+            "hash": 2015196214,
+            "type": 130,
+            "value": {
+              "type_hash": 2015196214,
+              "type_names": [
+                "LootAssets"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "BaseLootAnimationProfileHQPath"
+                  ],
+                  "hash": 1208480145,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/LootAnimations/LootAnimationProfiles/CardPacks/Capsules/Capsule_Standard_LootProfile.asset"
+                },
+                {
+                  "names": [
+                    "Ceremony3DPrefabPath"
+                  ],
+                  "hash": 1936516355,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/UI/Loot/Capsules/Base/Generic/Prefabs/Capsule_Base_Generic.prefab"
+                },
+                {
+                  "names": [
+                    "PurchaseHistoryIconPrefab"
+                  ],
+                  "hash": 4066949849,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/UI/Loot/Capsules/Base/Generic/Prefabs/Capsule_Base_Rare_Icon.prefab"
+                }
+              ]
+            }
+          },
+          {
+            "names": [
+              "InsightsName"
+            ],
+            "hash": 1996231019,
+            "type": 16,
+            "value": "Capsule"
+          },
+          {
+            "names": [
+              "IsLootContainer"
+            ],
+            "hash": 1921530066,
+            "type": 1,
+            "value": true
+          },
+          {
+            "names": [
+              "GdsGuid"
+            ],
+            "hash": 3960691610,
+            "type": 16,
+            "value": "2179a4e4-e2f0-401f-a1d7-879693253dca"
+          }
+        ],
+        "fully_consumed": true
+      },
+      "configuration": {
+        "type_names": [
+          "CardPackConfig"
+        ],
+        "offset": 7226756,
+        "key": 529359996,
+        "fields": [
+          {
+            "names": [
+              "CardSlots"
+            ],
+            "hash": 3460610016,
+            "type": 128,
+            "value": {
+              "element_type": 132,
+              "items": [
+                1201960168
+              ]
+            }
+          },
+          {
+            "names": [
+              "BonusLoot"
+            ],
+            "hash": 3818639022,
+            "type": 130,
+            "value": {
+              "type_hash": 2170075625,
+              "type_names": [
+                "LootTable"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "PercentChanceToRollNothing"
+                  ],
+                  "hash": 2865038181,
+                  "type": 10,
+                  "value": 100.0
+                }
+              ]
+            }
+          }
+        ],
+        "fully_consumed": true
+      },
+      "slot_tables": [
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7360882,
+          "key": 1201960168,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 2014161515
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        }
+      ],
+      "localized_name": "CÁPSULA",
+      "localized_description": "UMA CÁPSULA BÁSICA QUE CONTÉM QUATRO CARTAS COMUNS E UMA RARA."
+    },
+    {
+      "pack": {
+        "type_names": [
+          "CardPack"
+        ],
+        "offset": 6898942,
+        "key": 2118361039,
+        "fields": [
+          {
+            "names": [
+              "CardPackConfig"
+            ],
+            "hash": 4085250708,
+            "type": 132,
+            "value": 1892344687
+          },
+          {
+            "names": [
+              "FactionPacks"
+            ],
+            "hash": 1601470031,
+            "type": 128,
+            "value": {
+              "element_type": 132,
+              "items": [
+                3911001900,
+                1456368192,
+                2445293856,
+                791684155,
+                2511171199,
+                2645586548,
+                4008373234,
+                152111755,
+                1465714231,
+                2462749313
+              ]
+            }
+          },
+          {
+            "names": [
+              "LootName"
+            ],
+            "hash": 470197108,
+            "type": 16,
+            "value": "client_MGS_Loot_ChampionRelic_defaultText"
+          },
+          {
+            "names": [
+              "LootDescription"
+            ],
+            "hash": 3664975547,
+            "type": 16,
+            "value": "client_MGS_Loot_ChampionRelic_description"
+          },
+          {
+            "names": [
+              "LootUnlockTitleName"
+            ],
+            "hash": 1874324228,
+            "type": 16,
+            "value": "client_MGS_Loot_ChampionRelic_defaultText"
+          },
+          {
+            "names": [
+              "LootTier"
+            ],
+            "hash": 4270211847,
+            "type": 6,
+            "value": 5
+          },
+          {
+            "names": [
+              "LootAssets"
+            ],
+            "hash": 2015196214,
+            "type": 130,
+            "value": {
+              "type_hash": 2015196214,
+              "type_names": [
+                "LootAssets"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "BaseLootAnimationProfileHQPath"
+                  ],
+                  "hash": 1208480145,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/LootAnimations/LootAnimationProfiles/CardPacks/Capsules/Capsule_Champion_LootProfile.asset"
+                },
+                {
+                  "names": [
+                    "Ceremony3DPrefabPath"
+                  ],
+                  "hash": 1936516355,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/UI/Loot/Capsules/Champion/Generic/Prefabs/Capsule_Champion_Generic.prefab"
+                }
+              ]
+            }
+          },
+          {
+            "names": [
+              "InsightsName"
+            ],
+            "hash": 1996231019,
+            "type": 16,
+            "value": "ChampionCapsule"
+          },
+          {
+            "names": [
+              "IsLootContainer"
+            ],
+            "hash": 1921530066,
+            "type": 1,
+            "value": true
+          },
+          {
+            "names": [
+              "GdsGuid"
+            ],
+            "hash": 3960691610,
+            "type": 16,
+            "value": "7ed323ae-f0fb-48c2-b5f1-6947b8ca6357"
+          }
+        ],
+        "fully_consumed": true
+      },
+      "configuration": {
+        "type_names": [
+          "CardPackConfig"
+        ],
+        "offset": 7225528,
+        "key": 1892344687,
+        "fields": [
+          {
+            "names": [
+              "CardSlots"
+            ],
+            "hash": 3460610016,
+            "type": 128,
+            "value": {
+              "element_type": 132,
+              "items": [
+                1205026831,
+                1205026831,
+                1205026831,
+                3999126182,
+                2260307036
+              ]
+            }
+          },
+          {
+            "names": [
+              "BonusLoot"
+            ],
+            "hash": 3818639022,
+            "type": 130,
+            "value": {
+              "type_hash": 2170075625,
+              "type_names": [
+                "LootTable"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "PercentChanceToRollNothing"
+                  ],
+                  "hash": 2865038181,
+                  "type": 10,
+                  "value": 100.0
+                }
+              ]
+            }
+          }
+        ],
+        "fully_consumed": true
+      },
+      "slot_tables": [
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7368867,
+          "key": 1205026831,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 587922982
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        },
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7368983,
+          "key": 3999126182,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 2630586121
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        },
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7368925,
+          "key": 2260307036,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 784712495
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        }
+      ],
+      "localized_name": "CÁPSULA DE CAMPEÃO",
+      "localized_description": "A CÁPSULA DE VALOR MAIS ALTO, COM TRÊS CARTAS RARAS, UMA ÉPICA E UM CAMPEÃO."
+    },
+    {
+      "pack": {
+        "type_names": [
+          "CardPack"
+        ],
+        "offset": 6926704,
+        "key": 3611485835,
+        "fields": [
+          {
+            "names": [
+              "CardPackConfig"
+            ],
+            "hash": 4085250708,
+            "type": 132,
+            "value": 3425447235
+          },
+          {
+            "names": [
+              "FactionPacks"
+            ],
+            "hash": 1601470031,
+            "type": 128,
+            "value": {
+              "element_type": 132,
+              "items": [
+                1668466484,
+                3204022876,
+                2677344676,
+                2147835663,
+                701038271,
+                2718431772,
+                697482146,
+                2484218487,
+                3735381719,
+                2586228417
+              ]
+            }
+          },
+          {
+            "names": [
+              "LootName"
+            ],
+            "hash": 470197108,
+            "type": 16,
+            "value": "client_MGS_Loot_EpicRelic_defaultText"
+          },
+          {
+            "names": [
+              "LootDescription"
+            ],
+            "hash": 3664975547,
+            "type": 16,
+            "value": "client_MGS_Loot_EpicRelic_description"
+          },
+          {
+            "names": [
+              "LootUnlockTitleName"
+            ],
+            "hash": 1874324228,
+            "type": 16,
+            "value": "client_MGS_Loot_EpicRelic_defaultText"
+          },
+          {
+            "names": [
+              "LootTier"
+            ],
+            "hash": 4270211847,
+            "type": 6,
+            "value": 4
+          },
+          {
+            "names": [
+              "LootAssets"
+            ],
+            "hash": 2015196214,
+            "type": 130,
+            "value": {
+              "type_hash": 2015196214,
+              "type_names": [
+                "LootAssets"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "BaseLootAnimationProfileHQPath"
+                  ],
+                  "hash": 1208480145,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/LootAnimations/LootAnimationProfiles/CardPacks/Capsules/Capsule_Epic_LootProfile.asset"
+                },
+                {
+                  "names": [
+                    "Ceremony3DPrefabPath"
+                  ],
+                  "hash": 1936516355,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/UI/Loot/Capsules/Epic/Generic/Prefabs/Capsule_Epic_Generic.prefab"
+                }
+              ]
+            }
+          },
+          {
+            "names": [
+              "InsightsName"
+            ],
+            "hash": 1996231019,
+            "type": 16,
+            "value": "EpicCapsule"
+          },
+          {
+            "names": [
+              "IsLootContainer"
+            ],
+            "hash": 1921530066,
+            "type": 1,
+            "value": true
+          },
+          {
+            "names": [
+              "GdsGuid"
+            ],
+            "hash": 3960691610,
+            "type": 16,
+            "value": "204feabe-87da-425f-b1de-5a5bfed65a74"
+          }
+        ],
+        "fully_consumed": true
+      },
+      "configuration": {
+        "type_names": [
+          "CardPackConfig"
+        ],
+        "offset": 7226480,
+        "key": 3425447235,
+        "fields": [
+          {
+            "names": [
+              "CardSlots"
+            ],
+            "hash": 3460610016,
+            "type": 128,
+            "value": {
+              "element_type": 132,
+              "items": [
+                4246306962,
+                4246306962,
+                1205026831,
+                1205026831,
+                3999126182
+              ]
+            }
+          },
+          {
+            "names": [
+              "BonusLoot"
+            ],
+            "hash": 3818639022,
+            "type": 130,
+            "value": {
+              "type_hash": 2170075625,
+              "type_names": [
+                "LootTable"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "PercentChanceToRollNothing"
+                  ],
+                  "hash": 2865038181,
+                  "type": 10,
+                  "value": 100.0
+                }
+              ]
+            }
+          }
+        ],
+        "fully_consumed": true
+      },
+      "slot_tables": [
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7369041,
+          "key": 4246306962,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 4228852341
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        },
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7368867,
+          "key": 1205026831,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 587922982
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        },
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7368983,
+          "key": 3999126182,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 2630586121
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        }
+      ],
+      "localized_name": "CÁPSULA ÉPICA",
+      "localized_description": "UMA CÁPSULA DE ALTO NÍVEL COM DUAS CARTAS COMUNS, DUAS RARAS E UMA ÉPICA."
+    },
+    {
+      "pack": {
+        "type_names": [
+          "CardPack"
+        ],
+        "offset": 6844481,
+        "key": 1492536877,
+        "fields": [
+          {
+            "names": [
+              "CardPackConfig"
+            ],
+            "hash": 4085250708,
+            "type": 132,
+            "value": 1377408565
+          },
+          {
+            "names": [
+              "Filters",
+              "filters"
+            ],
+            "hash": 2882977356,
+            "type": 128,
+            "value": {
+              "element_type": 130,
+              "items": [
+                {
+                  "type_hash": 3494258743,
+                  "type_names": [
+                    "CardSetFilter"
+                  ],
+                  "fields": [
+                    {
+                      "names": [
+                        "CardSet"
+                      ],
+                      "hash": 2383510917,
+                      "type": 132,
+                      "value": 927867954
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "names": [
+              "LootName"
+            ],
+            "hash": 470197108,
+            "type": 16,
+            "value": "client_MGS_Loot_SilverChest_defaultText"
+          },
+          {
+            "names": [
+              "LootDescription"
+            ],
+            "hash": 3664975547,
+            "type": 16,
+            "value": "client_MGS_Loot_SilverChest_description"
+          },
+          {
+            "names": [
+              "LootUnlockTitleName"
+            ],
+            "hash": 1874324228,
+            "type": 16,
+            "value": "client_MGS_Loot_SilverChest_defaultText"
+          },
+          {
+            "names": [
+              "LootTier"
+            ],
+            "hash": 4270211847,
+            "type": 6,
+            "value": 3
+          },
+          {
+            "names": [
+              "LootAssets"
+            ],
+            "hash": 2015196214,
+            "type": 130,
+            "value": {
+              "type_hash": 2015196214,
+              "type_names": [
+                "LootAssets"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "BaseLootAnimationProfileHQPath"
+                  ],
+                  "hash": 1208480145,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/LootAnimations/LootAnimationProfiles/CardPacks/Chests/Chest_Silver_LootProfile.asset"
+                },
+                {
+                  "names": [
+                    "Ceremony3DPrefabPath"
+                  ],
+                  "hash": 1936516355,
+                  "type": 16,
+                  "value": "Assets/AssetLibrary/UI/Loot/Chests/Silver/Generic/Prefabs/Chest_Silver_Generic.prefab"
+                }
+              ]
+            }
+          },
+          {
+            "names": [
+              "InsightsName"
+            ],
+            "hash": 1996231019,
+            "type": 16,
+            "value": "SilverChest"
+          },
+          {
+            "names": [
+              "IsLootContainer"
+            ],
+            "hash": 1921530066,
+            "type": 1,
+            "value": true
+          },
+          {
+            "names": [
+              "GdsGuid"
+            ],
+            "hash": 3960691610,
+            "type": 16,
+            "value": "2144f972-e772-4ce5-a859-d96a6faacfd2"
+          }
+        ],
+        "fully_consumed": true
+      },
+      "configuration": {
+        "type_names": [
+          "CardPackConfig"
+        ],
+        "offset": 7224476,
+        "key": 1377408565,
+        "fields": [
+          {
+            "names": [
+              "CardSlots"
+            ],
+            "hash": 3460610016,
+            "type": 128,
+            "value": {
+              "element_type": 132,
+              "items": [
+                2786644261
+              ]
+            }
+          },
+          {
+            "names": [
+              "BonusLoot"
+            ],
+            "hash": 3818639022,
+            "type": 130,
+            "value": {
+              "type_hash": 2170075625,
+              "type_names": [
+                "LootTable"
+              ],
+              "fields": [
+                {
+                  "names": [
+                    "PercentChanceToRollNothing"
+                  ],
+                  "hash": 2865038181,
+                  "type": 10,
+                  "value": 100.0
+                }
+              ]
+            }
+          }
+        ],
+        "fully_consumed": true
+      },
+      "slot_tables": [
+        {
+          "type_names": [
+            "LootTable"
+          ],
+          "offset": 7366178,
+          "key": 2786644261,
+          "fields": [
+            {
+              "names": [
+                "TableItems"
+              ],
+              "hash": 3523594993,
+              "type": 128,
+              "value": {
+                "element_type": 130,
+                "items": [
+                  {
+                    "type_hash": 59142823,
+                    "type_names": [
+                      "LootTableEntry"
+                    ],
+                    "fields": [
+                      {
+                        "names": [
+                          "Loot",
+                          "loot"
+                        ],
+                        "hash": 3790556855,
+                        "type": 132,
+                        "value": 817677372
+                      },
+                      {
+                        "names": [
+                          "RelativeWeight"
+                        ],
+                        "hash": 1460539441,
+                        "type": 10,
+                        "value": 1.0
+                      },
+                      {
+                        "names": [
+                          "IsBaseReward"
+                        ],
+                        "hash": 2526771135,
+                        "type": 1,
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "fully_consumed": true
+        }
+      ],
+      "localized_name": "BAÚ DE PRATA",
+      "localized_description": "CONTÉM DUAS CARTAS COMUNS, UMA RARA E UMA QUANTIDADE MÉDIA DE FRAGMENTOS."
+    }
+  ]
+}
