@@ -32,3 +32,14 @@
  .constellation-nodes{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));align-items:start}
 }
 .mastery-portrait>.portrait[src$="arcata-mastery-v2.png"]{object-position:34% center}
+
+.artifact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:8px;max-width:900px;margin:14px 0}
+.artifact-icon{display:grid;place-items:center;min-height:58px;border:1px solid #58636b;border-radius:8px;background:#13232c;color:var(--rarity,#a9b6bc);cursor:pointer}
+.artifact-icon .artifact-symbol{width:33px;height:33px}
+.artifact-icon.undiscovered{background:#101d24}
+.artifact-icon.undiscovered .artifact-symbol{opacity:.55}
+.artifact-icon:hover,.artifact-icon[aria-pressed="true"]{border-color:var(--rarity,#efd393);background:#293a41}
+.artifact-icon:focus-visible{outline:2px solid #efd393;outline-offset:2px}
+.artifact-detail{min-height:152px;max-width:900px}
+.artifact-detail h2{margin:0 0 6px}
+.artifact-detail p{margin:4px 0}

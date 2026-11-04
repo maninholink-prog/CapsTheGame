@@ -10,11 +10,13 @@ const abePositions=[[51,63],[48,54],[42,47],[36,51],[31,54],[34,61],[37,66],[60,
 
 const arcataPositions=[[31,79],[34,64],[39,48],[24,48],[16,52],[13,62],[10,75],[46,66],[54,68],[61,63],[68,59],[45,85],[60,88],[76,80],[92,62]];
 
+const rubelPositions=[[51,49],[53,36],[53,24],[40,23],[32,18],[23,14],[15,9],[59,49],[67,60],[76,67],[88,72],[59,34],[68,25],[77,17],[88,11]];
+
 export function renderTalents(profile:Profile,hero:Champion,runActive:boolean):string {
  const talents=talentsFor(hero);
  if(!talents.length)return '<section class="talent-tree" aria-label="Talentos"><h3>Talentos</h3><p>Árvore de talentos em preparação para este protagonista.</p></section>';
- const abe=hero==='abe',name=abe?'Abe':hero==='arcata'?'Arcata':'Kylast',positions=abe?abePositions:hero==='arcata'?arcataPositions:kylastPositions;
- const artAlt=hero==='arcata'?'Arcata lança uma espiral de fogo':abe?'Abe trabalhando na oficina com um cristal azul':'Kylast atacando com a espada e a foice Alastor';
+ const abe=hero==='abe',name=abe?'Abe':hero==='arcata'?'Arcata':hero==='rubel'?'Rubel':'Kylast',positions=abe?abePositions:hero==='arcata'?arcataPositions:hero==='rubel'?rubelPositions:kylastPositions;
+ const artAlt=hero==='rubel'?'Rubel afasta uma horda com asas de Luz':hero==='arcata'?'Arcata lança uma espiral de fogo':abe?'Abe trabalhando na oficina com um cristal azul':'Kylast atacando com a espada e a foice Alastor';
  const owned=getTalents(profile)[hero]??[],info=masteryInfo(profile.mastery[hero].xp),locked=!profile.collection[hero]?.count;
  const available=(t:Talent)=>!runActive&&!locked&&!owned.includes(t.id)&&owned.length<info.points&&info.level>=(t.minLevel??1)&&(!t.parent||owned.includes(t.parent));
  const initial=talents.find(available)?.id??talents[0].id;

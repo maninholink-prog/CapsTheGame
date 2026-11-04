@@ -1,7 +1,7 @@
 import type {Champion} from '../content/schema.js';
 import {credit,masteryInfo,type Profile} from './profile.js';
 
-export type TalentId='arcata-spark'|'arcata-life'|'arcata-study'|'arcata-discount'|'arcata-reserve'|'arcata-fireball'|'arcata-create'|'arcata-shield'|'arcata-retaliation'|'arcata-wall'|'arcata-hands'|'arcata-ember'|'arcata-heat'|'arcata-pulse'|'arcata-persist'|'abe-frame'|'abe-tools'|'abe-catalog'|'abe-economy'|'abe-project'|'abe-research'|'abe-masterpiece'|'abe-reinforcement'|'abe-calibration'|'abe-shared'|'abe-complete'|'abe-protection'|'abe-repair'|'abe-experienced'|'abe-inspiration'|'arsenal-i'|'arsenal-ii'|'arsenal-iii'|'arsenal-maintenance'|'martial-versatility'|'complete-arsenal'|'precautious-smith'|'grip-adjustment'|'recovered-arsenal'|'iron-constitution'|'warrior-stamina'|'campaign-armor'|'prepared-strike'|'calculated-switch'|'master-of-all';
+export type TalentId='rubel-prepared'|'rubel-vigor'|'rubel-hope'|'rubel-word'|'rubel-prayer'|'rubel-bond'|'rubel-reach'|'rubel-aid'|'rubel-blessing'|'rubel-guard'|'rubel-sanctuary'|'rubel-devotion'|'rubel-reserve'|'rubel-relief'|'rubel-renewal'|'arcata-spark'|'arcata-life'|'arcata-study'|'arcata-discount'|'arcata-reserve'|'arcata-fireball'|'arcata-create'|'arcata-shield'|'arcata-retaliation'|'arcata-wall'|'arcata-hands'|'arcata-ember'|'arcata-heat'|'arcata-pulse'|'arcata-persist'|'abe-frame'|'abe-tools'|'abe-catalog'|'abe-economy'|'abe-project'|'abe-research'|'abe-masterpiece'|'abe-reinforcement'|'abe-calibration'|'abe-shared'|'abe-complete'|'abe-protection'|'abe-repair'|'abe-experienced'|'abe-inspiration'|'arsenal-i'|'arsenal-ii'|'arsenal-iii'|'arsenal-maintenance'|'martial-versatility'|'complete-arsenal'|'precautious-smith'|'grip-adjustment'|'recovered-arsenal'|'iron-constitution'|'warrior-stamina'|'campaign-armor'|'prepared-strike'|'calculated-switch'|'master-of-all';
 export type TalentAllocation=Partial<Record<Champion,TalentId[]>>;
 export interface Talent {id:TalentId;name:string;parent?:TalentId;minLevel?:number;text:string}
 export const kylastTalents:Talent[]=[
@@ -55,7 +55,24 @@ export const arcataTalents:Talent[]=[
  {id:'arcata-pulse',name:'Pulso da Fornalha',text:'A primeira Combustão com Arcata evoluído causa 2 de dano ao Vínculo em vez de 1.',parent:'arcata-heat'},
  {id:'arcata-persist',name:'Chama Persistente',text:'A primeira Combustão com Arcata evoluído também causa 1 de dano à unidade inimiga com menos vida.',parent:'arcata-pulse',minLevel:30},
 ];
-export function talentsFor(hero:Champion):Talent[]{return hero==='kylast'?kylastTalents:hero==='abe'?abeTalents:hero==='arcata'?arcataTalents:[];}
+export const rubelTalents:Talent[]=[
+ {id:'rubel-prepared',name:'Mãos Preparadas',text:'No início da batalha, compre a primeira magia de cura do deck, se houver.'},
+ {id:'rubel-vigor',name:'Vigor do Guardião',text:'Rubel tem +1 de vida base.',parent:'rubel-prepared'},
+ {id:'rubel-hope',name:'Sinal de Esperança',text:'Na primeira cura efetiva com Rubel em campo, compre uma carta.',parent:'rubel-vigor'},
+ {id:'rubel-word',name:'Palavra Acolhedora',text:'A primeira Palavra Curativa resolvida recupera até 1 de vida adicional.',parent:'rubel-hope'},
+ {id:'rubel-prayer',name:'Oração Preparada',text:'A primeira Oração de Cura jogada custa 1 a menos, mínimo 1.',parent:'rubel-word'},
+ {id:'rubel-bond',name:'Prece do Vínculo',text:'A primeira Cura de Ferimentos resolvida no seu Vínculo recupera até 1 de vida adicional.',parent:'rubel-prayer'},
+ {id:'rubel-reach',name:'Mãos Estendidas',text:'Na primeira cura que recuperar vida de três ou mais unidades aliadas, compre uma carta.',parent:'rubel-bond'},
+ {id:'rubel-aid',name:'Auxílio Reforçado',text:'O primeiro Auxílio resolvido dá +1 de vida máxima adicional a cada alvo, sem curar.',parent:'rubel-vigor'},
+ {id:'rubel-blessing',name:'Bênção da Guarda',text:'Os alvos da primeira Bênção resolvida ganham +1 de vida máxima, sem curar.',parent:'rubel-aid'},
+ {id:'rubel-guard',name:'Guarda Firme',text:'Reduza em 1 o dano do primeiro golpe que atingir Rubel na batalha.',parent:'rubel-blessing'},
+ {id:'rubel-sanctuary',name:'Santuário do Grupo',text:'Ao evoluir, cada unidade aliada em campo reduz em até 2 o dano do próximo golpe que receber na batalha.',parent:'rubel-guard',minLevel:30},
+ {id:'rubel-devotion',name:'Devoção',text:'A primeira cura de entrada de Rubel recupera até 1 de vida adicional.',parent:'rubel-prepared'},
+ {id:'rubel-reserve',name:'Fôlego Renovado',text:'Ao evoluir, recupere 1 de mana de magia, respeitando o limite.',parent:'rubel-devotion'},
+ {id:'rubel-relief',name:'Alívio Imediato',text:'A onda de cura da evolução recupera até 1 de vida adicional do seu Vínculo.',parent:'rubel-reserve'},
+ {id:'rubel-renewal',name:'Prece Renovada',text:'Ao evoluir, crie uma Palavra Curativa na mão.',parent:'rubel-relief'},
+];
+export function talentsFor(hero:Champion):Talent[]{return hero==='kylast'?kylastTalents:hero==='abe'?abeTalents:hero==='arcata'?arcataTalents:hero==='rubel'?rubelTalents:[];}
 export function getTalents(profile:Profile):TalentAllocation {return profile.talents??{};}
 function assertEditable(profile:Profile,hero:Champion,runActive:boolean){
  if(runActive)throw Error('Talentos só podem ser alterados fora da run.');
@@ -76,5 +93,5 @@ export function allocateTalent(profile:Profile,hero:Champion,id:TalentId,runActi
 export function resetTalents(profile:Profile,hero:Champion,runActive:boolean,now:number):Profile {
  assertEditable(profile,hero,runActive);
  if(!(getTalents(profile)[hero]?.length))throw Error('Nenhum talento para redistribuir.');
- const p=structuredClone(profile);credit(p,-200,`Redistribuição de talentos: ${hero==='abe'?'Abe':hero==='arcata'?'Arcata':'Kylast'}`,now);p.talents={...getTalents(p),[hero]:[]};return p;
+ const p=structuredClone(profile);credit(p,-200,`Redistribuição de talentos: ${hero==='abe'?'Abe':hero==='arcata'?'Arcata':hero==='rubel'?'Rubel':'Kylast'}`,now);p.talents={...getTalents(p),[hero]:[]};return p;
 }

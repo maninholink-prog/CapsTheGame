@@ -73,3 +73,12 @@ O autor aprovou novas abas para acomodar o conteúdo na janela. Perfil tem abas 
 Quinze talentos aprovados e implementados. Chama Persistente encerra Combustão no nível 30. A árvore utiliza a arte aprovada, e o motor mantém a evolução por seis magias de Fogo. TypeScript, 64 testes direcionados, build e presença da árvore no pacote passaram. A inspeção visual do executável ainda está pendente. Sem commit ou push desta atualização.
 
 Publicação de Arcata: código no commit 734aa67 e [prévia pública v0.1.0-playtest.2](https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.2). ZIP verificado por integridade, tamanho e SHA-256 após o envio.
+
+## Aba Artefatos — 04/11/2026
+
+A coleção ganhou a aba Artefatos. A grade usa ícones compactos e um painel de detalhes acionado por mouse, teclado ou toque. Efeitos continuam ocultos até a descoberta. Excalibur, Deméter e Talarian Boots receberam símbolos próprios de interface. Os demais usam um marcador até a definição de suas artes. TypeScript, 23 testes direcionados e build passaram. A inspeção visual no executável ainda está pendente.
+
+
+## Maestria de Rubel e Artefatos — 04/11/2026
+
+Quinze talentos integrados com a arte aprovada. Coleção → Artefatos usa ícones provisórios e esconde o efeito até a descoberta com ????? e a mensagem de bênção. TypeScript, 71 testes direcionados, build e integridade do ZIP passaram. Conferência visual manual pendente.

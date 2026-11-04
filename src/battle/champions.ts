@@ -1,3 +1,4 @@
+import {rubelCostDiscount,rubelEvolved} from './rubel-talents.js';
 import {arcataCostDiscount,arcataEvolved} from './arcata-talents.js';
 import {abeHasTalent,abeCostDiscount,abeFabricationCount,abeEvolved,abeEntry} from './abe-talents.js';
 import {musicDiscount} from './expansion.js';
@@ -17,7 +18,7 @@ export function effectiveDefinition(state:BattleState,owner:PlayerId,card:CardIn
  if(def?.kind==='unit'&&def.champion&&championSpells[def.champion]&&championUnit(state,owner,def.champion))return state.definitions[championSpells[def.champion]];
  return def;
 }
-export function cardCost(state:BattleState,owner:PlayerId,def:CardDefinition):number{const p=state.players[owner];let discount=def.upgrade&&championUnit(state,owner,'abe')?.evolved?1:0;if(def.upgrade&&p.upgradeDiscountRound===state.round)discount+=p.upgradeDiscount??0;if(def.fire&&p.fireDiscountRound===state.round)discount+=p.fireDiscount??0;discount+=musicDiscount(state,owner,def)+abeCostDiscount(state,owner,def)+arcataCostDiscount(state,owner,def);return discount?Math.min(def.cost,Math.max(1,def.cost-discount)):def.cost;}
+export function cardCost(state:BattleState,owner:PlayerId,def:CardDefinition):number{const p=state.players[owner];let discount=def.upgrade&&championUnit(state,owner,'abe')?.evolved?1:0;if(def.upgrade&&p.upgradeDiscountRound===state.round)discount+=p.upgradeDiscount??0;if(def.fire&&p.fireDiscountRound===state.round)discount+=p.fireDiscount??0;discount+=musicDiscount(state,owner,def)+abeCostDiscount(state,owner,def)+arcataCostDiscount(state,owner,def)+rubelCostDiscount(state,owner,def);return discount?Math.min(def.cost,Math.max(1,def.cost-discount)):def.cost;}
 export function fabricate(state:BattleState,owner:PlayerId){const rolled=shuffle(upgradeIds,state.rngState);state.rngState=rolled.state;const remaining=abeFabricationCount(state,owner);(state.choices??=[]).push({owner,options:rolled.items.slice(0,abeHasTalent(state,owner,'abe-catalog')?4:3),...(remaining===2?{remaining}: {})});}
 export function chooseUpgrade(state:BattleState,owner:PlayerId,id:string,events:BattleEvent[]):boolean {
  const choice=state.choices?.[0];if(!choice||choice.owner!==owner||!choice.options.includes(id))return false;
@@ -34,7 +35,11 @@ export function evolveAllies(state:BattleState,owner:PlayerId,events:BattleEvent
   u.evolved=true;u.attack+=atk;u.health+=hp;u.maxHealth+=hp;events.push({type:'championEvolved',player:owner,champion});
   if(champion==='abe')abeEvolved(state,owner,u);
   if(champion==='arcata')arcataEvolved(state,owner,events);
-  if(champion==='rubel')queueHeal(state,owner,'rubel-wave',[],events);
+  if(champion==='rubel'){
+   rubelEvolved(state,owner,events);
+   queueHeal(state,owner,'rubel-wave',[],events);
+   state.stack.at(-1)!.rubelEvolution=true;
+  }
  }
 }
 export function onAllyEntered(state:BattleState,owner:PlayerId,unit:BoardUnit,events:BattleEvent[],targets?:TargetRef[],ignoreSide=false){

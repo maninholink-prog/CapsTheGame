@@ -1,3 +1,4 @@
+import {rubelHasTalent} from './rubel-talents.js';
 import {arcataHasTalent} from './arcata-talents.js';
 import {abeHasTalent} from './abe-talents.js';
 import {relicUnitPlayed} from './relics.js';
@@ -21,7 +22,7 @@ export function enterUnit(state: BattleState, owner: PlayerId, source: CardInsta
     return def?.kind === 'unit' && def.champion === definition.champion;
   })) return false;
   const evolved = definition.champion === 'kylast' && state.evolvedKylast[owner];
-  const life=(definition.champion==='kylast'&&hasTalent(state,owner,'iron-constitution')||definition.champion==='abe'&&abeHasTalent(state,owner,'abe-frame')||definition.champion==='arcata'&&arcataHasTalent(state,owner,'arcata-life'))?1:0;
+  const life=(definition.champion==='kylast'&&hasTalent(state,owner,'iron-constitution')||definition.champion==='abe'&&abeHasTalent(state,owner,'abe-frame')||definition.champion==='arcata'&&arcataHasTalent(state,owner,'arcata-life')||definition.champion==='rubel'&&rubelHasTalent(state,owner,'rubel-vigor'))?1:0;
   const mastery=evolved&&hasTalent(state,owner,'master-of-all')?1:0;
   const unit = { card: source, attack: definition.attack + (evolved ? 1 : 0)+mastery, health: definition.health + (evolved ? 1 : 0)+life,
     maxHealth: definition.health + (evolved ? 1 : 0)+life, evolved };

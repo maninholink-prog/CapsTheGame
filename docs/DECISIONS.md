@@ -40,3 +40,8 @@ O autor solicitou consulta de maestria por personagem e telas de início, vitór
 ## Maestria de Arcata — 04/11/2026
 
 O autor aprovou os quinze talentos e escolheu Combustão como ramo principal. Chama Persistente exige nível 30. [Registro da árvore](../design/ARCATA_FOGO.md).
+
+
+## Maestria de Rubel — 04/11/2026
+
+Aprovados os quinze talentos, as conexões e a arte de Rubel. Santuário do Grupo fecha Proteção no nível 30. O autor solicitou integração e upload. [Especificação](../design/RUBEL_CURA.md).

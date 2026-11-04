@@ -1,3 +1,4 @@
+import {rubelHealBonus,rubelMaxLifeBonus,rubelHealingResolved} from './rubel-talents.js';
 import {arcataSpellBonus,resolveCombustion,arcataHasTalent} from './arcata-talents.js';
 import {consumeKingDischarge,finishEncounterResolution} from './encounters.js';
 import {laboratoryUpgrade} from './laboratory.js';
@@ -44,9 +45,10 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
   const valid = definition.area ? areaTargets : pending.targets.filter(target => isLegalTarget(next, pending.owner, rule, target));
   let fizzled = pending.targets.length > 0 && valid.length === 0 || definition.id==='steed-entry'&&!next.executionMarks?.[pending.owner]||definition.id==='lab-collector-draw'&&next.laboratory?.deathRounds[pending.owner]!==next.round;
   if(definition.failIfKeywordPresent&&definition.effect.type==='keyword'&&valid.every(t=>t.kind==='unit'&&next.players[t.player].board.find(u=>u.card.instanceId===t.instanceId)?.keywords?.includes((definition.effect as {keyword:import('../content/schema.js').Keyword}).keyword)))fizzled=true;
-  let actualHealing=0,successfulUpgrade=true;
+  let actualHealing=0,healedAllies=0,successfulUpgrade=true;
   if (!fizzled) {
     const effect = definition.effect;
+    const extraLife=rubelMaxLifeBonus(next,pending.owner,definition);
     const bonus=arcataSpellBonus(next,pending.owner,definition,pending.targets.length);
     if(effect.type==='steal')stealCards(next,pending.owner,pending.abilityAmount??effect.amount,effect.emptyFatigue??false,events);
     if(effect.type==='summon')summonUnits(next,pending.owner,effect.unit,effect.count,events);
@@ -80,22 +82,22 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
         } else if(effect.type==='weaken'&&unit){addAttack(unit,-Math.min(Math.max(0,unit.attack),effect.amount),true);
         } else if(effect.type==='keyword'&&unit){unit.keywords??=[];if(!unit.keywords.includes(effect.keyword)){unit.keywords.push(effect.keyword);if(effect.temporary)(unit.temporaryKeywords??=[]).push(effect.keyword);}
         } else if (effect.type === 'heal') {
-          const amount=effect.amount*(championUnit(next,pending.owner,'rubel')?.evolved?2:1);
+          const amount=effect.amount*(championUnit(next,pending.owner,'rubel')?.evolved?2:1)+rubelHealBonus(next,pending,definition,target);
           const before=unit?unit.health:player.nexus;
           if (unit) unit.health = Math.min(unit.maxHealth, unit.health + amount);
           else player.nexus = Math.min(player.maxNexus, player.nexus + amount);
-          if(target.player===pending.owner)actualHealing+=(unit?unit.health:player.nexus)-before;
+          if(target.player===pending.owner){const restored=(unit?unit.health:player.nexus)-before;actualHealing+=restored;if(unit&&restored>0)healedAllies++;}
           events.push({ type: 'healingApplied', target, amount });
         } else if (effect.type === 'armor' && unit) {
           if(definition.fireShield)(unit.fireShields??=[]).push({owner:pending.owner,round:next.round,bonus:pending.damageBonus??0});
-          unit.maxHealth += effect.amount+bonus.armor;
+          unit.maxHealth += effect.amount+bonus.armor+extraLife;
           unit.health += effect.amount;
           events.push({ type: 'armorApplied', target, amount: effect.amount });
         } else if ((effect.type === 'upgrade' || effect.type === 'reinforce') && unit) {
           if(effect.type==='reinforce'||!effect.keyword){unit.attack++;unit.health++;unit.maxHealth++;}
           else {unit.keywords??=[];unit.temporaryKeywords=unit.temporaryKeywords?.filter(k=>k!==effect.keyword);if(!unit.keywords.includes(effect.keyword))unit.keywords.push(effect.keyword);}
 
-        } else if(effect.type==='buff'&&unit){addAttack(unit,effect.attack,effect.temporary);unit.health+=effect.health??0;unit.maxHealth+=effect.health??0;
+        } else if(effect.type==='buff'&&unit){addAttack(unit,effect.attack,effect.temporary);unit.health+=effect.health??0;unit.maxHealth+=(effect.health??0)+extraLife;
         } else if ((effect.type === 'recall' || effect.type === 'obliterate') && unit) {
           removeUnit(next, target.player, unit.card.instanceId, events, effect.type);if(effect.type==='recall'&&definition.afterRecallDraw)drawInto(next,pending.owner,events);
         } else if (effect.type === 'stun' && unit) {
@@ -122,6 +124,7 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
       if(p.fire===3&&arcataHasTalent(next,pending.owner,'arcata-study'))drawInto(next,pending.owner,events);
     }
   }
+  if(!fizzled&&actualHealing>0)rubelHealingResolved(next,pending.owner,healedAllies,events);
   // Snapshot support triggers before any draw can clone player references.
   if(!fizzled&&successfulUpgrade){laboratoryUpgrade(next,pending.owner,definition,valid,events);narrativeResolved(next,pending.owner,definition,valid,actualHealing,events,pending.mode==='ability');}
   if(!fizzled)expandedResolved(next,pending.owner,definition,pending.source,events,pending.mode==='ability');

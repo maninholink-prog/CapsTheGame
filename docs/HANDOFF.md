@@ -44,3 +44,12 @@ Pacote atual em [C.A.P.S.exe](../release/CAPS-20261104-062534-win-x64/C.A.P.S.ex
 Árvore jogável no pacote [C.A.P.S.exe](../release/CAPS-20261104-113901-win-x64/C.A.P.S.exe). Decisão e conexões em [ARCATA_FOGO](../design/ARCATA_FOGO.md). Verificações em [PROGRESS](PROGRESS.md).
 
 Prévia pública de Arcata disponível em [v0.1.0-playtest.2](https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.2), vinculada ao commit 734aa67. Próximo passo: playtest manual.
+
+## Aba Artefatos — 04/11/2026
+
+A nova grade está em Coleção → Artefatos no [pacote Windows](../release/CAPS-20261104-123042-win-x64/C.A.P.S.exe). Verificações em [PROGRESS](PROGRESS.md). Nenhuma associação nova entre os IDs do catálogo e as artes do Drive foi aprovada nesta etapa.
+
+
+## Maestria de Rubel — 04/11/2026
+
+O pacote local [C.A.P.S.exe](../release/CAPS-20261104-124907-win-x64/C.A.P.S.exe) inclui Rubel e a aba de Artefatos. Efeitos em [RUBEL_CURA](../design/RUBEL_CURA.md). Resultados em [PROGRESS](PROGRESS.md).

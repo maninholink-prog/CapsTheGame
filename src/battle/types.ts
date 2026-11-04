@@ -9,6 +9,7 @@ export interface BoardUnit {
   card: CardInstance; attack: number; health: number; maxHealth: number; form?:'bear'|'tiger'; formPower?:number; temporaryKeywords?:Keyword[]; stunnedUntilRound?: number;
   equipment?: EquippedCard[]; evolved?: boolean;
   triggerRounds?: Record<string,number>; fireShields?: {owner:PlayerId; round:number; bonus:number}[];
+  sanctuary?:boolean;
   keywords?: Keyword[]; roundAttackBonus?: number; firstEquipRound?: number;
 }
 export interface CombatLane { laboratoryUsedWeapons?:string[];laboratoryAfterAttack?:boolean;laboratoryBlocked?:boolean; talentFirstWeapon?:string; talentPrepared?:boolean; attackerId: string; blockerId: string | null; blocked: boolean; brokeBlock?:boolean; weapons: (string | null)[] }
@@ -19,6 +20,7 @@ export type TargetRef =
   | { kind: 'stack'; effectId: number };
 export interface PendingEffect {
   paidTalentGrip?:boolean;
+  rubelEvolution?:boolean;
   damageBonus?:number;kingDischarge?:boolean; abilitySourceId?:string; abilityAmount?:number;
   id: number; owner: PlayerId; source: CardInstance; targets: TargetRef[];
   mode?: 'arsenal' | 'banjo' | 'colar' | 'colar-card' | 'colar-next' | 'ability'; spellId?: string; equipmentId?: string; replaceEquipmentId?: string;

@@ -1,3 +1,4 @@
+import {reduceRubelStrike} from './rubel-talents.js';
 import {equipmentDamage} from './equipment.js';
 import {laboratoryAttack,laboratoryBlocked,laboratoryAfterAttack} from './laboratory.js';
 import {finishEncounterResolution} from './encounters.js';
@@ -101,13 +102,14 @@ export function resolveCombat(state: BattleState): Result {
       const attack = Math.max(0, attacker.attack + executionBonus +talentStrikeBonus(next,combat.attacker,attacker,lane,strike)+ equipmentDamage(next,attacker,definition));
       if (blocker) {
         if(attack>0)retaliations.push(...shieldTriggers(next,blocker,{kind:'unit',player:combat.attacker,instanceId:attacker.card.instanceId}));
-        blocker.health = Math.max(0, blocker.health - attack);
-        events.push({ type: 'damageApplied', target: { kind: 'unit', player: defender, instanceId: blocker.card.instanceId }, amount: attack });recordDamage(next,{kind:'unit',player:defender,instanceId:blocker.card.instanceId},combat.attacker);
-        talentDamage(next,defender,blocker,attack,events);
+        const received=reduceRubelStrike(next,defender,blocker,attack);
+        blocker.health = Math.max(0, blocker.health - received);
+        events.push({ type: 'damageApplied', target: { kind: 'unit', player: defender, instanceId: blocker.card.instanceId }, amount: received });recordDamage(next,{kind:'unit',player:defender,instanceId:blocker.card.instanceId},combat.attacker);
+        talentDamage(next,defender,blocker,received,events);
         // Evolved first strike is Quick Attack. Only the second exchanges damage.
         if ((lane.weapons.length === 1 && (!attacker.keywords?.includes('quick') || blocker.health > 0)) || strike > 0) {
-          const retaliation = Math.max(0, blocker.attack);
-          if(retaliation>0)retaliations.push(...shieldTriggers(next,attacker,{kind:'unit',player:defender,instanceId:blocker.card.instanceId}));
+          const retaliation = reduceRubelStrike(next,combat.attacker,attacker,Math.max(0,blocker.attack));
+          if(blocker.attack>0)retaliations.push(...shieldTriggers(next,attacker,{kind:'unit',player:defender,instanceId:blocker.card.instanceId}));
           attacker.health = Math.max(0, attacker.health - retaliation);
           events.push({ type: 'damageApplied', target: { kind: 'unit', player: combat.attacker, instanceId: attacker.card.instanceId }, amount: retaliation });recordDamage(next,{kind:'unit',player:combat.attacker,instanceId:attacker.card.instanceId},defender);
           talentDamage(next,combat.attacker,attacker,retaliation,events);

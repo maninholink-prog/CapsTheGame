@@ -1,3 +1,4 @@
+import {connectRelicCollection} from './relic-view.js';
 import {fitViewport,prepareViewport} from './viewport.js';
 import {renderBattleIntro,renderBattleResult} from './battle-screen.js';
 import {enableRelics,takeRelic} from '../run/relics.js';
@@ -65,6 +66,7 @@ function persist(){
 }
 function paint(): void {
   paintScreen();
+  connectRelicCollection(root);
   prepareViewport(root,page);
 }
 window.addEventListener('resize',()=>fitViewport(root));
