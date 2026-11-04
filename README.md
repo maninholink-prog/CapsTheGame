@@ -2,7 +2,16 @@
 
 Protótipo local em TypeScript: combate inspirado em LoR, decks narrativos dos oito protagonistas, cinco dificuldades com rotas, coleção permanente, boosters e perfil salvo no navegador. Os adversários e chefes ainda usam o deck de teste de Kylast.
 
-## Abrir o jogo
+## Jogar no Windows
+
+1. [Baixe o ZIP do playtest para Windows 64 bits](https://github.com/maninholink-prog/CapsTheGame/releases/download/v0.1.0-playtest.1/CAPS-0.1.0-playtest.1-Windows-x64.zip).
+2. Clique com o botão direito no ZIP e escolha **Extrair Tudo**.
+3. Abra a pasta extraída e execute **C.A.P.S.exe**. Mantenha os arquivos do pacote juntos na mesma pasta.
+4. Na primeira abertura, dê um nome ao perfil e escolha um protagonista. Em **Aventura**, escolha uma dificuldade e entre na primeira casa do mapa. Para praticar, escolha **Duelo de treino** em **Início**.
+
+O pacote portátil abre direto no Windows e salva o perfil automaticamente. As versões disponíveis ficam em [Releases](https://github.com/maninholink-prog/CapsTheGame/releases).
+
+## Rodar pelo código-fonte
 
 No Windows, execute **Iniciar batalha.cmd** nesta pasta. Ele inicia o servidor local e abre o navegador. Deixe a janela do servidor aberta enquanto joga; Ctrl+C encerra. Não modifica configurações do sistema nem vínculos de projetos.
 
