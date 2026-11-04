@@ -22,3 +22,12 @@ As entradas abaixo são acréscimos; preservam DEC-001 a DEC-005 e não reclassi
 | DEC-007 | 03/11/2026, autor: “Gostei de Vinculo” | Nome de apresentação Vínculo aprovado no lugar de Nexus; decisão já registrada na fonte | Manter identificadores internos e compatibilidade de saves | [CAMPANHA](../CAMPANHA.md), “Nome do objetivo de vida — aprovado em 03/11/2026”; não houve nova implementação nesta auditoria |
 | DEC-008 | 03/11/2026, autor: “Gosto da proposta, aprovada” | Cinderela aprovada conforme proposta apresentada; execução suspensa por DEC-006 | Equipamento de Abe com fortalecimento pós-evolução; requisito de evolução por seis Upgrades preservado | Aprovação nesta conversa; resumo de estado em [PROGRESS](PROGRESS.md), sem criar nova especificação paralela |
 | DEC-009 | 03/11/2026, autor: “Por enquanto mantemos” | Maestria de Abe mantida provisoriamente; revisão futura com novos Upgrades | Não promover os quinze talentos a cânone ou alegar implementação | [Proposta provisória existente](../design/ABE_MAESTRIA_PROVISORIA.md) |
+
+## Retomada de Abe — 03/11/2026
+
+O autor pediu continuar o desenvolvimento de Abe em Game, sem voltar a infraestrutura ou Git, e aprovou com “Sim” as conexões propostas. DEC-006 descreve o ciclo anterior e não impede esta retomada explícita. A proibição de commit/push/backup permanece preservada. DEC-010: conexões aprovadas em [ABE_MAESTRIA_PROVISORIA](../design/ABE_MAESTRIA_PROVISORIA.md#conexões-aprovadas--03112026); os quinze efeitos continuam provisórios. Plano técnico em [2026-11-03-abe-maestria](superpowers/plans/2026-11-03-abe-maestria.md), preparado, ainda não executado. Cinderela conserva a aprovação de DEC-008.
+
+
+## Aplicação de DEC-008 e DEC-010 — 04/11/2026
+
+Cinderela e conexões de maestria aplicadas. Os efeitos mantêm o status provisório de DEC-009. A [proposta de Abe](../design/ABE_MAESTRIA_PROVISORIA.md) registra o comportamento na evolução fora do campo e na fabricação dupla. Nenhuma decisão narrativa nova.

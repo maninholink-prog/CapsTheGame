@@ -1,3 +1,4 @@
+import {equipmentDamage} from '../battle/equipment.js';
 import {entryRule,entryTargets} from '../battle/narrative.js';
 import {effectiveDefinition} from '../battle/champions.js';
 import { applyCommand } from '../battle/commands.js';
@@ -64,9 +65,9 @@ function effectScore(state: BattleState, self: AiObservation['self'], def: Extra
 }
 function gearScore(o: AiObservation, state: BattleState, def: Extract<CardDefinition, { kind: 'equipment' }>, bearer: BoardUnit, replacement?: string): number {
   const gear = bearer.equipment ?? [];
-  const damage = (id: string) => { const d = state.definitions[id]; return d?.kind === 'equipment' ? d.damage ?? 0 : 0; };
+  const damage = (id: string) => equipmentDamage(state,bearer,state.definitions[id]);
   const before = Math.max(0, ...gear.map(g => damage(g.card.definitionId)));
-  const after = Math.max(def.damage ?? 0, ...gear.filter(g => g.card.instanceId !== replacement).map(g => damage(g.card.definitionId)));
+  const after = Math.max(equipmentDamage(state,bearer,def), ...gear.filter(g => g.card.instanceId !== replacement).map(g => damage(g.card.definitionId)));
   const fresh = !state.equippedIdentities[o.self].includes(def.baseId??def.id);
   const progress = fresh && !state.evolvedKylast[o.self] ? state.equippedIdentities[o.self].length === 3 ? 9 : 1.5 : 0;
   const removed = gear.find(g => g.card.instanceId === replacement);

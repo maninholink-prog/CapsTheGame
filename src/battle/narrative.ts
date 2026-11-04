@@ -1,3 +1,4 @@
+import {abeUpgradeResolved} from './abe-talents.js';
 import {championUnit,fabricate,progress,queueHeal} from './champions.js';
 import {isLegalTarget} from './targets.js';
 import {drawOne} from './draw.js';
@@ -33,6 +34,7 @@ export function consumeNarrativeCosts(s:BattleState,owner:PlayerId,d:CardDefinit
 }
 export function narrativeResolved(s:BattleState,owner:PlayerId,d:CardDefinition,targets:TargetRef[],actualHealing:number,events:BattleEvent[],isAbility=false){
  if(d.upgrade){
+  abeUpgradeResolved(s,owner,targets,events);if((s as BattleState).phase==='ended')return;
   for(const t of targets)if(t.kind==='unit'){const u=s.players[t.player].board.find(x=>x.card.instanceId===t.instanceId);if(u&&s.definitions[u.card.definitionId].kind==='unit'&&'ability' in s.definitions[u.card.definitionId]&&(s.definitions[u.card.definitionId] as {ability?:string}).ability==='spider')u.attack++;}
   for(const id of s.players[owner].board.map(u=>u.card.instanceId)){
    const u=s.players[owner].board.find(x=>x.card.instanceId===id);if(!u)continue;const a=ability(s,u);

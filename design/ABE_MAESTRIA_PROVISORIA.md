@@ -31,3 +31,19 @@ Correção apenas ortográfica do nome anteriormente apresentado como “Autor r
 O autor observou que ainda acredita haver efeitos faltantes. Isso não é confirmação de um defeito específico nem autorização para inventar habilidades. Conferência inicial do código: quatro Upgrades fabricáveis já definidos em src/content/allies.ts — Reforço Estrutural (+1/+1), Propulsores (Elusivo), Reflexos Mecânicos (Ataque Rápido) e Motor de Combate (Ataque Duplo). Fabricação oferece três opções em src/battle/champions.ts. Upgrades adicionais Arma Aprimorada, Defesa Aprimorada e Lampejo de Genialidade, além de Zacarias, Keegan, Lúcia e Gremin, constam do código e de tests/battle/narrative-decks.test.ts. A presença de código/testes não equivale a auditoria completa de comportamento.
 
 Separar na próxima revisão: efeitos já aprovados ausentes ou incorretos no jogo; novas habilidades para futuros Upgrades; efeitos ainda faltantes na elaboração das maestrias. Não ampliar automaticamente o conjunto de fabricação quando novos Upgrades forem criados. Os quinze talentos acima seguem provisórios.
+
+## Conexões aprovadas — 03/11/2026
+
+O autor respondeu “Sim” à organização abaixo nesta retomada do desenvolvimento. Este complemento define os pré-requisitos antes ausentes; preserva os efeitos provisórios e o histórico acima. Aprovação de conexões não equivale a implementação ou aprovação de arte.
+
+- Base: Estrutura Reforçada → Ferramentas Preparadas → Catálogo Ampliado.
+- Fabricação, a partir de Catálogo Ampliado: Montagem Econômica → Projeto Eficiente → Pesquisa Aplicada → Obra-Prima (nível 30).
+- Aliados, a partir de Ferramentas Preparadas: Reforço Inicial → Calibração Ofensiva → Engenharia Compartilhada → Aperfeiçoamento Completo.
+- Sustentação, a partir de Estrutura Reforçada: Proteção de Oficina → Autorreparável → Inventor Experiente → Inspiração Renovada.
+
+A retomada autoriza desenvolver e aplicar a árvore de Abe e a Cinderela já aprovada, sem retomar infraestrutura ou Git. Implementação ainda pendente neste registro; plano em [2026-11-03-abe-maestria.md](../docs/superpowers/plans/2026-11-03-abe-maestria.md).
+
+
+## Aplicação no jogo — 04/11/2026
+
+Os quinze efeitos provisórios e os pré-requisitos aprovados estão disponíveis no Perfil e nas novas aventuras de Abe. A interface apresenta os talentos em texto até haver arte aprovada. Se o sexto Upgrade resolver com Abe fora do campo, a primeira entrada na forma evoluída dispara Inspiração Renovada. Os talentos de alvo seguem o alvo válido quando um Upgrade é redirecionado. A Cinderela entrou no starter no lugar de Arma Aprimorada, que permanece no catálogo e nos decks antigos já salvos.

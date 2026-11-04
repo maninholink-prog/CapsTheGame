@@ -1,3 +1,4 @@
+import {consumeAbeCosts} from './abe-talents.js';
 import {consumeMusicDiscount,expandedResolved} from './expansion.js';
 import {entryRule,entryTargets,consumeNarrativeCosts} from './narrative.js';
 import { effectiveDefinition, cardCost } from './champions.js';
@@ -69,6 +70,7 @@ export function playCard(state: BattleState, command: PlayCommand): Result {
   if (!paid) return invalid('Insufficient mana');
   const next = structuredClone(state);
   next.players[command.player] = paid;
+  consumeAbeCosts(next,command.player,definition);
   consumeMusicDiscount(next,command.player,definition);
   const damageBonus=consumeNarrativeCosts(next,command.player,definition);
   const sourceIndex = paid.hand.findIndex(c => c.instanceId === card.instanceId);

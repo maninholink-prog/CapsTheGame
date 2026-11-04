@@ -1,3 +1,5 @@
+import {consumeAbeCosts} from './abe-talents.js';
+import type {CardDefinition} from '../content/schema.js';
 import {paidEquipmentUpgrade} from './laboratory.js';
 import { payCost } from './costs.js';
 import {hasTalent,talentCapacity,talentAttached,consumeTalentEquipmentCost} from './kylast-talents.js';
@@ -5,6 +7,12 @@ import { returnCard } from './state-events.js';
 import { consumeEquipmentDiscount, equipmentPrice, onEquipmentAttached } from './supports.js';
 import { opponent } from './types.js';
 import type { BattleEvent, BattleState, BoardUnit, CardInstance, PlayerId, Result } from './types.js';
+
+export function equipmentDamage(state:BattleState,bearer:BoardUnit,definition?:CardDefinition):number {
+ if(definition?.kind!=='equipment')return 0;
+ const d=state.definitions[bearer.card.definitionId];
+ return (definition.damage??0)+((definition.baseId??definition.id)==='cinderela'&&bearer.evolved&&d?.kind==='unit'&&d.champion==='abe'?2:0);
+}
 
 export function effectiveEquipmentCapacity(state: BattleState, unit: BoardUnit): number {
   const definition = state.definitions[unit.card.definitionId];
@@ -91,6 +99,7 @@ export function equipFromHand(state: BattleState, owner: PlayerId, equipmentId: 
   paid.hand.splice(paid.hand.findIndex(c => c.instanceId === equipmentId), 1);
   const events: BattleEvent[] = [];
   if (!free) {
+    consumeAbeCosts(next,owner,definition);
     const joiaPrice=equipmentPrice(next,owner,definition);
     consumeEquipmentDiscount(next, owner, definition.cost, joiaPrice);
   }

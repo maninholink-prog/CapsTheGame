@@ -1,7 +1,7 @@
 import type {Champion} from '../content/schema.js';
 import {credit,masteryInfo,type Profile} from './profile.js';
 
-export type TalentId='arsenal-i'|'arsenal-ii'|'arsenal-iii'|'arsenal-maintenance'|'martial-versatility'|'complete-arsenal'|'precautious-smith'|'grip-adjustment'|'recovered-arsenal'|'iron-constitution'|'warrior-stamina'|'campaign-armor'|'prepared-strike'|'calculated-switch'|'master-of-all';
+export type TalentId='abe-frame'|'abe-tools'|'abe-catalog'|'abe-economy'|'abe-project'|'abe-research'|'abe-masterpiece'|'abe-reinforcement'|'abe-calibration'|'abe-shared'|'abe-complete'|'abe-protection'|'abe-repair'|'abe-experienced'|'abe-inspiration'|'arsenal-i'|'arsenal-ii'|'arsenal-iii'|'arsenal-maintenance'|'martial-versatility'|'complete-arsenal'|'precautious-smith'|'grip-adjustment'|'recovered-arsenal'|'iron-constitution'|'warrior-stamina'|'campaign-armor'|'prepared-strike'|'calculated-switch'|'master-of-all';
 export type TalentAllocation=Partial<Record<Champion,TalentId[]>>;
 export interface Talent {id:TalentId;name:string;parent?:TalentId;minLevel?:number;text:string}
 export const kylastTalents:Talent[]=[
@@ -21,15 +21,33 @@ export const kylastTalents:Talent[]=[
  {id:'calculated-switch',name:'Troca Calculada',parent:'prepared-strike',text:'Evoluído, usar armas diferentes nos dois golpes concede +1 de dano ao segundo.'},
  {id:'master-of-all',name:'Mestre de Todas',parent:'calculated-switch',text:'Ao evoluir, Kylast recebe +1 de ataque permanente naquela batalha.'},
 ];
+export const abeTalents:Talent[]=[
+ {id:'abe-frame',name:'Estrutura Reforçada',text:'Abe recebe +1 de vida base.'},
+ {id:'abe-tools',name:'Ferramentas Preparadas',parent:'abe-frame',text:'No início da batalha, compre um Upgrade do deck, se houver.'},
+ {id:'abe-catalog',name:'Catálogo Ampliado',parent:'abe-tools',text:'Fabricações oferecem os quatro Upgrades existentes.'},
+ {id:'abe-economy',name:'Montagem Econômica',parent:'abe-catalog',text:'Primeiro Upgrade jogado por rodada custa 1 a menos, mínimo 1.'},
+ {id:'abe-project',name:'Projeto Eficiente',parent:'abe-economy',text:'Primeiro Projeto de Melhoria da batalha custa 1 a menos.'},
+ {id:'abe-research',name:'Pesquisa Aplicada',parent:'abe-project',text:'Ao resolver o terceiro Upgrade da batalha, compre uma carta.'},
+ {id:'abe-masterpiece',name:'Obra-Prima',parent:'abe-research',minLevel:30,text:'Na primeira fabricação da batalha, escolha dois Upgrades distintos entre as opções.'},
+ {id:'abe-reinforcement',name:'Reforço Inicial',parent:'abe-tools',text:'Primeiro Upgrade resolvido na batalha concede também +1 de vida máxima ao alvo, sem curar.'},
+ {id:'abe-calibration',name:'Calibração Ofensiva',parent:'abe-reinforcement',text:'Primeiro Upgrade resolvido por rodada concede também +1 de ataque ao alvo naquela rodada.'},
+ {id:'abe-shared',name:'Engenharia Compartilhada',parent:'abe-calibration',text:'Ao melhorar a terceira unidade diferente da batalha, compre uma carta, uma vez.'},
+ {id:'abe-complete',name:'Aperfeiçoamento Completo',parent:'abe-shared',text:'Primeira unidade que receber três Upgrades na batalha ganha +1/+1 adicional, sem curar.'},
+ {id:'abe-protection',name:'Proteção de Oficina',parent:'abe-frame',text:'Primeira entrada de Abe concede a ele +2 de vida como armadura.'},
+ {id:'abe-repair',name:'Autorreparável',parent:'abe-protection',text:'Primeiro Upgrade aliado resolvido por rodada cura 1 de Abe, se estiver em campo.'},
+ {id:'abe-experienced',name:'Inventor Experiente',parent:'abe-repair',text:'Ao evoluir, Abe recebe +1/+1 adicional, preservando o dano sofrido.'},
+ {id:'abe-inspiration',name:'Inspiração Renovada',parent:'abe-experienced',text:'Ao evoluir pela primeira vez na batalha, Abe fabrica um Upgrade.'},
+];
+export function talentsFor(hero:Champion):Talent[]{return hero==='kylast'?kylastTalents:hero==='abe'?abeTalents:[];}
 export function getTalents(profile:Profile):TalentAllocation {return profile.talents??{};}
 function assertEditable(profile:Profile,hero:Champion,runActive:boolean){
  if(runActive)throw Error('Talentos só podem ser alterados fora da run.');
  if(!profile.collection[hero]?.count)throw Error('Protagonista bloqueado.');
- if(hero!=='kylast')throw Error('Árvore de talentos em preparação.');
+ if(!talentsFor(hero).length)throw Error('Árvore de talentos em preparação.');
 }
 export function allocateTalent(profile:Profile,hero:Champion,id:TalentId,runActive:boolean,now:number):Profile {
  assertEditable(profile,hero,runActive);
- const node=kylastTalents.find(t=>t.id===id),owned=getTalents(profile)[hero]??[],info=masteryInfo(profile.mastery[hero].xp);
+ const node=talentsFor(hero).find(t=>t.id===id),owned=getTalents(profile)[hero]??[],info=masteryInfo(profile.mastery[hero].xp);
  if(!node)throw Error('Talento desconhecido.');
  if(owned.includes(id))throw Error('Talento já adquirido.');
  if(node.parent&&!owned.includes(node.parent))throw Error('Adquira o talento anterior.');
@@ -41,5 +59,5 @@ export function allocateTalent(profile:Profile,hero:Champion,id:TalentId,runActi
 export function resetTalents(profile:Profile,hero:Champion,runActive:boolean,now:number):Profile {
  assertEditable(profile,hero,runActive);
  if(!(getTalents(profile)[hero]?.length))throw Error('Nenhum talento para redistribuir.');
- const p=structuredClone(profile);credit(p,-200,'Redistribuição de talentos: Kylast',now);p.talents={...getTalents(p),[hero]:[]};return p;
+ const p=structuredClone(profile);credit(p,-200,`Redistribuição de talentos: ${hero==='abe'?'Abe':'Kylast'}`,now);p.talents={...getTalents(p),[hero]:[]};return p;
 }

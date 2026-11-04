@@ -1,3 +1,4 @@
+import {cardCost} from './champions.js';
 import type { CardDefinition } from '../content/schema.js';
 import {talentEquipmentDiscount,talentEntry} from './kylast-talents.js';
 import type { BattleEvent, BattleState, BoardUnit, PlayerId } from './types.js';
@@ -7,7 +8,7 @@ export function equipmentPrice(state: BattleState, owner: PlayerId, definition: 
     const def = state.definitions[unit.card.definitionId];
     return def?.kind === 'unit' && def.ability === 'joia';
   }).length;
-  return Math.max(0, definition.cost - joias-talentEquipmentDiscount(state,owner,unitId,cardId));
+  return Math.max(0, (definition.upgrade?cardCost(state,owner,definition):definition.cost) - joias-talentEquipmentDiscount(state,owner,unitId,cardId));
 }
 
 export function consumeEquipmentDiscount(state: BattleState, owner: PlayerId, original: number, paid: number): void {

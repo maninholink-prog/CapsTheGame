@@ -20,3 +20,12 @@ A infraestrutura documental e as duas skills já existiam. A revisão atual acre
 Git novamente conferido: master sem HEAD/commits, sem remotos e sem arquivos rastreados. Diretórios propostos de backup e restauração inexistentes; nenhuma tarefa do Agendador com ação ligada ao caminho Game/CAPS-Game foi encontrada. Tarefas genéricas do Windows não comprovam backup deste projeto. Nenhum commit, push, backup, agendamento ou retenção foi executado.
 
 Skills preparadas em .agents/skills, sem duplicação global. Leitura direta e recuperação documental podem ser verificadas nesta sessão; descoberta automática no seletor de skills ainda não demonstrada. PyYAML continua ausente; não houve instalação. Não reutilizar testes históricos como resultado desta auditoria documental.
+
+## Retomada de Abe — 03/11/2026
+
+O autor retomou explicitamente o desenvolvimento de Abe/Cinderela e aprovou as conexões da árvore. A suspensão anterior fica preservada como histórico do ciclo documental. Conexões em [proposta de Abe](../design/ABE_MAESTRIA_PROVISORIA.md); [plano técnico](superpowers/plans/2026-11-03-abe-maestria.md) preparado, sem implementação. Próximo passo: revisão do plano e execução direta na sessão. Apenas documentação alterada nesta etapa; sem testes do jogo, commits, pushes ou backups. Não retomar infraestrutura.
+
+
+## Abe jogável no Windows — 04/11/2026
+
+Entrega local em [C.A.P.S.exe](../release/CAPS-20261104-054758-win-x64/C.A.P.S.exe). Manter a pasta portátil junto do executável. A janela da versão nova abriu. Abe/Cinderela implementados e verificados com TypeScript, 62 testes direcionados, build e teste de abertura. Suíte ampla sem resultado final. Estado e limites em [PROGRESS](PROGRESS.md). A arte da maestria e a revisão futura do balanceamento continuam pendentes. Sem commit, push ou backup.

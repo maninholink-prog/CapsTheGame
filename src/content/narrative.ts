@@ -5,6 +5,7 @@ const none:TargetRule={kind:'unit',side:'ally',min:0,max:0};
 const regional=(region:Region)=>({regions:[region],collectible:true});
 const west=regional('west'),south=regional('south'),north=regional('north'),east=regional('east');
 export const narrativeCatalog:CardCatalog={
+ cinderela:{...west,id:'cinderela',rarity:'epic',name:'Cinderela',kind:'equipment',cost:2,damage:1,text:'Concede +1 de dano ao golpe que usa este equipamento. Se o portador for Abe evoluído, concede +3 de dano no total.'},
  zacarias:{...west,id:'zacarias',rarity:'common',name:'Zacarias, Aprendiz de Gremin',kind:'unit',cost:1,attack:1,health:2,narrative:'zacarias',text:'Ao entrar, seu próximo Upgrade nesta rodada custa 1 a menos, mínimo 1.'},
  keegan:{...west,id:'keegan',rarity:'rare',name:'Keegan, Jovem Artífice',kind:'unit',cost:3,attack:2,health:4,narrative:'keegan',text:'Ao entrar, fabrique: escolha um entre três Upgrades.'},
  lucia:{...west,id:'lucia',rarity:'rare',name:'Lúcia, Inventora Curiosa',kind:'unit',cost:3,attack:2,health:3,narrative:'lucia',text:'Enquanto estou em campo, seu primeiro Upgrade resolvido por rodada compra uma carta.'},

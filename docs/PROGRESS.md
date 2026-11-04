@@ -44,3 +44,12 @@ Complemento datado de 03/11/2026. Preserva os registros anteriores. O autor rest
 Somente os oito documentos/caminhos anunciados ao autor receberam complementos. Conteúdo anterior preservado; organização por links e seções, sem duplicar lore, regras ou políticas. Git/backups novamente consultados, sem ativação de proteção. A instalação local das skills continua sem dependências adicionais. A verificação final de preservação e recuperação está no complemento de [AUDIT](AUDIT.md).
 
 Próxima ação deste escopo: conferir o relatório documental e o cwd persistente do chat. Checkpoints, pushes e backups permanecem proibidos neste ciclo; desenvolvimento exige retomada explícita do autor.
+
+## Retomada de desenvolvimento de Abe — 03/11/2026
+
+Pedido explícito do autor retoma Abe e Cinderela; a suspensão de produto acima pertence ao ciclo documental anterior. Conexões da árvore aprovadas e acrescentadas à [proposta existente](../design/ABE_MAESTRIA_PROVISORIA.md). [Plano de aplicação](superpowers/plans/2026-11-03-abe-maestria.md) preparado; implementação pendente. Nesta etapa somente documentação foi alterada. Nenhum teste do jogo executado, commit, push ou backup realizado.
+
+
+## Maestria de Abe e pacote Windows — 04/11/2026
+
+Abe tem os quinze talentos provisórios no Perfil e na aventura. Cinderela substitui Arma Aprimorada em novos starters, preservando decks salvos. Checagem TypeScript, 62 testes direcionados em seis arquivos e build Vite passaram. Suíte ampla interrompida sem resumo final, inclusive na tentativa sem profile-run. O pacote [C.A.P.S.exe](../release/CAPS-20261104-054758-win-x64/C.A.P.S.exe) passou no teste de abertura e teve a janela nativa confirmada. Compra e redistribuição foram verificadas em testes, sem exercício manual na janela. Sem commit, push ou backup.

@@ -1,3 +1,4 @@
+import {equipmentDamage} from '../battle/equipment.js';
 import {canBlock,strikes} from '../battle/champions.js';
 import { applyCommand } from '../battle/commands.js';
 import { opponent } from '../battle/types.js';
@@ -15,7 +16,7 @@ export function unitValue(state: BattleState, unit: BoardUnit): number {
 export function damageWith(state: BattleState, unit: BoardUnit, weapon: string | null): number {
   const gear = (unit.equipment ?? []).find(g => g.card.instanceId === weapon);
   const def = gear && state.definitions[gear.card.definitionId];
-  return Math.max(0, unit.attack + (def?.kind === 'equipment' ? def.damage ?? 0 : 0));
+  return Math.max(0, unit.attack + equipmentDamage(state,unit,def));
 }
 function laneTrade(state: BattleState, lane: CombatLane, blocker?: BoardUnit) {
   const attacker = state.players[state.combat!.attacker].board.find(u => u.card.instanceId === lane.attackerId)!;

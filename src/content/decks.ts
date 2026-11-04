@@ -8,7 +8,7 @@ import type {CardInstance} from '../battle/types.js';
 export const fullCatalog={...kylastCatalog,...allyCatalog,...narrativeCatalog,...expansionCatalog,...felixCatalog};
 export const protagonistIds:Champion[]=['kylast','abe','arcata','rubel','youro','kuara','thalion','lazaro'];
 export const starterLists:Record<Exclude<Champion,'kylast'>,string[]>={...expansionStarters,
- abe:['abe','aranha','zacarias','keegan','lucia','gremin','project','enhanced-weapon','enhanced-defense','flash-genius'],
+ abe:['abe','aranha','zacarias','keegan','lucia','gremin','project','cinderela','enhanced-defense','flash-genius'],
  arcata:['arcata','arcata-raven','soarim','salita','gwen','kriv','fire-bolt','burning-hands','control-flames','fire-shield','wall-fire'],
  rubel:['rubel','coroinha','luise','archibald','faith-guardian','mantum','healing-word','prayer','blessing','aid','sacred-flame'],
 };

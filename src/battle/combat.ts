@@ -1,3 +1,4 @@
+import {equipmentDamage} from './equipment.js';
 import {laboratoryAttack,laboratoryBlocked,laboratoryAfterAttack} from './laboratory.js';
 import {finishEncounterResolution} from './encounters.js';
 import {recordDamage,nexusStrike} from './expansion.js';
@@ -97,7 +98,7 @@ export function resolveCombat(state: BattleState): Result {
       const definition = weapon && next.definitions[weapon.card.definitionId];
       if(weapon&&(blocker||!lane.blocked||brokeBlock)){lane.laboratoryUsedWeapons??=[];if(!lane.laboratoryUsedWeapons.includes(weapon.card.instanceId))lane.laboratoryUsedWeapons.push(weapon.card.instanceId);}
       const executionBonus=blocker&&definition?.expansion==='last-cry'&&next.executionMarks?.[combat.attacker]?.targetId===blocker.card.instanceId?1:0;
-      const attack = Math.max(0, attacker.attack + executionBonus +talentStrikeBonus(next,combat.attacker,attacker,lane,strike)+ (definition?.kind === 'equipment' ? definition.damage ?? 0 : 0));
+      const attack = Math.max(0, attacker.attack + executionBonus +talentStrikeBonus(next,combat.attacker,attacker,lane,strike)+ equipmentDamage(next,attacker,definition));
       if (blocker) {
         if(attack>0)retaliations.push(...shieldTriggers(next,blocker,{kind:'unit',player:combat.attacker,instanceId:attacker.card.instanceId}));
         blocker.health = Math.max(0, blocker.health - attack);

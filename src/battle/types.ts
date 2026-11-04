@@ -42,7 +42,7 @@ export interface PlayerState {
   equipmentDiscountUsedRound?: number;
 }
 export interface AllyProgress { upgrades: number; fire: number; fireRound: number; fireRoundNumber: number; healing: number; evolved: Partial<Record<Champion, boolean>> }
-export interface UpgradeChoice { owner: PlayerId; options: string[] }
+export interface UpgradeChoice { remaining?:number; owner: PlayerId; options: string[] }
 export interface ExpansionProgress {deaths:number;stolen:number;music:number;executions:number;musicRound?:number;kuaraRound?:number;lazaroRound?:number}
 export interface BattleState {
   relicState?:import('./relics.js').BattleRelics; encounter?:import('./encounters.js').EncounterState;laboratory?:import('./laboratory.js').LaboratoryState;laboratoryChoices?:{owner:PlayerId;sourceId:string;options:string[]}[]; publicDeckCounts?:Record<PlayerId,number>;
