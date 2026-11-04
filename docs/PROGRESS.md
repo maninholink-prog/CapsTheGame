@@ -71,3 +71,5 @@ O autor aprovou novas abas para acomodar o conteúdo na janela. Perfil tem abas 
 ## Maestria de Arcata — 04/11/2026
 
 Quinze talentos aprovados e implementados. Chama Persistente encerra Combustão no nível 30. A árvore utiliza a arte aprovada, e o motor mantém a evolução por seis magias de Fogo. TypeScript, 64 testes direcionados, build e presença da árvore no pacote passaram. A inspeção visual do executável ainda está pendente. Sem commit ou push desta atualização.
+
+Publicação de Arcata: código no commit 734aa67 e [prévia pública v0.1.0-playtest.2](https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.2). ZIP verificado por integridade, tamanho e SHA-256 após o envio.

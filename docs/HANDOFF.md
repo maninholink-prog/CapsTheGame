@@ -42,3 +42,5 @@ Pacote atual em [C.A.P.S.exe](../release/CAPS-20261104-062534-win-x64/C.A.P.S.ex
 ## Maestria de Arcata — 04/11/2026
 
 Árvore jogável no pacote [C.A.P.S.exe](../release/CAPS-20261104-113901-win-x64/C.A.P.S.exe). Decisão e conexões em [ARCATA_FOGO](../design/ARCATA_FOGO.md). Verificações em [PROGRESS](PROGRESS.md).
+
+Prévia pública de Arcata disponível em [v0.1.0-playtest.2](https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.2), vinculada ao commit 734aa67. Próximo passo: playtest manual.
