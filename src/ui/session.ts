@@ -8,7 +8,7 @@ import type { Command } from '../battle/commands.js';
 import type { BattleEvent, BattleState, PlayerId } from '../battle/types.js';
 export interface HistoryRow { id: number; message: string; round: number }
 export type OpponentMode = 'manual' | 'ai';
-export interface BattleSession { state: BattleState; seed: number; opponentMode: OpponentMode; viewPlayer: PlayerId; history: HistoryRow[]; error: string; nextLogId: number }
+export interface BattleSession { introSeen?: boolean; state: BattleState; seed: number; opponentMode: OpponentMode; viewPlayer: PlayerId; history: HistoryRow[]; error: string; nextLogId: number }
 export function actingPlayer(state: BattleState): PlayerId | null {
   if (state.phase === 'ended') return null;
   if(state.laboratoryChoices?.length)return state.laboratoryChoices[0].owner;

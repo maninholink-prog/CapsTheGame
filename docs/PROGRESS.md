@@ -53,3 +53,17 @@ Pedido explícito do autor retoma Abe e Cinderela; a suspensão de produto acima
 ## Maestria de Abe e pacote Windows — 04/11/2026
 
 Abe tem os quinze talentos provisórios no Perfil e na aventura. Cinderela substitui Arma Aprimorada em novos starters, preservando decks salvos. Checagem TypeScript, 62 testes direcionados em seis arquivos e build Vite passaram. Suíte ampla interrompida sem resumo final, inclusive na tentativa sem profile-run. O pacote [C.A.P.S.exe](../release/CAPS-20261104-054758-win-x64/C.A.P.S.exe) passou no teste de abertura e teve a janela nativa confirmada. Compra e redistribuição foram verificadas em testes, sem exercício manual na janela. Sem commit, push ou backup.
+
+
+## Interface de maestria e batalha — 04/11/2026
+
+Adicionados menu de Maestria por personagem e telas de início, vitória, derrota e empate na aventura e no treino. As telas usam os componentes do menu existente. TypeScript, 28 testes direcionados e geração do pacote Windows passaram. Interação completa no executável ainda não foi exercitada.
+
+
+Arte da oficina fornecida pelo autor, com 15 nós interativos e ligações geradas pelos pré-requisitos. Em telas menores, os talentos aparecem como lista. TypeScript e 12 testes de maestria, salvamento e telas passaram após essa alteração. O pacote final inclui a imagem original.
+
+A prévia pública de Abe e Cinderela foi publicada como [v0.1.0-playtest.1](https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.1), vinculada ao commit 7b1e447. O ZIP portátil teve integridade e SHA-256 conferidos. As telas novas e a imagem de maestria fazem parte do pacote local posterior.
+
+## Interface sem rolagem — 04/11/2026
+
+O autor aprovou novas abas para acomodar o conteúdo na janela. Perfil tem abas de dados, marcos e registro. Coleção, relíquias e listas longas usam páginas. Maestria separa retratos e árvore, com detalhes ao lado da arte em janelas largas. O conteúdo se ajusta à altura e à largura da janela. TypeScript, 29 testes direcionados e empacotamento passaram. A inspeção visual em diferentes tamanhos continua pendente. Pacote local em [C.A.P.S.exe](../release/CAPS-20261104-062534-win-x64/C.A.P.S.exe). O tutorial do Windows foi publicado no README no commit dd8ff37.

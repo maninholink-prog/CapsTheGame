@@ -29,3 +29,12 @@ O autor retomou explicitamente o desenvolvimento de Abe/Cinderela e aprovou as c
 ## Abe jogável no Windows — 04/11/2026
 
 Entrega local em [C.A.P.S.exe](../release/CAPS-20261104-054758-win-x64/C.A.P.S.exe). Manter a pasta portátil junto do executável. A janela da versão nova abriu. Abe/Cinderela implementados e verificados com TypeScript, 62 testes direcionados, build e teste de abertura. Suíte ampla sem resultado final. Estado e limites em [PROGRESS](PROGRESS.md). A arte da maestria e a revisão futura do balanceamento continuam pendentes. Sem commit, push ou backup.
+
+
+## Maestria individual e telas de batalha — 04/11/2026
+
+O menu Maestria mostra os dados e talentos de um personagem por vez. Aventura e treino apresentam abertura antes da mão inicial e resultado antes de seguir. A aventura é liquidada e salva ao terminar o combate. O resultado é apresentado na sessão atual. Pacote local em [C.A.P.S.exe](../release/CAPS-20261104-061035-win-x64/C.A.P.S.exe).
+
+## Interface sem rolagem — 04/11/2026
+
+Pacote atual em [C.A.P.S.exe](../release/CAPS-20261104-062534-win-x64/C.A.P.S.exe). Abas, páginas e ajuste à janela implementados. Testes e limites em [PROGRESS](PROGRESS.md). A release pública anterior segue vinculada ao playtest de Abe.

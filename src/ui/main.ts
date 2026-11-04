@@ -1,3 +1,5 @@
+import {fitViewport,prepareViewport} from './viewport.js';
+import {renderBattleIntro,renderBattleResult} from './battle-screen.js';
 import {enableRelics,takeRelic} from '../run/relics.js';
 import {discoverRelics} from '../profile/relics.js';
 import {targetKey} from '../battle/targets.js';
@@ -41,6 +43,9 @@ let run:RunState|null=null;
 let profile:Profile|null=null;
 let page:HubPage='home';
 let training=false;
+let masteryHero:Champion|undefined;
+let showMasteryDetails=false;
+let battleResult:BattleSession|null=null;
 let adventureSession:BattleSession|null=null;
 let lastGood='';
 let rawSave='';
@@ -59,10 +64,18 @@ function persist(){
  catch{if(lastGood){const old=decodeSave(lastGood);profile=old.profile;run=old.run;adventureSession=old.session;if(old.session)session=old.session;}storageIssue='Não foi possível salvar no navegador. A última versão salva foi preservada; exporte um backup antes de continuar.';}
 }
 function paint(): void {
+  paintScreen();
+  prepareViewport(root,page);
+}
+window.addEventListener('resize',()=>fitViewport(root));
+root.addEventListener('toggle',()=>fitViewport(root),true);
+root.addEventListener('load',()=>fitViewport(root),true);
+
+function paintScreen(): void {
   persist();
   if(storageIssue){aiController.cancel();root.innerHTML=`<main class="hub"><h1>Salvamento protegido</h1><p class="error" role="alert">${esc(storageIssue)}</p><button class="button" data-action="profile-export">Exportar arquivo preservado</button> <button class="button" data-action="storage-retry">Tentar ler novamente</button><p>Você também pode restaurar um backup válido:</p><input type="file" id="import-save" accept="application/json,.json"/></main>`;return;}
   if(!profile){aiController.cancel();root.innerHTML=onboarding(hubError);return;}
-  if(page!=='battle'){aiController.cancel();root.innerHTML=hubShell(profile,page,run,hubContent(profile,page,run,filters),hubError);return;}
+  if(page!=='battle'){aiController.cancel();root.innerHTML=hubShell(profile,page,run,hubContent(profile,page,run,filters,masteryHero,showMasteryDetails),hubError);return;}
   const active = document.activeElement instanceof HTMLElement && root.contains(document.activeElement) ? document.activeElement : null;
   const keys = ['data-action', 'data-id', 'data-field', 'data-unit', 'data-strike', 'data-player', 'data-tab', 'data-definition', 'id', 'value'];
   const identity = active ? keys.filter(key => active.hasAttribute(key)).map(key => [key, active.getAttribute(key)!]) : [];
@@ -70,6 +83,13 @@ function paint(): void {
   const handPosition = oldHand?.scrollLeft ?? 0;
   const oldOwner = oldHand?.dataset.player;
   const activeRun=training?null:run;
+  const intro=(!activeRun||activeRun.stage==='battle')&&session.state.phase==='opening'&&!session.introSeen&&!session.state.players.p1.mulliganUsed&&!session.state.players.p2.mulliganUsed;
+  if(intro||battleResult===session){
+    aiController.cancel();
+    root.innerHTML=hubShell(profile,'battle',run,intro?renderBattleIntro(session,training):renderBattleResult(session,training),hubError);
+    root.querySelector<HTMLElement>('[data-action^="battle-"]')?.focus();
+    return;
+  }
   let body=activeRun&&activeRun.stage!=='battle'?renderRun(activeRun,session.error):render(session,draft,new Set(Object.keys(profile.collection).filter(id=>profile!.collection[id].shiny))).replace('<main',`${activeRun?runBanner(activeRun):''}<main`);
   if(activeRun)body=body.replace('Sem salvamento nesta versão · recarregar reinicia o duelo','Aventura salva automaticamente · pause para voltar ao menu');
   root.innerHTML=hubShell(profile,'battle',run,body,hubError);
@@ -86,6 +106,7 @@ function paint(): void {
 function receive(next: BattleSession): void {
   const before = session.state;
   session = next;
+  if(before.phase!=='ended'&&next.state.phase==='ended')battleResult=next;
   if(!training&&run?.stage==='battle'&&session.state.phase==='ended'){const beforeRun=run;run=finishBattle(run,session.state);if(profile&&run.map)profile=settleBattle(profile,beforeRun,run,session.state,Date.now());}
   if (session.state !== before) {
     const { inspectedDefinitionId, sideTab } = draft;
@@ -115,8 +136,11 @@ root.addEventListener('click', event => {
         const next=button.dataset.id as HubPage;
         if(!training&&run?.stage==='battle')adventureSession=session;
         if(next==='battle'){if(!run)throw Error('Nenhuma aventura em andamento.');training=false;if(adventureSession)session=adventureSession;}
+        if(next==='mastery')showMasteryDetails=false;
         page=next;
       }
+      else if(action==='hub-mastery'){masteryHero=button.dataset.id as Champion;showMasteryDetails=true;}
+      else if(action==='hub-mastery-back'){showMasteryDetails=false;}
       else if(action==='hub-unlock-test'){profile=unlockPlaytestHeroes(profile);page='adventure';}
       else if(action==='hub-training'){if(!training&&run?.stage==='battle')adventureSession=session;training=true;session=createSession(crypto.getRandomValues(new Uint32Array(1))[0],'ai',selectedProtagonist);draft=freshDraft();page='battle';}
       else if(action==='hub-start'){
@@ -135,9 +159,15 @@ root.addEventListener('click', event => {
       else if(action==='profile-rename'){const name=root.querySelector<HTMLInputElement>('#rename-profile')!.value.trim();if(!name||name.length>40)throw Error('Use um nome de 1 a 40 caracteres.');profile={...profile,name};}
       if(run?.collection&&profile)run.collection=Object.keys(profile.collection);
     }catch(error){hubError=error instanceof Error?error.message:'Ação indisponível.';}
-    paint();return;
+    paint();
+    if(action==='hub-mastery'||action==='hub-mastery-back'){
+      root.querySelector<HTMLElement>(showMasteryDetails?'[data-action="hub-mastery-back"]':'[data-action="hub-mastery"][aria-pressed="true"]')?.focus({preventScroll:true});
+    }
+    return;
   }
   if(page!=='battle')return;
+  if(action==='battle-intro-continue'){session={...session,introSeen:true};paint();return;}
+  if(action==='battle-result-continue'){battleResult=null;if(training)page='home';paint();return;}
   if(action==='shop-buy'||action==='shop-leave'){
     const oldCoins=run?.coins??0;
     try{if(!run)throw Error('Run indisponível.');run=action==='shop-leave'?leaveShop(run):buy(run,button.dataset.id!,root.querySelector<HTMLSelectElement>('#remove-card')?.value);session={...session,error:''};}catch(error){session={...session,error:error instanceof Error?error.message:'Compra indisponível.'};}

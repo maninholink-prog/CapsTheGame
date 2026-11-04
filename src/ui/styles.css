@@ -385,3 +385,7 @@ select option{background:#15232b}
 .target-summary{font-size:12px;color:#f4d079;line-height:1.6}
 .unit.targetable .unit-face{cursor:crosshair}
 .selection-badge{position:absolute;left:0;right:0;bottom:0;background:#d6b66e;color:#142329;text-align:center;font-size:8px;font-weight:700;padding:4px}.unit-stats{gap:5px}.unit-stats>span{min-width:0}.unit-stats>span>small{font-size:7px}.unit-stats b{font-size:22px}
+
+/* Hide the viewport scrollbar while keeping the page scrollable. */
+html{scrollbar-width:none}
+html::-webkit-scrollbar{display:none}

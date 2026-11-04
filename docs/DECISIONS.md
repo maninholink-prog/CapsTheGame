@@ -31,3 +31,8 @@ O autor pediu continuar o desenvolvimento de Abe em Game, sem voltar a infraestr
 ## Aplicação de DEC-008 e DEC-010 — 04/11/2026
 
 Cinderela e conexões de maestria aplicadas. Os efeitos mantêm o status provisório de DEC-009. A [proposta de Abe](../design/ABE_MAESTRIA_PROVISORIA.md) registra o comportamento na evolução fora do campo e na fabricação dupla. Nenhuma decisão narrativa nova.
+
+
+## Telas de batalha — 04/11/2026
+
+O autor solicitou consulta de maestria por personagem e telas de início, vitória e derrota. Confirmou no chat que as telas se aplicam à aventura e ao duelo de treino. A implementação também apresenta o empate já previsto pelo jogo.

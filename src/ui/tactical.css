@@ -195,3 +195,13 @@
  .tactical-battle .hand-card .card-copy>strong{font-size:12px;min-height:29px}
 }
 .hub:has(.tactical-battle)>.hub-header strong::before{content:"C.A.P.S. · ";color:#efd19a}
+
+html,body{overflow:clip}
+#app [hidden]{display:none!important}
+.viewport-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:8px 0}
+.viewport-controls button[aria-pressed="true"]{outline:2px solid #d0b278}
+.tactical-battle .action-panel,.tactical-battle .inspector-panel,.tactical-battle .activity-content{max-height:none;overflow:visible}
+.tactical-battle .battle-front,.tactical-battle .hand-row,.ledger{overflow:visible}
+.tactical-battle .hand-row{flex-wrap:wrap}
+.tactical-battle .hand-card{flex:0 1 calc((100% - 36px)/10);min-width:65px}
+.tactical-battle .battle-front{flex-wrap:wrap}

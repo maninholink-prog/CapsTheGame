@@ -47,3 +47,8 @@ A retomada autoriza desenvolver e aplicar a árvore de Abe e a Cinderela já apr
 ## Aplicação no jogo — 04/11/2026
 
 Os quinze efeitos provisórios e os pré-requisitos aprovados estão disponíveis no Perfil e nas novas aventuras de Abe. A interface apresenta os talentos em texto até haver arte aprovada. Se o sexto Upgrade resolver com Abe fora do campo, a primeira entrada na forma evoluída dispara Inspiração Renovada. Os talentos de alvo seguem o alvo válido quando um Upgrade é redirecionado. A Cinderela entrou no starter no lugar de Arma Aprimorada, que permanece no catálogo e nos decks antigos já salvos.
+
+
+## Arte da maestria — 04/11/2026
+
+O autor forneceu a imagem da oficina para a árvore de Abe. Os 15 nós aparecem sobre a imagem, com as ligações derivadas dos pré-requisitos existentes e uma lista para telas menores. Arte preservada em [abe-mastery.png](../public/art/abe-mastery.png).

@@ -12,3 +12,23 @@
 .kylast-constellation .constellation-art{min-width:0}.kylast-constellation .constellation-scroll{overflow:visible}.constellation-flow{height:auto;aspect-ratio:1672/941}
 @media(max-width:1000px){.kylast-constellation .constellation-scroll{padding-bottom:0}.constellation-nodes{display:grid;gap:8px;margin-top:14px}.constellation-star{position:static;transform:none;width:auto;height:auto;min-height:44px;display:flex;gap:10px;padding:10px 12px;border:1px solid #40545a;border-radius:6px}.star-name{position:static;width:auto;height:auto;overflow:visible;clip-path:none}.constellation-star.acquired::after{position:static}.constellation-detail{position:static;width:100%;min-height:0;margin-top:6px}.constellation-star .star-core{flex-shrink:0}.constellation-flow{display:none}}
 .hub .constellation-nodes details{padding:0;border:0;margin:0}
+
+.mastery-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin:0 0 24px}
+.mastery-portrait{position:relative;min-height:190px;overflow:hidden;border-radius:10px;background:#16262f}
+.mastery-portrait>.portrait,.mastery-portrait>.sigil-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.mastery-portrait>.portrait[src$="abe-mastery.png"]{object-position:48% center}
+.mastery-portrait button{position:relative;width:100%;min-height:190px;display:grid;align-content:end;justify-items:center;gap:5px;padding:12px;color:#fff5d5;background:linear-gradient(transparent 24%,#0d181fd9 72%,#0d181f);border:2px solid #61717b;border-radius:inherit;cursor:pointer;font:inherit}
+.mastery-portrait button:hover,.mastery-portrait button[aria-pressed="true"]{border-color:#e2c47d}
+.mastery-portrait button:focus-visible{outline:2px solid #fff1b9;outline-offset:-5px}
+.mastery-portrait strong{display:grid;place-items:center;width:42px;height:42px;border:2px solid #e2c47d;border-radius:50%;background:#19262d;font-size:23px}
+.mastery-portrait progress{width:86%;margin:0}
+
+@media(min-width:1001px){
+ .kylast-constellation .constellation-scroll{padding-bottom:0}
+ .kylast-constellation .constellation-art{width:68%}
+ .kylast-constellation .constellation-detail{left:calc(100% + 16px);top:0;width:calc(47% - 16px);min-height:0}
+}
+@media(max-width:1000px){
+ .constellation-nodes{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));align-items:start}
+}
+.mastery-portrait>.portrait[src$="arcata-mastery-v2.png"]{object-position:34% center}
