@@ -67,3 +67,7 @@ A prévia pública de Abe e Cinderela foi publicada como [v0.1.0-playtest.1](htt
 ## Interface sem rolagem — 04/11/2026
 
 O autor aprovou novas abas para acomodar o conteúdo na janela. Perfil tem abas de dados, marcos e registro. Coleção, relíquias e listas longas usam páginas. Maestria separa retratos e árvore, com detalhes ao lado da arte em janelas largas. O conteúdo se ajusta à altura e à largura da janela. TypeScript, 29 testes direcionados e empacotamento passaram. A inspeção visual em diferentes tamanhos continua pendente. Pacote local em [C.A.P.S.exe](../release/CAPS-20261104-062534-win-x64/C.A.P.S.exe). O tutorial do Windows foi publicado no README no commit dd8ff37.
+
+## Maestria de Arcata — 04/11/2026
+
+Quinze talentos aprovados e implementados. Chama Persistente encerra Combustão no nível 30. A árvore utiliza a arte aprovada, e o motor mantém a evolução por seis magias de Fogo. TypeScript, 64 testes direcionados, build e presença da árvore no pacote passaram. A inspeção visual do executável ainda está pendente. Sem commit ou push desta atualização.

@@ -36,3 +36,7 @@ Cinderela e conexões de maestria aplicadas. Os efeitos mantêm o status provis�
 ## Telas de batalha — 04/11/2026
 
 O autor solicitou consulta de maestria por personagem e telas de início, vitória e derrota. Confirmou no chat que as telas se aplicam à aventura e ao duelo de treino. A implementação também apresenta o empate já previsto pelo jogo.
+
+## Maestria de Arcata — 04/11/2026
+
+O autor aprovou os quinze talentos e escolheu Combustão como ramo principal. Chama Persistente exige nível 30. [Registro da árvore](../design/ARCATA_FOGO.md).

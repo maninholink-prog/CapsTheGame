@@ -38,3 +38,7 @@ O menu Maestria mostra os dados e talentos de um personagem por vez. Aventura e 
 ## Interface sem rolagem — 04/11/2026
 
 Pacote atual em [C.A.P.S.exe](../release/CAPS-20261104-062534-win-x64/C.A.P.S.exe). Abas, páginas e ajuste à janela implementados. Testes e limites em [PROGRESS](PROGRESS.md). A release pública anterior segue vinculada ao playtest de Abe.
+
+## Maestria de Arcata — 04/11/2026
+
+Árvore jogável no pacote [C.A.P.S.exe](../release/CAPS-20261104-113901-win-x64/C.A.P.S.exe). Decisão e conexões em [ARCATA_FOGO](../design/ARCATA_FOGO.md). Verificações em [PROGRESS](PROGRESS.md).

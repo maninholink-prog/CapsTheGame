@@ -1,3 +1,4 @@
+import {arcataSpellBonus,resolveCombustion,arcataHasTalent} from './arcata-talents.js';
 import {consumeKingDischarge,finishEncounterResolution} from './encounters.js';
 import {laboratoryUpgrade} from './laboratory.js';
 import {stealCards,summonUnits,markWeakest,recordDamage,expandedResolved} from './expansion.js';
@@ -46,6 +47,7 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
   let actualHealing=0,successfulUpgrade=true;
   if (!fizzled) {
     const effect = definition.effect;
+    const bonus=arcataSpellBonus(next,pending.owner,definition,pending.targets.length);
     if(effect.type==='steal')stealCards(next,pending.owner,pending.abilityAmount??effect.amount,effect.emptyFatigue??false,events);
     if(effect.type==='summon')summonUnits(next,pending.owner,effect.unit,effect.count,events);
     if(effect.type==='mark')markWeakest(next,pending.owner,pending.abilitySourceId);
@@ -60,13 +62,13 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
         const unit = target.kind === 'unit' ? player.board.find(u => u.card.instanceId === target.instanceId)! : null;
         if (effect.type === 'damage') {
           const base=definition.dynamicDamage==='attack'?Math.max(0,unit?.attack??0):definition.dynamicDamage==='equipped'&&(unit?.equipment?.length??0)>0?2:effect.amount;
-          const amount=base+(pending.damageBonus??0)+(definition.fire&&pending.mode!=='ability'&&championUnit(next,pending.owner,'arcata')?.evolved?1:0);
+          const amount=base+bonus.damage+(pending.damageBonus??0)+(definition.fire&&pending.mode!=='ability'&&championUnit(next,pending.owner,'arcata')?.evolved?1:0);
           if (unit) unit.health = Math.max(0, unit.health - amount);
           else player.nexus = Math.max(0, player.nexus - amount);
           events.push({ type: 'damageApplied', target, amount });
           if(unit)talentDamage(next,target.player,unit,amount,events);
           recordDamage(next,target,pending.owner);
-          if(unit&&unit.health>0&&definition.attackReduction){const loss=Math.min(Math.max(0,unit.attack),definition.attackReduction);addAttack(unit,-loss,true);}
+          if(unit&&unit.health>0&&definition.attackReduction){const loss=Math.min(Math.max(0,unit.attack),definition.attackReduction+bonus.reduction);addAttack(unit,-loss,true);}
         } else if(effect.type==='surgery'&&unit){
           unit.health=Math.max(0,unit.health-effect.amount);recordDamage(next,target,pending.owner);talentDamage(next,target.player,unit,effect.amount,events);events.push({type:'damageApplied',target,amount:effect.amount});
           if(unit.health>0){addAttack(unit,effect.attack,effect.temporary);if(effect.quick){unit.keywords??=[];if(!unit.keywords.includes('quick')){unit.keywords.push('quick');(unit.temporaryKeywords??=[]).push('quick');}}}else successfulUpgrade=false;
@@ -86,7 +88,7 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
           events.push({ type: 'healingApplied', target, amount });
         } else if (effect.type === 'armor' && unit) {
           if(definition.fireShield)(unit.fireShields??=[]).push({owner:pending.owner,round:next.round,bonus:pending.damageBonus??0});
-          unit.maxHealth += effect.amount;
+          unit.maxHealth += effect.amount+bonus.armor;
           unit.health += effect.amount;
           events.push({ type: 'armorApplied', target, amount: effect.amount });
         } else if ((effect.type === 'upgrade' || effect.type === 'reinforce') && unit) {
@@ -116,7 +118,8 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
     if(championUnit(next,pending.owner,'rubel'))p.healing+=actualHealing;
     if(definition.fire&&pending.mode!=='ability'){
       p.fire++;if(p.fireRoundNumber!==next.round){p.fireRoundNumber=next.round;p.fireRound=0;}p.fireRound++;
-      if(p.fireRound===2&&championUnit(next,pending.owner,'arcata')){const enemy=pending.owner==='p1'?'p2':'p1';next.players[enemy].nexus=Math.max(0,next.players[enemy].nexus-1);events.push({type:'damageApplied',target:{kind:'nexus',player:enemy},amount:1});}
+      if(p.fireRound===2)resolveCombustion(next,pending.owner,events);
+      if(p.fire===3&&arcataHasTalent(next,pending.owner,'arcata-study'))drawInto(next,pending.owner,events);
     }
   }
   // Snapshot support triggers before any draw can clone player references.

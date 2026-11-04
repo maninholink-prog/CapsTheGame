@@ -1,7 +1,7 @@
 import type {Champion} from '../content/schema.js';
 import {credit,masteryInfo,type Profile} from './profile.js';
 
-export type TalentId='abe-frame'|'abe-tools'|'abe-catalog'|'abe-economy'|'abe-project'|'abe-research'|'abe-masterpiece'|'abe-reinforcement'|'abe-calibration'|'abe-shared'|'abe-complete'|'abe-protection'|'abe-repair'|'abe-experienced'|'abe-inspiration'|'arsenal-i'|'arsenal-ii'|'arsenal-iii'|'arsenal-maintenance'|'martial-versatility'|'complete-arsenal'|'precautious-smith'|'grip-adjustment'|'recovered-arsenal'|'iron-constitution'|'warrior-stamina'|'campaign-armor'|'prepared-strike'|'calculated-switch'|'master-of-all';
+export type TalentId='arcata-spark'|'arcata-life'|'arcata-study'|'arcata-discount'|'arcata-reserve'|'arcata-fireball'|'arcata-create'|'arcata-shield'|'arcata-retaliation'|'arcata-wall'|'arcata-hands'|'arcata-ember'|'arcata-heat'|'arcata-pulse'|'arcata-persist'|'abe-frame'|'abe-tools'|'abe-catalog'|'abe-economy'|'abe-project'|'abe-research'|'abe-masterpiece'|'abe-reinforcement'|'abe-calibration'|'abe-shared'|'abe-complete'|'abe-protection'|'abe-repair'|'abe-experienced'|'abe-inspiration'|'arsenal-i'|'arsenal-ii'|'arsenal-iii'|'arsenal-maintenance'|'martial-versatility'|'complete-arsenal'|'precautious-smith'|'grip-adjustment'|'recovered-arsenal'|'iron-constitution'|'warrior-stamina'|'campaign-armor'|'prepared-strike'|'calculated-switch'|'master-of-all';
 export type TalentAllocation=Partial<Record<Champion,TalentId[]>>;
 export interface Talent {id:TalentId;name:string;parent?:TalentId;minLevel?:number;text:string}
 export const kylastTalents:Talent[]=[
@@ -38,7 +38,24 @@ export const abeTalents:Talent[]=[
  {id:'abe-experienced',name:'Inventor Experiente',parent:'abe-repair',text:'Ao evoluir, Abe recebe +1/+1 adicional, preservando o dano sofrido.'},
  {id:'abe-inspiration',name:'Inspiração Renovada',parent:'abe-experienced',text:'Ao evoluir pela primeira vez na batalha, Abe fabrica um Upgrade.'},
 ];
-export function talentsFor(hero:Champion):Talent[]{return hero==='kylast'?kylastTalents:hero==='abe'?abeTalents:[];}
+export const arcataTalents:Talent[]=[
+ {id:'arcata-spark',name:'Faísca Inicial',text:'Na abertura da batalha, compre uma magia de Fogo do deck, se houver.'},
+ {id:'arcata-life',name:'Fôlego da Fornalha',text:'Arcata tem +1 de vida base.',parent:'arcata-spark'},
+ {id:'arcata-study',name:'Estudo das Chamas',text:'Ao resolver a terceira magia de Fogo da batalha, compre uma carta.',parent:'arcata-life'},
+ {id:'arcata-discount',name:'Ignição Econômica',text:'A primeira magia de Fogo jogada na batalha custa 1 a menos, mínimo 1.',parent:'arcata-study'},
+ {id:'arcata-reserve',name:'Chama Reservada',text:'Quando Arcata evolui pela primeira vez, recupere 1 de mana de magia, respeitando o limite.',parent:'arcata-discount'},
+ {id:'arcata-fireball',name:'Bola de Fogo Preparada',text:'A primeira Bola de Fogo jogada na batalha custa 1 a menos.',parent:'arcata-reserve'},
+ {id:'arcata-create',name:'Fornalha Viva',text:'Ao evoluir pela primeira vez, crie um Controlar Chamas na mão.',parent:'arcata-fireball'},
+ {id:'arcata-shield',name:'Escudo Reforçado',text:'O primeiro Escudo de Fogo resolvido concede +1 de vida máxima ao protegido.',parent:'arcata-life'},
+ {id:'arcata-retaliation',name:'Retaliação Quente',text:'A primeira retaliação de Escudo de Fogo na batalha causa +1 de dano.',parent:'arcata-shield'},
+ {id:'arcata-wall',name:'Parede Sufocante',text:'A primeira Parede de Fogo dá −2 de ataque às sobreviventes em vez de −1.',parent:'arcata-retaliation'},
+ {id:'arcata-hands',name:'Mãos Precisas',text:'As primeiras Mãos Flamejantes causam +1 de dano se você escolher exatamente um alvo.',parent:'arcata-wall'},
+ {id:'arcata-ember',name:'Brasa Firme',text:'A primeira Combustão dá +1 de ataque a Arcata até o fim da rodada.',parent:'arcata-spark'},
+ {id:'arcata-heat',name:'Calor Crescente',text:'Na segunda Combustão da batalha, compre uma carta.',parent:'arcata-ember'},
+ {id:'arcata-pulse',name:'Pulso da Fornalha',text:'A primeira Combustão com Arcata evoluído causa 2 de dano ao Vínculo em vez de 1.',parent:'arcata-heat'},
+ {id:'arcata-persist',name:'Chama Persistente',text:'A primeira Combustão com Arcata evoluído também causa 1 de dano à unidade inimiga com menos vida.',parent:'arcata-pulse',minLevel:30},
+];
+export function talentsFor(hero:Champion):Talent[]{return hero==='kylast'?kylastTalents:hero==='abe'?abeTalents:hero==='arcata'?arcataTalents:[];}
 export function getTalents(profile:Profile):TalentAllocation {return profile.talents??{};}
 function assertEditable(profile:Profile,hero:Champion,runActive:boolean){
  if(runActive)throw Error('Talentos só podem ser alterados fora da run.');
@@ -59,5 +76,5 @@ export function allocateTalent(profile:Profile,hero:Champion,id:TalentId,runActi
 export function resetTalents(profile:Profile,hero:Champion,runActive:boolean,now:number):Profile {
  assertEditable(profile,hero,runActive);
  if(!(getTalents(profile)[hero]?.length))throw Error('Nenhum talento para redistribuir.');
- const p=structuredClone(profile);credit(p,-200,`Redistribuição de talentos: ${hero==='abe'?'Abe':'Kylast'}`,now);p.talents={...getTalents(p),[hero]:[]};return p;
+ const p=structuredClone(profile);credit(p,-200,`Redistribuição de talentos: ${hero==='abe'?'Abe':hero==='arcata'?'Arcata':'Kylast'}`,now);p.talents={...getTalents(p),[hero]:[]};return p;
 }

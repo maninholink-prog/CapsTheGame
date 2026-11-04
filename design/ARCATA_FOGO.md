@@ -49,3 +49,9 @@ Base e pacote implementados como aliado na primeira run curta. Declarações ant
 ## Deck inicial completo aprovado — 02/11/2026
 
 Lote em [ARCATA_DECK_EFEITOS.md](ARCATA_DECK_EFEITOS.md) aprovado integralmente: cinco tropas (Kriv, Soarim, Gwen, Corvo Familiar e Salita) e cinco magias (Raio de Fogo, Mãos Flamejantes, Controlar Chamas, Escudo de Fogo e Parede de Fogo), duas cópias de cada, mais duas de Arcata = 22. Apoios Norte/Leste não exclusivos. Thotph fica fora das tropas por ser divindade, conforme autor. Deck completo ainda não implementado; campeão/pacote existentes não significam implementação dos novos apoios.
+
+## Maestria aprovada — 04/11/2026
+
+O autor aprovou os quinze efeitos e o fechamento em Combustão. A base é Faísca Inicial → Fôlego da Fornalha → Estudo das Chamas. Preparação parte de Estudo das Chamas, Controle parte de Fôlego da Fornalha e Combustão parte de Faísca Inicial. Chama Persistente é o nó de nível 30. Fornalha Viva segue os pré-requisitos normais. Os efeitos e os pré-requisitos individuais constam no [catálogo de talentos](../src/profile/talents.ts). A arte aprovada está em [arcata-mastery-v2.png](../public/art/arcata-mastery-v2.png).
+
+Para talentos de evolução, a primeira entrada já evoluída recebe os benefícios se Arcata atingiu seis magias fora do campo. Em empate de vida entre alvos de Chama Persistente, vale a ordem do campo.

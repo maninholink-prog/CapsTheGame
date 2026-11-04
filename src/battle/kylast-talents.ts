@@ -1,9 +1,10 @@
+import {arcataSetup} from './arcata-talents.js';
 import {abeSetup} from './abe-talents.js';
 import {talentsFor} from '../profile/talents.js';
 import type {TalentId} from '../profile/talents.js';
 import {queueHeal} from './champions.js';
 import type {BattleState,BattleEvent,BoardUnit,PlayerId,CombatLane} from './types.js';
-export interface TalentBattleState {abe?:import('./abe-talents.js').AbeTalentState;setup?:boolean;entryDraw?:boolean;entryArmor?:boolean;gripUsed?:boolean;survivalUsed?:boolean;firstAttack?:boolean;versatilityRound?:number;returnedRound?:number;returnedCard?:string;maintenanceUsedRound?:number}
+export interface TalentBattleState {arcata?:import('./arcata-talents.js').ArcataTalentState;abe?:import('./abe-talents.js').AbeTalentState;setup?:boolean;entryDraw?:boolean;entryArmor?:boolean;gripUsed?:boolean;survivalUsed?:boolean;firstAttack?:boolean;versatilityRound?:number;returnedRound?:number;returnedCard?:string;maintenanceUsedRound?:number}
 export function hasTalent(s:BattleState,o:PlayerId,id:TalentId){return s.players[o].protagonist==='kylast'&&Boolean(s.talentLoadouts?.[o]?.includes(id));}
 export function talentProgress(s:BattleState,o:PlayerId):TalentBattleState {s.talentState??={};return s.talentState[o]??=( {} );}
 export function isKylast(s:BattleState,u:BoardUnit){const d=s.definitions[u.card.definitionId];return d?.kind==='unit'&&d.champion==='kylast';}
@@ -11,9 +12,10 @@ function drawEquipment(s:BattleState,o:PlayerId,events:BattleEvent[]){const p=s.
 // Setup mutates the newly created battle before opening; repeated application never grants another draw.
 export function applyBattleTalents(s:BattleState,o:PlayerId,ids:TalentId[],events:BattleEvent[]=[]){
  const hero=s.players[o].protagonist;if(!hero)return;const allowed=talentsFor(hero);const selected=[...new Set(ids)].filter(id=>allowed.some(t=>t.id===id));
- if(hero!=='kylast'&&(hero!=='abe'||ids.length>0&&!selected.length))return;
+ if(!allowed.length||(hero!=='kylast'&&ids.length>0&&!selected.length))return;
  s.talentLoadouts??={};s.talentLoadouts[o]=selected;const p=talentProgress(s,o);if(p.setup)return;p.setup=true;
  if(hero==='abe')abeSetup(s,o,events);
+ if(hero==='arcata')arcataSetup(s,o,events);
  if(hasTalent(s,o,'precautious-smith'))drawEquipment(s,o,events);
 }
 export function talentCapacity(s:BattleState,o:PlayerId){for(const [id,n] of [['complete-arsenal',6],['arsenal-iii',5],['arsenal-ii',4],['arsenal-i',3]] as const)if(hasTalent(s,o,id))return n;return 2;}
