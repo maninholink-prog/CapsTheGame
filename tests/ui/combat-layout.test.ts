@@ -22,3 +22,18 @@ it('previews blockers, respects either attack direction and restores the bench a
  session.state.combat.stage='responses';session.state.combat.lanes[0].blockerId='blocker';draft.blocks={};expect(combatLayout(session,draft).front.p1.has('blocker')).toBe(true);
  session.state.combat=null;expect(combatLayout(session,draft).lanes).toHaveLength(0);
 });
+
+it('shows pending effects in resolution order and identifies whose action it is',()=>{
+ const session=createSession(42,'ai'),draft=freshDraft();
+ session.state.phase='actions';
+ session.state.priorityOwner='p2';
+ session.state.stack.push(
+  {id:1,owner:'p1',source:{instanceId:'first',definitionId:'damian'},targets:[]},
+  {id:2,owner:'p2',source:{instanceId:'second',definitionId:'banjo'},targets:[],mode:'banjo'},
+ );
+ const html=render(session,draft);
+ expect(html).toContain('priority-medallion p2');
+ expect(html).toContain('Ação do oponente');
+ expect(html).toContain('spell-sigil p2 next-effect');
+ expect(html.indexOf('data-definition="banjo" data-id="2"')).toBeLessThan(html.indexOf('data-definition="damian" data-id="1"'));
+});

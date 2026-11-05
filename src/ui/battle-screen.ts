@@ -1,10 +1,13 @@
+import {encounterNames} from '../battle/encounters.js';
 import {esc} from './html.js';
 import type {BattleSession} from './session.js';
 
 export function renderBattleIntro(session:BattleSession,training:boolean):string {
  const hero=session.state.players.p1.protagonist;
  const name=hero&&session.state.definitions[hero]?.name;
- return `<main class="hub-main"><section class="hub-intro"><p class="eyebrow">${training?'DUELO DE TREINO':'AVENTURA'}</p><h1>Início de batalha</h1><p>${name?esc(name)+' entra em batalha. ':''}Prepare sua mão inicial.</p><button class="button" data-action="battle-intro-continue">Preparar mão</button></section></main>`;
+ const opponent=session.state.encounter?.id;
+ const matchup=name&&opponent?`<p class="battle-matchup">${esc(name)} <span>×</span> ${esc(encounterNames[opponent])}</p>`:'';
+ return `<main class="hub-main"><section class="hub-intro"><p class="eyebrow">${training?'DUELO DE TREINO':'AVENTURA'}</p><h1>Início de batalha</h1>${matchup}<p>${name&&!opponent?esc(name)+' entra em batalha. ':''}Prepare sua mão inicial.</p><button class="button" data-action="battle-intro-continue">Preparar mão</button></section></main>`;
 }
 
 export function renderBattleResult(session:BattleSession,training:boolean):string {

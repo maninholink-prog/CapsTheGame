@@ -82,3 +82,53 @@ A coleção ganhou a aba Artefatos. A grade usa ícones compactos e um painel de
 ## Maestria de Rubel e Artefatos — 04/11/2026
 
 Quinze talentos integrados com a arte aprovada. Coleção → Artefatos usa ícones provisórios e esconde o efeito até a descoberta com ????? e a mensagem de bênção. TypeScript, 71 testes direcionados, build e integridade do ZIP passaram. Conferência visual manual pendente.
+
+## Perfil do jogador — 04/11/2026
+
+Resumo com apelido, retrato e moldura persistentes, totais de cartas e maestria e Top 3 por partidas elegíveis. Histórico separado do registro de recompensas, com Aventura e Treino a partir da atualização. TypeScript, 31 testes direcionados e build passaram. Pacote Windows local montado com o Electron em cache após conferência de SHA-256. Playtest manual e inspeção visual do novo pacote pendentes. Sem commit, push ou backup.
+
+## Nova tela inicial — 04/11/2026
+
+Menu lateral, brasão do perfil, moedas reais e atalhos para Aventura, Treino e Marcos semanais. As duas artes aprovadas se alternam a cada abertura. TypeScript, 23 testes direcionados e build passaram. O pacote inclui ambas as artes e os sete tamanhos do ícone foram conferidos nos recursos internos do executável. Inspeção visual no Windows pendente. Entrega local.
+
+## Navegação lateral e revisão visual — 04/11/2026
+
+Menu lateral compartilhado entre Início, Aventura, Coleção, Maestria, Boosters e Perfil. Artefatos mantém Coleção destacada. Ajustados os rótulos, o foco por teclado, a área de conteúdo e o enquadramento das artes provisórias. TypeScript, build e 26 testes direcionados passaram. Teste interativo no navegador bloqueado pela política de execução e conferência visual do executável pendente. O autor pediu revisão futura da qualidade gráfica dos dois fundos. Entrega local.
+
+## Revisão visual, etapa 1 — 04/11/2026
+
+Artes Jade e Brasa em composição 16:9, alternadas por abertura. Símbolo do dragão de jade na barra e ícones maiores. Aventura abre com um painel e revela protagonista, dificuldade e artefato inicial em Preparar aventura. Uma jornada ativa exibe protagonista, dificuldade, saldo e retomada. TypeScript, 27 testes direcionados e build passaram; assets presentes no pacote local. Inspeção visual e interação no executável pendentes.
+
+## Revisão visual, etapa 2 — 04/11/2026
+
+Preparação de Aventura com retratos existentes e cartões compactos; alinhamento da barra lateral. Coleção com rolagem e bússolas de região e raridade. Maestrias com arte em largura integral, painel de talento sobreposto em janela larga e detalhes junto da lista em janela estreita. Boosters com embalagem e ações existentes. Perfil com brasão e retratos maiores. TypeScript, 30 testes direcionados e build passaram. Pacote Windows local gerado; inspeção visual manual pendente.
+
+## Prévia de encontro — 04/11/2026
+
+Nós disponíveis de combate da rota do Dr. Félix abrem uma prévia com adversário e vida dos Vínculos. O chefe final explica suas duas fases. A confirmação usa a entrada de batalha existente e a apresentação mostra o confronto antes da mão inicial. TypeScript, build e 30 testes direcionados passaram. Pacote Windows local gerado. Interação e visual no executável pendentes.
+
+## Mapa em tela cheia — 04/11/2026
+
+Mapa sem redução global, com rolagem, enquadramento do primeiro nó ou posição atual, retrato do protagonista, destaque de caminhos disponíveis e rodapé de recursos e deck. Mantida a prévia de combate. TypeScript, 35 testes direcionados nas cinco dificuldades e build passaram. Pacote Windows local gerado. Conferência visual e interação manual pendentes.
+
+## Arena de batalha estável — 04/11/2026
+
+Retaguardas, faixa de combate e mão têm dimensões reservadas pela janela. A rolagem do painel lateral e dos confrontos substitui o redimensionamento global por conteúdo. TypeScript, build e 33 testes direcionados passaram. Medições em Electron isolado a 1440×960 e 960×700 confirmaram a geometria estável após selecionar carta e preencher a faixa com cinco confrontos simulados. Partida completa e inspeção visual manual pendentes. Entrega local.
+
+## Loja e mão em leque — 04/11/2026
+
+Loja em tela própria, saldo no cabeçalho, ofertas e serviços separados e ações de saída fixas. Na batalha, a coluna lateral virou comandos abaixo da mão e painel Informações sob demanda. Mão em leque, sem J1 contra IA; barras visíveis da mão e do campo retiradas. TypeScript, build e 24 testes direcionados passaram. Electron isolado em 1440×960 e 960×700 verificou a geometria, a confirmação da mão e a ausência das barras visíveis apontadas. Compra e partida completa no pacote ainda aguardam conferência manual.
+
+## Leitura das cartas e tela cheia — 04/11/2026
+
+Mão em leque com descrição compacta e prévia completa por ponteiro ou foco. A orientação da ação padrão passa pelo botão Como jogar. Tela cheia habilitada somente para a janela local do jogo. TypeScript, build e 15 testes direcionados passaram. Electron isolado verificou a prévia em duas resoluções e entrada e saída de tela cheia. Conferência visual no pacote pendente. Entrega local.
+
+## Indicadores da arena — 04/11/2026
+
+Medalhão e destaque do lado com prioridade. Efeitos pendentes em sigilos numerados na faixa central, com inspeção pela pilha. Faixa inferior simplificada e instrução de bloqueio recolhida. TypeScript, build e 12 testes direcionados passaram. Inspeção visual manual pendente.
+
+## Artes de Abe e pacote de publicação — 04/11/2026
+
+Integração das artes aprovadas em Cinderela, Engineering, Aranha Arranha, Abe (base e evoluído), Zacarias, Keegan, Gremin, Lúcia, Defesa Aprimorada, Projeto e Gênio Relâmpago. O renderizador reaproveitado atende coleção, carta, mão e prévia; a forma evoluída de Abe usa `abe-mastery.png`. Arte editável anterior de Engineering preservada. IDs, efeitos e balanceamento não foram alterados.
+
+TypeScript (`tsc --noEmit`) e build Vite passaram. Pacote Windows gerado em `release/CAPS-20261104-212508-win-x64`. A tela inicial abriu no Electron. A interação da janela foi interrompida por atividade do usuário; a inspeção manual das cartas na mão e na prévia ampliada permanece pendente. A suíte ampla anterior terminou com 379/381 testes: dois testes de UI esperam rótulos/ações antigos (`hub-unlock-test` e `Mapa Comum`); sem alterações para acomodar essas expectativas nesta entrega. ZIP `.4` será publicado junto com o commit.

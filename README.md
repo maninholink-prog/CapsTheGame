@@ -4,7 +4,7 @@ Protótipo local em TypeScript: combate inspirado em LoR, decks narrativos dos o
 
 ## Jogar no Windows
 
-1. [Baixe o ZIP do playtest para Windows 64 bits](https://github.com/maninholink-prog/CapsTheGame/releases/download/v0.1.0-playtest.3/CAPS-0.1.0-playtest.3-Windows-x64.zip).
+1. [Baixe o ZIP do playtest para Windows 64 bits](https://github.com/maninholink-prog/CapsTheGame/releases/download/v0.1.0-playtest.4/CAPS-0.1.0-playtest.4-Windows-x64.zip).
 2. Clique com o botão direito no ZIP e escolha **Extrair Tudo**.
 3. Abra a pasta extraída e execute **C.A.P.S.exe**. Mantenha os arquivos do pacote juntos na mesma pasta.
 4. Na primeira abertura, dê um nome ao perfil e escolha um protagonista. Em **Aventura**, escolha uma dificuldade e entre na primeira casa do mapa. Para praticar, escolha **Duelo de treino** em **Início**.

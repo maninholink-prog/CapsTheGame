@@ -19,9 +19,11 @@ else {
    if(!file.startsWith(root+path.sep))return new Response('Forbidden',{status:403});
    return net.fetch(pathToFileURL(file).href);
   });
-  session.defaultSession.setPermissionRequestHandler((_w,_p,done)=>done(false));
+  session.defaultSession.setPermissionRequestHandler((contents,permission,done)=>{
+   done(permission==='fullscreen'&&contents===window?.webContents&&contents.getURL().startsWith('caps://game/'));
+  });
   Menu.setApplicationMenu(null);
-  window=new BrowserWindow({title:'C.A.P.S.',width:1440,height:960,minWidth:960,minHeight:700,show:!smoke,backgroundColor:'#0b1419',webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true}});
+  window=new BrowserWindow({title:'C.A.P.S.',icon:path.join(__dirname,'caps.ico'),width:1440,height:960,minWidth:960,minHeight:700,show:!smoke,backgroundColor:'#0b1419',webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true}});
   window.once('ready-to-show',()=>{if(!smoke)window.show();});
   window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
   window.webContents.on('will-navigate',(event,url)=>{if(!url.startsWith('caps://game/'))event.preventDefault();});

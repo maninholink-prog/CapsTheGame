@@ -1,3 +1,4 @@
+import {recordMatch} from './matches.js';
 import {conquerRelics} from './relics.js';
 import {difficultyRules,routePermanentTarget,battlePermanentReward} from '../run/difficulty.js';
 import type {Profile} from './profile.js';
@@ -20,6 +21,7 @@ export function settleRun(profile:Profile,r:RunState,remainingCoins:number,remai
 export function settleBattle(profile:Profile,before:RunState,after:RunState,b:BattleState,now:number):Profile {
  if(!before.map||!profile.account||profile.account.settled||!b.runBattleId||profile.account.seenBattles.includes(b.runBattleId))return profile;
  let p=structuredClone(profile);syncWeek(p,now);p.account!.seenBattles.push(b.runBattleId);
+ if(b.winner)recordMatch(p,before.group[0],'adventure',b.winner,now);
  const win=b.winner==='p1'||b.winner==='draw',node=before.map.nodes.find(n=>n.id===before.map!.current)!;
  if(win){p.weekly.points+=difficultyRules[before.difficulty??'common'].weeklyWin;if(!p.account!.paidNodes.includes(node.id)){const amount=battlePermanentReward(before.map,before.difficulty??'common',node);credit(p,amount,`Vitória na casa ${node.id}`,now);p.account!.earned+=amount;p.account!.paidNodes.push(node.id);}ledger(p,battleCoins(before),`Vitória na casa ${node.id}`,now,'korakacoins',before.coins+battleCoins(before));}
  return settleRun(p,after,before.coins+(win?battleCoins(before):0),before.revives,now);

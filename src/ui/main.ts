@@ -1,5 +1,9 @@
+import {protagonistIds} from '../content/decks.js';
+import {profileFrames,recordMatch} from '../profile/matches.js';
+import type {ProfileFrame} from '../profile/matches.js';
 import {connectRelicCollection} from './relic-view.js';
-import {fitViewport,prepareViewport} from './viewport.js';
+import {nextHomeScene} from './home-view.js';
+import {fitViewport,prepareViewport,selectViewportTab} from './viewport.js';
 import {renderBattleIntro,renderBattleResult} from './battle-screen.js';
 import {enableRelics,takeRelic} from '../run/relics.js';
 import {discoverRelics} from '../profile/relics.js';
@@ -24,6 +28,7 @@ import {createMapRun,enterNode,resolveEvent,reviveRun,abandonRun} from '../run/a
 import {effectiveDefinition} from '../battle/champions.js';
 import {createRun,runBattle,finishBattle,recruit,reward,nextBattle} from '../run/run.js';
 import type {RunState} from '../run/run.js';
+import {focusMapPosition,renderEncounterPreview} from './map-view.js';
 import {renderRun,runBanner} from './run-view.js';
 import './styles.css';
 import './tactical.css';
@@ -43,6 +48,8 @@ let draft = freshDraft();
 let run:RunState|null=null;
 let profile:Profile|null=null;
 let page:HubPage='home';
+let homeScene=nextHomeScene(null);
+try {homeScene=nextHomeScene(localStorage.getItem('caps.home-scene'));localStorage.setItem('caps.home-scene',homeScene);} catch { /* The default scene remains usable when storage is unavailable. */ }
 let training=false;
 let masteryHero:Champion|undefined;
 let showMasteryDetails=false;
@@ -68,6 +75,7 @@ function paint(): void {
   paintScreen();
   connectRelicCollection(root);
   prepareViewport(root,page);
+  focusMapPosition(root);
 }
 window.addEventListener('resize',()=>fitViewport(root));
 root.addEventListener('toggle',()=>fitViewport(root),true);
@@ -77,10 +85,13 @@ function paintScreen(): void {
   persist();
   if(storageIssue){aiController.cancel();root.innerHTML=`<main class="hub"><h1>Salvamento protegido</h1><p class="error" role="alert">${esc(storageIssue)}</p><button class="button" data-action="profile-export">Exportar arquivo preservado</button> <button class="button" data-action="storage-retry">Tentar ler novamente</button><p>Você também pode restaurar um backup válido:</p><input type="file" id="import-save" accept="application/json,.json"/></main>`;return;}
   if(!profile){aiController.cancel();root.innerHTML=onboarding(hubError);return;}
-  if(page!=='battle'){aiController.cancel();root.innerHTML=hubShell(profile,page,run,hubContent(profile,page,run,filters,masteryHero,showMasteryDetails),hubError);return;}
+  if(page!=='battle'){aiController.cancel();root.innerHTML=hubShell(profile,page,run,hubContent(profile,page,run,filters,masteryHero,showMasteryDetails,homeScene,hubError),hubError);return;}
   const active = document.activeElement instanceof HTMLElement && root.contains(document.activeElement) ? document.activeElement : null;
   const keys = ['data-action', 'data-id', 'data-field', 'data-unit', 'data-strike', 'data-player', 'data-tab', 'data-definition', 'id', 'value'];
   const identity = active ? keys.filter(key => active.hasAttribute(key)).map(key => [key, active.getAttribute(key)!]) : [];
+  const referenceOpen=root.querySelector<HTMLDetailsElement>('.battle-reference')?.open;
+  const scrollAreas=['.hub:has(.tactical-battle)','.tactical-battle .action-panel','.battle-reference-content'];
+  const scrollPositions=scrollAreas.map(selector=>root.querySelector<HTMLElement>(selector)?.scrollTop??0);
   const oldHand = root.querySelector<HTMLElement>('.hand-row');
   const handPosition = oldHand?.scrollLeft ?? 0;
   const oldOwner = oldHand?.dataset.player;
@@ -92,11 +103,22 @@ function paintScreen(): void {
     root.querySelector<HTMLElement>('[data-action^="battle-"]')?.focus();
     return;
   }
+  if(activeRun?.stage==='map'||activeRun?.stage==='shop'){
+    aiController.cancel();
+    root.innerHTML=renderRun(activeRun,session.error);
+    return;
+  }
   let body=activeRun&&activeRun.stage!=='battle'?renderRun(activeRun,session.error):render(session,draft,new Set(Object.keys(profile.collection).filter(id=>profile!.collection[id].shiny))).replace('<main',`${activeRun?runBanner(activeRun):''}<main`);
   if(activeRun)body=body.replace('Sem salvamento nesta versão · recarregar reinicia o duelo','Aventura salva automaticamente · pause para voltar ao menu');
   root.innerHTML=hubShell(profile,'battle',run,body,hubError);
   if(training)root.querySelector('.topbar')?.insertAdjacentHTML('beforeend',protagonistSelector(selectedProtagonist));
   else {root.querySelector('.new-game')?.remove();root.querySelector('.mode-choice')?.remove();}
+  const reference=root.querySelector<HTMLDetailsElement>('.battle-reference');
+  if(reference&&referenceOpen)reference.open=true;
+  scrollAreas.forEach((selector,index)=>{
+    const area=root.querySelector<HTMLElement>(selector);
+    if(area)area.scrollTop=scrollPositions[index];
+  });
   const newHand = root.querySelector<HTMLElement>('.hand-row');
   if (newHand && newHand.dataset.player === oldOwner) newHand.scrollLeft = handPosition;
   if (identity.length) {
@@ -108,7 +130,11 @@ function paintScreen(): void {
 function receive(next: BattleSession): void {
   const before = session.state;
   session = next;
-  if(before.phase!=='ended'&&next.state.phase==='ended')battleResult=next;
+  if(before.phase!=='ended'&&next.state.phase==='ended'){
+    battleResult=next;
+    const {winner,players}=next.state;
+    if(training&&profile&&winner&&players.p1.protagonist)recordMatch(profile,players.p1.protagonist,'training',winner,Date.now());
+  }
   if(!training&&run?.stage==='battle'&&session.state.phase==='ended'){const beforeRun=run;run=finishBattle(run,session.state);if(profile&&run.map)profile=settleBattle(profile,beforeRun,run,session.state,Date.now());}
   if (session.state !== before) {
     const { inspectedDefinitionId, sideTab } = draft;
@@ -121,10 +147,32 @@ const aiController = createAiController({ getSession: () => session, commit: rec
 function toggleAttacker(id: string): void {
   draft.attackers = draft.attackers.includes(id) ? draft.attackers.filter(a => a !== id) : [...draft.attackers, id];
 }
+function showHandPreview(target:EventTarget|null):void {
+  const preview=root.querySelector<HTMLElement>('.hand-preview');
+  if(!preview)return;
+  const card=target instanceof Element?target.closest('.hand-row .hand-card'):null;
+  preview.hidden=!card;
+  if(!card)return;
+  preview.className='hand-preview '+[...card.classList].filter(name=>name.startsWith('rarity-')).join(' ');
+  preview.replaceChildren(...[...card.children].map(node=>node.cloneNode(true)));
+}
+root.addEventListener('pointerover',event=>{
+  if((event.target as Element).closest('.hand-card')!==(event.relatedTarget as Element|null)?.closest?.('.hand-card'))showHandPreview(event.target);
+});
+root.addEventListener('pointerout',event=>{
+  if((event.target as Element).closest('.hand-card')!==(event.relatedTarget as Element|null)?.closest?.('.hand-card'))showHandPreview(event.relatedTarget);
+});
+root.addEventListener('focusin',event=>showHandPreview(event.target));
+root.addEventListener('focusout',event=>showHandPreview(event.relatedTarget));
 root.addEventListener('click', event => {
   const button = (event.target as Element).closest<HTMLButtonElement>('button[data-action]');
   if (!button || button.disabled) return;
   const action = button.dataset.action!;
+  if(action==='toggle-fullscreen'){
+    const toggle=document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();
+    void toggle.catch(()=>{hubError='Não foi possível alternar a tela cheia.';paint();});
+    return;
+  }
   if(action==='profile-export'){download(storageIssue?rawSave:lastGood,'caps-backup.json');return;}
   if(action==='storage-retry'){location.reload();return;}
   if(storageIssue)return;
@@ -139,6 +187,7 @@ root.addEventListener('click', event => {
         if(!training&&run?.stage==='battle')adventureSession=session;
         if(next==='battle'){if(!run)throw Error('Nenhuma aventura em andamento.');training=false;if(adventureSession)session=adventureSession;}
         if(next==='mastery')showMasteryDetails=false;
+        if(next==='profile'&&button.dataset.tab)selectViewportTab(next,button.dataset.tab);
         page=next;
       }
       else if(action==='hub-mastery'){masteryHero=button.dataset.id as Champion;showMasteryDetails=true;}
@@ -158,10 +207,19 @@ root.addEventListener('click', event => {
       else if(action==='booster-buy')profile=buyBooster(profile,button.dataset.id as Rarity,now);
       else if(action==='booster-open')profile=openBooster(profile,button.dataset.id as Rarity,now);
       else if(action==='weekly-claim')profile=claimWeekly(profile,Number(button.dataset.id),now);
-      else if(action==='profile-rename'){const name=root.querySelector<HTMLInputElement>('#rename-profile')!.value.trim();if(!name||name.length>40)throw Error('Use um nome de 1 a 40 caracteres.');profile={...profile,name};}
+      else if(action==='profile-rename'){const name=root.querySelector<HTMLInputElement>('#rename-profile')!.value.trim();if(!name||name.length>40)throw Error('Use um nome de 1 a 40 caracteres.');const avatar=root.querySelector<HTMLSelectElement>('#profile-avatar')!.value as Champion;
+        const frame=root.querySelector<HTMLSelectElement>('#profile-frame')!.value as ProfileFrame;
+        if(!protagonistIds.includes(avatar)||!profile.collection[avatar]?.count||!Object.hasOwn(profileFrames,frame))throw Error('Escolha um retrato e uma moldura disponíveis.');
+        profile={...profile,name,avatar,frame};}
       if(run?.collection&&profile)run.collection=Object.keys(profile.collection);
     }catch(error){hubError=error instanceof Error?error.message:'Ação indisponível.';}
     paint();
+    if(action==='talent-buy'){
+      const panel=root.querySelector<HTMLDetailsElement>('#talent-'+CSS.escape(button.dataset.id??'')+'-details')?.closest('details');
+      if(panel){panel.open=true;panel.querySelector('summary')?.focus({preventScroll:true});}
+    }
+    if(action==='hub-unlock-test'){const setup=root.querySelector<HTMLDetailsElement>('.adventure-options');if(setup)setup.open=true;}
+    if(action==='hub-nav'&&button.closest('.home-rail'))root.querySelector<HTMLElement>('.home-rail [aria-current]')?.focus({preventScroll:true});
     if(action==='hub-mastery'||action==='hub-mastery-back'){
       root.querySelector<HTMLElement>(showMasteryDetails?'[data-action="hub-mastery-back"]':'[data-action="hub-mastery"][aria-pressed="true"]')?.focus({preventScroll:true});
     }
@@ -171,10 +229,24 @@ root.addEventListener('click', event => {
   if(action==='battle-intro-continue'){session={...session,introSeen:true};paint();return;}
   if(action==='battle-result-continue'){battleResult=null;if(training)page='home';paint();return;}
   if(action==='shop-buy'||action==='shop-leave'){
+    const shopScroll=root.querySelector<HTMLElement>('.shop-scroll')?.scrollTop??0;
     const oldCoins=run?.coins??0;
     try{if(!run)throw Error('Run indisponível.');run=action==='shop-leave'?leaveShop(run):buy(run,button.dataset.id!,root.querySelector<HTMLSelectElement>('#remove-card')?.value);session={...session,error:''};}catch(error){session={...session,error:error instanceof Error?error.message:'Compra indisponível.'};}
     if(profile&&run&&run.coins!==oldCoins)ledger(profile,run.coins-oldCoins,'Compra na loja da aventura',Date.now(),'korakacoins',run.coins);
-    paint();return;
+    paint();
+    const offers=root.querySelector<HTMLElement>('.shop-scroll');
+    if(offers)offers.scrollTop=shopScroll;
+    return;
+  }
+  if(action==='run-node'&&run){
+    const preview=renderEncounterPreview(run,button.dataset.id!);
+    if(preview){
+      root.insertAdjacentHTML('beforeend',preview);
+      const dialog=root.querySelector<HTMLDialogElement>('.encounter-preview')!;
+      dialog.addEventListener('close',()=>dialog.remove(),{once:true});
+      dialog.showModal();
+      return;
+    }
   }
   if(action.startsWith('run-')){
     aiController.cancel();
@@ -182,7 +254,11 @@ root.addEventListener('click', event => {
     try{
       if(action==='run-new'||action==='run-map-new'){const input=root.querySelector<HTMLInputElement>('#battle-seed');const seed=run?.seed??(input?Number(input.value):2026);run=action==='run-map-new'||run?.map?createMapRun(seed,selectedProtagonist):createRun(seed,selectedProtagonist);session=run.stage==='battle'?sessionFromBattle(runBattle(run),seed):createSession(seed,'ai');}
       else if(action==='run-exit'){page='home';}
-      else if(run){if(action==='run-node'){run=enterNode(run,button.dataset.id!);if(run.stage==='battle')session=sessionFromBattle(runBattle(run),run.battleSeed);}
+      else if(run){if(action==='run-node'||action==='run-fight'){
+        const next=enterNode(run,button.dataset.id!);
+        if(next.stage==='battle')session=sessionFromBattle(runBattle(next),next.battleSeed);
+        run=next;
+      }
       else if(action==='run-event-accept'||action==='run-event-skip')run=resolveEvent(run,action==='run-event-accept');
       else if(action==='run-retry'||action==='run-checkpoint'){run=reviveRun(run,action==='run-retry'?'retry':'checkpoint');session=run.stage==='battle'?sessionFromBattle(runBattle(run),run.battleSeed):{...session,state:{...session.state,phase:'ended',priorityOwner:null}};}
       else if(action==='run-abandon'){const beforeRun=run;run=abandonRun(run);if(profile)profile=settleRun(profile,run,beforeRun.coins,beforeRun.revives,Date.now());}
@@ -208,6 +284,11 @@ root.addEventListener('click', event => {
   } else if (action === 'view' || action === 'follow') {
     const player = action === 'follow' ? actingPlayer(session.state) : button.dataset.player as PlayerId;
     if (player && (session.opponentMode !== 'ai' || player === 'p1')) { session = { ...session, viewPlayer: player, error: '' }; draft = { ...freshDraft(), sideTab: draft.sideTab }; }
+  } else if (action === 'inspect-effect') {
+    draft.inspectedDefinitionId=button.dataset.definition!;
+    draft.sideTab='stack';
+    const reference=root.querySelector<HTMLDetailsElement>('.battle-reference');
+    if(reference)reference.open=true;
   } else if (action === 'tab') {
     draft.sideTab = button.dataset.tab as typeof draft.sideTab;
   } else if (action === 'inspect') {
@@ -287,7 +368,3 @@ root.addEventListener('change', event => {
   if (field) paint();
 });
 paint();
-
-
-
-

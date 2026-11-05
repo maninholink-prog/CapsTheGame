@@ -1,8 +1,12 @@
 const pages = new Map<string,number>();
-const tabs = new Map<string,number>();
+const tabs = new Map<string,string>();
+export function selectViewportTab(screen:string,panel:string):void {
+ tabs.set(screen,panel);
+}
 
 export function fitViewport(root:HTMLElement):void {
  root.style.zoom='1';
+ if(root.querySelector('.hub-layout,.expedition-map,.tactical-battle,.expedition-shop'))return;
  const width=window.innerWidth;
  const height=window.innerHeight;
  const scale=Math.min(1,width/Math.max(width,root.scrollWidth),height/Math.max(height,root.scrollHeight));
@@ -25,19 +29,19 @@ export function prepareViewport(root:HTMLElement,screen:string):void {
   nav.setAttribute('aria-label','Seções do perfil');
   const buttons=panels.map(panel=>button(panel.dataset.viewPanel!));
   const select=(index:number)=>{
-   tabs.set(screen,index);
+   selectViewportTab(screen,panels[index].dataset.viewPanel!);
    panels.forEach((panel,i)=>{panel.hidden=i!==index;buttons[i].setAttribute('aria-pressed',String(i===index));});
    fitViewport(root);
   };
   buttons.forEach((node,i)=>{node.onclick=()=>select(i);nav.append(node);});
   panels[0].before(nav);
-  select(tabs.get(screen)??0);
+  select(Math.max(0,panels.findIndex(panel=>panel.dataset.viewPanel===tabs.get(screen))));
  }
  const lists=[
-  ['.collection-grid',5,'Itens'],
+  ['.collection-grid:not(.card-gallery)',5,'Itens'],
   ['.ledger tbody',8,'Registros'],
   ['.history-list',5,'Eventos'],
-  ['.deck-list ul',8,'Cartas do deck'],
+  ['.app-shell .deck-list ul',8,'Cartas do deck'],
   ['.discard-group',5,'Cartas descartadas'],
  ] as const;
  for(const [selector,size,label] of lists){

@@ -145,6 +145,7 @@ select option{background:#15232b}
 .hand-card.selected{outline:2px solid #e0c18a;outline-offset:2px;box-shadow:0 0 20px #c6a66b30}
 .hand-card.mulligan-marked .card-art{filter:saturate(.35)}
 .card-art{height:85px;position:relative;overflow:hidden;background:#25333a;border-bottom:1px solid color-mix(in srgb,var(--rare) 50%,transparent)}
+.card-art>.portrait{width:100%;height:100%;object-fit:cover;object-position:center 55%}
 .mana-cost{position:absolute;top:6px;left:6px;width:29px;height:29px;border:1px solid #a0d5ed;border-radius:50%;background:radial-gradient(circle at 30% 20%,#598b9c,#1a3b56);color:#e5f4f9;display:grid;place-items:center;font-family:Georgia,serif;font-size:20px;box-shadow:0 1px 6px #0008}
 .swap-tag,.spell-label{position:absolute;right:5px;top:7px;padding:4px 5px;font-size:7px;letter-spacing:.7px;background:#292329df;color:#eed5a7;border:1px solid #c1a679}
 .spell-label{background:#233741d9;border-color:#5e95a5;color:#b5dce8}

@@ -45,3 +45,11 @@ O autor aprovou os quinze talentos e escolheu Combustão como ramo principal. Ch
 ## Maestria de Rubel — 04/11/2026
 
 Aprovados os quinze talentos, as conexões e a arte de Rubel. Santuário do Grupo fecha Proteção no nível 30. O autor solicitou integração e upload. [Especificação](../design/RUBEL_CURA.md).
+
+## PERFIL-01 — Elegibilidade para o Top 3 — 04/11/2026
+
+Aprovada pelo autor nesta conversa. O histórico distingue Aventura e Treino. O Top 3 conta partidas concluídas em modos que concedem maestria, com desempate por vitórias e XP de maestria. Aventura conta por partida, com XP ao fim da jornada. Treino atual entra somente no histórico. O futuro PvP será elegível se conceder maestria. Implementado para os modos atuais em [matches.ts](../src/profile/matches.ts).
+
+## INICIO-01 — Cenários e ícone Windows — 04/11/2026
+
+O autor aprovou nesta conversa a alternância entre o cenário do dragão de jade e o cânion em brasa. A alternância foi implementada por abertura, com a escolha persistida separadamente do save. Para o executável, o autor escolheu o ícone A, com o dragão de jade e a carta dourada.

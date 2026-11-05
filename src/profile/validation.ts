@@ -2,6 +2,7 @@ import {felixEncounters} from '../run/felix-adventure.js';
 import {relicIds} from '../content/relics.js';
 import {playableRelicIds} from '../run/relics.js';
 import {enemyDeckLists} from '../content/felix.js';
+import {matchModes,matchResults,profileFrames} from './matches.js';
 import {fullCatalog,protagonistIds} from '../content/decks.js';
 import {validateCatalog} from '../content/schema.js';
 import {generateMap} from '../run/difficulty.js';
@@ -63,6 +64,12 @@ export function validateSave(s:any){
  for(const [id,c] of Object.entries(p.collection) as [string,any][])check(collectibleIds.includes(id)&&object(c)&&integer(c.count,1,3)&&typeof c.shiny==='boolean');check(protagonistIds.some(id=>p.collection[id]?.count));
  for(const r of rarities)check(integer(p.boosters[r]));for(const id of protagonistIds)check(object(p.mastery[id])&&integer(p.mastery[id].xp,0,31250)&&typeof p.mastery[id].rewarded==='boolean');
  check(integer(p.weekly.points)&&Number.isSafeInteger(p.weekly.key)&&Array.isArray(p.weekly.claimed));unique(p.weekly.claimed);for(const n of p.weekly.claimed)check(milestones.some(m=>m.points===n)&&n<=p.weekly.points);
+ check(p.avatar===undefined||protagonistIds.includes(p.avatar)&&!!p.collection[p.avatar]?.count);
+ check(p.frame===undefined||Object.hasOwn(profileFrames,p.frame));
+ if(p.matches!==undefined){
+  check(Array.isArray(p.matches));
+  for(const m of p.matches)check(object(m)&&protagonistIds.includes(m.hero)&&Object.hasOwn(matchModes,m.mode)&&Object.hasOwn(matchResults,m.result)&&integer(m.time,0,8640000000000000));
+ }
  for(const l of p.ledger)check(object(l)&&integer(l.id,1,p.serial)&&['stones','korakacoins'].includes(l.currency)&&Number.isSafeInteger(l.amount)&&integer(l.balance)&&typeof l.reason==='string'&&integer(l.time));unique(p.ledger.map((l:any)=>l.id));
  check(p.lastOpening===null||object(p.lastOpening));if(p.lastOpening){const o=p.lastOpening;check(integer(o.serial,1,p.serial)&&rarities.includes(o.type)&&integer(o.time)&&Array.isArray(o.cards)&&o.cards.length===5);for(const c of o.cards)check(object(c)&&collectibleIds.includes(c.id)&&['shiny','rolledShiny','newCard'].every(k=>typeof c[k]==='boolean')&&integer(c.excess));}
  if(p.talents!==undefined){check(object(p.talents));for(const [hero,list] of Object.entries(p.talents) as [string,any][]){check(hero==='kylast'||hero==='abe'||hero==='arcata'||hero==='rubel');strings(list,talentsFor(hero).map(n=>n.id));unique(list);check(list.length<=masteryInfo(p.mastery[hero].xp).points&&!!p.collection[hero]?.count);for(const id of list){const node=talentsFor(hero as import('../content/schema.js').Champion).find(n=>n.id===id)!;check((!node.parent||list.includes(node.parent))&&masteryInfo(p.mastery[hero].xp).level>=(node.minLevel??1));}}}

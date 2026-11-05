@@ -17,8 +17,10 @@ if($LASTEXITCODE){throw 'Build falhou'}
 $destination=Join-Path (Get-Location) ('release/CAPS-'+(Get-Date -Format 'yyyyMMdd-HHmmss')+'-win-x64')
 Expand-Archive -LiteralPath "$cache/electron.zip" -DestinationPath $destination
 Rename-Item -LiteralPath "$destination/electron.exe" -NewName 'C.A.P.S.exe'
+& "$PSScriptRoot/set-exe-icon.ps1" -Executable "$destination/C.A.P.S.exe" -Icon "$PSScriptRoot/caps.ico"
 New-Item -ItemType Directory "$destination/resources/app" | Out-Null
 Copy-Item -LiteralPath "$PSScriptRoot/main.cjs","$PSScriptRoot/package.json" -Destination "$destination/resources/app"
+Copy-Item -LiteralPath "$PSScriptRoot/caps.ico" -Destination "$destination/resources/app"
 Copy-Item -LiteralPath dist -Destination "$destination/resources/app" -Recurse
 Copy-Item -LiteralPath "$PSScriptRoot/LEIA-ME.txt" -Destination $destination
 Write-Output "Pronto: $destination/C.A.P.S.exe"

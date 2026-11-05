@@ -134,7 +134,7 @@ export function renderActionPanel(session: BattleSession, draft: Draft): string 
   } else if (state.combat?.stage === 'blocking') {
     title = 'Defina seus bloqueios'; label = 'Confirmar bloqueios';
     const focused=draft.blockAttackerId??state.combat.lanes[0]?.attackerId;
-    body = `<p class="muted">Clique no atacante no campo de batalha e depois na sua unidade para bloquear. Clique novamente no bloqueador para retirá-lo.</p><p>Atacante selecionado: <strong>${focused?esc(instanceName(state,focused)):'nenhum'}</strong></p><button class="button secondary" data-action="clear-block">Deixar este ataque passar</button>`;
+    body = `<details class="battle-help"><summary>Como bloquear</summary><p>Clique no atacante e depois em uma unidade sua. Clique novamente no bloqueador para removê-lo.</p></details><p class="block-target">Alvo: <strong>${focused?esc(instanceName(state,focused)):'nenhum'}</strong></p><button class="button secondary" data-action="clear-block">Deixar este ataque passar</button>`;
   } else if (state.combat?.stage === 'triggers') {
     title = 'A música vem primeiro'; label = 'Ativar Banjo e abrir respostas';
     body = `<p class="muted">Escolha um inimigo para cada Banjo. O atordoamento permite resposta antes dos golpes.</p>${requiredBanjos(state).map((b, i) => select('banjo', `Banjo ${i + 1} · alvo`, draft.banjos[b.instanceId] ?? '',
@@ -149,7 +149,7 @@ export function renderActionPanel(session: BattleSession, draft: Draft): string 
     const card = state.players[player!].hand.find(c => c.instanceId === draft.selectedCardId);
     title = card ? handCardMode(state, player!, card) === 'arsenal' ? 'Troca de Arsenal' : effectiveDefinition(state,player!,card).name??cardName(state,card.definitionId) : 'Sua próxima ação';
     label = 'Jogar carta';
-    if (!card) body = `<p class="muted">Escolha uma carta da mão para jogar ou passe a ação.</p>`;
+    if (!card) body = `<details class="battle-help"><summary>Como jogar</summary><p>Escolha uma carta da mão para jogar ou passe a ação.</p></details>`;
     else {
       const mode = handCardMode(state, player!, card);
       const units = state.players[player!].board;
@@ -183,4 +183,3 @@ export function renderActionPanel(session: BattleSession, draft: Draft): string 
     ${state.phase === 'actions' && !state.combat && draft.mode !== 'attack' ? `<button class="button attack" data-action="attack-mode" ${!canAttack ? 'disabled' : ''}>${icon('sword')}Preparar ataque</button>` : ''}
     ${state.phase === 'actions' ? `<button class="button secondary" data-action="pass" ${!passCheck.ok ? 'disabled' : ''}>${state.combat || state.stackReturnOwner !== null ? 'Passar resposta' : 'Passar ação'}<span>${state.consecutivePasses}/2</span></button>` : ''}`;
 }
-

@@ -53,3 +53,55 @@ A nova grade está em Coleção → Artefatos no [pacote Windows](../release/CAP
 ## Maestria de Rubel — 04/11/2026
 
 O pacote local [C.A.P.S.exe](../release/CAPS-20261104-124907-win-x64/C.A.P.S.exe) inclui Rubel e a aba de Artefatos. Efeitos em [RUBEL_CURA](../design/RUBEL_CURA.md). Resultados em [PROGRESS](PROGRESS.md).
+
+## Perfil do jogador — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-perfil-local-win-x64/C.A.P.S.exe). Abra Perfil e progresso para testar Resumo e Histórico. Feche a instância anterior antes de abrir a nova. Verificações e pendências em [PROGRESS](PROGRESS.md).
+
+## Nova tela inicial — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-inicio-local-win-x64/C.A.P.S.exe). A entrada alterna os cenários de jade e brasa a cada abertura. O executável usa o ícone do dragão de jade. Próximo passo: conferir a tela e os atalhos no Windows. Evidências em [PROGRESS](PROGRESS.md).
+
+## Navegação lateral e revisão visual — 04/11/2026
+
+Pacote em [C.A.P.S.exe](../release/CAPS-abas-local-win-x64/C.A.P.S.exe). A barra lateral segue o modelo de navegação do LoR e permanece nas seções do menu. A revisão das ilustrações de abertura continua pendente por feedback do autor. Ver [PROGRESS](PROGRESS.md).
+
+## Revisão visual, etapa 1 — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-aventura-local-win-x64/C.A.P.S.exe). Testar os dois fundos, o painel de Aventura e a preparação de jornada. Etapa 2 aprovada: Coleção com rolagem e bússola, Maestria com arte e painel de talento, embalagens de Booster e vitrine de Perfil.
+
+## Revisão visual, etapa 2 — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-revisao-visual-local-win-x64/C.A.P.S.exe). Conferir visualmente o preparo de Aventura, a rolagem e bússolas da Coleção, os painéis de talento, os boosters e o Perfil. Evidências em [PROGRESS](PROGRESS.md).
+
+## Referência visual da Aventura — 04/11/2026
+
+A gravação do autor foi revisada até a vitória, recompensa e volta ao mapa. [Sequência observada e propostas de interface](referencia-lor-aventura.md). Registro documental para a próxima revisão da Aventura.
+
+## Prévia de encontro — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-encontro-local-win-x64/C.A.P.S.exe). No mapa do Dr. Félix, testar abrir o primeiro nó, voltar e confirmar com Lutar. Próxima revisão proposta: vitória, recompensa e retorno ao mapa. Referência em [gravação analisada](referencia-lor-aventura.md).
+
+## Mapa em tela cheia — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-mapa-local-win-x64/C.A.P.S.exe). Testar entrada e retomada da jornada, rolagem, acesso ao deck e prévia de combate. Ilustração do laboratório permanece para etapa visual própria.
+
+## Arena de batalha estável — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-arena-local-win-x64/C.A.P.S.exe). Conferir mão inicial, declaração de ataque e bloqueio em uma partida real. A arena usa arte própria com metades cobre e jade.
+
+## Loja e mão em leque — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-loja-e-mao-local-win-x64/C.A.P.S.exe). Conferir compra e retomada na loja, mão em leque e controles abaixo da arena. Pilha, Registro, Descarte e carta em foco ficam em Informações.
+
+## Leitura das cartas e tela cheia — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-cartas-tela-cheia-local-win-x64/C.A.P.S.exe). Conferir prévia à esquerda e Início → Opções → Alternar tela cheia.
+
+## Indicadores da arena — 04/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-prioridade-local-win-x64/C.A.P.S.exe). Conferir troca de prioridade, sigilos de efeitos e faixa inferior em combate.
+
+## Artes das cartas de Abe e publicação — 04/11/2026
+
+As ilustrações aprovadas para Abe foram integradas ao renderizador compartilhado de cartas, mantendo IDs, textos e efeitos. Abe usa sua arte base e muda para a arte de maestria quando evolui; a arte anterior de Engineering foi preservada como `engineering-original.png`. Referências de continuidade e verificações em [PROGRESS](PROGRESS.md). Pacote portátil local: `release/CAPS-20261104-212508-win-x64`. Publicação remota pendente de envio deste commit e do ZIP `v0.1.0-playtest.4`.
