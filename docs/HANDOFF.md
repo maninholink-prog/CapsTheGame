@@ -105,3 +105,7 @@ Pacote local em [C.A.P.S.exe](../release/CAPS-prioridade-local-win-x64/C.A.P.S.e
 ## Artes das cartas de Abe e publicação — 04/11/2026
 
 As ilustrações aprovadas para Abe foram integradas ao renderizador compartilhado de cartas, mantendo IDs, textos e efeitos. Abe usa sua arte base e muda para a arte de maestria quando evolui; a arte anterior de Engineering foi preservada como `engineering-original.png`. Referências de continuidade e verificações em [PROGRESS](PROGRESS.md). Pacote portátil local: `release/CAPS-20261104-212508-win-x64`. Publicação remota pendente de envio deste commit e do ZIP `v0.1.0-playtest.4`.
+
+### Complemento de publicação — v0.1.0-playtest.4
+
+O commit `d44c701` foi enviado à `main`, e a tag `v0.1.0-playtest.4` foi criada. A release [v0.1.0-playtest.4](https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.4) contém cinco partes do pacote Windows e o comando de junção. Reconstrução local das partes conferiu o SHA-256 do ZIP completo. A interface do pacote abriu; a conferência de carta na mão e prévia ampliada continua pendente porque a automação recebeu atividade do usuário.
