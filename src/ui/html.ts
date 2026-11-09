@@ -19,6 +19,11 @@ export function icon(name: string, className = ''): string {
   return `<svg class="icon ${esc(className)}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] ?? paths.diamond}</svg>`;
 }
 export const artIcon: Record<string, string> = { kylast: 'shield', 'sword-kylast': 'sword', alastor: 'scythe', banjo: 'banjo', colar: 'colar', ybew: 'horn', 'wang-jianxi': 'forge', 'joia-rubra': 'diamond', damian: 'sword', 'robot-campeao': 'robot', abe:'forge', arcata:'diamond', rubel:'shield', aranha:'robot', zacarias:'forge', keegan:'forge', lucia:'book', gremin:'forge' };
+export function regionSymbol(region:'north'|'west'|'south'|'east'|'korakarom'):string {
+  const symbols={north:[70,'Norte'],west:[390,'Oeste'],south:[740,'Sul'],east:[1075,'Leste'],korakarom:[1410,'Korakarom']} as const;
+  const [x,name]=symbols[region];
+  return `<svg class="region-symbol" viewBox="${x} 580 280 200" role="img" aria-label="${name}"><image href="/art/regions/approved-symbols.png" width="1752" height="897"/></svg>`;
+}
 export function art(id: string, small = false, evolved = false): string {
   if(id==='abe'&&evolved)return `<img class="portrait" src="/art/abe-mastery.png" alt="Abe Gravo evoluído"/>`;
   if(id==='cinderela')return `<img class="portrait ${small?'small':''}" src="/art/cinderela.png" alt="Pistola Cinderela, com cristal azul"/>`;

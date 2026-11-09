@@ -1,3 +1,4 @@
+import {connectSpellTargets} from './spell-targets.js';
 import {protagonistIds} from '../content/decks.js';
 import {profileFrames,recordMatch} from '../profile/matches.js';
 import type {ProfileFrame} from '../profile/matches.js';
@@ -32,6 +33,8 @@ import {focusMapPosition,renderEncounterPreview} from './map-view.js';
 import {renderRun,runBanner} from './run-view.js';
 import './styles.css';
 import './tactical.css';
+import './card-face.css';
+import './battle-polish.css';
 import { createSession, sessionFromBattle, dispatchHuman, actingPlayer } from './session.js';
 import { createAiController } from './ai-controller.js';
 import type { BattleSession, OpponentMode } from './session.js';
@@ -71,11 +74,14 @@ function persist(){
  try{localStorage.setItem(saveKey,next);lastGood=next;rawSave=next;}
  catch{if(lastGood){const old=decodeSave(lastGood);profile=old.profile;run=old.run;adventureSession=old.session;if(old.session)session=old.session;}storageIssue='Não foi possível salvar no navegador. A última versão salva foi preservada; exporte um backup antes de continuar.';}
 }
+let disconnectSpellTargets=()=>{};
 function paint(): void {
+  disconnectSpellTargets();
   paintScreen();
   connectRelicCollection(root);
   prepareViewport(root,page);
   focusMapPosition(root);
+  disconnectSpellTargets=connectSpellTargets(root);
 }
 window.addEventListener('resize',()=>fitViewport(root));
 root.addEventListener('toggle',()=>fitViewport(root),true);
@@ -343,7 +349,7 @@ root.addEventListener('click', event => {
 
 root.addEventListener('change', event => {
   const input = event.target as HTMLInputElement | HTMLSelectElement;
-  if(input.id==='protagonist'){selectedProtagonist=input.value as Champion;return;}
+  if(input.id==='protagonist'||input.name==='protagonist'){selectedProtagonist=input.value as Champion;return;}
   if(input.id==='import-save'){
     const file=(input as HTMLInputElement).files?.[0];if(!file)return;
     void file.text().then(raw=>{const saved=importSave(localStorage,raw);profile=saved.profile;run=saved.run;adventureSession=saved.session;session=saved.session??createSession(2026,'ai');lastGood=raw;rawSave=raw;storageIssue='';hubError='';page='home';training=false;paint();}).catch(error=>{hubError=error instanceof Error?error.message:'Falha na restauração.';if(storageIssue)storageIssue=hubError;paint();});return;

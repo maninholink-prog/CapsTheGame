@@ -1,3 +1,5 @@
 import {protagonistIds,fullCatalog,starterLists} from '../content/decks.js';
 import type {Champion} from '../content/schema.js';
-export function protagonistSelector(selected:Champion){return `<label class="mode-choice"><span>PROTAGONISTA</span><select id="protagonist" aria-label="Protagonista da nova batalha ou run">${protagonistIds.map(id=>`<option value="${id}" ${id===selected?'selected':''}>${fullCatalog[id].name} · ${id==='kylast'?20:starterLists[id].length*2} cartas</option>`).join('')}</select></label>`;}
+import {heroPortrait} from './profile-view.js';
+import {esc} from './html.js';
+export function protagonistSelector(selected:Champion){return `<details class="hero-picker"><summary>Escolher protagonista</summary><fieldset><legend>Protagonista da nova batalha ou run</legend>${protagonistIds.map(id=>`<label class="hero-option"><input type="radio" name="protagonist" aria-label="${esc(fullCatalog[id].name)}" value="${id}" ${id===selected?'checked':''}/>${heroPortrait(id)}<span>${esc(fullCatalog[id].name)} · ${id==='kylast'?20:starterLists[id].length*2} cartas</span></label>`).join('')}</fieldset></details>`;}

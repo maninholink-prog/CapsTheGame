@@ -1,3 +1,5 @@
+import {spellTargetKeys} from './spell-targets.js';
+import {cardFace} from './card-face.js';
 import {targetKey} from '../battle/targets.js';
 import {directTargets} from './forms.js';
 import {encounterNames} from '../battle/encounters.js';
@@ -33,7 +35,7 @@ function unitCard(session: BattleSession, owner: PlayerId, unit: BoardUnit, draf
   const shiny=owner==='p1'&&shinyIds.has(def.baseId??def.id);
   const champion = def.kind === 'unit' && (def.champion||def.encounterSpecial);
   return `<article class="unit ${targetable||blockable?'targetable':''} ${targeted?'target-selected':''} ${blockFocus?'block-focus':''} ${shiny?'shiny':''} rarity-${esc(def.enemyOnly?'encounter':def.rarity ?? 'common')} ${selected ? 'selected-attacker' : ''} ${stunned ? 'stunned' : ''}">
-    <button class="unit-face" data-action="unit" data-owner="${owner}" data-id="${esc(unit.card.instanceId)}" aria-label="${esc(cardName(state, unit.card.definitionId))}, ataque ${unit.attack}, vida ${unit.health} de ${unit.maxHealth}">
+    <button class="unit-face" data-spell-endpoint="${esc(key)}" data-action="unit" data-owner="${owner}" data-id="${esc(unit.card.instanceId)}" aria-label="${esc(cardName(state, unit.card.definitionId))}, ataque ${unit.attack}, vida ${unit.health} de ${unit.maxHealth}">
       <div class="unit-art">${art(def.baseId??unit.card.definitionId, true, unit.evolved)}${champion ? `<span class="unit-crown">${unit.evolved ? 'EVOLUÍDO' : def.encounterSpecial?'ESPECIAL':'CAMPEÃO'}</span>` : ''}${stunned ? '<span class="stun-label">ATORDOADO</span>' : ''}${combatLane ? '<span class="in-combat">EM COMBATE</span>' : ''}${targeted?'<span class="selection-badge">ALVO SELECIONADO</span>':assignedTo>=0?`<span class="selection-badge">BLOQUEIO ${assignedTo+1}</span>`:blockFocus?'<span class="selection-badge">ESCOLHA UM BLOQUEADOR</span>':''}</div>
       ${marked.length?`<span class="execution-mark">Marcado por ${marked.map(o=>o.toUpperCase()).join(' / ')}</span>`:''}${unit.form?`<span class="form-label">${unit.form==='bear'?'Urso':'Tigre'}</span>`:''}${unit.sanctuary?'<span class="form-label" title="Reduz em até 2 o dano do próximo golpe de combate">Santuário</span>':''}<strong class="unit-name">${esc(cardName(state, unit.card.definitionId))}</strong>${def.kind==='unit'&&def.champion&&def.champion!=='kylast'?`<small class="evolution-progress">${esc(heroProgressText(state,owner,def.champion))}</small>`:''}<div class="unit-stats"><span class="attack-stat" title="Ataque atual da unidade, antes da arma escolhida"><small>ATAQUE ATUAL</small><b>${icon('sword')}${unit.attack}</b></span><span class="life-stat ${unit.health < unit.maxHealth ? 'damaged' : ''}" title="Vida atual / máxima"><small>VIDA ATUAL</small><b>${unit.health}<em> / ${unit.maxHealth}</em></b></span></div>
     </button>
@@ -48,7 +50,7 @@ function playerField(session: BattleSession, owner: PlayerId, draft: Draft, shin
   const attack = state.attackOwner === owner;
   const nexusKey=`nexus:${owner}`,targets=directTargets(session,draft);
   const nexusTargetable=targets?.options.some(t=>targetKey(t)===nexusKey);
-  const nexusHtml=`<${nexusTargetable?'button':'div'} class="nexus ${p.nexus<=5?'critical':''} ${nexusTargetable?'targetable':''} ${draft.targetKeys.includes(nexusKey)?'target-selected':''}" ${nexusTargetable?`data-action="field-nexus" data-owner="${owner}"`:''} title="Vida atual do Vínculo"><strong>${p.nexus}</strong><span>VÍNCULO</span></${nexusTargetable?'button':'div'}>`;
+  const nexusHtml=`<${nexusTargetable?'button':'div'} class="nexus ${p.nexus<=5?'critical':''} ${nexusTargetable?'targetable':''} ${draft.targetKeys.includes(nexusKey)?'target-selected':''}" ${nexusTargetable?`data-action="field-nexus" data-owner="${owner}"`:''} data-spell-endpoint="${nexusKey}" title="Vida atual do Vínculo"><strong>${p.nexus}</strong><span>VÍNCULO</span></${nexusTargetable?'button':'div'}>`;
   const hero=p.protagonist??'kylast';const definition=state.definitions[hero];const progress=state.allyProgress?.[owner];
   const encounter=owner==='p2'?state.encounter:undefined;
   const status=encounter?(encounter.phase==='king'?`Energia ${encounter.energy}/6 · sobreviva às descargas`:encounter.phase==='felix'?`Upgrades ${state.laboratory?.upgrades[owner]??0}/4`:'Laboratório de Félix'):heroProgressText(state,owner,hero);
@@ -66,7 +68,7 @@ function combatLine(session: BattleSession, draft: Draft, shinyIds:ReadonlySet<s
   const state = session.state;
   const {lanes,attacker,defender}=combatLayout(session,draft);
   const effects=visibleEffects(state);
-  const sigils=effects.length?`<div class="spell-sigils" aria-label="Efeitos pendentes, primeiro a resolver à esquerda">${effects.map((effect,i)=>`<button type="button" class="spell-sigil ${effect.owner} ${i===0?'next-effect':''}" data-action="inspect-effect" data-definition="${esc(effect.definitionId)}" data-id="${esc(effect.id)}" title="${esc(effect.title+' · '+effect.targetsText)}" aria-label="${esc((i+1)+'. '+effect.title+' · '+effect.targetsText)}">${icon(effect.badge==='Atordoamento'?'banjo':'diamond')}<small>${i+1}</small></button>`).join('')}</div>`:'';
+  const sigils=effects.length?`<div class="spell-sigils" aria-label="Efeitos pendentes, primeiro a resolver à esquerda">${effects.map((effect,i)=>`<button type="button" class="spell-sigil ${effect.owner} ${i===0?'next-effect':''}" data-action="inspect-effect" data-definition="${esc(effect.definitionId)}" data-id="${esc(effect.id)}" data-spell-endpoint="stack:${effect.id}" data-spell-enemy="${effect.owner!==session.viewPlayer}" data-spell-targets="${esc(JSON.stringify(spellTargetKeys(state,state.stack.find(p=>p.id===effect.id)!)))}" title="${esc(effect.title+' · '+effect.targetsText)}" aria-label="${esc((i+1)+'. '+effect.title+' · '+effect.targetsText)}">${icon(effect.badge==='Atordoamento'?'banjo':'diamond')}<small>${i+1}</small></button>`).join('')}</div>`:'';
 
   if (!state.combat && draft.mode !== 'attack') return `<section class="combat-line resting" aria-label="Campo de batalha">${sigils||'<span>Campo de batalha</span>'}</section>`;
   const label = state.combat?.stage === 'blocking' ? 'Escolha os bloqueadores' : state.combat?.stage === 'triggers' ? 'Escolha os alvos do Banjo' : state.combat ? 'Janela de respostas aberta' : 'Organize o ataque';
@@ -90,8 +92,7 @@ function handCard(session: BattleSession, card: CardInstance, draft: Draft, shin
   const evolved = def.kind === 'unit' && def.champion === 'kylast' && state.evolvedKylast[viewPlayer];
   const body = mode === 'arsenal' ? arsenalText : description(def);
   return `<button style="--fan:${fan}" class="hand-card ${shiny?'shiny':''} rarity-${esc(def.enemyOnly?'encounter':def.rarity ?? 'common')} ${marked ? 'selected' : ''} ${isMulligan && marked ? 'mulligan-marked' : ''}" data-action="hand-card" data-id="${esc(card.instanceId)}" aria-label="${esc(title)}${shiny?', cópia brilhante':''}, custo ${manaCost(state, viewPlayer, card)}${marked ? ', selecionada' : ''}" aria-pressed="${marked}">
-    <div class="card-art">${art(def.baseId??card.definitionId)}<span class="mana-cost">${manaCost(state, viewPlayer, card)}</span>${isMulligan && marked ? '<span class="swap-tag">TROCAR</span>' : ''}${mode === 'arsenal' ? '<span class="spell-label">RÁPIDA</span>' : ''}</div>
-    <div class="card-copy"><span class="card-kind">${mode === 'arsenal' ? 'MAGIA DE CAMPEÃO' : mode === 'unit' ? def.kind === 'unit' && def.champion ? 'CAMPEÃO' : 'UNIDADE' : mode === 'equipment' ? 'EQUIPAMENTO' : 'MAGIA'}</span><strong>${esc(title)}</strong><p>${esc(body)}</p><div class="card-bottom"><span class="rarity-dot"></span><span>${esc(def.enemyOnly?'Encontro':rarityNames[def.rarity ?? 'common'])}</span>${def.kind === 'unit' && mode !== 'arsenal' ? `<b>${def.attack + (evolved ? 1 : 0)} <i>/</i> ${def.health + (evolved ? 1 : 0)}</b>` : def.kind === 'equipment' ? `<b>+${def.damage ?? 0}</b>` : ''}</div></div>
+    ${cardFace(def, {cost:manaCost(state,viewPlayer,card), title, body, arsenal:mode==='arsenal', evolved, marked:isMulligan&&marked})}
   </button>`;
 }
 function renderHand(session: BattleSession, draft: Draft, shinyIds:ReadonlySet<string>): string {
