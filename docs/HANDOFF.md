@@ -255,3 +255,7 @@ O autor concluiu os testes no computador e autorizou commit, push, publicação 
 ## Entrega pública v0.1.0-playtest.6 — 11/11/2026
 
 Commit `4612b95283d482549439e0634e7b8cda40b96206` em `main`; [pré-lançamento público](https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.6) com o pacote Windows e oito anexos conferidos por tamanho/digest. O autor informou que os testes no computador foram concluídos e aprovados; não especificou cenários. Backup integral e restauração de teste são a próxima ação. Quatro mudanças de interface/coleção citadas pelo autor ficam para outro chat e não fazem parte desta entrega.
+
+## Backup integral verificado — 11/11/2026
+
+Snapshot completo em `C:/Users/Bruxo/Documents/Backups/CAPS-Game/snapshots/20261111-173733`; manifesto e log em `C:/Users/Bruxo/Documents/Backups/CAPS-Game`. Restauração isolada em `C:/Users/Bruxo/Documents/Backups/CAPS-Game-restore-test/20261111-173733`, 33.173 hashes comparados, zero divergências. Depois de registrar esta verificação, sincronizar documentos/metadados Git no snapshot e reconferir. Origem e backup ficam no mesmo disco C:.
