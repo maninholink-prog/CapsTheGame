@@ -3,7 +3,7 @@ export type Keyword = 'elusive' | 'quick' | 'double';
 export type Region = 'north' | 'east' | 'south' | 'west' | 'korakarom';
 export type Rarity = 'common' | 'rare' | 'epic' | 'legendary' | 'ultradimensional';
 export type NarrativeAbility = 'zacarias' | 'keegan' | 'lucia' | 'gremin' | 'soarim' | 'salita' | 'kriv' | 'archibald' | 'guardian' | 'mantum';
-interface CardBase { enemyOnly?:boolean;experiment?:boolean;unique?:boolean;encounterSpecial?:'labotomia'|'tornado'|'dianamite'|'felix';failIfKeywordPresent?:boolean; expansion?:string; music?:boolean; dynamicDamage?:'equipped'|'attack'; afterRecallDraw?:boolean; requiresEnemyDeck?:boolean;
+interface CardBase { enemyOnly?:boolean;experiment?:boolean;unique?:boolean;encounterSpecial?:'labotomia'|'tornado'|'dianamite'|'felix';failIfKeywordPresent?:boolean; expansion?:string; music?:boolean; dynamicDamage?:'equipped'|'attack'; afterRecallDraw?:boolean; requiresEnemyDeck?:boolean; deathSpell?:string;
   draw?: number; attackReduction?: number; fireShield?: boolean;
   id: string; baseId?:string; runImprovementText?:string; drawOnEntry?:boolean;
   entryDraw?:number; collectible?: boolean; narrative?: NarrativeAbility; entrySpell?: string;

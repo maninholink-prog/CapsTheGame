@@ -93,3 +93,21 @@ Correção solicitada pelo autor após a implementação de DEC-011: a fonte C.A
 ## DEC-014 — Exclusão de saves temporários de QA — 11/11/2026
 
 O autor autorizou excluir saves sem preocupação para concluir as conferências Windows. Escopo operacional deste registro: saves gerados pela instância portátil temporária e isolada de QA desta tarefa. Não inclui o perfil da instalação normal, saves do autor fora do QA, backups ou outros dados. O perfil temporário foi configurado sob `%TEMP%\CAPS-QA-profile-20261111`; a autorização não é uma política geral de retenção.
+
+## DEC-015 — Autorização para excluir aventuras em andamento — 11/11/2026
+
+O autor autorizou, de forma persistente, excluir aventuras que estejam em andamento quando isso for necessário para QA/playtest. Esta autorização cobre o estado salvo dessas aventuras; não autoriza excluir perfis inteiros, coleção/progresso não relacionado, backups ou outros arquivos. Não exige exclusão imediata. Fonte: mensagem explícita do autor nesta conversa (“é permitido excluir as aventuras em andamento”).
+
+## Aventura de Júpiter — estrutura aprovada, 11/11/2026
+
+O autor escolheu Júpiter como próxima aventura inicial de destaque por suas reviravoltas e personagens. A adaptação deve acompanhar a busca e a descoberta de sua morte antes do chefe. Após vencer o kraken filhote, o jogador escolhe “Buscar depois” (desfecho da campanha) ou “Levá-lo agora” (travessia arriscada para retirar o corpo). Se conseguir, haverá funeral digno, discurso do irmão Saturno e ícone exclusivo. Júpiter não é ressuscitado; o desfecho alternativo pertence ao jogo, não ao RPG original. A causa da morte não é atribuída ao kraken. Eventos e encontros propostos conforme [design da aventura](../design/AVENTURA_JUPITER.md); decks, números, travessia e arte do ícone ainda precisam de definição.
+
+O autor aprovou incluir na aventura encontros com criaturas aquáticas na travessia, ratos e escaravelhos da plantação, além do kraken filhote. Ratos e escaravelhos são adaptações a partir de inimigos catalogados de outras sessões, não adversários confirmados na história de Júpiter. Para a Comum, cumprir cinco batalhas por run. As cartas devem ter mecânicas reutilizáveis em outros decks, seguindo o precedente dos piratas. Decks e efeitos ainda serão propostos; balanceamento final permanece adiado.
+
+## Ordem para criação de decks — aprovada em 11/11/2026
+
+O autor determinou a ordem: (1) considerar a interação das cartas com as mecânicas aprovadas dos protagonistas, adicionando efeito de sinergia quando fizer sentido ou mantendo coexistência; (2) definir custo, ataque, vida e valores de efeito, identificando-os como provisórios se o balanceamento final estiver adiado; (3) atribuir uma região única a cada carta não protagonista. Regra em [MECANICAS_COMPARTILHADAS](../design/MECANICAS_COMPARTILHADAS.md), aplicada à proposta de [AVENTURA_JUPITER](../design/AVENTURA_JUPITER.md).
+
+## DEC-016 — Ajuste inicial de balanceamento dos decks de Júpiter — 11/11/2026
+
+Fonte: pedido explícito do autor nesta conversa para realizar o balanceamento. Ajuste inicial, não declaração de balanceamento definitivo: Ninhada de Ratos e Enxame de Escaravelhos passam de custo 4 para 3, para viabilizar o plano de enxame dos encontros comuns mais cedo. A leitura exploratória contra oito protagonistas mostrou resultados muito dependentes do matchup; por isso não foi aplicada alteração geral de vida ou atributos. A conferência também revelou que Rato Saqueador tinha o efeito descrito no texto sem integração: foi conectado ao retorno opcional de uma unidade aliada ferida por efeito respondível. Identidades, IDs existentes, composição, regiões, artes e demais efeitos foram preservados. Valores ficam sujeitos a novos playtests manuais. Ver [design](../design/AVENTURA_JUPITER.md) e [registro de progresso](PROGRESS.md).

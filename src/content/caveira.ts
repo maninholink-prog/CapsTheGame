@@ -1,5 +1,6 @@
 import type {CardCatalog,CardEffect,Keyword,Region,TargetRule} from './schema.js';
 import type {CardInstance} from '../battle/types.js';
+import {jupiterCatalog,jupiterDecks} from './jupiter.js';
 
 const catalog:CardCatalog={};
 const enemy:TargetRule={kind:'unit',side:'enemy',min:1,max:1};
@@ -47,10 +48,10 @@ catalog['caveira-blast'].area='all-units';
 spell('caveira-bite','Mordida do Tubarão',0,'fast',wounded,{type:'damage',amount:2},'Cause 2 de dano a uma unidade inimiga ferida.');
 spell('caveira-charge','Investida do Megalodonte',0,'fast',enemy,{type:'damage',amount:2},'Cause 2 de dano ao bloqueador.');
 
-export const caveiraCatalog=catalog;
+export const caveiraCatalog={...catalog,...jupiterCatalog};
 const crew=['caveira-pirate','caveira-marujo','caveira-saqueador','caveira-song','caveira-corsair','caveira-barrel','caveira-carpenter'];
 const deck=(name:string,nexus:number,...support:string[])=>({name,nexus,cards:[...crew,...support]});
-export const caveiraDecks={
+const caveiraDeckList={
  'caveira-crossing':deck('Travessia da Caveira Dourada',20,'caveira-cannon','disguise-self','caveira-shark'),
  'caveira-island':deck('Ilha da Caveira Dourada',20,'caveira-reinforcements','caveira-guard','heat-metal'),
  'caveira-duelist':deck('Esqueleto Duelista',25,'caveira-reinforcements','caveira-sword','caveira-guard','caveira-diver','caveira-duelist','heat-metal'),
@@ -58,6 +59,7 @@ export const caveiraDecks={
  'caveira-general':deck('General da Caveira Dourada',30,'caveira-reinforcements','caveira-sword','caveira-cannon','caveira-guard','caveira-diver','caveira-general','heat-metal','wall-fire'),
  'caveira-captain':deck('Capitão Osso Roído',30,'caveira-cannon','caveira-guard','caveira-reinforcements','caveira-shark','caveira-captain','caveira-curse','heat-metal','disguise-self'),
 };
+export const caveiraDecks={...caveiraDeckList,...jupiterDecks};
 export type CaveiraDeck=keyof typeof caveiraDecks;
 export function isCaveiraDeck(id:string|undefined):id is CaveiraDeck{return !!id&&Object.hasOwn(caveiraDecks,id);}
 export function createCaveiraDeck(id:CaveiraDeck):CardInstance[]{

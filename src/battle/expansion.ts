@@ -54,6 +54,7 @@ export function beforeDeaths(s:BattleState,deaths:Death[],events:BattleEvent[]){
   const id=s.definitions[u.card.definitionId].baseId??u.card.definitionId;
   if(id==='caveira-marujo')queueExpansion(s,o,'caveira-remendado-death',[],events);
   if(id==='caveira-barrel')queueExpansion(s,o,'caveira-blast',[],events);
+  const deathSpell=s.definitions[u.card.definitionId].deathSpell;if(deathSpell)queueExpansion(s,o,deathSpell,[],events);
   for(const other of alive(s,o)){if(other.card.instanceId===u.card.instanceId)continue;const b=ability(s,other);if(b==='spirit-tiger')other.attack++;if(b==='baru'&&once(s,other,'death'))for(const ally of alive(s,o)){ally.maxHealth++;ally.health++;}}
   if(!cause)continue;const mark=s.executionMarks?.[cause],marked=mark?.targetId===u.card.instanceId;
   const lazaro=championUnit(s,cause,'lazaro');

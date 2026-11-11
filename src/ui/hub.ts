@@ -7,6 +7,7 @@ import {difficultyRules} from '../run/difficulty.js';
 import {activeAdventure,adventureNames,hasOpenChart} from '../run/caveira-adventure.js';
 import {description} from './presentation.js';
 import {fullCatalog,protagonistIds} from '../content/decks.js';
+import {caveiraDecks} from '../content/caveira.js';
 import type {Champion,Rarity} from '../content/schema.js';
 import {collectibleIds,rarities,rarityNames,prices,masteryInfo,milestones,nextReset,weekKey} from '../profile/profile.js';
 import type {Profile} from '../profile/profile.js';
@@ -69,6 +70,7 @@ export function hubContent(p:Profile,page:HubPage,run:RunState|null,filters:HubF
      <h2>Quem lidera a jornada?</h2>
      <div class="hero-grid adventure-roster">${championCards(p)}</div>
      ${playtestButton()}
+     <details class="adventure-options"><summary>Playtest de encontros</summary><p>Duelo isolado contra os decks de encontro, sem alterar uma aventura ativa.</p><div class="hero-grid">${Object.entries(caveiraDecks).filter(([id])=>id.startsWith('jupiter-')).map(([id,deck])=>btn('hub-training',deck.name,`data-id="${id}"`)).join('')}</div></details>
     </details>`}
   </main>`;
  }

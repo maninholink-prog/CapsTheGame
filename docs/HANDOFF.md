@@ -9,6 +9,10 @@
 - Validação desta integração: 378 arquivos originais conferidos por SHA-256, nenhum alterado/ausente; 799 links locais válidos (80 novos), recuperação de regra/decisão/personagem e estrutura básica das skills conferidas. TypeScript sem erros; 14 testes em quatro arquivos passaram. Suíte ampla não concluída: tentativa integral interrompida após cerca de dois minutos; tentativa sem profile-run também interrompida sem resumo final. Causa não determinada; não afirmar regressão nem sucesso integral. Validador oficial das skills bloqueado por falta de PyYAML; não houve instalação. Build, interface, links externos, âncoras e restauração de backup não testados. Resultados históricos não contam como execução desta sessão.
 - Próximo passo: revisar primeiro checkpoint e aprovar caminhos/horários/retenção do backup. Confirmar descoberta das skills em nova sessão; não assumir ativação nesta sessão.
 
+## Continuidade — Júpiter para playtest — 11/11/2026
+
+O autor autorizou integrar as cartas/decks aprovados e iniciar playtest. Catálogo com 35 identidades e cinco encontros integrado ao treino isolado; números ainda provisórios. Typecheck, build Vite e 31 testes direcionados passaram, incluindo simulações dos cinco encontros. Conferência interativa em navegador não ocorreu: acesso à build local foi bloqueado pelo ambiente. Ver detalhes e limites em [PROGRESS](PROGRESS.md) e especificação em [AVENTURA_JUPITER](../design/AVENTURA_JUPITER.md). Próximo passo é playtest manual dos cinco decks; depois revisar ajustes de balanceamento. Rota completa da aventura, desfechos funerários e ícone exclusivo permanecem por implementar. Sem commit/push/publicação/backup; preserve demais alterações locais.
+
 ## Complemento de continuidade — 03/11/2026, após correção da origem do projeto
 
 Este complemento preserva integralmente o HANDOFF anterior. Pedido vigente: somente infraestrutura e memória persistente; desenvolvimento de Abe, Cinderela e artes suspenso neste ciclo. Nenhum código do jogo, distribuição ou perfil deve ser alterado nesta tarefa.
@@ -228,3 +232,22 @@ Rótulos visíveis dos dois saldos removidos a pedido do autor; ficam o ícone e
 A cópia portátil temporária foi aberta como aplicativo nativo Windows, separada do executável instalado, e mostrou home, fundo temático, saldos compactos, opções por engrenagem, navegação lateral, botões inferiores e Alpha v0.1.0. O teste Windows não exibiu valores acima de mil: a alteração do save QA pelo Console foi bloqueada pela autoproteção do DevTools. O teste automatizado dedicado validou 12.500 Pedras Filosofais e 12.345 Korakoins; home-view (5 testes), TypeScript e diff check passaram. Não se concluiu uma partida Windows nesta retomada.
 
 A autorização de exclusão de saves foi registrada em DEC-014 e limitada aos dados temporários do QA. O perfil descartável e a cópia Windows de QA foram removidos após o fechamento; instalação normal e backups permaneceram intactos.
+
+Atualização do playtest — 11/11/2026: sessão interativa acessível em `http://127.0.0.1:5173/`. Partida isolada Abe vs. Infestação na Estrada iniciada; Zacarias e Larva de Escaravelho entraram em combate e a resolução ocorreu. O duelo permanece aberto para o autor. Simulações automatizadas cobriram os cinco decks; somente a Estrada recebeu conferência manual parcial nesta etapa. Nenhuma recompensa/save de aventura foi gerado pelo treino. O executável/release preexistente não contém a integração e permaneceu inalterado.
+
+Nova versão Windows gerada e aberta em [C.A.P.S.exe](../release/CAPS-JUPITER-PLAYTEST-20261111-win-x64/C.A.P.S.exe), em pasta portátil paralela; release anterior preservada. A janela carregou o perfil existente com run de Abe ativa; deixei-a intacta e mantive o duelo de teste no navegador. Checksum Electron validado, build/empacotamento concluídos. Ver detalhes em [PROGRESS](PROGRESS.md). Sem commit/push/publicação/backup.
+## Retomada — playtest de Júpiter — 11/11/2026
+
+Os cinco decks possuem simulação automatizada completa aprovada pelos testes focados (31 testes em `caveira.test.ts` e `expansion-engine.test.ts`). Inspeção manual em treino: Estrada teve primeira troca/combate em registro anterior; nesta retomada, Ratos chegou à rodada 6, Escaravelhos à 3, Aquáticos à 1 e Kraken à 2; as quatro sessões foram encerradas antes do resultado. Sem travamento observado. Não chamar a cobertura manual de partidas completas. TypeScript, build Vite temporário e diff check passaram. Nenhum ajuste de balanceamento foi feito. Próximo passo autorizado: começar a etapa de balanceamento dos decks, consultando autoria/registros e mostrando propostas ao autor antes de consolidar decisões. DEC-015 guarda a permissão permanente para excluir aventuras em andamento quando necessário a QA, sem estender a exclusão a perfil/progresso não relacionado ou backups. A aventura Abe do perfil Windows permanece intacta. Sem commit/push/publicação/backup.
+
+## Balanceamento inicial de Júpiter — 11/11/2026
+
+Primeiro ajuste aplicado: Ninhada de Ratos e Enxame de Escaravelhos agora custam 3; o efeito descrito do Rato Saqueador foi conectado como retorno opcional respondível de aliado ferido. 32 testes focados passaram, incluindo simulação completa dos cinco decks; typecheck, build Vite temporário e diff check passaram. Não houve alteração em IDs existentes, composição, regiões ou artes. Amostra exploratória contra oito protagonistas mostrou alta variação por matchup; veja resultados e limitações no [PROGRESS](PROGRESS.md). É uma calibração inicial, com testes manuais completos ainda pendentes, não balanceamento encerrado. Próximo: rodar playtests manuais até o resultado e recalibrar conforme observação. Sem pacote Windows atualizado, commit, push, publicação ou backup.
+
+### Build Windows de teste disponibilizada — 11/11/2026
+
+Pacote portátil atualizado e aberto em [C.A.P.S.exe](../release/CAPS-JUPITER-BALANCE-20261111-win-x64/C.A.P.S.exe). O smoke test confirmou home e perfil em `tmp/CAPS-JUPITER-BALANCE-QA-20261111/CAPS-Game`; Abe e todos os protagonistas estão liberados somente nesse perfil descartável. A janela está em “Playtest de encontros” aguardando o autor; não fiz partidas interativas. O pacote anterior foi preservado. Sem commit, push, publicação pública ou backup; o pedido de lançamento local para teste foi atendido.
+
+## Aprovação para entrega pública — 11/11/2026
+
+O autor concluiu os testes no computador e autorizou commit, push, publicação e backup. Os cenários manuais não foram especificados; a build testada permanece em `release/CAPS-JUPITER-BALANCE-20261111-win-x64`. Próximo: publicar a `.6` sem incluir mudanças locais de skills/configuração; registrar links e backup após validação.

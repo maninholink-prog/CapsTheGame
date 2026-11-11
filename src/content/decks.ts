@@ -1,12 +1,13 @@
 import {felixCatalog} from './felix.js';
 import {caveiraCatalog} from './caveira.js';
+import {jupiterCatalog} from './jupiter.js';
 import {expansionCatalog,expansionStarters} from './expansion.js';
 import {kylastCatalog,createKylastDeck} from './kylast.js';
 import {allyCatalog} from './allies.js';
 import {narrativeCatalog} from './narrative.js';
 import type {Champion} from './schema.js';
 import type {CardInstance} from '../battle/types.js';
-export const fullCatalog={...kylastCatalog,...allyCatalog,...narrativeCatalog,...expansionCatalog,...felixCatalog,...caveiraCatalog};
+export const fullCatalog={...kylastCatalog,...allyCatalog,...narrativeCatalog,...expansionCatalog,...felixCatalog,...caveiraCatalog,...jupiterCatalog};
 export const protagonistIds:Champion[]=['kylast','abe','arcata','rubel','youro','kuara','thalion','lazaro'];
 export const starterLists:Record<Exclude<Champion,'kylast'>,string[]>={...expansionStarters,
  abe:['abe','aranha','zacarias','keegan','lucia','gremin','project','cinderela','enhanced-defense','flash-genius'],

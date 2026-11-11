@@ -8,6 +8,16 @@ Isso corrige as atribuições duplas anteriores dos apoios e das cartas do arco 
 
 Diretriz explícita do autor, aprovada em 02/11/2026: protagonistas possuem efeitos próprios únicos; suas mecânicas são bases para outras cartas. Criar suportes e sinergias, sem nomes diferentes para a mesma mecânica apenas por pertencerem a personagens diferentes.
 
+## Ordem obrigatória para criar decks e cartas — aprovada em 11/11/2026
+
+Ao criar um deck e suas cartas, seguir estas três etapas nesta ordem:
+
+1. **Interação com os protagonistas:** conferir as mecânicas aprovadas de todos os protagonistas e decidir, para cada carta, se deve apoiar, responder ou simplesmente coexistir com elas. Acrescentar efeito de protagonista quando fizer sentido; não forçar sinergia em toda carta nem introduzir imunidades que invalidem um deck.
+2. **Custos e valores de combate:** definir custo, vida, ataque e números dos efeitos. Se o autor adiar o balanceamento, identificar esses números como provisórios para playtest e deixar a revisão final para a etapa acordada.
+3. **Regiões:** atribuir uma região a cada carta não protagonista. Protagonistas conservam seu par aprovado; nenhuma região de carta deve ser inferida como fato de lore pela temática.
+
+Esta ordem foi solicitada pelo autor durante a criação da aventura de Júpiter e vale como procedimento geral para decks futuros.
+
 ## Nomes oficiais e escopo — aprovados em 02/11/2026
 
 | Protagonista | Mecânica | Base |

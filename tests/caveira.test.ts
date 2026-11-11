@@ -37,6 +37,26 @@ it('starts a playable Caveira Dourada training encounter with its own enemy-only
  expect(collectibleIds).not.toContain('caveira-curse');
 });
 
+it.each(Object.entries(caveiraDecks).filter(([id])=>id.startsWith('jupiter-')))('starts Jupiter playtest deck %s with approved size and copies',id=>{
+ const {state}=createSession(42,'ai','kylast',id as CaveiraDeck);
+ const cards=[...state.players.p2.hand,...state.players.p2.deck];
+ expect(cards).toHaveLength(id==='jupiter-kraken'?30:20);
+ expect(new Set(cards.map(c=>c.definitionId)).size).toBe(id==='jupiter-kraken'?15:10);
+ expect(cards.every(c=>state.definitions[c.definitionId].enemyOnly)).toBe(true);
+ expect(state.encounter?.id).toBe(id);
+});
+
+it('Jupiter Raider can return a wounded allied unit on entry through a response window',()=>{
+ let state=actionState();
+ state.players.p2.hand=[{instanceId:'raider',definitionId:'jupiter-raider'}];
+ state.players.p2.board=[unit('wounded-ally','caveira-pirate',1,1,2)];
+ state=apply(state,{type:'play',player:'p2',instanceId:'raider',targets:[{kind:'unit',player:'p2',instanceId:'wounded-ally'}]});
+ expect(state.stack.at(-1)?.source.definitionId).toBe('jupiter-raider-return');
+ state=passPair(state);
+ expect(state.players.p2.board.map(u=>u.card.instanceId)).toEqual(['raider']);
+ expect(state.players.p2.hand.some(c=>c.instanceId==='wounded-ally')).toBe(true);
+});
+
 it.each(Object.keys(caveiraDecks) as CaveiraDeck[])('finishes a simulated match against %s',encounter=>{
  let {state}=createSession(42,'ai','kylast',encounter);
  for(let i=0;i<550&&state.phase!=='ended';i++){

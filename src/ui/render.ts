@@ -4,6 +4,7 @@ import {targetKey} from '../battle/targets.js';
 import {directTargets} from './forms.js';
 import {encounterNames} from '../battle/encounters.js';
 import {isCaveiraDeck} from '../content/caveira.js';
+import {isJupiterDeck} from '../content/jupiter.js';
 import {combatLayout} from './combat-layout.js';
 import {heroProgressText} from './hero-progress.js';
 import { canBlock, effectiveDefinition } from '../battle/champions.js';
@@ -55,9 +56,9 @@ function playerField(session: BattleSession, owner: PlayerId, draft: Draft, shin
   const hero=p.protagonist??'kylast';const definition=state.definitions[hero];const progress=state.allyProgress?.[owner];
   const encounter=owner==='p2'?state.encounter:undefined;
   const caveira=isCaveiraDeck(encounter?.id);
-  const status=encounter?(caveira?'Caveira Dourada':encounter.phase==='king'?`Energia ${encounter.energy}/6 · sobreviva às descargas`:encounter.phase==='felix'?`Upgrades ${state.laboratory?.upgrades[owner]??0}/4`:'Laboratório de Félix'):heroProgressText(state,owner,hero);
+  const status=encounter?(isJupiterDeck(encounter.id)?'Aventura de Júpiter':caveira?'Caveira Dourada':encounter.phase==='king'?`Energia ${encounter.energy}/6 · sobreviva às descargas`:encounter.phase==='felix'?`Upgrades ${state.laboratory?.upgrades[owner]??0}/4`:'Laboratório de Félix'):heroProgressText(state,owner,hero);
   const regionNames:Record<string,string>={north:'NORTE',east:'LESTE',south:'SUL',west:'OESTE',korakarom:'KORAKAROM'};
-  const regions=encounter?(caveira?'NORTE / LESTE':'SUL / LESTE'):(definition?.regions??['north','west']).map(r=>regionNames[r]).join(' / ');
+  const regions=encounter?(isJupiterDeck(encounter.id)?'NORTE / SUL / LESTE / OESTE':caveira?'NORTE / LESTE':'SUL / LESTE'):(definition?.regions??['north','west']).map(r=>regionNames[r]).join(' / ');
   return `<section class="player-field ${actor === owner ? 'has-priority' : ''} ${owner}" aria-label="Campo do ${playerName(owner)}">
     <div class="field-header"><div class="player-identity">${nexusHtml}<div><div class="eyebrow">${session.opponentMode === 'ai' && owner === 'p2' ? 'Computador · J2' : playerName(owner)} ${actor === owner ? '<span class="live-dot"></span>' : ''}</div><h2>${esc(encounter?encounterNames[encounter.phase==='king'?'king':encounter.id]:definition?.name??'Kylast Heathcliff')}</h2><div class="player-sub"><span>${esc(status)}</span><span class="region-tag">${esc(regions)}</span></div></div></div><div class="field-meta"><span class="attack-token ${attack && state.attackAvailable ? 'ready' : ''}">${icon('sword')}${attack ? state.attackAvailable ? 'Ataque disponível' : 'Ataque usado' : 'Defesa'}</span></div></div>
     <div class="player-resources"><div class="mana-line"><span>MANA <b>${p.mana}<small>/${p.maxMana}</small></b></span><div class="mana-pips" aria-label="${p.mana} de ${p.maxMana} mana">${Array.from({ length: 10 }, (_, i) => `<i class="${i < p.mana ? 'filled' : i < p.maxMana ? 'available' : ''}"></i>`).join('')}</div></div><div class="reserve-line"><span>RESERVA</span><div>${Array.from({ length: 3 }, (_, i) => `<i class="reserve-pip ${i < p.reserve ? 'filled' : ''}"></i>`).join('')}</div><b>${p.reserve}</b></div><div class="deck-tally">${icon('book')}<span>${p.deck.length} no deck · ${p.hand.length} na mão</span></div></div>
