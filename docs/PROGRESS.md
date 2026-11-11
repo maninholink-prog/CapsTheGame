@@ -378,3 +378,9 @@ Criada a cópia local [C.A.P.S.exe](../release/CAPS-JUPITER-BALANCE-20261111-win
 ## Aprovação dos testes no computador e publicação — 11/11/2026
 
 O autor informou que realizou os testes no computador e aprovou commit, push, publicação pública e backup desta etapa. A mensagem não detalha os cenários executados; este registro documenta a autorização sem atribuir cobertura ou resultados específicos. A build portátil submetida aos testes está em `release/CAPS-JUPITER-BALANCE-20261111-win-x64`; atualização do resultado público e do backup será registrada após confirmação das operações.
+
+### Pré-lançamento público v0.1.0-playtest.6 — 11/11/2026
+
+O commit `4612b95283d482549439e0634e7b8cda40b96206` foi enviado à `main`. A release pública [v0.1.0-playtest.6](https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.6) está marcada como pré-lançamento e contém sete partes do pacote Windows portátil testado pelo autor e o script de junção. Os oito tamanhos/digests retornados pelo GitHub correspondem aos arquivos locais; o SHA-256 do ZIP reconstruído é `0F657D33CB611034EC4E23A82A34CB39D4F0103D72638839D22F277437295A8F`. Não recebemos detalhes dos cenários manuais do autor; os resultados automatizados anteriores estão registrados acima. O fluxo completo da aventura, funeral e ícone exclusivo continuam pendentes.
+
+O autor pediu que quatro itens visuais/de coleção sejam tratados em outro chat: simplificar os cards de protagonistas para retrato e maestria, corrigir o ponto deslocado da engrenagem, animar a rolagem do D20 e permitir colecionar cartas de inimigo. Nada disso entrou nesta release.
