@@ -4,6 +4,8 @@ import {addAttack,drawInto,once} from './narrative.js';
 import {returnCard,settle} from './state-events.js';
 import {enterUnit} from './units.js';
 import {opponent} from './types.js';
+import {youroBeforeDeaths,youroEvolved,youroFormBonus} from './youro-talents.js';
+import {kuaraHasTalent,kuaraNexusStrike,kuaraStole} from './kuara-talents.js';
 import type {BattleState,BattleEvent,BoardUnit,CardInstance,ExpansionProgress,PlayerId,TargetRef} from './types.js';
 import type {CardDefinition} from '../content/schema.js';
 export function heroProgress(s:BattleState,owner:PlayerId):ExpansionProgress {const empty=()=>({deaths:0,stolen:0,music:0,executions:0});s.heroProgress??={p1:empty(),p2:empty()};return s.heroProgress[owner];}
@@ -12,12 +14,12 @@ const ability=(s:BattleState,u:BoardUnit)=>s.definitions[u.card.definitionId]?.e
 export function queueExpansion(s:BattleState,o:PlayerId,id:string,targets:TargetRef[],events:BattleEvent[],sourceId?:string){queueHeal(s,o,id,targets,events);const p=s.stack.at(-1)!;p.abilitySourceId=sourceId;return p;}
 export function setForm(s:BattleState,o:PlayerId,u:BoardUnit,form:'bear'|'tiger'){
  const old=u.formPower??0;if(u.form==='bear'){u.maxHealth-=old;u.health-=old;}else if(u.form==='tiger')u.attack-=old;
- const power=u.evolved?4:2;u.form=form;u.formPower=power;
+ const power=(u.evolved?4:2)+youroFormBonus(s,o,form);u.form=form;u.formPower=power;
  if(form==='bear'){u.maxHealth+=power;u.health+=power;}else u.attack+=power;
 }
 export function chooseForm(s:BattleState,o:PlayerId,form:'bear'|'tiger',events:BattleEvent[]):boolean {const c=s.formChoices?.[0];if(!c||c.owner!==o||!['bear','tiger'].includes(form))return false;const u=s.players[o].board.find(u=>u.card.instanceId===c.unitId);s.formChoices!.shift();if(!u)return false;setForm(s,o,u,form);settle(s,events);return true;}
-export function evolveExpanded(s:BattleState,o:PlayerId,events:BattleEvent[]){const p=heroProgress(s,o);for(const [hero,ready] of [['youro',p.deaths>=4],['kuara',p.stolen>=6],['thalion',p.music>=6],['lazaro',p.executions>=2]] as const){if(!ready)continue;progress(s,o).evolved[hero]=true;const u=championUnit(s,o,hero);if(!u||u.evolved||u.health<=0)continue;u.evolved=true;u.attack++;u.health++;u.maxHealth++;if(hero==='youro'&&u.form)setForm(s,o,u,u.form);events.push({type:'championEvolved',player:o,champion:hero});}}
-export function stealCards(s:BattleState,o:PlayerId,amount:number,emptyFatigue:boolean,events:BattleEvent[]){let stolen=0;const enemy=opponent(o);for(let i=0;i<amount&&s.phase!=='ended';i++){const c=s.players[enemy].deck.pop();if(c){c.stolenFrom=enemy;returnCard(s,o,c,events);heroProgress(s,o).stolen++;stolen++;}else if(emptyFatigue){const p=s.players[enemy];p.fatigue++;p.nexus=Math.max(0,p.nexus-p.fatigue);events.push({type:'fatigueDamage',player:enemy,amount:p.fatigue});settle(s,events);}}
+export function evolveExpanded(s:BattleState,o:PlayerId,events:BattleEvent[]){const p=heroProgress(s,o);for(const [hero,ready] of [['youro',p.deaths>=4],['kuara',p.stolen>=6],['thalion',p.music>=6],['lazaro',p.executions>=2]] as const){if(!ready)continue;progress(s,o).evolved[hero]=true;const u=championUnit(s,o,hero);if(!u||u.evolved||u.health<=0)continue;u.evolved=true;u.attack++;u.health++;u.maxHealth++;if(hero==='kuara'){if(kuaraHasTalent(s,o,'kuara-walking-vault')){u.attack++;u.health++;u.maxHealth++;}if(kuaraHasTalent(s,o,'kuara-pocket-queen'))u.attack++;}if(hero==='youro'){youroEvolved(s,o,u);if(u.form)setForm(s,o,u,u.form);}events.push({type:'championEvolved',player:o,champion:hero});}}
+export function stealCards(s:BattleState,o:PlayerId,amount:number,emptyFatigue:boolean,events:BattleEvent[]){let stolen=0;const enemy=opponent(o);for(let i=0;i<amount&&s.phase!=='ended';i++){const c=s.players[enemy].deck.pop();if(c){c.stolenFrom=enemy;returnCard(s,o,c,events);heroProgress(s,o).stolen++;stolen++;kuaraStole(s,o,events);}else if(emptyFatigue){const p=s.players[enemy];p.fatigue++;p.nexus=Math.max(0,p.nexus-p.fatigue);events.push({type:'fatigueDamage',player:enemy,amount:p.fatigue});settle(s,events);}}
  if(stolen)for(const id of alive(s,o).filter(u=>ability(s,u)==='ymir').map(u=>u.card.instanceId)){const u=s.players[o].board.find(u=>u.card.instanceId===id);if(u&&once(s,u,'steal'))drawInto(s,o,events);if(s.phase==='ended')break;}
  if(s.phase!=='ended')evolveExpanded(s,o,events);
 }
@@ -40,12 +42,13 @@ export function expandedResolved(s:BattleState,o:PlayerId,d:CardDefinition,sourc
  for(const u of alive(s,o))if(ability(s,u)==='off-key-musician'&&once(s,u,'music'))addAttack(u,2,true);
  heroProgress(s,o).music++;evolveExpanded(s,o,events);}
 }
-export function nexusStrike(s:BattleState,o:PlayerId,u:BoardUnit,amount:number,events:BattleEvent[]){if(amount<=0||ability(s,u)!=='kuara'||heroProgress(s,o).kuaraRound===s.round)return;heroProgress(s,o).kuaraRound=s.round;queueExpansion(s,o,'kuara-strike',[],events).abilityAmount=u.evolved?2:1;}
+export function nexusStrike(s:BattleState,o:PlayerId,u:BoardUnit,amount:number,events:BattleEvent[]){if(amount<=0||ability(s,u)!=='kuara'||heroProgress(s,o).kuaraRound===s.round)return;heroProgress(s,o).kuaraRound=s.round;const pending=queueExpansion(s,o,'kuara-strike',[],events);pending.abilityAmount=u.evolved?2:1;kuaraNexusStrike(s,o,u,pending);}
 export function cleanupMarks(s:BattleState){for(const o of ['p1','p2'] as const){const m=s.executionMarks?.[o];if(m&&(!s.players[o].board.some(u=>u.card.instanceId===m.sourceId)||!s.players[opponent(o)].board.some(u=>u.card.instanceId===m.targetId)))delete s.executionMarks![o];}if(s.formChoices)s.formChoices=s.formChoices.filter(c=>s.players[c.owner].board.some(u=>u.card.instanceId===c.unitId));}
 export function markWeakest(s:BattleState,o:PlayerId,sourceId:string|undefined){cleanupMarks(s);if(!sourceId||s.executionMarks?.[o]||!alive(s,o).some(u=>u.card.instanceId===sourceId))return;const enemy=alive(s,opponent(o));const victim=enemy.map((u,index)=>({u,index})).sort((a,b)=>a.u.attack-b.u.attack||a.u.health-b.u.health||s.definitions[a.u.card.definitionId].cost-s.definitions[b.u.card.definitionId].cost||a.index-b.index)[0]?.u;if(victim)(s.executionMarks??={})[o]={sourceId,targetId:victim.card.instanceId};}
 export interface Death {owner:PlayerId;unit:BoardUnit}
 // All doomed units are snapshotted before any are removed. Buffs never rescue them.
 export function beforeDeaths(s:BattleState,deaths:Death[],events:BattleEvent[]){
+ youroBeforeDeaths(s,deaths);
  for(const o of ['p1','p2'] as const){const hero=championUnit(s,o,'youro');if(hero)heroProgress(s,o).deaths+=deaths.filter(d=>d.owner===o&&d.unit.card.instanceId!==hero.card.instanceId).length;}
  for(const d of deaths){const o=d.owner,u=d.unit,a=ability(s,u),cause=s.deathCauses?.[u.card.instanceId];
   if(a==='cycle-guardian')queueExpansion(s,o,'guardian-sprout',[],events);

@@ -7,7 +7,7 @@ import {art,esc,icon,regionSymbol} from './html.js';
 import {playableRelicIds} from '../run/relics.js';
 
 export function heroPortrait(id:Champion):string {
- const file=id==='arcata'?'arcata-mastery-v2.png':id==='abe'||id==='rubel'||id==='kylast'?`${id}-mastery.png`:null;
+ const file=id==='youro'?'youro.png':id==='kuara'?'kuara.png':id==='arcata'?'arcata-mastery-v2.png':id==='abe'||id==='rubel'||id==='kylast'?`${id}-mastery.png`:null;
  return file?`<img class="portrait" src="/art/${file}" alt=""/>`:art(id);
 }
 

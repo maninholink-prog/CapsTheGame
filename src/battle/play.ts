@@ -2,6 +2,7 @@ import {consumeRubelCosts} from './rubel-talents.js';
 import {consumeArcataCosts} from './arcata-talents.js';
 import {consumeAbeCosts} from './abe-talents.js';
 import {consumeMusicDiscount,expandedResolved} from './expansion.js';
+import {kuaraStolenCardPlayed} from './kuara-talents.js';
 import {entryRule,entryTargets,consumeNarrativeCosts} from './narrative.js';
 import { effectiveDefinition, cardCost } from './champions.js';
 import { payCost } from './costs.js';
@@ -41,6 +42,7 @@ export function playCard(state: BattleState, command: PlayCommand): Result {
       command.position !== undefined || command.replaceUnitId !== undefined) return invalid('Equipment requires an allied bearer outside combat');
     const equipped = equipFromHand(state, command.player, card.instanceId, targets[0].instanceId, command.replaceEquipmentId);
     if (!equipped.ok) return equipped;
+    kuaraStolenCardPlayed(equipped.state,command.player,card,equipped.events);
     expandedResolved(equipped.state,command.player,definition,card,equipped.events);
     equipped.state.priorityOwner = opponent(command.player);
     equipped.state.consecutivePasses = 0;
@@ -68,7 +70,7 @@ export function playCard(state: BattleState, command: PlayCommand): Result {
   }
   if(definition.requiresEnemyDeck&&!(state.publicDeckCounts?.[opponent(command.player)]??state.players[opponent(command.player)].deck.length))return invalid('Enemy deck is empty');
   if(definition.kind!=='unit'&&definition.effect.type==='summon'&&player.board.length>=5)return invalid('Board is full');
-  const paid = payCost(player, {...definition,cost:cardCost(state,command.player,definition)});
+  const paid = payCost(player, {...definition,cost:cardCost(state,command.player,definition,card)});
   if (!paid) return invalid('Insufficient mana');
   const next = structuredClone(state);
   next.players[command.player] = paid;
@@ -81,6 +83,7 @@ export function playCard(state: BattleState, command: PlayCommand): Result {
   const [source] = paid.hand.splice(sourceIndex, 1);
   next.consecutivePasses = 0;
   const events: BattleEvent[] = [{ type: 'cardPlayed', player: command.player, instanceId: source.instanceId }];
+  kuaraStolenCardPlayed(next,command.player,source,events);
   if (definition.kind === 'unit') {
     if (command.replaceUnitId) {
       (next.deathCauses??={})[command.replaceUnitId]=command.player;

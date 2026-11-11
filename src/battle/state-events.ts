@@ -2,6 +2,7 @@ import {deferFelixVictory} from './encounters.js';
 import {laboratoryDeaths,syncFelixAura} from './laboratory.js';
 import type { BattleEvent, BattleState, CardInstance, PlayerId } from './types.js';
 import {talentReturn} from './kylast-talents.js';
+import {kuaraStolenUnitDeath} from './kuara-talents.js';
 import {beforeDeaths,cleanupMarks,evolveExpanded} from './expansion.js';
 
 export function returnCard(state: BattleState, playerId: PlayerId, card: CardInstance, events: BattleEvent[]): void {
@@ -25,8 +26,10 @@ export function removeUnit(state: BattleState, playerId: PlayerId, instanceId: s
   const [unit] = player.board.splice(index, 1);
   if (reason === 'death') {
     player.deathRecords.push(structuredClone(unit.card));
-    player.discard.push(unit.card);
+    const returnStolen=kuaraStolenUnitDeath(state,playerId,unit)&&player.hand.length<10;
+    if(!returnStolen)player.discard.push(unit.card);
     events.push({ type: 'unitDied', player: playerId, instanceId });
+    if(returnStolen){player.hand.push(unit.card);events.push({type:'cardReturned',player:playerId,instanceId});}
   } else {
     if (reason === 'recall') returnCard(state, playerId, unit.card, events);
     events.push({ type: 'unitRemoved', player: playerId, instanceId, reason });

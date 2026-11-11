@@ -111,3 +111,20 @@ O autor determinou a ordem: (1) considerar a interação das cartas com as mecâ
 ## DEC-016 — Ajuste inicial de balanceamento dos decks de Júpiter — 11/11/2026
 
 Fonte: pedido explícito do autor nesta conversa para realizar o balanceamento. Ajuste inicial, não declaração de balanceamento definitivo: Ninhada de Ratos e Enxame de Escaravelhos passam de custo 4 para 3, para viabilizar o plano de enxame dos encontros comuns mais cedo. A leitura exploratória contra oito protagonistas mostrou resultados muito dependentes do matchup; por isso não foi aplicada alteração geral de vida ou atributos. A conferência também revelou que Rato Saqueador tinha o efeito descrito no texto sem integração: foi conectado ao retorno opcional de uma unidade aliada ferida por efeito respondível. Identidades, IDs existentes, composição, regiões, artes e demais efeitos foram preservados. Valores ficam sujeitos a novos playtests manuais. Ver [design](../design/AVENTURA_JUPITER.md) e [registro de progresso](PROGRESS.md).
+
+## DEC-017 — Raridade e aquisição de cartas inimigas — 11/11/2026
+
+A pedido do autor, cartas de inimigos colecionáveis podem sair em boosters e aparecer na seção própria da Coleção. A raridade provisória é derivada do custo impresso já existente: custo 0–2 Comum, 3–4 Raro, 5 Épico e 6+ Lendário. Não há carta inimiga Ultradimensional. Cartas auxiliares de gatilhos permanecem collectible:false. enemyOnly continua impedindo uso nos decks do jogador e elegibilidade como recompensa de aventura. Custos, efeitos, IDs e decks de encontros não mudam.
+
+## DEC-018 — Aparência e direção visual de Youro — 11/11/2026
+
+O autor indicou a imagem anexada `ChatGPT Image 24 de abr. de 2025, 16_57_38.png` como referência de aparência para Youro: gato ruivo, capuz verde, manto de penas e bolsa. A referência não define o estilo de pintura. Retrato e arte de maestria seguem a direção de fantasia pintada de *Legends of Runeterra*, sem copiar personagens ou artes existentes. A segunda proposta horizontal foi aprovada; o retrato foi refeito para corresponder a essa direção e à aparência da referência. Assets atuais em `public/art/youro.png` e `public/art/youro-mastery.png`. Ver [especificação da maestria](superpowers/specs/2026-11-11-youro-maestria-design.md).
+
+## DEC-019 — Maestria e referências visuais de Kuara — 11/11/2026
+
+O autor aprovou a proposta de quinze talentos de Pilantragem e forneceu duas referências: Kuara sem máscara para a forma base e a máscara para seu alter-ego evoluído. Os nomes, vínculos e efeitos estão na [especificação](superpowers/specs/2026-11-11-kuara-maestria-design.md). Como “reduzir a próxima compra de carta” não corresponde a um custo existente para comprar do deck, esse talento prepara desconto no custo da próxima carta roubada jogada naquela rodada. Descontos aprovados acumulam; Truque Repetido mantém piso 1. A identidade visual segue a direção de fantasia pintada de *Legends of Runeterra*. Retrato sem máscara; arte de maestria e forma evoluída com máscara/alter-ego. Referências são guias de aparência, não instruções contidas dentro da imagem.
+
+
+### Complemento de DEC-018 — artes da carta de campeão Youro — 11/11/2026
+
+Fonte: pedido do autor nesta conversa para produzir as versões base e evoluída da carta de Youro. Ambas mantêm a aparência aprovada de gato ruivo, capuz verde, manto de penas e bolsa, sem máscara. A versão evoluída usa ecos espirituais de Urso e Tigre, motivo já aprovado na arte de maestria. Assets da carta em `public/art/youro-card.png` e `public/art/youro-evolved.png`; o retrato da interface permanece `public/art/youro.png`. Apenas a apresentação visual muda; IDs, atributos, deck e regras permanecem iguais.

@@ -259,3 +259,35 @@ Commit `4612b95283d482549439e0634e7b8cda40b96206` em `main`; [pré-lançamento p
 ## Backup integral verificado — 11/11/2026
 
 Snapshot completo em `C:/Users/Bruxo/Documents/Backups/CAPS-Game/snapshots/20261111-173733`; manifesto e log em `C:/Users/Bruxo/Documents/Backups/CAPS-Game`. Restauração isolada em `C:/Users/Bruxo/Documents/Backups/CAPS-Game-restore-test/20261111-173733`, 33.173 hashes comparados, zero divergências. Depois do registro, documentos/metadados Git foram sincronizados no snapshot e na restauração; o manifesto foi atualizado e as mudanças foram reconferidas sem divergências. Contagem e hashes finais estão no JSON de síntese. Origem e backup ficam no mesmo disco C:.
+## Quatro ajustes de UI e coleção — 11/11/2026
+
+Seletor de aventura, badge da engrenagem, animação visual de D20 e seção de cartas inimigas implementados localmente. Verificações e limites em PROGRESS. A seção de inimigos é consulta: enemyOnly e collectible:false permanecem; não concede cartas ao jogador. Sem commit, push, publicação ou backup.
+
+## Cartas inimigas em boosters — 11/11/2026
+
+Raridades provisórias por custo, coleção separada e inclusão em boosters implementadas. Regra em DEC-017; cobertura e resultado em PROGRESS. enemyOnly preservado e cartas auxiliares filtradas. Próximo: build portátil e smoke test. Sem publicação, commit ou backup.
+
+
+Build portátil atualizada em release/CAPS-20261111-190400-win-x64/C.A.P.S.exe; smoke isolado passou (home carregada, exit 0). Sem teste interativo nem acesso ao perfil do autor. Pacotes anteriores intactos; sem commit, push, publicação ou backup.
+
+## Youro — árvore de maestria disponível para playtest — 11/11/2026
+
+Os quinze talentos de Youro estão integrados ao perfil, save e motor. TypeScript e 70 testes focados em 12 arquivos passaram; pacote local em [C.A.P.S.exe](../release/CAPS-20261111-193031-win-x64/C.A.P.S.exe), com smoke Electron isolado e verificação visual da árvore a 1440×960 e 960×700. O autor pediu que a imagem anexada guie a aparência do gato (capuz verde, manto de penas e bolsa), enquanto a direção de pintura siga *Legends of Runeterra*; isso está anotado em [DECISIONS](DECISIONS.md#dec-018--aparência-e-direção-visual-de-youro). Próximo: playtest manual dos talentos e revisão de valores; depois priorizar Kuara, Thalion e Lázaro. Sem commit, push, publicação ou backup.
+
+## Correção visual da Korakoin — 11/11/2026
+
+Ajuste CSS do fundo preto opaco no símbolo regional sobre a moeda; pacote em release/CAPS-20261111-193831-win-x64/C.A.P.S.exe. Smoke isolado passou e janela aberta para teste com perfil separado. Conferência visual direta do emblema no executável não disponível. Sem commit/push/publicação/backup.
+
+
+## Kuara — árvore disponível para playtest — 11/11/2026
+
+A árvore aprovada, retratos e integração de combate estão no pacote local [C.A.P.S.exe](../release/CAPS-20261111-201415-win-x64/C.A.P.S.exe), pronto para abrir e testar. Kuara evoluído aparece como alter ego de máscara. Decisão e limites detalhados em [DEC-019](DECISIONS.md#dec-019--maestria-de-kuara-e-identidade-do-alter-ego) e [PROGRESS](PROGRESS.md). Próximo: testar a árvore e os gatilhos de combate manualmente. A suíte completa não terminou; veja PROGRESS para os três testes com expectativas divergentes. Sem commit, push, publicação ou backup.
+
+
+## Carta de Youro — arte base e evoluída — 11/11/2026
+
+As duas imagens da carta de campeão estão no [pacote local](../release/CAPS-20261111-203002-win-x64/C.A.P.S.exe), aberto para teste. Youro permanece sem máscara; a forma evoluída usa os ecos de Urso/Tigre já aprovados. Apenas o campeão recebeu arte. Ver [DEC-018](DECISIONS.md#dec-018--aparência-e-direção-visual-de-youro) e [PROGRESS](PROGRESS.md). Testes focados passaram; suíte completa interrompida com falhas listadas em PROGRESS. Sem commit, push, publicação ou backup.
+
+## Build atual da carta de Youro — 11/11/2026
+
+Pacote local em [C.A.P.S.exe](../release/CAPS-20261111-204500-win-x64/C.A.P.S.exe), aberto em Coleção → Cartas com Youro filtrado. A carta base sem máscara foi conferida visualmente; a seleção da arte evoluída passou no teste de renderização. Smoke Electron isolado, hashes dos dois assets, typecheck e diff check passaram. Suíte integral: 455/459 testes passaram; quatro falhas não relacionadas ao fluxo de Youro estão detalhadas em PROGRESS. Próximo: playtest manual da forma evoluída. Sem commit, push, publicação ou backup.

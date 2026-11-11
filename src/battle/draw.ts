@@ -1,5 +1,6 @@
 import {settle} from './state-events.js';
 import { opponent } from './types.js';
+import {kuaraEnemyFatigue} from './kuara-talents.js';
 import type { BattleEvent, BattleState, PlayerId, Result } from './types.js';
 
 export function drawOne(state: BattleState, player: PlayerId): Result {
@@ -19,6 +20,7 @@ export function drawOne(state: BattleState, player: PlayerId): Result {
     target.fatigue++;
     target.nexus = Math.max(0, target.nexus - target.fatigue);
     events.push({ type: 'fatigueDamage', player, amount: target.fatigue });
+    kuaraEnemyFatigue(next,player,events);
     if(target.nexus===0)settle(next,events);
   }
   return { ok: true, state: next, events };

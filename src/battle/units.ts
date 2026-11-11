@@ -1,6 +1,8 @@
 import {rubelHasTalent} from './rubel-talents.js';
 import {arcataHasTalent} from './arcata-talents.js';
 import {abeHasTalent} from './abe-talents.js';
+import {youroBaseLife} from './youro-talents.js';
+import {kuaraBaseLife,kuaraEvolvedEntry,kuaraStolenUnitEntry} from './kuara-talents.js';
 import {relicUnitPlayed} from './relics.js';
 import {laboratoryEntry} from './laboratory.js';
 import {tornadoEntry} from './lab-specials.js';
@@ -23,14 +25,17 @@ export function enterUnit(state: BattleState, owner: PlayerId, source: CardInsta
     return def?.kind === 'unit' && def.champion === definition.champion;
   })) return false;
   const evolved = definition.champion === 'kylast' && state.evolvedKylast[owner];
-  const life=(definition.champion==='kylast'&&hasTalent(state,owner,'iron-constitution')||definition.champion==='abe'&&abeHasTalent(state,owner,'abe-frame')||definition.champion==='arcata'&&arcataHasTalent(state,owner,'arcata-life')||definition.champion==='rubel'&&rubelHasTalent(state,owner,'rubel-vigor'))?1:0;
+  const life=(definition.champion==='youro'&&youroBaseLife(state,owner)||definition.champion==='kylast'&&hasTalent(state,owner,'iron-constitution')||definition.champion==='abe'&&abeHasTalent(state,owner,'abe-frame')||definition.champion==='arcata'&&arcataHasTalent(state,owner,'arcata-life')||definition.champion==='rubel'&&rubelHasTalent(state,owner,'rubel-vigor'))?1:0;
+  const kuaraLife=definition.champion==='kuara'?kuaraBaseLife(state,owner):0;
   const mastery=evolved&&hasTalent(state,owner,'master-of-all')?1:0;
-  const unit = { card: source, attack: definition.attack + (evolved ? 1 : 0)+mastery, health: definition.health + (evolved ? 1 : 0)+life,
-    maxHealth: definition.health + (evolved ? 1 : 0)+life, evolved, ...(definition.keyword?{keywords:[definition.keyword]}:{}) };
+  const unit = { card: source, attack: definition.attack + (evolved ? 1 : 0)+mastery, health: definition.health + (evolved ? 1 : 0)+life+kuaraLife,
+    maxHealth: definition.health + (evolved ? 1 : 0)+life+kuaraLife, evolved, ...(definition.keyword?{keywords:[definition.keyword]}:{}) };
+  kuaraStolenUnitEntry(state,owner,source,unit);
   state.players[owner].board.splice(position, 0, unit);
   events.push({ type: 'unitEntered', player: owner, instanceId: source.instanceId, position });
   onUnitEntered(state, owner, unit, events);
   onAllyEntered(state, owner, unit, events, targets,ignoreSide);
+  if(unit.evolved&&definition.champion==='kuara')kuaraEvolvedEntry(state,owner,unit);
   narrativeEntry(state,owner,unit,events,targets,ignoreSide);
   expandedEntry(state,owner,unit,events);laboratoryEntry(state,owner,unit,events);tornadoEntry(state,owner);
   caveiraEntry(state,owner,unit,events);

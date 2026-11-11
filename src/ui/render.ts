@@ -91,7 +91,7 @@ function handCard(session: BattleSession, card: CardInstance, draft: Draft, shin
   const isMulligan = state.phase === 'opening' && !state.players[viewPlayer].mulliganUsed && actingPlayer(state) === viewPlayer;
   const marked = isMulligan ? draft.mulligan.includes(card.instanceId) : card.instanceId === draft.selectedCardId;
   const title = mode === 'arsenal' ? 'Troca de Arsenal' : def.name??cardName(state,card.definitionId);
-  const evolved = def.kind === 'unit' && def.champion === 'kylast' && state.evolvedKylast[viewPlayer];
+  const evolved = def.kind === 'unit' && (def.champion === 'kylast' ? state.evolvedKylast[viewPlayer] : def.champion==='kuara'&&Boolean(state.allyProgress?.[viewPlayer]?.evolved.kuara)||def.champion==='youro'&&Boolean(state.allyProgress?.[viewPlayer]?.evolved.youro));
   const body = mode === 'arsenal' ? arsenalText : description(def);
   return `<button style="--fan:${fan}" class="hand-card ${shiny?'shiny':''} rarity-${esc(def.enemyOnly?'encounter':def.rarity ?? 'common')} ${marked ? 'selected' : ''} ${isMulligan && marked ? 'mulligan-marked' : ''}" data-action="hand-card" data-id="${esc(card.instanceId)}" aria-label="${esc(title)}${shiny?', cópia brilhante':''}, custo ${manaCost(state, viewPlayer, card)}${marked ? ', selecionada' : ''}" aria-pressed="${marked}">
     ${cardFace(def, {cost:manaCost(state,viewPlayer,card), title, body, arsenal:mode==='arsenal', evolved, marked:isMulligan&&marked})}

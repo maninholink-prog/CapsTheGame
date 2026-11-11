@@ -71,7 +71,7 @@ export function visibleEffects(state: BattleState) {
 export function manaCost(state: BattleState, owner: PlayerId, card: CardInstance): number {
   const def = state.definitions[card.definitionId];
   if (handCardMode(state, owner, card) === 'arsenal') return 1;
-  return def.kind === 'equipment' ? equipmentPrice(state, owner, def,undefined,card.instanceId) : cardCost(state,owner,effectiveDefinition(state,owner,card));
+  return def.kind === 'equipment' ? equipmentPrice(state, owner, def,undefined,card.instanceId) : cardCost(state,owner,effectiveDefinition(state,owner,card),card);
 }
 export function errorText(error: string): string {
   const exact: Record<string, string> = {

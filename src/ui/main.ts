@@ -365,7 +365,21 @@ root.addEventListener('click', event => {
     if (target >= 0 && target < draft.attackers.length) [draft.attackers[index], draft.attackers[target]] = [draft.attackers[target], draft.attackers[index]];
   } else if (action === 'confirm') {
     const command = actionCommand(session, draft);
-    if (command) { send(command); return; }
+    if (command) {
+      send(command);
+      if(command.type==='start'){
+        const result=session.history.filter(entry=>entry.message.startsWith('d20:')).at(-1)?.message;
+        if(result){
+          const dice=document.createElement('div');
+          dice.className='dice-roll';dice.setAttribute('role','status');dice.setAttribute('aria-label',result);
+          dice.innerHTML='<span aria-hidden="true">20</span>';
+          root.append(dice);
+          window.setTimeout(()=>{dice.textContent=result;dice.classList.add('dice-result');},window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:700);
+          window.setTimeout(()=>dice.remove(),2600);
+        }
+      }
+      return;
+    }
   } else if (action === 'pass') {
     const player = actingPlayer(session.state);
     if (player) { send({ type: 'pass', player }); return; }

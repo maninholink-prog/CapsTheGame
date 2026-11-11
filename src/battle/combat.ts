@@ -3,7 +3,9 @@ import {equipmentDamage} from './equipment.js';
 import {laboratoryAttack,laboratoryBlocked,laboratoryAfterAttack} from './laboratory.js';
 import {finishEncounterResolution} from './encounters.js';
 import {recordDamage,nexusStrike} from './expansion.js';
+import {kuaraStrikeBonus} from './kuara-talents.js';
 import {markTalentAttack,talentStrikeBonus,talentDamage} from './kylast-talents.js';
+import {youroCombatKill,youroReduceDamage,youroStrikeBonus} from './youro-talents.js';
 import {narrativeBlock,shieldTriggers,queueShields} from './narrative.js';
 import { strikes, canBlock } from './champions.js';
 import { opponent } from './types.js';
@@ -102,24 +104,26 @@ export function resolveCombat(state: BattleState): Result {
       const definition = weapon && next.definitions[weapon.card.definitionId];
       if(weapon&&(blocker||!lane.blocked||brokeBlock)){lane.laboratoryUsedWeapons??=[];if(!lane.laboratoryUsedWeapons.includes(weapon.card.instanceId))lane.laboratoryUsedWeapons.push(weapon.card.instanceId);}
       const executionBonus=blocker&&definition?.expansion==='last-cry'&&next.executionMarks?.[combat.attacker]?.targetId===blocker.card.instanceId?1:0;
-      const attack = Math.max(0, attacker.attack + executionBonus +talentStrikeBonus(next,combat.attacker,attacker,lane,strike)+ equipmentDamage(next,attacker,definition));
+      const attack = Math.max(0, attacker.attack + executionBonus +talentStrikeBonus(next,combat.attacker,attacker,lane,strike)+youroStrikeBonus(next,combat.attacker,attacker)+ equipmentDamage(next,attacker,definition));
       if (blocker) {
         if(attack>0)retaliations.push(...shieldTriggers(next,blocker,{kind:'unit',player:combat.attacker,instanceId:attacker.card.instanceId}));
-        const received=reduceRubelStrike(next,defender,blocker,attack);
+        const received=youroReduceDamage(next,defender,blocker,reduceRubelStrike(next,defender,blocker,attack));
         blocker.health = Math.max(0, blocker.health - received);
         events.push({ type: 'damageApplied', target: { kind: 'unit', player: defender, instanceId: blocker.card.instanceId }, amount: received });recordDamage(next,{kind:'unit',player:defender,instanceId:blocker.card.instanceId},combat.attacker);
         talentDamage(next,defender,blocker,received,events);
+        youroCombatKill(next,combat.attacker,attacker,blocker);
         // Evolved first strike is Quick Attack. Only the second exchanges damage.
         if ((lane.weapons.length === 1 && (!attacker.keywords?.includes('quick') || blocker.health > 0)) || strike > 0) {
-          const retaliation = reduceRubelStrike(next,combat.attacker,attacker,Math.max(0,blocker.attack));
+          const retaliation = youroReduceDamage(next,combat.attacker,attacker,reduceRubelStrike(next,combat.attacker,attacker,Math.max(0,blocker.attack)));
           if(blocker.attack>0)retaliations.push(...shieldTriggers(next,attacker,{kind:'unit',player:defender,instanceId:blocker.card.instanceId}));
           attacker.health = Math.max(0, attacker.health - retaliation);
           events.push({ type: 'damageApplied', target: { kind: 'unit', player: combat.attacker, instanceId: attacker.card.instanceId }, amount: retaliation });recordDamage(next,{kind:'unit',player:combat.attacker,instanceId:attacker.card.instanceId},defender);
           talentDamage(next,combat.attacker,attacker,retaliation,events);
         }
       } else if (!lane.blocked || brokeBlock) {
-        next.players[defender].nexus = Math.max(0, next.players[defender].nexus - attack);
-        events.push({ type: 'damageApplied', target: { kind: 'nexus', player: defender }, amount: attack });if(next.players[defender].nexus>0)nexusStrike(next,combat.attacker,attacker,attack,events);
+        const nexusAttack=attack+kuaraStrikeBonus(next,combat.attacker,attacker,attack);
+        next.players[defender].nexus = Math.max(0, next.players[defender].nexus - nexusAttack);
+        events.push({ type: 'damageApplied', target: { kind: 'nexus', player: defender }, amount: nexusAttack });if(next.players[defender].nexus>0)nexusStrike(next,combat.attacker,attacker,nexusAttack,events);
       }
       settle(next, events);
       if (next.phase !== 'ended' && blocker && definition?.kind === 'equipment' && definition.ability === 'alastor') {
@@ -132,9 +136,9 @@ export function resolveCombat(state: BattleState): Result {
           const id = combat.lanes[index]?.blockerId;
           const neighbor = next.players[defender].board.find(u => u.card.instanceId === id);
           if (neighbor) {
-            neighbor.health = Math.max(0, neighbor.health - amount);recordDamage(next,{kind:'unit',player:defender,instanceId:neighbor.card.instanceId},combat.attacker);
-            talentDamage(next,defender,neighbor,amount,events);
-            events.push({ type: 'damageApplied', target: { kind: 'unit', player: defender, instanceId: neighbor.card.instanceId }, amount });
+            const received=youroReduceDamage(next,defender,neighbor,amount);neighbor.health = Math.max(0, neighbor.health - received);recordDamage(next,{kind:'unit',player:defender,instanceId:neighbor.card.instanceId},combat.attacker);
+            talentDamage(next,defender,neighbor,received,events);
+            events.push({ type: 'damageApplied', target: { kind: 'unit', player: defender, instanceId: neighbor.card.instanceId }, amount:received });
           }
         }
         settle(next, events);

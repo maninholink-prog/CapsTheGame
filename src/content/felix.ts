@@ -1,4 +1,4 @@
-import type {CardCatalog,CardDefinition,CardEffect,Region,TargetRule} from './schema.js';
+import {encounterRarity,type CardCatalog,type CardDefinition,type CardEffect,type Region,type TargetRule} from './schema.js';
 import type {CardInstance} from '../battle/types.js';
 const ally:TargetRule={kind:'unit',side:'ally',min:1,max:1};
 const enemy:TargetRule={kind:'unit',side:'enemy',min:1,max:1};
@@ -6,10 +6,10 @@ const none:TargetRule={kind:'unit',side:'ally',min:0,max:0};
 const nexus:TargetRule={kind:'nexus',side:'enemy',min:1,max:1};
 const cards:CardCatalog={};
 function unit(id:string,name:string,cost:number,attack:number,health:number,region:Region,text:string,extra:Partial<CardDefinition>={}){
- cards[id]={id,name,kind:'unit',cost,attack,health,regions:[region],text,collectible:false,enemyOnly:true,expansion:id,...extra} as CardDefinition;
+ cards[id]={id,name,kind:'unit',cost,attack,health,regions:[region],text,rarity:encounterRarity(cost),collectible:true,enemyOnly:true,expansion:id,...extra} as CardDefinition;
 }
 function spell(id:string,name:string,cost:number,speed:'fast'|'slow',target:TargetRule,effect:CardEffect,region?:Region,extra:Partial<CardDefinition>={}){
- cards[id]={id,name,kind:'spell',cost,speed,target,effect,collectible:false,...(region?{regions:[region],enemyOnly:true,expansion:id}:{}),...extra} as CardDefinition;
+ cards[id]={id,name,kind:'spell',cost,speed,target,effect,rarity:encounterRarity(cost),collectible:!!region,...(region?{regions:[region],enemyOnly:true,expansion:id}:{}),...extra} as CardDefinition;
 }
 unit('lab-vigia-de-corda','Vigia de Corda',1,1,2,'south','Experimento.',{experiment:true});
 unit('lab-coletor-de-sucata','Coletor de Sucata',2,2,2,'south','Experimento. Ao entrar, compre uma carta se outra unidade aliada foi derrotada nesta rodada.',{experiment:true,entrySpell:'lab-collector-draw'});
@@ -32,7 +32,7 @@ for(const [id,name,cost,damage,region,text] of [
  ['lab-braco-de-pistao','Braço de Pistão',3,3,'south','Upgrade. Arma +3 dano. Após terminar um ataque usando esta arma, cause 1 dano ao portador.'],
  ['lab-lanca-criogenica','Lança Criogênica',3,1,'east','Upgrade. Arma +1 dano. Ao atacar, dê -2 ataque ao próprio bloqueador nesta rodada antes dos golpes.'],
  ['lab-lamina-de-bobina','Lâmina de Bobina',4,2,'east','Upgrade. Arma +2 dano. Na primeira declaração de ataque por rodada usando esta arma, cause 1 dano ao Vínculo inimigo.'],
-] as const)cards[id]={id,name,kind:'equipment',cost,damage,regions:[region],upgrade:true,enemyOnly:true,collectible:false,expansion:id,text};
+] as const)cards[id]={id,name,kind:'equipment',cost,damage,regions:[region],upgrade:true,rarity:encounterRarity(cost),enemyOnly:true,collectible:true,expansion:id,text};
 unit('enemy-labotomia','Labotomia',3,2,4,'south','Uma vez por rodada: Cirurgia (0 mana), usando ação e permitindo resposta.',{unique:true,encounterSpecial:'labotomia'});
 unit('enemy-tornado','Tornado',3,1,5,'east','Meu poder exige minha presença em campo.',{unique:true,encounterSpecial:'tornado'});
 unit('enemy-dianamite','Dianamite',4,3,5,'south','Meu poder exige minha presença em campo.',{unique:true,encounterSpecial:'dianamite'});

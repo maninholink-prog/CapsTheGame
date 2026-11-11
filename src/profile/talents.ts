@@ -1,9 +1,43 @@
 import type {Champion} from '../content/schema.js';
 import {credit,masteryInfo,type Profile} from './profile.js';
 
-export type TalentId='rubel-prepared'|'rubel-vigor'|'rubel-hope'|'rubel-word'|'rubel-prayer'|'rubel-bond'|'rubel-reach'|'rubel-aid'|'rubel-blessing'|'rubel-guard'|'rubel-sanctuary'|'rubel-devotion'|'rubel-reserve'|'rubel-relief'|'rubel-renewal'|'arcata-spark'|'arcata-life'|'arcata-study'|'arcata-discount'|'arcata-reserve'|'arcata-fireball'|'arcata-create'|'arcata-shield'|'arcata-retaliation'|'arcata-wall'|'arcata-hands'|'arcata-ember'|'arcata-heat'|'arcata-pulse'|'arcata-persist'|'abe-frame'|'abe-tools'|'abe-catalog'|'abe-economy'|'abe-project'|'abe-research'|'abe-masterpiece'|'abe-reinforcement'|'abe-calibration'|'abe-shared'|'abe-complete'|'abe-protection'|'abe-repair'|'abe-experienced'|'abe-inspiration'|'arsenal-i'|'arsenal-ii'|'arsenal-iii'|'arsenal-maintenance'|'martial-versatility'|'complete-arsenal'|'precautious-smith'|'grip-adjustment'|'recovered-arsenal'|'iron-constitution'|'warrior-stamina'|'campaign-armor'|'prepared-strike'|'calculated-switch'|'master-of-all';
+export type TalentId='youro-forest-guardian'|'youro-bear-body'|'youro-protective-roots'|'youro-pack-shelter'|'youro-still-guardian'|'youro-tiger-claws'|'youro-precise-hunt'|'youro-predator-step'|'youro-pack-hunt'|'youro-hunt-king'|'youro-strengthened-grief'|'youro-shared-cycle'|'youro-pack-strength'|'youro-feral-evolution'|'youro-guardian-spirit'|'kuara-quick-hands'|'kuara-ready-pocket'|'kuara-east-breath'|'kuara-hidden-reserve'|'kuara-magic-hands'|'kuara-opportunity-strike'|'kuara-living-wallet'|'kuara-perfect-disguise'|'kuara-planned-exit'|'kuara-walking-vault'|'kuara-bottomless-eye'|'kuara-calculated-exhaustion'|'kuara-repeated-trick'|'kuara-pocket-queen'|'kuara-supreme-pilantragem'|'rubel-prepared'|'rubel-vigor'|'rubel-hope'|'rubel-word'|'rubel-prayer'|'rubel-bond'|'rubel-reach'|'rubel-aid'|'rubel-blessing'|'rubel-guard'|'rubel-sanctuary'|'rubel-devotion'|'rubel-reserve'|'rubel-relief'|'rubel-renewal'|'arcata-spark'|'arcata-life'|'arcata-study'|'arcata-discount'|'arcata-reserve'|'arcata-fireball'|'arcata-create'|'arcata-shield'|'arcata-retaliation'|'arcata-wall'|'arcata-hands'|'arcata-ember'|'arcata-heat'|'arcata-pulse'|'arcata-persist'|'abe-frame'|'abe-tools'|'abe-catalog'|'abe-economy'|'abe-project'|'abe-research'|'abe-masterpiece'|'abe-reinforcement'|'abe-calibration'|'abe-shared'|'abe-complete'|'abe-protection'|'abe-repair'|'abe-experienced'|'abe-inspiration'|'arsenal-i'|'arsenal-ii'|'arsenal-iii'|'arsenal-maintenance'|'martial-versatility'|'complete-arsenal'|'precautious-smith'|'grip-adjustment'|'recovered-arsenal'|'iron-constitution'|'warrior-stamina'|'campaign-armor'|'prepared-strike'|'calculated-switch'|'master-of-all';
 export type TalentAllocation=Partial<Record<Champion,TalentId[]>>;
 export interface Talent {id:TalentId;name:string;parent?:TalentId;minLevel?:number;text:string}
+export const youroTalents:Talent[]=[
+ {id:'youro-forest-guardian',name:'Guardião da Floresta',text:'Youro recebe +1 de vida base.'},
+ {id:'youro-bear-body',name:'Corpo de Urso',parent:'youro-forest-guardian',text:'A forma de Urso concede +1 de vida máxima adicional.'},
+ {id:'youro-protective-roots',name:'Raízes Protetoras',parent:'youro-bear-body',text:'Na primeira vez por batalha que Youro em forma de Urso receber dano, reduza esse dano em 1.'},
+ {id:'youro-pack-shelter',name:'Abrigo do Bando',parent:'youro-protective-roots',text:'A primeira vez por batalha que outra unidade aliada receber dano enquanto Youro estiver em forma de Urso, reduza esse dano em 1.'},
+ {id:'youro-still-guardian',name:'Guardião Imóvel',parent:'youro-pack-shelter',text:'Ao evoluir em forma de Urso, Youro recebe +1 de vida máxima adicional, sem curar.'},
+ {id:'youro-tiger-claws',name:'Garras do Tigre',parent:'youro-forest-guardian',text:'A forma de Tigre concede +1 de ataque adicional.'},
+ {id:'youro-precise-hunt',name:'Caçada Precisa',parent:'youro-tiger-claws',text:'O primeiro golpe de Youro em forma de Tigre a cada batalha causa +1 de dano.'},
+ {id:'youro-predator-step',name:'Passo do Predador',parent:'youro-precise-hunt',text:'A primeira vez por batalha que Youro em forma de Tigre abater uma unidade em combate, recebe +1 de ataque até o fim da rodada.'},
+ {id:'youro-pack-hunt',name:'Caçada em Bando',parent:'youro-predator-step',text:'Na primeira morte de outra unidade aliada que Youro presenciar em forma de Tigre, Youro recebe +1 de ataque até o fim da rodada.'},
+ {id:'youro-hunt-king',name:'Rei da Caçada',parent:'youro-pack-hunt',text:'Ao evoluir em forma de Tigre, Youro recebe +1 de ataque adicional permanente nesta batalha.'},
+ {id:'youro-strengthened-grief',name:'Luto que Fortalece',parent:'youro-forest-guardian',text:'A primeira morte aliada presenciada por Youro em cada batalha concede +1 de ataque até o fim da rodada.'},
+ {id:'youro-shared-cycle',name:'Ciclo Compartilhado',parent:'youro-strengthened-grief',text:'A segunda morte aliada presenciada por Youro na batalha concede +1 de vida máxima, sem curar.'},
+ {id:'youro-pack-strength',name:'Força da Alcateia',parent:'youro-shared-cycle',text:'A terceira morte aliada presenciada por Youro na batalha concede +1/+1 ao Tigre Espiritual aliado em campo.'},
+ {id:'youro-feral-evolution',name:'Evolução Feral',parent:'youro-pack-strength',text:'A evolução de Youro concede +1/+1 adicional, preservando dano já sofrido.'},
+ {id:'youro-guardian-spirit',name:'Espírito Guardião',parent:'youro-feral-evolution',minLevel:30,text:'A primeira morte de outro aliado após a evolução de Youro concede +1 de vida máxima, sem curar.'},
+];
+export const kuaraTalents:Talent[]=[
+ {id:'kuara-quick-hands',name:'Mãos Ligeiras',text:'Kuara recebe +1 de vida base.'},
+ {id:'kuara-ready-pocket',name:'Bolso Preparado',parent:'kuara-quick-hands',text:'Na primeira ativação da Pilantragem na batalha, roube uma carta adicional.'},
+ {id:'kuara-east-breath',name:'Fôlego da Leste',parent:'kuara-ready-pocket',text:'O primeiro roubo de cada rodada prepara desconto de 1 para a próxima carta roubada jogada naquela rodada.'},
+ {id:'kuara-hidden-reserve',name:'Reserva Oculta',parent:'kuara-east-breath',text:'A primeira carta roubada jogada na batalha permite comprar uma carta.'},
+ {id:'kuara-magic-hands',name:'Mãos Mágicas',parent:'kuara-hidden-reserve',text:'Se a sexta carta roubada evoluir Kuara durante a ativação de Pilantragem e ele estiver em campo, roube uma carta adicional naquela ativação.'},
+ {id:'kuara-opportunity-strike',name:'Golpe de Oportunidade',parent:'kuara-quick-hands',text:'O primeiro ataque da batalha que causar dano ao Nexus por Kuara causa +1 de dano.'},
+ {id:'kuara-living-wallet',name:'Carteira Viva',parent:'kuara-opportunity-strike',text:'A primeira ativação de Pilantragem em cada rodada prepara desconto adicional de 1 para a primeira carta roubada jogada naquela rodada.'},
+ {id:'kuara-perfect-disguise',name:'Disfarce Perfeito',parent:'kuara-living-wallet',text:'A primeira unidade roubada jogada na batalha recebe +1 de vida máxima, sem curar.'},
+ {id:'kuara-planned-exit',name:'Saída Planejada',parent:'kuara-perfect-disguise',text:'A primeira unidade roubada que morrer retorna à mão; se ela estiver cheia, a carta continua no descarte.'},
+ {id:'kuara-walking-vault',name:'Cofre Ambulante',parent:'kuara-planned-exit',text:'Ao evoluir, Kuara recebe +1/+1 adicional, preservando o dano sofrido.'},
+ {id:'kuara-bottomless-eye',name:'Olho no Fundo',parent:'kuara-quick-hands',text:'Ao esvaziar o deck inimigo por roubo, Kuara recebe +1 de ataque até o fim da rodada, uma vez por batalha.'},
+ {id:'kuara-calculated-exhaustion',name:'Esgotamento Calculado',parent:'kuara-bottomless-eye',text:'A primeira compra inimiga sem cartas no deck permite ao jogador comprar uma carta.'},
+ {id:'kuara-repeated-trick',name:'Truque Repetido',parent:'kuara-calculated-exhaustion',text:'A primeira carta roubada jogada em cada rodada custa 1 a menos, mínimo 1.'},
+ {id:'kuara-pocket-queen',name:'Rainha dos Bolsos',parent:'kuara-repeated-trick',text:'Ao evoluir, Kuara recebe +1 de ataque permanente nesta batalha.'},
+ {id:'kuara-supreme-pilantragem',name:'Pilantragem Suprema',parent:'kuara-pocket-queen',minLevel:30,text:'A primeira ativação de Pilantragem depois que Kuara evoluir rouba uma carta adicional.'},
+];
 export const kylastTalents:Talent[]=[
  {id:'arsenal-i',name:'Porte de Arsenal I',text:'Capacidade de 3 armas.'},
  {id:'arsenal-ii',name:'Porte de Arsenal II',parent:'arsenal-i',text:'Capacidade de 4 armas.'},
@@ -72,7 +106,7 @@ export const rubelTalents:Talent[]=[
  {id:'rubel-relief',name:'Alívio Imediato',text:'A onda de cura da evolução recupera até 1 de vida adicional do seu Vínculo.',parent:'rubel-reserve'},
  {id:'rubel-renewal',name:'Prece Renovada',text:'Ao evoluir, crie uma Palavra Curativa na mão.',parent:'rubel-relief'},
 ];
-export function talentsFor(hero:Champion):Talent[]{return hero==='kylast'?kylastTalents:hero==='abe'?abeTalents:hero==='arcata'?arcataTalents:hero==='rubel'?rubelTalents:[];}
+export function talentsFor(hero:Champion):Talent[]{return hero==='youro'?youroTalents:hero==='kuara'?kuaraTalents:hero==='kylast'?kylastTalents:hero==='abe'?abeTalents:hero==='arcata'?arcataTalents:hero==='rubel'?rubelTalents:[];}
 export function getTalents(profile:Profile):TalentAllocation {return profile.talents??{};}
 function assertEditable(profile:Profile,hero:Champion,runActive:boolean){
  if(runActive)throw Error('Talentos só podem ser alterados fora da run.');
@@ -93,5 +127,5 @@ export function allocateTalent(profile:Profile,hero:Champion,id:TalentId,runActi
 export function resetTalents(profile:Profile,hero:Champion,runActive:boolean,now:number):Profile {
  assertEditable(profile,hero,runActive);
  if(!(getTalents(profile)[hero]?.length))throw Error('Nenhum talento para redistribuir.');
- const p=structuredClone(profile);credit(p,-200,`Redistribuição de talentos: ${hero==='abe'?'Abe':hero==='arcata'?'Arcata':hero==='rubel'?'Rubel':'Kylast'}`,now);p.talents={...getTalents(p),[hero]:[]};return p;
+ const p=structuredClone(profile);credit(p,-200,`Redistribuição de talentos: ${hero==='youro'?'Youro':hero==='abe'?'Abe':hero==='arcata'?'Arcata':hero==='rubel'?'Rubel':'Kylast'}`,now);p.talents={...getTalents(p),[hero]:[]};return p;
 }

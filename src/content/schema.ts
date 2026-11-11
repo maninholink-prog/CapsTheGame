@@ -2,6 +2,7 @@ export type Champion = 'kylast' | 'abe' | 'arcata' | 'rubel' | 'youro' | 'kuara'
 export type Keyword = 'elusive' | 'quick' | 'double';
 export type Region = 'north' | 'east' | 'south' | 'west' | 'korakarom';
 export type Rarity = 'common' | 'rare' | 'epic' | 'legendary' | 'ultradimensional';
+export function encounterRarity(cost:number):Rarity { return cost<=2?'common':cost<=4?'rare':cost===5?'epic':'legendary'; }
 export type NarrativeAbility = 'zacarias' | 'keegan' | 'lucia' | 'gremin' | 'soarim' | 'salita' | 'kriv' | 'archibald' | 'guardian' | 'mantum';
 interface CardBase { enemyOnly?:boolean;experiment?:boolean;unique?:boolean;encounterSpecial?:'labotomia'|'tornado'|'dianamite'|'felix';failIfKeywordPresent?:boolean; expansion?:string; music?:boolean; dynamicDamage?:'equipped'|'attack'; afterRecallDraw?:boolean; requiresEnemyDeck?:boolean; deathSpell?:string;
   draw?: number; attackReduction?: number; fireShield?: boolean;

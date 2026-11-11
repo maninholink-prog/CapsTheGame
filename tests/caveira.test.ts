@@ -7,6 +7,7 @@ import type {BattleState,BoardUnit} from '../src/battle/types.js';
 import {chooseAiCommand} from '../src/ai/policy.js';
 import {observeBattle} from '../src/ai/observation.js';
 import {caveiraDecks} from '../src/content/caveira.js';
+import {fullCatalog} from '../src/content/decks.js';
 import type {CaveiraDeck} from '../src/content/caveira.js';
 
 function apply(state:BattleState,command:Command):BattleState {
@@ -34,7 +35,8 @@ it('starts a playable Caveira Dourada training encounter with its own enemy-only
  expect(cards).toHaveLength(30);
  expect(cards.filter(c=>c.definitionId==='caveira-curse')).toHaveLength(2);
  expect(state.encounter?.id).toBe('caveira-captain');
- expect(collectibleIds).not.toContain('caveira-curse');
+ expect(collectibleIds).toContain('caveira-curse');
+ expect(fullCatalog['caveira-curse'].enemyOnly).toBe(true);
 });
 
 it.each(Object.entries(caveiraDecks).filter(([id])=>id.startsWith('jupiter-')))('starts Jupiter playtest deck %s with approved size and copies',id=>{

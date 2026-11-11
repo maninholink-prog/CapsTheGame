@@ -4,8 +4,10 @@ import {abeSetup} from './abe-talents.js';
 import {talentsFor} from '../profile/talents.js';
 import type {TalentId} from '../profile/talents.js';
 import {queueHeal} from './champions.js';
+import type {YouroTalentState} from './youro-talents.js';
+import type {KuaraTalentState} from './kuara-talents.js';
 import type {BattleState,BattleEvent,BoardUnit,PlayerId,CombatLane} from './types.js';
-export interface TalentBattleState {rubel?:TalentId[];arcata?:import('./arcata-talents.js').ArcataTalentState;abe?:import('./abe-talents.js').AbeTalentState;setup?:boolean;entryDraw?:boolean;entryArmor?:boolean;gripUsed?:boolean;survivalUsed?:boolean;firstAttack?:boolean;versatilityRound?:number;returnedRound?:number;returnedCard?:string;maintenanceUsedRound?:number}
+export interface TalentBattleState {youro?:YouroTalentState;kuara?:KuaraTalentState;rubel?:TalentId[];arcata?:import('./arcata-talents.js').ArcataTalentState;abe?:import('./abe-talents.js').AbeTalentState;setup?:boolean;entryDraw?:boolean;entryArmor?:boolean;gripUsed?:boolean;survivalUsed?:boolean;firstAttack?:boolean;versatilityRound?:number;returnedRound?:number;returnedCard?:string;maintenanceUsedRound?:number}
 export function hasTalent(s:BattleState,o:PlayerId,id:TalentId){return s.players[o].protagonist==='kylast'&&Boolean(s.talentLoadouts?.[o]?.includes(id));}
 export function talentProgress(s:BattleState,o:PlayerId):TalentBattleState {s.talentState??={};return s.talentState[o]??=( {} );}
 export function isKylast(s:BattleState,u:BoardUnit){const d=s.definitions[u.card.definitionId];return d?.kind==='unit'&&d.champion==='kylast';}

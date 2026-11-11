@@ -4,7 +4,7 @@ export const rarities:Rarity[]=['common','rare','epic','legendary','ultradimensi
 export const rarityNames:Record<Rarity,string>={common:'Comum',rare:'Raro',epic:'Épico',legendary:'Lendário',ultradimensional:'Ultradimensional'};
 export const prices:Record<Rarity,number>={common:100,rare:250,epic:500,legendary:700,ultradimensional:1000};
 export const duplicateValues:Record<Rarity,number>={common:5,rare:10,epic:20,legendary:50,ultradimensional:100};
-export const collectibleIds=Object.keys(fullCatalog).filter(id=>fullCatalog[id].rarity&&!fullCatalog[id].championCopy);
+export const collectibleIds=Object.keys(fullCatalog).filter(id=>fullCatalog[id].rarity&&fullCatalog[id].collectible!==false&&!fullCatalog[id].championCopy);
 export interface OwnedCard {count:number;shiny:boolean}
 export interface OpeningCard {id:string;rolledShiny:boolean;shiny:boolean;excess:number;newCard:boolean}
 export interface Opening {serial:number;type:Rarity;cards:OpeningCard[];time:number}

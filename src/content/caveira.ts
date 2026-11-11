@@ -1,4 +1,4 @@
-import type {CardCatalog,CardEffect,Keyword,Region,TargetRule} from './schema.js';
+import {encounterRarity,type CardCatalog,type CardEffect,type Keyword,type Region,type TargetRule} from './schema.js';
 import type {CardInstance} from '../battle/types.js';
 import {jupiterCatalog,jupiterDecks} from './jupiter.js';
 
@@ -7,13 +7,13 @@ const enemy:TargetRule={kind:'unit',side:'enemy',min:1,max:1};
 const noTarget:TargetRule={...enemy,min:0,max:0};
 const wounded:TargetRule={...enemy,wounded:true};
 const allyNexus:TargetRule={kind:'nexus',side:'ally',min:1,max:1};
-const enemyOnly={enemyOnly:true,collectible:false};
+const enemyOnly={enemyOnly:true};
 
 function unit(id:string,name:string,region:Region,cost:number,attack:number,health:number,text:string,options:{pirate?:boolean;undead?:boolean;unique?:boolean;keyword?:Keyword;entryTarget?:TargetRule;entrySpell?:string}={}){
- catalog[id]={id,name,kind:'unit',regions:[region],cost,attack,health,text,...enemyOnly,...options};
+ catalog[id]={id,name,kind:'unit',regions:[region],cost,attack,health,text,rarity:encounterRarity(cost),collectible:true,...enemyOnly,...options};
 }
 function spell(id:string,name:string,cost:number,speed:'fast'|'slow',target:TargetRule,effect:CardEffect,text:string,region?:Region){
- catalog[id]={id,name,kind:'spell',cost,speed,target,effect,text,...enemyOnly,...(region?{regions:[region]}:{})};
+ catalog[id]={id,name,kind:'spell',cost,speed,target,effect,text,rarity:encounterRarity(cost),collectible:!!region,...enemyOnly,...(region?{regions:[region]}:{})};
 }
 
 const pirate={pirate:true};
@@ -37,7 +37,7 @@ spell('caveira-reinforcements','Reforços do General',4,'slow',noTarget,{type:'s
 spell('caveira-song','Cantiga de Abordagem',3,'fast',enemy,{type:'stun'},'Música. Atordoe uma unidade inimiga até o fim da rodada.','north');
 catalog['caveira-song'].music=true;
 spell('caveira-curse','Maldição do Osso Roído',3,'fast',enemy,{type:'weaken',amount:2,nextRound:true},'Dê −2 de ataque a uma unidade inimiga até o fim da próxima rodada, mínimo zero.','east');
-catalog['caveira-sword']={id:'caveira-sword',name:'Espada Flamejante',kind:'equipment',regions:['east'],cost:3,damage:2,text:'Arma. Seus golpes com esta arma causam +2 de dano.',...enemyOnly};
+catalog['caveira-sword']={id:'caveira-sword',name:'Espada Flamejante',kind:'equipment',regions:['east'],cost:3,damage:2,rarity:encounterRarity(3),collectible:true,text:'Arma. Seus golpes com esta arma causam +2 de dano.',...enemyOnly};
 
 spell('caveira-remendado-death','Tripulação Reerguida',0,'fast',noTarget,{type:'summon',unit:'caveira-pirate',count:1},'Invoque um Esqueleto Pirata.');
 spell('caveira-plunder','Saque do Convés',0,'fast',noTarget,{type:'steal',amount:1},'Roube a última carta do deck inimigo.');

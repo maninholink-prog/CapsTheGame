@@ -243,6 +243,9 @@
 .adventure-roster .hero-card p {margin:0;font-size:13px}
 .adventure-roster .hero-card .button {margin-top:auto}
 .adventure-roster .hero-card.locked {border-color:#555044}
+.adventure-roster .hero-card{grid-template-rows:clamp(130px,18vw,205px) auto}
+.adventure-roster .hero-card>div:last-child{align-items:center;text-align:center}
+.adventure-roster .hero-card p{font:16px var(--font-display);color:#e7ca91}
 .adventure-options>h2 {margin:22px 0 0}
 
 /* Card catalogue */

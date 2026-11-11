@@ -4,6 +4,8 @@ import {consumeKingDischarge,finishEncounterResolution} from './encounters.js';
 import {laboratoryUpgrade} from './laboratory.js';
 import {stealCards,summonUnits,markWeakest,recordDamage,expandedResolved} from './expansion.js';
 import {talentDamage} from './kylast-talents.js';
+import {youroReduceDamage} from './youro-talents.js';
+import {kuaraHasTalent} from './kuara-talents.js';
 import {advanceRound} from './round.js';
 import {narrativeResolved,addAttack,drawInto} from './narrative.js';
 import { championUnit, progress, evolveAllies, fabricate } from './champions.js';
@@ -50,7 +52,7 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
     const effect = definition.effect;
     const extraLife=rubelMaxLifeBonus(next,pending.owner,definition);
     const bonus=arcataSpellBonus(next,pending.owner,definition,pending.targets.length);
-    if(effect.type==='steal')stealCards(next,pending.owner,pending.abilityAmount??effect.amount,effect.emptyFatigue??false,events);
+    if(effect.type==='steal'){const evolvesOnThisActivation=definition.id==='kuara-strike'&&!progress(next,pending.owner).evolved.kuara;stealCards(next,pending.owner,pending.abilityAmount??effect.amount,effect.emptyFatigue??false,events);if(evolvesOnThisActivation&&(championUnit(next,pending.owner,'kuara')?.health??0)>0&&progress(next,pending.owner).evolved.kuara&&kuaraHasTalent(next,pending.owner,'kuara-magic-hands'))stealCards(next,pending.owner,1,false,events);}
     if(effect.type==='summon')summonUnits(next,pending.owner,effect.unit,effect.count,events);
     if(effect.type==='mark')markWeakest(next,pending.owner,pending.abilitySourceId);
     for (const target of valid) {
@@ -64,7 +66,7 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
         const unit = target.kind === 'unit' ? player.board.find(u => u.card.instanceId === target.instanceId)! : null;
         if (effect.type === 'damage') {
           const base=definition.dynamicDamage==='attack'?Math.max(0,unit?.attack??0):definition.dynamicDamage==='equipped'&&(unit?.equipment?.length??0)>0?2:effect.amount;
-          const amount=base+bonus.damage+(pending.damageBonus??0)+(definition.fire&&pending.mode!=='ability'&&championUnit(next,pending.owner,'arcata')?.evolved?1:0);
+          const amount=unit?youroReduceDamage(next,target.player,unit,base+bonus.damage+(pending.damageBonus??0)+(definition.fire&&pending.mode!=='ability'&&championUnit(next,pending.owner,'arcata')?.evolved?1:0)):base+bonus.damage+(pending.damageBonus??0)+(definition.fire&&pending.mode!=='ability'&&championUnit(next,pending.owner,'arcata')?.evolved?1:0);
           if (unit) unit.health = Math.max(0, unit.health - amount);
           else player.nexus = Math.max(0, player.nexus - amount);
           events.push({ type: 'damageApplied', target, amount });
@@ -72,12 +74,12 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
           recordDamage(next,target,pending.owner);
           if(unit&&unit.health>0&&definition.attackReduction){const loss=Math.min(Math.max(0,unit.attack),definition.attackReduction+bonus.reduction);addAttack(unit,-loss,true);}
         } else if(effect.type==='surgery'&&unit){
-          unit.health=Math.max(0,unit.health-effect.amount);recordDamage(next,target,pending.owner);talentDamage(next,target.player,unit,effect.amount,events);events.push({type:'damageApplied',target,amount:effect.amount});
+          const amount=youroReduceDamage(next,target.player,unit,effect.amount);unit.health=Math.max(0,unit.health-amount);recordDamage(next,target,pending.owner);talentDamage(next,target.player,unit,amount,events);events.push({type:'damageApplied',target,amount});
           if(unit.health>0){addAttack(unit,effect.attack,effect.temporary);if(effect.quick){unit.keywords??=[];if(!unit.keywords.includes('quick')){unit.keywords.push('quick');(unit.temporaryKeywords??=[]).push('quick');}}}else successfulUpgrade=false;
         } else if((effect.type==='execute'||effect.type==='kill-marked')&&unit){
           const mark=next.executionMarks?.[pending.owner];const marked=mark?.targetId===unit.card.instanceId;
           if(effect.type==='execute'&&(!marked||mark!.sourceId!==pending.abilitySourceId))continue;
-          const amount=marked?unit.health:3;unit.health=Math.max(0,unit.health-amount);recordDamage(next,target,pending.owner);events.push({type:'damageApplied',target,amount});
+          const amount=youroReduceDamage(next,target.player,unit,marked?unit.health:3);unit.health=Math.max(0,unit.health-amount);recordDamage(next,target,pending.owner);events.push({type:'damageApplied',target,amount});
           talentDamage(next,target.player,unit,amount,events);
         } else if(effect.type==='weaken'&&unit){
           const loss=Math.min(Math.max(0,unit.attack),effect.amount);

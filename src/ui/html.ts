@@ -44,6 +44,9 @@ export function regionSymbol(region:'north'|'west'|'south'|'east'|'korakarom'):s
   return `<svg class="region-symbol" viewBox="${x} 580 280 200" role="img" aria-label="${name}"><image href="/art/regions/approved-symbols.png" width="1752" height="897"/></svg>`;
 }
 export function art(id: string, small = false, evolved = false): string {
+  if(id==='youro')return `<img class="portrait ${small?'small':''}" src="/art/youro${evolved?'-evolved':'-card'}.png" alt="Youro ${evolved?'evoluído, sem máscara, com ecos espirituais de Urso e Tigre':'em sua forma base, sem máscara'}"/>`;
+  if(id==='kuara'&&evolved)return `<img class="portrait ${small?'small':''}" src="/art/kuara-evolved.png" alt="Kuara evoluído, usando a máscara de seu alter-ego"/>`;
+  if(id==='kuara')return `<img class="portrait ${small?'small':''}" src="/art/kuara.png" alt="Kuara Yacy, sem máscara"/>`;
   if(id==='abe'&&evolved)return `<img class="portrait" src="/art/abe-mastery.png" alt="Abe Gravo evoluído"/>`;
   if(id==='cinderela')return `<img class="portrait ${small?'small':''}" src="/art/cinderela.png" alt="Pistola Cinderela, com cristal azul"/>`;
   if(id==='engineering')return `<img class="portrait ${small?'small':''}" src="/art/engineering-v2.png" alt="Reforço mecânico sendo instalado no braço de um aliado"/>`;

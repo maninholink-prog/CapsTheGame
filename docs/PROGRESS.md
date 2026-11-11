@@ -388,3 +388,49 @@ O autor pediu que quatro itens visuais/de coleção sejam tratados em outro chat
 ## Backup integral e restauração verificados — 11/11/2026
 
 Snapshot em `C:/Users/Bruxo/Documents/Backups/CAPS-Game/snapshots/20261111-173733`; manifesto SHA-256 em `C:/Users/Bruxo/Documents/Backups/CAPS-Game/manifests/CAPS-Game-20261111-173733.sha256.tsv`; logs em `C:/Users/Bruxo/Documents/Backups/CAPS-Game/logs`. Cópia incluiu 33.173 arquivos (24.174.619.508 bytes), sem exclusões; Robocopy terminou com exit 1 (arquivos copiados, zero falhas). A restauração de teste ficou em `C:/Users/Bruxo/Documents/Backups/CAPS-Game-restore-test/20261111-173733`: 33.173/33.173 arquivos com tamanho e SHA-256 correspondentes, zero divergências. Concluído após registrar esta etapa: documentos e metadados Git sincronizados com o snapshot e a restauração; arquivos atualizados foram reconferidos contra o manifesto. O JSON de síntese guarda contagem e hashes finais. O snapshot e a origem estão no mesmo disco C:, portanto não cobrem falha física desse disco; nenhuma retenção foi instalada nem cópia externa criada.
+## Seletor, engrenagem, D20 e coleção de inimigos — 11/11/2026
+
+O seletor da aventura mostra retrato, nível de maestria e ação acessível para iniciar. O badge de efeitos foi alinhado à engrenagem. O início da batalha apresenta uma animação visual de D20 e o resultado real do registro; movimento reduzido elimina o giro. A coleção mostra cartas de inimigos em seção de consulta, mantendo enemyOnly/collectible:false, sem sorteio em boosters ou inclusão em decks do jogador. IDs e regras não foram alterados.
+
+Verificação: TypeScript sem erros; 11 testes focados de UI passaram; build Vite temporário em tmp/caps-four-requests-20261111 passou; git diff --check sem erros. Sem conferência visual em navegador ou executável Windows nesta etapa; imagens anexadas não ficaram disponíveis à sessão. Sem commit, push, publicação ou backup.
+
+## Raridades e boosters de cartas inimigas — 11/11/2026
+
+Cartas inimigas colecionáveis recebem raridade por faixa de custo existente (0–2 Comum, 3–4 Raro, 5 Épico, 6+ Lendário) e entram no conjunto normal de boosters. A seção própria da Coleção exibe raridade e cópias. Cartas internas de gatilho ficam fora; enemyOnly permanece, sem uso em decks do jogador ou recompensa de aventura. Sem mudanças nos atributos de combate, efeitos, IDs ou listas de encontros.
+
+Verificação: TypeScript passou; 57 testes em quatro arquivos passaram, incluindo booster determinístico que encontra inimigo, grantCard, filtre de elegibilidade e encounter. Build e smoke Windows serão registrados após execução.
+
+
+Empacotamento concluído em release/CAPS-20261111-190400-win-x64/C.A.P.S.exe. Build Vite e pacote Electron 45.2.1 passaram; smoke test isolado retornou exit 0 e ok:true, carregando a home. O smoke não abriu interação de booster nem partida. Perfil de QA separado; perfil do autor não foi aberto ou alterado. Pacotes anteriores intactos. Sem commit, push, publicação ou backup.
+
+## Maestria de Youro — 11/11/2026
+
+Implementados os quinze talentos aprovados para Youro, com compra e pré-requisitos pelo catálogo compartilhado, árvore acessível e estado de batalha opcional validado no save v1. Efeitos conectados aos fluxos de entrada, forma, evolução, dano, combate e snapshot de mortes; o requisito original de quatro mortes e os efeitos/IDs das cartas foram mantidos. A verificação cobre os quinze efeitos, mortes simultâneas, aliados condenados, Youro ausente ou morrendo, dano zero, cura versus vida máxima e leitura de save legado.
+
+O retrato foi ajustado após a orientação do autor: a imagem enviada serve de referência de aparência (gato ruivo, capuz verde, manto de penas e bolsa); a linguagem visual é fantasia pintada de *Legends of Runeterra*. A composição horizontal de Urso e Tigre como ecos espirituais foi preservada. Assets: [retrato de Youro](../public/art/youro.png) e [arte da maestria](../public/art/youro-mastery.png). O pacote portátil para teste está em [C.A.P.S.exe](../release/CAPS-20261111-193031-win-x64/C.A.P.S.exe); SHA-256 dos dois assets foi comparado com os arquivos incluídos no pacote.
+
+TypeScript passou; 70 testes direcionados em 12 arquivos passaram (incluindo expansão/combate/save/UI e IA); `git diff --check` passou. O navegador carregou a árvore e as artes a 1440×960 e 960×700; no perfil visual de nível 1 os nós aparecem bloqueados por falta de pontos. Smoke Electron isolado carregou a home, `ok:true`, exit 0. Não foi feita interação de compra em UI nem playtest manual do balanceamento. Valores adicionais seguem sujeitos a playtest. Sem commit, push, publicação ou backup.
+
+## Correção do emblema da Korakoin — 11/11/2026
+
+O símbolo regional sobre a moeda tinha fundo preto opaco no PNG de símbolos aprovado. O overlay agora usa mix-blend-mode: screen para remover visualmente o preto e preservar as partes claras do emblema. Pacote portátil atualizado em release/CAPS-20261111-193831-win-x64/C.A.P.S.exe; smoke Electron isolado terminou com exit 0 e a janela foi aberta com perfil de QA separado. A regra CSS está incluída no pacote. A inspeção visual por screenshot dentro do executável não ficou disponível nesta sessão. Sem commit, push, publicação ou backup.
+
+
+## Maestria de Kuara — 11/11/2026
+
+Implementados os quinze talentos aprovados, estado de batalha compatível com saves v1, efeitos no fluxo de combate e artes do Kuara base/evoluído. Na evolução, o alter ego mascarado segue a referência do autor; a pintura acompanha a direção de fantasia de *Legends of Runeterra*. A interpretação de “reduzir a próxima compra” como desconto na próxima carta roubada jogada está registrada em DEC-019.
+
+TypeScript passou; 41 testes focados em seis arquivos passaram; build Vite e smoke Electron terminaram com exit 0; `git diff --check` passou. Inspeção visual no navegador em 1280×720 e 960×700. A suíte completa ficou incompleta e apresentou expectativas divergentes em map-view, playtest-unlock e felix-content; não foi possível atribuir essas falhas a este ciclo. Build portátil em [C.A.P.S.exe](../release/CAPS-20261111-201415-win-x64/C.A.P.S.exe). O smoke passou; a tentativa de abrir interativamente nesta etapa encerrou sem manter janela. O Electron usou o perfil padrão `%APPDATA%\CAPS-Game`; não houve interação de jogo nem alteração intencional de save. Sem commit, push, publicação ou backup.
+
+
+## Arte da carta de campeão Youro — 11/11/2026
+
+Criadas duas ilustrações verticais para a carta de campeão: forma base e evoluída. Ambas seguem a aparência aprovada de Youro sem máscara; a evoluída mostra ecos espirituais de Urso e Tigre. A carta usa `youro-card.png` ou `youro-evolved.png` conforme o estado de evolução; o retrato de seleção e a arte da árvore permanecem separados. Nenhuma carta além do campeão foi alterada. IDs, dados, deck e regras foram preservados. Registro visual em [DEC-018](DECISIONS.md#dec-018--aparência-e-direção-visual-de-youro).
+
+Verificação: 66 testes em 12 arquivos passaram; TypeScript, build Vite temporário e `git diff --check` passaram. Smoke Electron carregou a tela inicial (`ok:true`, exit 0); SHA-256 das duas artes no pacote corresponde às fontes. Build portátil em [C.A.P.S.exe](../release/CAPS-20261111-203002-win-x64/C.A.P.S.exe), aberta para teste. A suíte completa foi interrompida após cerca de um minuto; falhas observadas em Felix content, map view, playtest unlock e dois duelos IA (Abe). Sem commit, push, publicação ou backup.
+
+## Build atualizada da carta de Youro — 11/11/2026
+
+Pacote portátil novo em `release/CAPS-20261111-204500-win-x64/C.A.P.S.exe`, aberto na Coleção com filtro Youro para playtest. A inspeção visual no executável confirmou a carta base sem máscara. O teste de renderização cobre a escolha da arte evoluída; não foi iniciada partida para forçar evolução. Smoke Electron em perfil isolado: `ok:true`, exit 0. SHA-256 das artes base/evoluída no pacote confere com `public/art`. TypeScript e `git diff --check` passaram.
+
+A suíte completa terminou em 318 s: 84 arquivos, 459 testes; 455 passaram e 4 falharam em `felix-content.test.ts` (expectativa antiga de raridade), `playtest-unlock.test.ts`, `ui/map-view.test.ts` (expectativa de rótulo antigo) e `battle/narrative-decks.test.ts` (duelo IA de Abe excedeu 5 s). As falhas são fora do fluxo de arte de Youro; não foram ajustadas nesta tarefa. Sem commit, push, publicação ou backup.

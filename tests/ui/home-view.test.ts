@@ -94,3 +94,22 @@ it('renders a scrollable catalogue with inspectable compass badges and keeps boo
  expect(boosters.match(/data-action="booster-buy"/g)).toHaveLength(5);
  expect(boosters.match(/data-action="booster-open"/g)).toHaveLength(5);
 });
+
+it('shows only portraits, mastery and accessible start actions in the adventure roster',()=>{
+ const profile=createProfile('Teste','rubel',1,0);
+ const html=hubContent(profile,'adventure',null,{search:'',rarity:'',region:'',owned:''});
+ const roster=html.split('class="hero-grid adventure-roster">')[1].split('</div>\n     ')[0];
+ expect(roster).toContain('Maestria 1');
+ expect(roster).toContain('aria-label="Iniciar aventura com Rubel, maestria 1"');
+ expect(roster).not.toContain('Restauração · cure e evolua');
+ expect(roster).not.toContain('<small>');
+});
+
+it('shows enemy encounter cards in the collection without making them player cards',()=>{
+ const profile=createProfile('Teste','rubel',1,0);
+ const html=hubContent(profile,'collection',null,{search:'Rato da Lavoura',rarity:'',region:'',owned:''});
+ expect(html).toContain('Cartas de inimigos');
+ expect(html).toContain('Rato da Lavoura');
+ expect(html).toContain('exclusivas dos inimigos');
+ expect(html).not.toContain('cópias</strong>');
+});

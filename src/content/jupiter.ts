@@ -1,4 +1,4 @@
-import type {CardCatalog,CardDefinition,CardEffect,Region,TargetRule} from './schema.js';
+import {encounterRarity,type CardCatalog,type CardDefinition,type CardEffect,type Region,type TargetRule} from './schema.js';
 import type {CardInstance} from '../battle/types.js';
 
 const catalog:CardCatalog={};
@@ -6,9 +6,9 @@ const enemy:TargetRule={kind:'unit',side:'enemy',min:1,max:1};
 const wounded:TargetRule={...enemy,wounded:true};
 const alliedWounded:TargetRule={kind:'unit',side:'ally',wounded:true,min:0,max:1};
 const none:TargetRule={...enemy,min:0,max:0};
-const enemyOnly={enemyOnly:true,collectible:false,expansion:'jupiter'};
-function unit(id:string,name:string,region:Region,cost:number,attack:number,health:number,text:string,options:Partial<CardDefinition>={}){catalog[id]={id,name,kind:'unit',regions:[region],cost,attack,health,text,...enemyOnly,...options} as CardDefinition;}
-function spell(id:string,name:string,region:Region,cost:number,speed:'fast'|'slow',target:TargetRule,effect:CardEffect,text:string){catalog[id]={id,name,kind:'spell',regions:[region],cost,speed,target,effect,text,...enemyOnly};}
+const enemyOnly={enemyOnly:true,collectible:true,expansion:'jupiter'};
+function unit(id:string,name:string,region:Region,cost:number,attack:number,health:number,text:string,options:Partial<CardDefinition>={}){catalog[id]={id,name,kind:'unit',regions:[region],cost,attack,health,text,rarity:encounterRarity(cost),...enemyOnly,...options} as CardDefinition;}
+function spell(id:string,name:string,region:Region,cost:number,speed:'fast'|'slow',target:TargetRule,effect:CardEffect,text:string){catalog[id]={id,name,kind:'spell',regions:[region],cost,speed,target,effect,text,rarity:encounterRarity(cost),...enemyOnly};}
 
 unit('jupiter-rat','Rato da Lavoura','north',1,1,1,'Rato.');
 unit('jupiter-burrower','Rato Escavador','south',2,2,1,'Rato. Elusivo.',{keyword:'elusive'});
@@ -57,6 +57,7 @@ spell('jupiter-tentacle-death','Último Suspiro: Tentáculo','north',0,'fast',no
 spell('jupiter-weaken-1','Investida','north',0,'fast',enemy,{type:'weaken',amount:1},'Dê −1 de ataque a uma unidade inimiga até o fim da rodada.');
 spell('jupiter-weaken-2','Correnteza','north',0,'fast',enemy,{type:'weaken',amount:2},'Dê −2 de ataque a uma unidade inimiga até o fim da rodada.');
 spell('jupiter-raider-return','Resgate do Saqueador','west',0,'fast',{...alliedWounded,min:1},{type:'recall'},'Retorne uma unidade aliada ferida à mão do dono.');
+for(const id of ['jupiter-bite','jupiter-aqua-bite','jupiter-sprout-death','jupiter-octopus-death','jupiter-tentacle-death','jupiter-weaken-1','jupiter-weaken-2','jupiter-raider-return'])catalog[id].collectible=false;
 
 export const jupiterCatalog=catalog;
 export const jupiterDecks={

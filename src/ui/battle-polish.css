@@ -152,7 +152,11 @@
 .tactical-battle .battle-reference summary{position:relative;display:grid;place-items:center;width:40px;height:40px;padding:0;color:#f5d99d;background:#20352dcc;border:1px solid #b79c67;border-radius:50%;list-style:none;cursor:pointer}
 .tactical-battle .battle-reference summary::-webkit-details-marker{display:none}
 .tactical-battle .battle-reference summary .icon{width:22px;height:22px}
-.tactical-battle .battle-reference summary .menu-count{position:absolute;right:-3px;top:-3px;display:grid;place-items:center;min-width:16px;height:16px;padding:0 4px;border:1px solid #f1d28c;border-radius:9px;background:#824638;color:#fff0cf;font-size:9px}
+.tactical-battle .battle-reference summary .menu-count{position:absolute;right:0;top:0;transform:translate(35%,-35%);display:grid;place-items:center;min-width:16px;height:16px;padding:0 4px;border:1px solid #f1d28c;border-radius:9px;background:#824638;color:#fff0cf;font-size:9px;line-height:1}
+.dice-roll{position:fixed;z-index:100;top:50%;left:50%;transform:translate(-50%,-50%);padding:22px 30px;border:1px solid #e8c987;border-radius:14px;background:#142621f2;color:#ffe2a2;box-shadow:0 12px 45px #000b;font:20px var(--font-display);pointer-events:none;text-align:center}
+.dice-roll span{display:grid;place-items:center;width:70px;height:70px;border:2px solid #e8c987;clip-path:polygon(50% 0,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%);animation:dice-tumble .7s ease-in-out}
+@keyframes dice-tumble{0%{transform:rotate(-360deg) scale(.45)}70%{transform:rotate(25deg) scale(1.2)}100%{transform:rotate(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.dice-roll span{animation:none}}
 .tactical-battle .battle-reference-content{width:min(410px,92vw);background:#1b291feF;border-color:#c3a772}
 .tactical-battle .battle-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #b59d6a77}
 .tactical-battle .battle-options>.button{min-height:34px;padding:5px;font-size:10px}

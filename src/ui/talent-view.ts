@@ -11,12 +11,14 @@ const abePositions=[[51,63],[48,54],[42,47],[36,51],[31,54],[34,61],[37,66],[60,
 const arcataPositions=[[31,79],[34,64],[39,48],[24,48],[16,52],[13,62],[10,75],[46,66],[54,68],[61,63],[68,59],[45,85],[60,88],[76,80],[92,62]];
 
 const rubelPositions=[[51,49],[53,36],[53,24],[40,23],[32,18],[23,14],[15,9],[59,49],[67,60],[76,67],[88,72],[59,34],[68,25],[77,17],[88,11]];
+const kuaraPositions=[[48,84],[43,72],[37,60],[24,67],[17,51],[58,83],[66,71],[74,59],[82,47],[91,37],[55,57],[47,42],[40,29],[30,19],[92,16]];
+const youroPositions=[[50,55],[34,48],[23,39],[15,31],[8,22],[66,48],[77,39],[85,31],[92,23],[97,14],[50,40],[50,29],[50,18],[50,8],[50,2]];
 
 export function renderTalents(profile:Profile,hero:Champion,runActive:boolean):string {
  const talents=talentsFor(hero);
  if(!talents.length)return '<section class="talent-tree" aria-label="Talentos"><h3>Talentos</h3><p>Árvore de talentos em preparação para este protagonista.</p></section>';
- const abe=hero==='abe',name=abe?'Abe':hero==='arcata'?'Arcata':hero==='rubel'?'Rubel':'Kylast',positions=abe?abePositions:hero==='arcata'?arcataPositions:hero==='rubel'?rubelPositions:kylastPositions;
- const artAlt=hero==='rubel'?'Rubel afasta uma horda com asas de Luz':hero==='arcata'?'Arcata lança uma espiral de fogo':abe?'Abe trabalhando na oficina com um cristal azul':'Kylast atacando com a espada e a foice Alastor';
+ const abe=hero==='abe',name=hero==='youro'?'Youro':hero==='kuara'?'Kuara':abe?'Abe':hero==='arcata'?'Arcata':hero==='rubel'?'Rubel':'Kylast',positions=hero==='youro'?youroPositions:hero==='kuara'?kuaraPositions:abe?abePositions:hero==='arcata'?arcataPositions:hero==='rubel'?rubelPositions:kylastPositions;
+ const artAlt=hero==='youro'?'Youro em sua forma de gato, acompanhado pelos ecos das formas de Urso e Tigre':hero==='kuara'?'Kuara sem máscara e seu alter-ego mascarado após a evolução':hero==='rubel'?'Rubel afasta uma horda com asas de Luz':hero==='arcata'?'Arcata lança uma espiral de fogo':abe?'Abe trabalhando na oficina com um cristal azul':'Kylast atacando com a espada e a foice Alastor';
  const owned=getTalents(profile)[hero]??[],info=masteryInfo(profile.mastery[hero].xp),locked=!profile.collection[hero]?.count;
  const available=(t:Talent)=>!runActive&&!locked&&!owned.includes(t.id)&&owned.length<info.points&&info.level>=(t.minLevel??1)&&(!t.parent||owned.includes(t.parent));
  const path=hero!=='kylast'?talents.flatMap((t,i)=>{
