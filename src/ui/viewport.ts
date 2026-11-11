@@ -1,5 +1,6 @@
 const pages = new Map<string,number>();
 const tabs = new Map<string,string>();
+import {icon} from './html.js';
 export function selectViewportTab(screen:string,panel:string):void {
  tabs.set(screen,panel);
 }
@@ -17,7 +18,8 @@ function button(label:string):HTMLButtonElement {
  const node=document.createElement('button');
  node.type='button';
  node.className='button';
- node.textContent=label;
+  const symbols:Record<string,string>={Resumo:'profile-summary',Histórico:'profile-history','Marcos semanais':'profile-milestones',Registro:'profile-ledger'};
+ node.innerHTML=`${icon(symbols[label]??'book')}<span>${label}</span>`;
  return node;
 }
 

@@ -100,3 +100,79 @@
 @media(min-width:761px) and (max-height:780px){.tactical-battle{--bench-size:116px;--front-size:224px;--hand-size:132px}.tactical-battle .unit-face{height:72px;min-height:72px}}
 @media(max-width:1099px){.tactical-battle .table-column{padding-right:170px}.tactical-battle .action-panel{width:158px}.tactical-battle .player-field{padding-left:168px}.tactical-battle .field-header{width:155px}.tactical-battle .nexus{width:58px;height:58px}.tactical-battle .nexus strong{font-size:34px}.tactical-battle .unit-grid{grid-template-columns:repeat(5,150px);justify-content:start;overflow:auto}}
 @media(max-width:760px){.tactical-battle .table-column{padding-right:0}.tactical-battle .action-panel{position:static;width:100%;max-height:340px;border-radius:18px;flex-direction:row;flex-wrap:wrap;align-items:center}.tactical-battle .action-panel>.button.primary,.tactical-battle .action-panel:not(:has(.button.primary))>.button[data-action="pass"]{width:88px;height:88px;min-height:88px}.tactical-battle .player-field{padding:8px}.tactical-battle .field-header{position:static;width:auto;min-height:70px}.tactical-battle{--bench-size:200px}.hero-picker fieldset{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* LoR-inspired placement uses the existing battle controls and original C.A.P.S. art. */
+.tactical-battle{--bench-size:clamp(100px,17dvh,158px);--front-size:clamp(170px,29dvh,268px);--hand-size:clamp(112px,17dvh,164px);--board-card:clamp(82px,9.5vw,128px)}
+.tactical-battle .table-column{padding-right:176px;gap:3px}
+.tactical-battle .turn-strip{height:32px;min-height:32px}
+.tactical-battle .opponent-hand{height:clamp(37px,6dvh,58px);display:flex;align-items:flex-start;justify-content:center;gap:3px;overflow:hidden;position:relative;padding:2px 22px;background:linear-gradient(#3b211bbd,#251c1cb3);border:1px solid #ad7751;border-radius:11px 11px 3px 3px}
+.tactical-battle .opponent-hand-count{position:absolute;left:8px;top:8px;font-size:10px;color:#f4d4ac}
+.tactical-battle .opponent-card-back{display:block;width:clamp(28px,4vw,44px);height:65px;flex:none;border:2px solid #b9925d;border-radius:5px;background:radial-gradient(circle at center,#b28d5d 0 7%,#214c4a 8% 19%,#744332 21% 65%,#2b221e 67%);box-shadow:0 2px 6px #0008;transform:translateY(-23px)}
+.tactical-battle .battle-table{overflow:visible;grid-template-rows:var(--bench-size) var(--front-size) var(--bench-size);border-radius:3px;background:linear-gradient(180deg,#5b302266,#14292622 49%,#12625744),url('/art/caps-battle-arena.png') center / 100% 100% no-repeat,#183437}
+.tactical-battle .player-field{position:relative;overflow:visible;padding:7px 5px 5px 132px}
+.tactical-battle .player-field.p2{background:linear-gradient(180deg,#79432a77,#30221d33)}
+.tactical-battle .player-field.p1{background:linear-gradient(0deg,#176d6177,#183a3933)}
+.tactical-battle .field-header{position:absolute;inset:8px auto 5px 8px;width:116px;display:flex;flex-direction:column;justify-content:space-between;gap:3px;margin:0}
+.tactical-battle .player-identity{display:flex;flex-direction:column;align-items:start;gap:3px}
+.tactical-battle .player-identity h2{font-size:11px;line-height:1.1}
+.tactical-battle .player-sub{font-size:8px;line-height:1.1}
+.tactical-battle .nexus{width:clamp(49px,7dvh,72px);height:clamp(49px,7dvh,72px)}
+.tactical-battle .nexus strong{font-size:clamp(27px,4dvh,40px)}
+.tactical-battle .p2 .nexus{background:radial-gradient(circle at 35% 25%,#eca067,#97512c 60%,#422015)}
+.tactical-battle .p1 .nexus{background:radial-gradient(circle at 35% 25%,#8ee2bd,#268a77 60%,#164742)}
+.tactical-battle .player-resources{position:absolute;left:calc(100% + 9px);top:7px;width:157px;min-width:0;margin:0;padding:5px 7px;border:1px solid #a98d5a;border-radius:7px;background:#10252be8;z-index:3}
+.tactical-battle .p2 .player-resources{border-color:#ad7652;background:#332722eb}
+.tactical-battle .mana-pips{gap:2px}
+.tactical-battle .mana-pips i{width:6px}
+.tactical-battle .reserve-line{font-size:9px}
+.tactical-battle .deck-tally{display:flex;align-items:center;gap:4px;margin-top:3px;padding-top:3px;border-top:1px solid #a58f6255;font-size:9px;color:#e9ddc1}
+.tactical-battle .deck-tally .icon{width:12px;height:12px}
+.tactical-battle .field-meta{min-width:0;font-size:8px}
+.tactical-battle .bench-caption{height:15px;margin:0;font-size:9px}
+.tactical-battle .unit-grid{display:flex;justify-content:safe center;gap:clamp(2px,.5vw,8px);height:calc(100% - 20px);overflow-x:auto;overflow-y:visible;scrollbar-width:none}
+.tactical-battle .unit-grid>.unit,.tactical-battle .unit-grid>.empty-slot{flex:0 0 var(--board-card);width:var(--board-card);max-width:var(--board-card)}
+.tactical-battle .unit{width:var(--board-card);max-width:var(--board-card)}
+.tactical-battle .combat-line{overflow:visible}
+.tactical-battle .combat-line.resting{background:linear-gradient(180deg,#68473122 0 49%,#dbb77a66 50%,#20554a22 51% 100%)}
+.tactical-battle .battle-front{overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.tactical-battle .battle-lane{flex-basis:var(--board-card)}
+.tactical-battle .front-card .unit{width:var(--board-card)}
+.tactical-battle .hand-section{border-color:#75b7a8;border-radius:3px 3px 11px 11px;background:linear-gradient(#143e39ee,#102a2ceb)}
+.tactical-battle .action-panel{top:calc(32px + clamp(37px,6dvh,58px) + var(--bench-size) + 25px);bottom:auto;height:clamp(150px,23dvh,215px);width:164px;border-radius:42px 42px 14px 14px;padding:8px}
+.tactical-battle .action-panel>.button.primary,.tactical-battle .action-panel:not(:has(.button.primary))>.button[data-action="pass"]{width:clamp(74px,11dvh,103px);height:clamp(74px,11dvh,103px);min-height:0;background:radial-gradient(circle at 40% 30%,#94d8bb,#308a77 55%,#164a48);border-color:#c5b68b}
+.tactical-battle .hand-preview{bottom:calc(var(--hand-size) + 8px)}
+@media(max-height:780px){.tactical-battle .player-sub,.tactical-battle .bench-caption span{display:none}.tactical-battle .unit-face{height:64px;min-height:64px}.tactical-battle .unit-name{font-size:9px}.tactical-battle .unit-stats b{font-size:16px}.tactical-battle .equipped{max-height:25px}}
+@media(min-width:761px) and (max-height:780px){.tactical-battle{--bench-size:96px;--front-size:160px;--hand-size:112px;--board-card:clamp(78px,9vw,112px)}.tactical-battle .opponent-hand{height:36px}.tactical-battle .action-panel{top:calc(32px + 36px + var(--bench-size) + 15px);height:154px;justify-content:flex-start}.tactical-battle .action-panel p{font-size:10px}.tactical-battle .combat-line.active .unit-face{height:48px;min-height:48px}.tactical-battle .combat-line.active .equipped{min-height:12px;max-height:12px}.tactical-battle .combat-line.active .battle-lane{gap:0}.tactical-battle .combat-line.active .front-empty{height:60px}}
+@media(min-height:781px) and (max-height:1000px){.tactical-battle{--bench-size:clamp(115px,15dvh,145px);--front-size:clamp(190px,25dvh,240px);--hand-size:clamp(125px,16dvh,150px)}}
+
+/* An original forest sanctuary replaces the flat blue surround. */
+.hub:has(.tactical-battle){background:transparent;padding:8px 16px 12px}
+.tactical-battle{--bench-size:clamp(125px,19dvh,184px);--front-size:clamp(190px,31dvh,298px);--hand-size:clamp(126px,19dvh,180px)}
+.tactical-battle .turn-strip{border:1px solid #b29b6a99;border-radius:8px;background:linear-gradient(90deg,#1b261adb,#3b3021c9 50%,#132c27df);padding:0 8px}
+.tactical-battle .battle-reference summary{position:relative;display:grid;place-items:center;width:40px;height:40px;padding:0;color:#f5d99d;background:#20352dcc;border:1px solid #b79c67;border-radius:50%;list-style:none;cursor:pointer}
+.tactical-battle .battle-reference summary::-webkit-details-marker{display:none}
+.tactical-battle .battle-reference summary .icon{width:22px;height:22px}
+.tactical-battle .battle-reference summary .menu-count{position:absolute;right:-3px;top:-3px;display:grid;place-items:center;min-width:16px;height:16px;padding:0 4px;border:1px solid #f1d28c;border-radius:9px;background:#824638;color:#fff0cf;font-size:9px}
+.tactical-battle .battle-reference-content{width:min(410px,92vw);background:#1b291feF;border-color:#c3a772}
+.tactical-battle .battle-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #b59d6a77}
+.tactical-battle .battle-options>.button{min-height:34px;padding:5px;font-size:10px}
+.tactical-battle .battle-options>[data-action="battle-concede"]{color:#ffd2bd;border-color:#a86b50}
+.tactical-battle .training-options{grid-column:1/-1;display:grid;grid-template-columns:1fr;gap:6px;margin-top:3px}
+.tactical-battle .training-options .mode-choice,.tactical-battle .training-options .new-game{display:flex;align-items:center;gap:7px;min-width:0;font-size:11px}
+.tactical-battle .training-options select{min-width:0;flex:1}
+.tactical-battle .training-options input{width:112px;padding:6px}
+.tactical-battle .training-options .new-game .button{min-height:32px;padding:5px 9px}
+.tactical-battle .training-options .hero-picker{font-size:11px}
+.tactical-battle .battle-table{background:linear-gradient(180deg,#6b3b2866 0 40%,#96774a33 49%,#2a745d66 60% 100%);border:2px solid #b6a06d;box-shadow:0 0 0 4px #1a2818a8,0 12px 30px #050e0ad9,inset 0 0 38px #100e0d6b}
+.tactical-battle .player-field.p2{background:linear-gradient(180deg,#70412c88,#462d2455)}
+.tactical-battle .player-field.p1{background:linear-gradient(0deg,#145644b0,#1b584666)}
+.tactical-battle .combat-line.resting{background:linear-gradient(180deg,#4b301a33 0 49%,#edc57799 50%,#174d3e44 51% 100%);border-color:#dac38a}
+.tactical-battle .combat-line.active{background:linear-gradient(180deg,#6d392554,#155a4655);border-color:#d7b875}
+.tactical-battle .opponent-hand{background:linear-gradient(180deg,#463822dd,#1e291ecc);border-color:#b79e6d}
+.tactical-battle .hand-section{background:linear-gradient(180deg,#1c4839e6,#152c24ef);border-color:#a9b88d}
+.tactical-battle .player-resources{background:#1c3026ec;border-color:#9caf80}
+.tactical-battle .p2 .player-resources{background:#493324ec;border-color:#c49762}
+.tactical-battle .action-panel{background:linear-gradient(145deg,#364c36ee,#1c2d23f2);border-color:#bca36e;box-shadow:0 0 0 4px #18251bbb,0 8px 24px #050e0a99}
+.tactical-battle .action-panel>.button.primary,.tactical-battle .action-panel:not(:has(.button.primary))>.button[data-action="pass"]{background:radial-gradient(circle at 38% 28%,#80d3a4,#247b5c 54%,#153e36);box-shadow:0 0 0 4px #20372b,0 0 0 6px #c29d63,0 0 22px #75cc8c77,inset 0 0 12px #c7f4b077}
+@media(min-width:761px) and (max-height:780px){.tactical-battle{--bench-size:120px;--front-size:190px;--hand-size:130px}.tactical-battle .combat-line.active .unit-face{height:56px;min-height:56px}.tactical-battle .action-panel{top:calc(32px + 36px + var(--bench-size) + 15px);height:174px;justify-content:flex-start}}
+@media(min-height:781px) and (max-height:1000px){.tactical-battle{--bench-size:clamp(150px,19dvh,184px);--front-size:clamp(245px,31dvh,298px);--hand-size:clamp(150px,19dvh,180px)}}

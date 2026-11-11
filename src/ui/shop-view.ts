@@ -1,4 +1,4 @@
-import {art,esc,icon} from './html.js';
+import {art,esc,icon,korakoinIcon} from './html.js';
 import {runCatalog} from '../run/run.js';
 import {improvements,improveDefinition} from '../run/improvements.js';
 import {offerPrice,offerError,type ShopOffer} from '../run/shops.js';
@@ -10,7 +10,7 @@ export function renderShop(r:RunState,deck='',error=''){const s=r.shops[r.map!.c
  const services=s.offers.filter(o=>o.kind!=='card'&&o.kind!=='improvement');
  return `<main class="expedition-shop">
   <header class="shop-heading"><div><p class="eyebrow">PARADA DA AVENTURA</p><h1>Loja ${s.type==='standard'?'padrão':'especializada'}</h1></div>
-  <div class="shop-wallet"><strong>◆ ${r.coins} Korakacoins</strong><small>Vínculo ${r.nexus}/${r.maxNexus} · Reviver ${r.revives}/5</small></div></header>
+  <div class="shop-wallet"><strong>${korakoinIcon()} ${r.coins} Korakacoins</strong><small>Vínculo ${r.nexus}/${r.maxNexus} · Reviver ${r.revives}/5</small></div></header>
   <div class="shop-scroll">
    ${error?`<p role="alert" class="shop-error">${esc(error)}</p>`:''}
    <section aria-label="Cartas e melhorias"><h2>Cartas e melhorias</h2><p>Cartas entram em pares. Cada identidade aceita até três melhorias.</p>

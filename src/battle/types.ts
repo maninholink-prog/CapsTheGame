@@ -11,6 +11,8 @@ export interface BoardUnit {
   triggerRounds?: Record<string,number>; fireShields?: {owner:PlayerId; round:number; bonus:number}[];
   sanctuary?:boolean;
   keywords?: Keyword[]; roundAttackBonus?: number; firstEquipRound?: number;
+  timedAttackLoss?: {until:number;amount:number}[];
+  combatAttackBonus?:number;
 }
 export interface CombatLane { laboratoryUsedWeapons?:string[];laboratoryAfterAttack?:boolean;laboratoryBlocked?:boolean; talentFirstWeapon?:string; talentPrepared?:boolean; attackerId: string; blockerId: string | null; blocked: boolean; brokeBlock?:boolean; weapons: (string | null)[] }
 export interface CombatState { awaitingBlocks?:boolean; pendingBlockers?:string[]; laneIndex?:number; strikeIndex?:number; attacker: PlayerId; stage: 'blocking' | 'triggers' | 'responses'; lanes: CombatLane[] }
@@ -47,7 +49,7 @@ export interface AllyProgress { upgrades: number; fire: number; fireRound: numbe
 export interface UpgradeChoice { remaining?:number; owner: PlayerId; options: string[] }
 export interface ExpansionProgress {deaths:number;stolen:number;music:number;executions:number;musicRound?:number;kuaraRound?:number;lazaroRound?:number}
 export interface BattleState {
-  relicState?:import('./relics.js').BattleRelics; encounter?:import('./encounters.js').EncounterState;laboratory?:import('./laboratory.js').LaboratoryState;laboratoryChoices?:{owner:PlayerId;sourceId:string;options:string[]}[]; publicDeckCounts?:Record<PlayerId,number>;
+  relicState?:import('./relics.js').BattleRelics; encounter?:import('./encounters.js').EncounterState;laboratory?:import('./laboratory.js').LaboratoryState;laboratoryChoices?:{owner:PlayerId;sourceId:string;options:string[];kind?:'cannon'|'salvage'}[]; publicDeckCounts?:Record<PlayerId,number>;
   talentLoadouts?:Partial<Record<PlayerId,TalentId[]>>;talentState?:Partial<Record<PlayerId,TalentBattleState>>;
   heroProgress?:Record<PlayerId,ExpansionProgress>;formChoices?:{owner:PlayerId;unitId:string}[];
   executionMarks?:Partial<Record<PlayerId,{sourceId:string;targetId:string}>>;

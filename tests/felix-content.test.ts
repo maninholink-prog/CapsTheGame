@@ -10,10 +10,10 @@ describe('approved Félix encounter content',()=>{
   for(const id of new Set(Object.values(enemyDeckLists).flat())){const c=felixCatalog[id];expect(c.enemyOnly).toBe(true);expect(c.regions).toHaveLength(1);}
   for(const id of ['labotomia','tornado','dianamite','felix'])expect(felixCatalog[`enemy-${id}`]).toMatchObject({unique:true,encounterSpecial:id});
  });
- it('reproduces the eight matrix lists with exactly two copies per identity',()=>{
+ it('keeps the encounter lists at their approved sizes with two copies per identity',()=>{
   for(const [variant,list] of Object.entries(enemyDeckLists)){
    const deck=createEnemyDeck(variant as keyof typeof enemyDeckLists,'test');
-   expect(list).toHaveLength(['patrol','cryo','unstable'].includes(variant)?10:['felix','king'].includes(variant)?15:13);
+   expect(list).toHaveLength(['felix','king'].includes(variant)?15:['labotomia','tornado','dianamite'].includes(variant)?13:10);
    expect(new Set(list).size).toBe(list.length);expect(deck).toHaveLength(list.length*2);
    expect(new Set(deck.map(c=>c.instanceId)).size).toBe(deck.length);
    for(const id of list)expect(deck.filter(c=>c.definitionId===id)).toHaveLength(2);

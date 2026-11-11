@@ -1,6 +1,9 @@
 import {attachRelics} from '../battle/relics.js';
 import type {RunRelics} from './relics.js';
 import {createEnemyDeck} from '../content/felix.js';
+import {createCaveiraDeck,isCaveiraDeck} from '../content/caveira.js';
+import type {CaveiraDeck} from '../content/caveira.js';
+import type {AdventureId} from './caveira-adventure.js';
 import type {EnemyDeckVariant} from '../content/felix.js';
 import {initEncounter} from '../battle/encounters.js';
 import {applyBattleTalents} from '../battle/kylast-talents.js';
@@ -24,19 +27,24 @@ import type {Champion,Region} from '../content/schema.js';
 import type {BattleState,CardInstance} from '../battle/types.js';
 export const runCatalog=fullCatalog;
 export const packages:Record<string,string[]>={...expansionPackages,kylast:['kylast','sword-kylast','joia-rubra'],abe:['abe','aranha','project'],arcata:['arcata','fire-bolt','burning-hands'],rubel:['rubel','healing-word','prayer']};
-export interface RunState {relicRun?:RunRelics;adventure?:'dr-felix';encounters?:Record<string,EnemyDeckVariant>;talents?:TalentId[];difficulty?:Difficulty;collection?:string[];coins:number;coinsEarned:number;coinsSpent:number;lastCoins:number;improvements:Record<string,ImprovementId[]>;shops:Record<string,ShopState>;map?:MapProgress;checkpoint?:RunSnapshot;entry?:RunSnapshot;revives:number;revivesSpent:number;seed:number;rngState:number;battle:number;battleSeed:number;stage:'relic'|'battle'|'recruit'|'reward'|'ready'|'won'|'lost'|'map'|'event'|'defeat'|'shop';deck:CardInstance[];group:Champion[];regions:Region[];nexus:number;maxNexus:number;allies:string[];rewards:string[];}
+export interface RunState {relicRun?:RunRelics;adventure?:AdventureId;encounters?:Record<string,EnemyDeckVariant|CaveiraDeck>;caveiraHint?:true;caveiraAftermath?:'chart'|'cove'|'battle'|'won'|'lost';talents?:TalentId[];difficulty?:Difficulty;collection?:string[];coins:number;coinsEarned:number;coinsSpent:number;lastCoins:number;improvements:Record<string,ImprovementId[]>;shops:Record<string,ShopState>;map?:MapProgress;checkpoint?:RunSnapshot;entry?:RunSnapshot;revives:number;revivesSpent:number;seed:number;rngState:number;battle:number;battleSeed:number;stage:'relic'|'battle'|'recruit'|'reward'|'ready'|'won'|'lost'|'map'|'event'|'defeat'|'shop';deck:CardInstance[];group:Champion[];regions:Region[];nexus:number;maxNexus:number;allies:string[];rewards:string[];}
 export function createRun(seed:number,protagonist:Champion='kylast'):RunState {
  if(!Number.isInteger(seed)||seed<0||seed>0xffffffff)throw Error('Invalid run seed');
  return {coins:0,coinsEarned:0,coinsSpent:0,lastCoins:0,improvements:{},shops:{},revives:0,revivesSpent:0,seed,rngState:seed,battle:1,battleSeed:seed,stage:'battle',deck:createProtagonistDeck(protagonist,'run'),group:[protagonist],regions:[...runCatalog[protagonist].regions!],nexus:20,maxNexus:20,allies:[],rewards:[]};
 }
 function battleId(r:RunState){return `run-${r.seed}-battle-${r.battle}-${r.battleSeed}`;}
+export function encounterHealth(r:RunState,nodeId:string){
+ const kind=r.map?.nodes.find(node=>node.id===nodeId)?.kind;
+ return difficultyRules[r.difficulty??'common'].enemyNexus[kind==='finalboss'?2:kind==='midboss'||r.encounters?.[nodeId]==='caveira-megalodon'?1:0];
+}
 export function runBattle(r:RunState):BattleState {
  if(r.stage!=='battle')throw Error('Battle unavailable');
  const variants=battleVariants(runCatalog,r.improvements);
- const encounter=r.adventure==='dr-felix'?r.encounters?.[r.map?.current??'']:undefined;
- const enemy=encounter?createEnemyDeck(encounter,`-p2`):createKylastDeck(`-p2`);
+ const nodeId=r.map?.current??'';
+ const encounter=r.caveiraAftermath==='battle'?'caveira-captain':r.adventure?r.encounters?.[nodeId]:undefined;
+ const enemy=isCaveiraDeck(encounter)?createCaveiraDeck(encounter):encounter?createEnemyDeck(encounter,'-p2'):createKylastDeck('-p2');
  const b=createBattle({p1:r.deck.map((c,i)=>({...c,definitionId:variants.aliases[c.definitionId]??c.definitionId,instanceId:`${battleId(r)}-p1-${i}`})),p2:enemy},r.battleSeed,variants.definitions);
- const kind=r.map?.nodes.find(n=>n.id===r.map!.current)?.kind;const enemyNexus=difficultyRules[r.difficulty??'common'].enemyNexus[kind==='midboss'?1:kind==='finalboss'?2:0];b.players.p2.nexus=enemyNexus;b.players.p2.maxNexus=enemyNexus;
+ const enemyNexus=encounterHealth(r,nodeId);b.players.p2.nexus=enemyNexus;b.players.p2.maxNexus=enemyNexus;
  applyBattleTalents(b,'p1',r.talents??[]);
  b.runAliases={p1:variants.aliases,p2:{}};
  b.runBattleId=battleId(r);if(encounter)initEncounter(b,encounter,enemyNexus);b.players.p1.nexus=r.nexus;b.players.p1.maxNexus=r.maxNexus;if(r.relicRun)attachRelics(b,r.relicRun.active);return b;
@@ -47,11 +55,16 @@ export function eligible(r:RunState,id:string){const d=runCatalog[id];return !!d
 function sample(r:RunState,ids:string[]){const x=shuffle(ids,r.rngState);r.rngState=x.state;return x.items.slice(0,3);}
 export function finishBattle(r:RunState,b:BattleState):RunState {
  if(r.stage!=='battle'||b.phase!=='ended'||b.runBattleId!==battleId(r)||!b.winner)throw Error('Invalid battle completion');
+ if(r.caveiraAftermath==='battle')return {...structuredClone(r),stage:'won',caveiraAftermath:b.winner==='p2'?'lost':'won'};
  const n=structuredClone(r);n.nexus=Math.max(b.winner==='draw'?1:0,b.players.p1.nexus);n.maxNexus=b.players.p1.maxNexus;
  if(b.winner==='p2'){n.stage=n.map&&n.revives>0?'defeat':'lost';if(n.stage==='lost')n.coins=0;return n;}
  grantCoins(n,battleCoins(n));
  markVisited(n);
- if(n.map?n.map.nodes.find(x=>x.id===n.map!.current)?.kind==='finalboss':n.battle===3){n.stage='won';n.coins=0;n.revives=0;n.entry=undefined;return n;}
+ if(n.map?n.map.nodes.find(x=>x.id===n.map!.current)?.kind==='finalboss':n.battle===3){
+  n.stage='won';n.coins=0;n.revives=0;n.entry=undefined;
+  if(n.adventure==='caveira-dourada')n.caveiraAftermath='chart';
+  return n;
+ }
  if(n.battle===1){n.allies=sample(n,Object.keys(packages).filter(id=>!n.group.includes(id as Champion)));n.stage='recruit';}
  else {n.rewards=offerRewards(n);n.stage='reward';}
  return n;

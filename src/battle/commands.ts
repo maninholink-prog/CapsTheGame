@@ -1,5 +1,6 @@
 import {finishEncounterResolution} from './encounters.js';
 import {chooseTornado,useSurgery} from './lab-specials.js';
+import {chooseCaveira} from './caveira.js';
 import { chooseUpgrade } from './champions.js';
 import {chooseForm} from './expansion.js';
 import { nextInt, shuffle } from './random.js';
@@ -16,6 +17,7 @@ import { prepareAttackEffects } from './attack-triggers.js';
 import type { BattleEvent, BattleState, PlayerId, Result } from './types.js';
 
 export type Command = | {type:'chooseTornado';player:PlayerId;targetId:string} | {type:'surgery';player:PlayerId;targetId:string}
+  | {type:'chooseCaveira';player:PlayerId;targetId:string}
   | {type:'chooseForm';player:PlayerId;form:'bear'|'tiger'}
   | { type: 'mulligan'; player: PlayerId; instanceIds: string[] }
   | { type: 'start' }
@@ -27,8 +29,9 @@ export function applyCommand(state:BattleState,command:Command):Result {const r=
 function applyInternal(state: BattleState, command: Command): Result {
   const invalid = (error: string): Result => ({ ok: false, state, error });
   if (state.phase === 'ended') return invalid('Battle ended');
-  if(command.type==='chooseTornado'){const next=structuredClone(state),events:BattleEvent[]=[];return chooseTornado(next,command.player,command.targetId,events)?{ok:true,state:next,events}:invalid('Invalid Tornado target');}
-  if(state.laboratoryChoices?.length)return invalid('Tornado choice required');
+  if(command.type==='chooseTornado'&&!state.laboratoryChoices?.[0]?.kind){const next=structuredClone(state),events:BattleEvent[]=[];return chooseTornado(next,command.player,command.targetId,events)?{ok:true,state:next,events}:invalid('Invalid Tornado target');}
+  if(command.type==='chooseCaveira'){const next=structuredClone(state),events:BattleEvent[]=[];return chooseCaveira(next,command.player,command.targetId,events)?{ok:true,state:next,events}:invalid('Invalid encounter target');}
+  if(state.laboratoryChoices?.length)return invalid('Encounter choice required');
   if(command.type==='chooseForm'){const next=structuredClone(state),events:BattleEvent[]=[];return chooseForm(next,command.player,command.form,events)?{ok:true,state:next,events}:invalid('Invalid form choice');}
   if(state.formChoices?.length)return invalid('Form choice required');
   if (command.type === 'chooseUpgrade') {

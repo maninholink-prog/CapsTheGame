@@ -1,5 +1,5 @@
 import {shuffle} from '../battle/random.js';
-export type EventKind='rest'|'supplies'|'rescue'|'shop-standard'|'shop-specialized';
+export type EventKind='rest'|'supplies'|'rescue'|'shop-standard'|'shop-specialized'|'caveira-trial';
 export interface MapNode {id:string;kind:'battle'|'event'|'midboss'|'finalboss';event?:EventKind;next:string[];row:number;column:number;}
 export interface MapProgress {nodes:MapNode[];current:string|null;visited:string[];}
 export function commonMap(seed:number):MapProgress {

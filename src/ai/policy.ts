@@ -88,7 +88,18 @@ function gearScore(o: AiObservation, state: BattleState, def: Extract<CardDefini
 export function chooseAiCommand(observation: AiObservation): AiDecision | null {
   const o = observation;
   if (o.phase === 'ended') return null;
-  if(o.laboratoryChoices?.length){const c=o.laboratoryChoices[0];const candidates=o.players[opponent(c.owner)].board.filter(u=>c.options.includes(u.card.instanceId)).sort((a,b)=>b.attack-a.attack);return c.owner===o.self&&candidates[0]?{command:{type:'chooseTornado',player:o.self,targetId:candidates[0].card.instanceId},reason:'Reduzir o ataque de uma ameaça visível.'}:null;}
+  const encounterChoice=o.laboratoryChoices?.[0];
+  if(encounterChoice){
+    if(encounterChoice.owner!==o.self)return null;
+    if(encounterChoice.kind==='salvage'){
+      const target=o.players[o.self].discard.find(card=>encounterChoice.options.includes(card.instanceId));
+      return {command:{type:'chooseCaveira',player:o.self,targetId:target?.instanceId??''},reason:'Recuperar um equipamento do descarte.'};
+    }
+    const cannon=encounterChoice.kind==='cannon';
+    const candidates=o.players[opponent(o.self)].board.filter(unit=>encounterChoice.options.includes(unit.card.instanceId));
+    candidates.sort((a,b)=>(cannon?Number(b.health===1)-Number(a.health===1):0)||b.attack-a.attack);
+    return candidates[0]?{command:{type:cannon?'chooseCaveira':'chooseTornado',player:o.self,targetId:candidates[0].card.instanceId},reason:cannon?'Disparar contra uma ameaça visível.':'Reduzir o ataque de uma ameaça visível.'}:null;
+  }
   if(o.formChoices?.length){const c=o.formChoices[0];const u=o.players[c.owner].board.find(u=>u.card.instanceId===c.unitId);return c.owner===o.self?{command:{type:'chooseForm',player:o.self,form:u&&(u.health<=(u.form==='bear'?u.formPower??2:2)||o.attackOwner!==o.self)?'bear':'tiger'},reason:'Escolher forma usando o campo público.'}:null;}
   if(o.choices?.length){const c=o.choices[0];return c.owner===o.self?{command:{type:'chooseUpgrade',player:o.self,definitionId:c.options[0]},reason:'Fabricar um Upgrade disponível.'}:null;}
   if (o.phase === 'opening') {
@@ -136,7 +147,7 @@ export function chooseAiCommand(observation: AiObservation): AiDecision | null {
         const entry=entryRule(def);const targets=entry?entryTargets(state,o.self,card):[];
         const options=entry?[...(entry.min===0?[[]]:[]),...targets.map(t=>[t])]:[[]];
         for(const chosen of options)add({type:'play',player:o.self,instanceId:card.instanceId,...(replacement?{replaceUnitId:replacement}:{}),targets:chosen},
-          (unitValue(state,unit)-(old?unitValue(state,old):0))*1.3-def.cost*.15+(def.entrySpell==='gwen-entry'&&chosen.length?-1:0),'Desenvolver o campo com uma unidade útil.');
+          (unitValue(state,unit)-(old?unitValue(state,old):0))*1.3-def.cost*.15+(chosen.length?(def.entrySpell==='gwen-entry'?-1:def.entrySpell==='caveira-bite'?2:0):0),'Desenvolver o campo com uma unidade útil.');
       }
     } else {
       if(def.target.max===0){add({type:'play',player:o.self,instanceId:card.instanceId,targets:[]},def.effect.type==='fabricate'?3:def.effect.type==='fire-boost'?1:def.area?4:def.effect.type==='steal'?4:def.effect.type==='summon'?5:0,'Usar magia sem alvo escolhido.');continue;}

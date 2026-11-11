@@ -79,7 +79,10 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
           if(effect.type==='execute'&&(!marked||mark!.sourceId!==pending.abilitySourceId))continue;
           const amount=marked?unit.health:3;unit.health=Math.max(0,unit.health-amount);recordDamage(next,target,pending.owner);events.push({type:'damageApplied',target,amount});
           talentDamage(next,target.player,unit,amount,events);
-        } else if(effect.type==='weaken'&&unit){addAttack(unit,-Math.min(Math.max(0,unit.attack),effect.amount),true);
+        } else if(effect.type==='weaken'&&unit){
+          const loss=Math.min(Math.max(0,unit.attack),effect.amount);
+          addAttack(unit,-loss,!effect.nextRound);
+          if(effect.nextRound)(unit.timedAttackLoss??=[]).push({until:next.round+1,amount:loss});
         } else if(effect.type==='keyword'&&unit){unit.keywords??=[];if(!unit.keywords.includes(effect.keyword)){unit.keywords.push(effect.keyword);if(effect.temporary)(unit.temporaryKeywords??=[]).push(effect.keyword);}
         } else if (effect.type === 'heal') {
           const amount=effect.amount*(championUnit(next,pending.owner,'rubel')?.evolved?2:1)+rubelHealBonus(next,pending,definition,target);

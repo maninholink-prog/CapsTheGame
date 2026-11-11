@@ -53,3 +53,43 @@ Aprovada pelo autor nesta conversa. O histórico distingue Aventura e Treino. O 
 ## INICIO-01 — Cenários e ícone Windows — 04/11/2026
 
 O autor aprovou nesta conversa a alternância entre o cenário do dragão de jade e o cânion em brasa. A alternância foi implementada por abertura, com a escolha persistida separadamente do save. Para o executável, o autor escolheu o ícone A, com o dragão de jade e a carta dourada.
+
+## REGIOES-01 — Símbolos das cartas — 05/11/2026
+
+Status: aprovado. Fonte: autor nesta conversa, “Aprovados os icones”, após apresentação da prancha com cinco conceitos. Norte: montanha e vento; Oeste: dragão e bigorna; Sul: árvore de raízes entrelaçadas; Leste: torre de três pontas; Korakarom: dragão azul curvado com chamas ciano, baseado na imagem fornecida pelo autor. Aprovação visual para o jogo; não estabelece brasões históricos do RPG nem altera regiões mecânicas. Prancha original preservada em [approved-symbols.png](../public/art/regions/approved-symbols.png). Versões monocromáticas da própria prancha usadas nos indicadores pequenos, conservando os desenhos aprovados.
+
+## HEROIS-VISUAL-01 — Retratos e escolha por imagens — 05/11/2026
+
+Status: solicitado pelo autor, implementação pendente. Fonte: mensagem “ja fica o registro”, acompanhada de captura de Preparar aventura. O autor quer retratos dos heróis junto aos seus nomes nos painéis dessa tela e que a escolha de protagonistas use imagens, em vez de lista textual. Preservar nomes para identificação, bloqueios/desbloqueios e comportamento existente; reaproveitar imagens aprovadas disponíveis, sem inventar aparência para personagens sem arte aprovada. A captura documenta a preparação da aventura; outros seletores devem ser identificados antes da aplicação, sem presumir redesenho das demais escolhas (dificuldade/relíquia). Este registro não implementa nem valida a alteração e não retoma a revisão geral da interface.
+
+## FELIX-ENCONTROS-01 — Ampliação dos encontros comuns — 09/11/2026
+
+O autor aprovou nesta conversa (“Pode”) Oficina de Bobinas, Enfermaria Experimental e Câmara de Descarga para variar as batalhas comuns do Dr. Félix. A seleção das novas jornadas passa de três para seis encontros comuns, com 20 cartas por deck e até duas cópias por identidade. As listas usam cartas existentes e os nomes são rótulos de jogo. As jornadas salvas preservam seus encontros. O catálogo aprovado de [inimigos e chefes](../design/INIMIGOS_E_CHEFES.md) é a referência para cartas de futuras aventuras do jogo. Seus efeitos e atributos ainda exigem definição.
+
+## BALANCEAMENTO-01 — Revisão final das cartas — 09/11/2026
+
+O autor decidiu nesta conversa deixar o balanceamento das cartas para a etapa final do desenvolvimento do jogo.
+
+## CAVEIRA-DOURADA-01 — Rota secreta e lotes de cartas — 09/11/2026
+
+O autor escolheu a Caveira Dourada como próxima aventura do jogo, com o Capitão Osso Roído como batalha secreta. A prova oferece uma pista opcional. O autor pediu manter os dois lotes de cartas, acrescentar Tubarão e Megalodonte e estender a maldição até o próximo turno. Efeitos e atribuições propostos para as criaturas estão em [Aventura da Caveira Dourada](../design/AVENTURA_CAVEIRA_DOURADA.md).
+
+## Classificação atual da versão — 11/11/2026
+
+Na consulta do autor sobre Alpha ou Beta, a classificação exibida para o estágio atual é **Alpha · v0.1.0**. Base observável: `package.json` e `desktop/package.json` usam `0.1.0`; o leia-me do executável chama o produto de protótipo; ainda há conteúdo em desenvolvimento e a revisão de balanceamento foi deixada para a etapa final ([BALANCEAMENTO-01](#balanceamento-01--revisão-final-das-cartas--09112026)). A versão semântica continua `0.1.0`; o sufixo Alpha indica estágio de desenvolvimento, não altera os metadados do pacote. É uma classificação do estágio atual, sujeita a revisão quando o autor decidir mudar de fase.
+
+## DEC-011 — Faixa global removida e fonte de exibição original — 11/11/2026
+
+Aprovada pelo autor nesta conversa: remover de todas as telas a faixa superior global que mostrava C.A.P.S., Pedras Filosofais e estado do perfil, sem criar outra faixa substituta; a tela inicial mantém seus controles próprios já aprovados. A tipografia de identidade será uma fonte de exibição original para títulos, nomes e chamadas; Segoe UI permanece no corpo e nos textos longos. A direção solicitada é épica, serifada, de fantasia, inspirada em Legends of Runeterra, Dungeons & Dragons e O Senhor dos Anéis, sem copiar letras ou artes dessas referências. A fonte cobre letras básicas, acentos portugueses, cedilha, números e pontuação usada na interface. Os símbolos regionais aprovados continuam preservados. Implementação local e verificações desta etapa em [PROGRESS](PROGRESS.md#faixa-tipografia-e-perfil--11112026); fonte editável em [build_caps_display.py](../tools/fonts/build_caps_display.py), saída em [caps-display.ttf](../public/fonts/caps-display.ttf) e proposta aprovada em [especificação](superpowers/specs/2026-11-11-identidade-tipografica-e-perfil-design.md).
+
+## DEC-012 — Fundo contínuo, símbolos de navegação e Korakoin — 11/11/2026
+
+O autor pediu preencher o fundo da aplicação em todos os tamanhos com uma nova imagem temática, sem áreas lisas vazias; criar ícones de identidade para a navegação principal e as seções do Perfil; retirar a faixa informativa superior da batalha, usando a engrenagem como menu e mantendo os indicadores laterais; e criar uma moeda de Korakoins com o símbolo aprovado de Korakarom ao centro. A composição visual deve seguir a identidade original jade/cobre. A moeda reutiliza o recorte do símbolo aprovado em [approved-symbols.png](../public/art/regions/approved-symbols.png); nenhuma região ou regra monetária foi alterada. Ver implementação e verificação em [PROGRESS](PROGRESS.md#fundo-ícones-e-moeda-korakoin--11112026).
+
+## DEC-013 — Retorno tipográfico e moeda ilustrada — 11/11/2026
+
+Correção solicitada pelo autor após a implementação de DEC-011: a fonte C.A.P.S. Display não agradou e deve ser removida. A interface retorna à tipografia anterior, Georgia nos títulos e Segoe UI no corpo; esta instrução substitui a decisão anterior sobre criar/aplicar fonte original. Para Korakoins, o autor pediu uma imagem no estilo da Pedra Filosofal. A moeda passa a usar arte ilustrada jade/cobre em `public/art/korakoin.png`, com o símbolo aprovado de Korakarom sobreposto ao centro, sem mudar a moeda ou suas regras.
+
+## DEC-014 — Exclusão de saves temporários de QA — 11/11/2026
+
+O autor autorizou excluir saves sem preocupação para concluir as conferências Windows. Escopo operacional deste registro: saves gerados pela instância portátil temporária e isolada de QA desta tarefa. Não inclui o perfil da instalação normal, saves do autor fora do QA, backups ou outros dados. O perfil temporário foi configurado sob `%TEMP%\CAPS-QA-profile-20261111`; a autorização não é uma política geral de retenção.

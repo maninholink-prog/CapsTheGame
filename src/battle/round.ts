@@ -29,6 +29,15 @@ export function advanceRound(state: BattleState): Result {
     unit.fireShields=[];
     unit.attack -= unit.roundAttackBonus ?? 0;
     delete unit.roundAttackBonus;
+    if(unit.timedAttackLoss){
+      for(const curse of unit.timedAttackLoss)unit.attack+=curse.amount;
+      unit.timedAttackLoss=unit.timedAttackLoss.filter(curse=>curse.until>=next.round);
+      for(const curse of unit.timedAttackLoss){
+        curse.amount=Math.min(Math.max(0,unit.attack),curse.amount);
+        unit.attack-=curse.amount;
+      }
+      if(!unit.timedAttackLoss.length)delete unit.timedAttackLoss;
+    }
     if ((unit.stunnedUntilRound ?? Infinity) < next.round) delete unit.stunnedUntilRound;
   }
   const drawn = drawOne(next, next.attackOwner);

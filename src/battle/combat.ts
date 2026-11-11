@@ -9,6 +9,7 @@ import { strikes, canBlock } from './champions.js';
 import { opponent } from './types.js';
 import { settle } from './state-events.js';
 import { requiredBanjos } from './attack-triggers.js';
+import {caveiraAttack,caveiraBlocked,endCaveiraCombat,guardBlocks} from './caveira.js';
 import type { BattleEvent, BattleState, CombatLane, PlayerId, Result } from './types.js';
 
 export interface AttackCommand { type: 'attack'; player: PlayerId; attackers: { unitId: string; weapons?: (string | null)[] }[] }
@@ -45,7 +46,8 @@ export function declareAttack(state: BattleState, command: AttackCommand): Resul
   const events:BattleEvent[]=[{type:'attackDeclared',player:command.player,attackerIds:lanes.map(l=>l.attackerId)}];
   for(const lane of next.combat!.lanes){const u=next.players[command.player].board.find(u=>u.card.instanceId===lane.attackerId)!;if(next.definitions[u.card.definitionId].encounterSpecial==='dianamite')u.attack++;}
   laboratoryAttack(next,command.player,next.combat!.lanes,events);
-  if(next.stack.length){next.combat!.stage='responses';next.combat!.awaitingBlocks=true;}
+  caveiraAttack(next,next.combat!);
+  if(next.stack.length||next.laboratoryChoices?.length){next.combat!.stage='responses';next.combat!.awaitingBlocks=true;}
   return {ok:true,state:next,events};
 }
 
@@ -68,13 +70,14 @@ export function declareBlocks(state: BattleState, command: BlockCommand): Result
     const lane = next.combat!.lanes.find(l => l.attackerId === entry.attackerId)!;
     lane.blockerId = entry.blockerId;
     lane.blocked = true;
+    guardBlocks(next,next.players[command.player].board.find(unit=>unit.card.instanceId===entry.blockerId)!);
   }
   next.combat!.stage = requiredBanjos(next).length ? 'triggers' : 'responses';
   next.priorityOwner = combat.attacker;
   next.consecutivePasses = 0;
   const events:BattleEvent[]=[{type:'blocksDeclared',player:command.player}];
   if(next.combat!.stage==='triggers')next.combat!.pendingBlockers=command.assignments.map(x=>x.blockerId);
-  else {narrativeBlock(next,command.player,command.assignments.map(x=>x.blockerId),events);laboratoryBlocked(next,next.combat!,events);}
+  else {narrativeBlock(next,command.player,command.assignments.map(x=>x.blockerId),events);laboratoryBlocked(next,next.combat!,events);caveiraBlocked(next,next.combat!,events);}
   if(next.combat!.stage==='triggers')next.priorityOwner=combat.attacker;
   return {ok:true,state:next,events};
 }
@@ -148,6 +151,7 @@ export function resolveCombat(state: BattleState): Result {
     laboratoryAfterAttack(next,combat,events);
     for(const lane of combat.lanes){const u=next.players[combat.attacker].board.find(u=>u.card.instanceId===lane.attackerId&&u.health>0);if(u&&next.definitions[u.card.definitionId].encounterSpecial==='dianamite'){const id=next.nextEffectId++;next.stack.push({id,owner:combat.attacker,source:{definitionId:'lab-dianamite-recoil',instanceId:`recoil-${id}`,generated:true},targets:[{kind:'unit',player:combat.attacker,instanceId:u.card.instanceId}],mode:'ability'});next.stackReturnOwner??=defender;next.priorityOwner=defender;next.responseWindowOpened=true;events.push({type:'effectQueued',effectId:id});}}
   }
+  endCaveiraCombat(next);
   next.combat = null;
   next.consecutivePasses = 0;
   if (next.phase !== 'ended') next.priorityOwner = defender;

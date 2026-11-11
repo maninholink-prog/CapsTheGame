@@ -1,5 +1,6 @@
 import {connectSpellTargets} from './spell-targets.js';
-import {protagonistIds} from '../content/decks.js';
+import {fullCatalog,protagonistIds} from '../content/decks.js';
+import {isCaveiraDeck} from '../content/caveira.js';
 import {profileFrames,recordMatch} from '../profile/matches.js';
 import type {ProfileFrame} from '../profile/matches.js';
 import {connectRelicCollection} from './relic-view.js';
@@ -19,23 +20,25 @@ import {buyBooster,openBooster} from '../profile/boosters.js';
 import {startAccount,settleBattle,settleRun} from '../profile/rewards.js';
 import {saveKey,decodeSave,encodeSave,importSave} from '../profile/storage.js';
 import {hubShell,hubContent,onboarding} from './hub.js';
+import {heroPortrait} from './profile-view.js';
 import type {HubPage,HubFilters} from './hub.js';
 import type {Rarity} from '../content/schema.js';
 import {esc} from './html.js';
 import './hub.css';
 import type {Champion} from '../content/schema.js';
 import {buy,leaveShop} from '../run/shops.js';
-import {createMapRun,enterNode,resolveEvent,reviveRun,abandonRun} from '../run/adventure.js';
+import {createMapRun,enterNode,resolveCaveiraMap,resolveEvent,reviveRun,abandonRun} from '../run/adventure.js';
+import {activeAdventure,hasOpenChart} from '../run/caveira-adventure.js';
 import {effectiveDefinition} from '../battle/champions.js';
 import {createRun,runBattle,finishBattle,recruit,reward,nextBattle} from '../run/run.js';
 import type {RunState} from '../run/run.js';
 import {focusMapPosition,renderEncounterPreview} from './map-view.js';
-import {renderRun,runBanner} from './run-view.js';
+import {renderRun} from './run-view.js';
 import './styles.css';
 import './tactical.css';
 import './card-face.css';
 import './battle-polish.css';
-import { createSession, sessionFromBattle, dispatchHuman, actingPlayer } from './session.js';
+import { createSession, sessionFromBattle, dispatchHuman, actingPlayer, concedeSession } from './session.js';
 import { createAiController } from './ai-controller.js';
 import type { BattleSession, OpponentMode } from './session.js';
 import { chooseBlockUnit, chooseDirectTarget, freshDraft, actionCommand, selectedWeapons } from './forms.js';
@@ -91,7 +94,7 @@ function paintScreen(): void {
   persist();
   if(storageIssue){aiController.cancel();root.innerHTML=`<main class="hub"><h1>Salvamento protegido</h1><p class="error" role="alert">${esc(storageIssue)}</p><button class="button" data-action="profile-export">Exportar arquivo preservado</button> <button class="button" data-action="storage-retry">Tentar ler novamente</button><p>Você também pode restaurar um backup válido:</p><input type="file" id="import-save" accept="application/json,.json"/></main>`;return;}
   if(!profile){aiController.cancel();root.innerHTML=onboarding(hubError);return;}
-  if(page!=='battle'){aiController.cancel();root.innerHTML=hubShell(profile,page,run,hubContent(profile,page,run,filters,masteryHero,showMasteryDetails,homeScene,hubError),hubError);return;}
+  if(page!=='battle'){aiController.cancel();root.innerHTML=hubShell(page,hubContent(profile,page,run,filters,masteryHero,showMasteryDetails,homeScene,hubError),hubError);return;}
   const active = document.activeElement instanceof HTMLElement && root.contains(document.activeElement) ? document.activeElement : null;
   const keys = ['data-action', 'data-id', 'data-field', 'data-unit', 'data-strike', 'data-player', 'data-tab', 'data-definition', 'id', 'value'];
   const identity = active ? keys.filter(key => active.hasAttribute(key)).map(key => [key, active.getAttribute(key)!]) : [];
@@ -105,7 +108,7 @@ function paintScreen(): void {
   const intro=(!activeRun||activeRun.stage==='battle')&&session.state.phase==='opening'&&!session.introSeen&&!session.state.players.p1.mulliganUsed&&!session.state.players.p2.mulliganUsed;
   if(intro||battleResult===session){
     aiController.cancel();
-    root.innerHTML=hubShell(profile,'battle',run,intro?renderBattleIntro(session,training):renderBattleResult(session,training),hubError);
+    root.innerHTML=hubShell('battle',intro?renderBattleIntro(session,training):renderBattleResult(session,training),hubError);
     root.querySelector<HTMLElement>('[data-action^="battle-"]')?.focus();
     return;
   }
@@ -114,11 +117,11 @@ function paintScreen(): void {
     root.innerHTML=renderRun(activeRun,session.error);
     return;
   }
-  let body=activeRun&&activeRun.stage!=='battle'?renderRun(activeRun,session.error):render(session,draft,new Set(Object.keys(profile.collection).filter(id=>profile!.collection[id].shiny))).replace('<main',`${activeRun?runBanner(activeRun):''}<main`);
+  let body=activeRun&&activeRun.stage!=='battle'?renderRun(activeRun,session.error):render(session,draft,new Set(Object.keys(profile.collection).filter(id=>profile!.collection[id].shiny)));
   if(activeRun)body=body.replace('Sem salvamento nesta versão · recarregar reinicia o duelo','Aventura salva automaticamente · pause para voltar ao menu');
-  root.innerHTML=hubShell(profile,'battle',run,body,hubError);
-  if(training)root.querySelector('.topbar')?.insertAdjacentHTML('beforeend',protagonistSelector(selectedProtagonist));
-  else {root.querySelector('.new-game')?.remove();root.querySelector('.mode-choice')?.remove();}
+  root.innerHTML=hubShell('battle',body,hubError);
+  if(training)root.querySelector('.training-options')?.insertAdjacentHTML('beforeend',protagonistSelector(selectedProtagonist));
+  else root.querySelector('.training-options')?.remove();
   const reference=root.querySelector<HTMLDetailsElement>('.battle-reference');
   if(reference&&referenceOpen)reference.open=true;
   scrollAreas.forEach((selector,index)=>{
@@ -179,6 +182,8 @@ root.addEventListener('click', event => {
     void toggle.catch(()=>{hubError='Não foi possível alternar a tela cheia.';paint();});
     return;
   }
+  if(action==='profile-customize'){root.querySelector<HTMLDialogElement>('#profile-customization')?.showModal();return;}
+  if(action==='profile-customize-close'){root.querySelector<HTMLDialogElement>('#profile-customization')?.close();return;}
   if(action==='profile-export'){download(storageIssue?rawSave:lastGood,'caps-backup.json');return;}
   if(action==='storage-retry'){location.reload();return;}
   if(storageIssue)return;
@@ -192,28 +197,33 @@ root.addEventListener('click', event => {
         const next=button.dataset.id as HubPage;
         if(!training&&run?.stage==='battle')adventureSession=session;
         if(next==='battle'){if(!run)throw Error('Nenhuma aventura em andamento.');training=false;if(adventureSession)session=adventureSession;}
-        if(next==='mastery')showMasteryDetails=false;
+        if(next==='mastery'){showMasteryDetails=false;if(button.dataset.hero)masteryHero=button.dataset.hero as Champion;}
         if(next==='profile'&&button.dataset.tab)selectViewportTab(next,button.dataset.tab);
         page=next;
       }
       else if(action==='hub-mastery'){masteryHero=button.dataset.id as Champion;showMasteryDetails=true;}
       else if(action==='hub-mastery-back'){showMasteryDetails=false;}
       else if(action==='hub-unlock-test'){profile=unlockPlaytestHeroes(profile);page='adventure';}
-      else if(action==='hub-training'){if(!training&&run?.stage==='battle')adventureSession=session;training=true;session=createSession(crypto.getRandomValues(new Uint32Array(1))[0],'ai',selectedProtagonist);draft=freshDraft();page='battle';}
+      else if(action==='hub-training'){if(!training&&run?.stage==='battle')adventureSession=session;const deck=button.dataset.id??root.querySelector<HTMLSelectElement>('#caveira-training')?.value;training=true;session=createSession(crypto.getRandomValues(new Uint32Array(1))[0],'ai',selectedProtagonist,isCaveiraDeck(deck)?deck:undefined);draft=freshDraft();page='battle';}
       else if(action==='hub-start'){
         const hero=button.dataset.id as Champion;
-        if(run&&!['won','lost'].includes(run.stage))throw Error('Encerre a aventura atual antes de iniciar outra.');
+        if(activeAdventure(run))throw Error('Encerre a aventura atual antes de iniciar outra.');
         if(!profile.collection[hero]?.count)throw Error('Protagonista bloqueado.');
         const initialRelic=root.querySelector<HTMLSelectElement>('#run-relic')?.value??'';if(initialRelic&&!profile.relicCollection?.[initialRelic]?.conquered)throw Error('Conquiste esta relíquia antes de selecioná-la.');
-        selectedProtagonist=hero;run=createMapRun(crypto.getRandomValues(new Uint32Array(1))[0],hero,(root.querySelector<HTMLSelectElement>('#run-difficulty')?.value??'common') as Rarity);run=enableRelics(run,initialRelic||undefined);run.talents=[...(profile.talents?.[hero]??[])];run.collection=Object.keys(profile.collection);profile=startAccount(profile,run,`${now}-${run.seed}`);training=false;adventureSession=null;page='battle';draft=freshDraft();
+        const adventure=root.querySelector<HTMLSelectElement>('#run-adventure')?.value==='caveira-dourada'?'caveira-dourada':'dr-felix';
+        selectedProtagonist=hero;run=createMapRun(crypto.getRandomValues(new Uint32Array(1))[0],hero,(root.querySelector<HTMLSelectElement>('#run-difficulty')?.value??'common') as Rarity,adventure);run=enableRelics(run,initialRelic||undefined);run.talents=[...(profile.talents?.[hero]??[])];run.collection=Object.keys(profile.collection);profile=startAccount(profile,run,`${now}-${run.seed}`);training=false;adventureSession=null;page='battle';draft=freshDraft();
       }
-      else if(action==='hub-abandon'&&run){const coins=run.coins,revives=run.revives;run={...structuredClone(run),stage:'lost',coins:0,revives:0};profile=settleRun(profile,run,coins,revives,now);training=false;page='adventure';}
-      else if(action==='talent-buy')profile=allocateTalent(profile,button.dataset.hero as Champion,button.dataset.id as TalentId,!!run&&!['won','lost'].includes(run.stage),now);
-      else if(action==='talent-reset')profile=resetTalents(profile,button.dataset.hero as Champion,!!run&&!['won','lost'].includes(run.stage),now);
+      else if(action==='hub-abandon'&&run){
+        if(hasOpenChart(run)||run.caveiraAftermath==='battle')run=resolveCaveiraMap(run,'leave');
+        else {const coins=run.coins,revives=run.revives;run={...structuredClone(run),stage:'lost',coins:0,revives:0};profile=settleRun(profile,run,coins,revives,now);}
+        training=false;adventureSession=null;page='adventure';
+      }
+      else if(action==='talent-buy')profile=allocateTalent(profile,button.dataset.hero as Champion,button.dataset.id as TalentId,activeAdventure(run),now);
+      else if(action==='talent-reset')profile=resetTalents(profile,button.dataset.hero as Champion,activeAdventure(run),now);
       else if(action==='booster-buy')profile=buyBooster(profile,button.dataset.id as Rarity,now);
       else if(action==='booster-open')profile=openBooster(profile,button.dataset.id as Rarity,now);
       else if(action==='weekly-claim')profile=claimWeekly(profile,Number(button.dataset.id),now);
-      else if(action==='profile-rename'){const name=root.querySelector<HTMLInputElement>('#rename-profile')!.value.trim();if(!name||name.length>40)throw Error('Use um nome de 1 a 40 caracteres.');const avatar=root.querySelector<HTMLSelectElement>('#profile-avatar')!.value as Champion;
+      else if(action==='profile-rename'){const name=root.querySelector<HTMLInputElement>('#rename-profile')!.value.trim();if(!name||name.length>40)throw Error('Use um nome de 1 a 40 caracteres.');const avatar=root.querySelector<HTMLInputElement>('input[name="profile-avatar"]:checked')?.value as Champion;
         const frame=root.querySelector<HTMLSelectElement>('#profile-frame')!.value as ProfileFrame;
         if(!protagonistIds.includes(avatar)||!profile.collection[avatar]?.count||!Object.hasOwn(profileFrames,frame))throw Error('Escolha um retrato e uma moldura disponíveis.');
         profile={...profile,name,avatar,frame};}
@@ -232,6 +242,17 @@ root.addEventListener('click', event => {
     return;
   }
   if(page!=='battle')return;
+  if(action==='battle-restart'){
+    if(!window.confirm('Reiniciar esta batalha desde a mão inicial?'))return;
+    aiController.cancel();battleResult=null;draft=freshDraft();
+    if(training){const encounter=session.state.encounter?.id;session={...createSession(session.seed,session.opponentMode,selectedProtagonist,isCaveiraDeck(encounter)?encounter:undefined),introSeen:true};}
+    else if(run?.stage==='battle')session={...sessionFromBattle(runBattle(run),run.battleSeed),introSeen:true};
+    paint();return;
+  }
+  if(action==='battle-concede'){
+    if(!window.confirm('Desistir desta batalha? O resultado será uma derrota.'))return;
+    aiController.cancel();receive(concedeSession(session,training&&session.opponentMode==='manual'?session.viewPlayer:'p1'));return;
+  }
   if(action==='battle-intro-continue'){session={...session,introSeen:true};paint();return;}
   if(action==='battle-result-continue'){battleResult=null;if(training)page='home';paint();return;}
   if(action==='shop-buy'||action==='shop-leave'){
@@ -266,6 +287,10 @@ root.addEventListener('click', event => {
         run=next;
       }
       else if(action==='run-event-accept'||action==='run-event-skip')run=resolveEvent(run,action==='run-event-accept');
+      else if(action==='run-chart-inspect'||action==='run-chart-leave'||action==='run-chart-fight'){
+        run=resolveCaveiraMap(run,action==='run-chart-inspect'?'inspect':action==='run-chart-fight'?'fight':'leave');
+        if(run.stage==='battle')session=sessionFromBattle(runBattle(run),run.battleSeed);
+      }
       else if(action==='run-retry'||action==='run-checkpoint'){run=reviveRun(run,action==='run-retry'?'retry':'checkpoint');session=run.stage==='battle'?sessionFromBattle(runBattle(run),run.battleSeed):{...session,state:{...session.state,phase:'ended',priorityOwner:null}};}
       else if(action==='run-abandon'){const beforeRun=run;run=abandonRun(run);if(profile)profile=settleRun(profile,run,beforeRun.coins,beforeRun.revives,Date.now());}
       else if(action==='run-relic'){run=takeRelic(run,button.dataset.id!);if(profile)profile=discoverRelics(profile,run);}
@@ -276,6 +301,7 @@ root.addEventListener('click', event => {
     paint();return;
   }
   if(action==='tornado-choice'||action==='lab-surgery'){const player=actingPlayer(session.state);if(player)send({type:action==='tornado-choice'?'chooseTornado':'surgery',player,targetId:button.dataset.id!});return;}
+  if(action==='caveira-choice'){const player=actingPlayer(session.state);if(player)send({type:'chooseCaveira',player,targetId:button.dataset.id??''});return;}
   if(action==='form-choice'){const owner=actingPlayer(session.state);if(owner)send({type:'chooseForm',player:owner,form:button.dataset.id as 'bear'|'tiger'});return;}
   if(action==='upgrade-choice'){const owner=actingPlayer(session.state);if(owner)send({type:'chooseUpgrade',player:owner,definitionId:button.dataset.id!});return;}
   if (action === 'new') {
@@ -350,6 +376,15 @@ root.addEventListener('click', event => {
 root.addEventListener('change', event => {
   const input = event.target as HTMLInputElement | HTMLSelectElement;
   if(input.id==='protagonist'||input.name==='protagonist'){selectedProtagonist=input.value as Champion;return;}
+  if(input.name==='profile-avatar'){
+    const hero=input.value as Champion;
+    if(!profile||!protagonistIds.includes(hero)||!profile.collection[hero]?.count)return;
+    const preview=root.querySelector<HTMLElement>('.profile-avatar-preview');
+    if(preview){preview.innerHTML=heroPortrait(hero);preview.className=`profile-avatar-preview frame-${profile.frame??'gold'}`;}
+    const caption=root.querySelector<HTMLElement>('.profile-avatar-caption strong');
+    if(caption)caption.textContent=fullCatalog[hero].name??hero;
+    return;
+  }
   if(input.id==='import-save'){
     const file=(input as HTMLInputElement).files?.[0];if(!file)return;
     void file.text().then(raw=>{const saved=importSave(localStorage,raw);profile=saved.profile;run=saved.run;adventureSession=saved.session;session=saved.session??createSession(2026,'ai');lastGood=raw;rawSave=raw;storageIssue='';hubError='';page='home';training=false;paint();}).catch(error=>{hubError=error instanceof Error?error.message:'Falha na restauração.';if(storageIssue)storageIssue=hubError;paint();});return;

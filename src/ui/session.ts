@@ -1,4 +1,7 @@
 import {fullCatalog,createProtagonistDeck} from '../content/decks.js';
+import {caveiraDecks,createCaveiraDeck} from '../content/caveira.js';
+import type {CaveiraDeck} from '../content/caveira.js';
+import {initEncounter} from '../battle/encounters.js';
 import type {Champion} from '../content/schema.js';
 import { createBattle } from '../battle/setup.js';
 import { applyCommand } from '../battle/commands.js';
@@ -18,9 +21,19 @@ export function actingPlayer(state: BattleState): PlayerId | null {
   return state.priorityOwner;
 }
 export function isAiTurn(session: BattleSession): boolean { return session.opponentMode === 'ai' && actingPlayer(session.state) === 'p2'; }
-export function createSession(seed: number, opponentMode: OpponentMode = 'manual',protagonist:Champion='kylast'): BattleSession {
-  return { state: createBattle({ p1:createProtagonistDeck(protagonist,'j1'),p2:createKylastDeck('j2')},seed,fullCatalog),
+export function createSession(seed: number, opponentMode: OpponentMode = 'manual',protagonist:Champion='kylast',encounter?:CaveiraDeck): BattleSession {
+  const state=createBattle({p1:createProtagonistDeck(protagonist,'j1'),p2:encounter?createCaveiraDeck(encounter):createKylastDeck('j2')},seed,fullCatalog);
+  if(encounter){
+    const nexus=caveiraDecks[encounter].nexus;
+    state.players.p2.nexus=state.players.p2.maxNexus=nexus;
+    initEncounter(state,encounter,nexus);
+  }
+  return { state,
     seed, opponentMode, viewPlayer: 'p1', history: [{ id: 0, message: opponentMode === 'ai' ? 'Duelo contra o computador preparado. Escolha sua mão inicial.' : 'Duelo local preparado. Escolha sua mão inicial.', round: 0 }], error: '', nextLogId: 1 };
+}
+export function concedeSession(session:BattleSession,player:PlayerId):BattleSession {
+ if(session.state.phase==='ended')return session;
+ return {...session,state:{...session.state,phase:'ended',winner:player==='p1'?'p2':'p1',priorityOwner:null,stackReturnOwner:null,combat:null,stack:[]},history:[...session.history,{id:session.nextLogId,message:`${playerName(player)} desistiu da batalha.`,round:session.state.round}],nextLogId:session.nextLogId+1};
 }
 function message(state: BattleState, event: BattleEvent): string | null {
   const name = (id: string) => instanceName(state, id);

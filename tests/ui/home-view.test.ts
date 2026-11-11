@@ -3,6 +3,7 @@ import {expect,it} from 'vitest';
 import {createProfile} from '../../src/profile/profile.js';
 import {createMapRun} from '../../src/run/adventure.js';
 import {nextHomeScene,renderHome} from '../../src/ui/home-view.js';
+import {icon} from '../../src/ui/html.js';
 
 it('alternates both scenes and uses the current profile and adventure',()=>{
  const profile=createProfile('<Jogador>','rubel',1,0);
@@ -11,23 +12,57 @@ it('alternates both scenes and uses the current profile and adventure',()=>{
  expect([first,second,nextHomeScene(second)]).toEqual(['jade','ember','jade']);
  const home=renderHome(profile,null,first,'');
  expect(home).toContain('scene-jade');
- expect(home).toContain('&lt;Jogador&gt;');
+ expect(home).toContain('ALPHA · v0.1.0');
+ expect(home).toContain('<section class="home-actions" aria-label="Ações do jogo">');
+ expect(home).not.toContain('id="caveira-training"');
+ expect(home).not.toContain('data-action="hub-training"');
+ expect(home).toContain('aria-label="Opções de exibição"');
+ expect(home).toContain('aria-label="Perfil e progresso"');
+ expect(home).toContain('src="/art/philosophers-stone.png"');
+ expect(home).toContain('aria-label="0 Pedras Filosofais"');
+ expect(home).toContain('>0</b></span>');
+ expect(home).toContain('data-tab="Marcos semanais"');
+ expect(home).toContain('aria-label="Perfil e progresso"');
  expect(home).toContain('Iniciar aventura');
  expect(home).not.toContain('Korakacoins');
+ const rail=hubShell('home','');
+ for(const symbol of ['menu-home','menu-adventure','menu-collection','menu-mastery','menu-boosters','menu-profile'])expect(rail).toContain(icon(symbol));
  const run=createMapRun(1,'rubel');
  run.coins=42;
  const resumed=renderHome(profile,run,second,'');
  expect(resumed).toContain('scene-ember');
- expect(resumed).toContain('42 Korakacoins');
+ expect(resumed).toContain('<section class="home-actions" aria-label="Ações do jogo">');
+ expect(resumed).not.toContain('data-action="hub-training"');
+ expect(resumed).toContain('class="korakoin-icon"');
+ expect(resumed).toContain('aria-label="Korakoin"');
+ expect(resumed).toContain('src="/art/korakoin.png"');
+ expect(resumed).toContain('href="/art/regions/approved-symbols.png"');
+ expect(resumed).toContain('42</b>');
+ expect(resumed).not.toContain('>Korakacoins</span>');
+ expect(resumed).toContain('aria-label="42 Korakacoins"');
  expect(resumed).toContain('Continuar aventura');
  expect(resumed).toContain('data-tab="Marcos semanais"');
+});
+
+it('shows large saved balances as icon and localized quantity only',()=>{
+ const profile=createProfile('Teste','rubel',1,0);
+ profile.stones=12500;
+ const run=createMapRun(1,'rubel');
+ run.coins=12345;
+ const home=renderHome(profile,run,'jade','');
+ expect(home).toContain('aria-label="12500 Pedras Filosofais"');
+ expect(home).toContain('>12.500</b></span>');
+ expect(home).toContain('aria-label="12345 Korakacoins"');
+ expect(home).toContain('>12.345</b>');
+ expect(home).not.toContain('>Korakacoins</span>');
 });
 
 it('retains every main destination and highlights Collection in Artifacts',()=>{
  const profile=createProfile('Teste','rubel',1,0);
  for(const page of ['home','adventure','collection','relics','mastery','boosters','profile'] as const){
-  const html=hubShell(profile,page,null,'<main>Conteúdo</main>');
+  const html=hubShell(page,'<main>Conteúdo</main>');
   expect(html).toContain('class="home-rail"');
+  expect(html).not.toContain('class="hub-header"');
   for(const target of ['home','adventure','collection','mastery','boosters','profile']){
    expect(html).toContain('data-action="hub-nav" data-id="'+target+'"');
   }

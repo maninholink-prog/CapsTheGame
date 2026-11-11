@@ -4,6 +4,7 @@ import {renderRelicCollection,relicInitialSelector} from './relic-view.js';
 import {heroPortrait,renderMatchHistory,renderProfileSummary} from './profile-view.js';
 import {renderTalents} from './talent-view.js';
 import {difficultyRules} from '../run/difficulty.js';
+import {activeAdventure,adventureNames,hasOpenChart} from '../run/caveira-adventure.js';
 import {description} from './presentation.js';
 import {fullCatalog,protagonistIds} from '../content/decks.js';
 import type {Champion,Rarity} from '../content/schema.js';
@@ -19,12 +20,11 @@ const playtestButton=()=>'<button class="button secondary" data-action="hub-unlo
 const btn=(action:string,text:string,extra='')=>`<button class="button" data-action="${action}" ${extra}>${text}</button>`;
 function championCards(p:Profile|null,choose=false){return protagonistIds.map(id=>{const unlocked=!p||!!p.collection[id]?.count,m=masteryInfo(p?.mastery[id].xp??0);return `<article class="hero-card ${unlocked?'':'locked'}">${heroPortrait(id)}<div><small>${esc(fullCatalog[id].regions!.map(r=>regionNames[r]).join(' / '))}</small><h3>${esc(fullCatalog[id].name)}</h3><p>${mechanics[id]}</p>${p?`<p>${unlocked?`Maestria ${m.level} · ${p.collection[id].shiny?'✦ Brilhante':'Desbloqueado'}`:'Desbloqueie em boosters'}</p>`:''}${choose?btn('profile-create','Escolher protagonista',`data-id="${id}"`):btn('hub-start',unlocked?'Iniciar aventura':'Bloqueado',`data-id="${id}" ${unlocked?'':'disabled'}`)}</div></article>`;}).join('');}
 export function onboarding(error=''){return `<main class="hub onboarding"><p class="eyebrow">C.A.P.S. · Colecionadores de Artefatos Perigosos e Singulares</p><h1>Sua coleção começa aqui.</h1><p>Escolha seu primeiro protagonista. Seu deck inicial será liberado; os demais protagonistas podem surgir nos boosters.</p><label>Nome do perfil <input id="profile-name" maxlength="40" value="Colecionador" autocomplete="nickname"/></label><p class="error" role="alert">${esc(error)}</p><div class="hero-grid">${championCards(null,true)}</div><p>0 Pedras Filosofais iniciais. Progresso salvo neste navegador.</p><label class="button secondary">Restaurar backup <input type="file" id="import-save" accept="application/json,.json" hidden/></label></main>`;}
-export function hubShell(p:Profile,page:HubPage,run:RunState|null,content:string,error=''){
+export function hubShell(page:HubPage,content:string,error=''){
  if(page==='home')return `<div class="hub-layout">${renderHubRail(page)}${content}</div>`;
- const header=`<header class="hub-header"><div><p class="eyebrow">C.A.P.S.</p><strong>Colecionadores de Artefatos</strong></div><div class="wallet"><span>◆ <b>${p.stones}</b> Pedras Filosofais</span><small>${esc(p.name)} · ${run&&!['won','lost'].includes(run.stage)?`${run.coins} Korakacoins na run`:'Sem aventura em andamento'}</small></div></header>`;
  const message=error?`<p class="error" role="alert">${esc(error)}</p>`:'';
- if(page==='battle')return `<div class="hub">${header}<nav class="hub-nav" aria-label="Menu principal">${btn('hub-nav','Pausar e voltar ao início','data-id="home"')}</nav>${message}${content}</div>`;
- return `<div class="hub-layout">${renderHubRail(page)}<div class="hub-pane"><div class="hub">${header}${message}${content}</div></div></div>`;
+ if(page==='battle')return `<div class="hub">${message}${content}</div>`;
+ return `<div class="hub-layout">${renderHubRail(page)}<div class="hub-pane"><div class="hub">${message}${content}</div></div></div>`;
 }
 function cardCompass(regions:readonly (keyof typeof regionNames)[],rarity:Rarity):string {
  const text=esc([rarityNames[rarity],...regions.map(r=>regionNames[r])].join(' · '));
@@ -34,7 +34,7 @@ function collectionTabs(page:HubPage):string {
  return `<nav class="viewport-controls" aria-label="Seções da coleção">${btn('hub-nav','Cartas',`data-id="collection" aria-pressed="${page==='collection'}"`)}${btn('hub-nav','Artefatos',`data-id="relics" aria-pressed="${page==='relics'}"`)}</nav>`;
 }
 export function hubContent(p:Profile,page:HubPage,run:RunState|null,filters:HubFilters,masteryHero:Champion=protagonistIds.find(id=>p.collection[id]?.count)??'kylast',showMasteryDetails=false,homeScene:'jade'|'ember'='jade',error=''):string {
- const active=!!run&&!['won','lost'].includes(run.stage);
+ const active=activeAdventure(run);
  if(page==='mastery'){
   const m=masteryInfo(p.mastery[masteryHero].xp);
   const portraits=`<div class="mastery-picker" role="group" aria-label="Escolher personagem">${protagonistIds.map(id=>{
@@ -58,12 +58,12 @@ export function hubContent(p:Profile,page:HubPage,run:RunState|null,filters:HubF
      ${journey?btn('hub-nav','Continuar aventura','data-id="battle"'):''}
     </div>
    </section>
-   ${journey?`<details class="adventure-options"><summary>Gerenciar jornada</summary><p>Encerrar registra a jornada como derrota.</p>${btn('hub-abandon','Encerrar como derrota')}</details>`:`
+   ${journey?`<details class="adventure-options"><summary>Gerenciar jornada</summary>${hasOpenChart(journey)||journey.caveiraAftermath==='battle'?'<p>A vitória principal já foi registrada.</p>'+btn('hub-abandon','Encerrar o desvio'):'<p>Encerrar registra a jornada como derrota.</p>'+btn('hub-abandon','Encerrar como derrota')}</details>`:`
     <details class="adventure-options">
      <summary>Preparar aventura</summary>
      <p>A vida do Vínculo persiste entre batalhas. Rotas mais longas podem render mais recompensas.</p>
      <div class="adventure-setup">
-      <label>Dificuldade <select id="run-difficulty">${rarities.map(r=>`<option value="${r}">${rarityNames[r]} · ${difficultyRules[r].nodes} casas · teto ${difficultyRules[r].cap} Pedras</option>`).join('')}</select></label>
+      <label>Aventura <select id="run-adventure">${Object.entries(adventureNames).map(([id,name])=>`<option value="${id}">${esc(name)}</option>`).join('')}</select></label><label>Dificuldade <select id="run-difficulty">${rarities.map(r=>`<option value="${r}">${rarityNames[r]} · ${difficultyRules[r].nodes} casas · teto ${difficultyRules[r].cap} Pedras</option>`).join('')}</select></label>
       ${relicInitialSelector(p)}
      </div>
      <h2>Quem lidera a jornada?</h2>
@@ -79,7 +79,7 @@ export function hubContent(p:Profile,page:HubPage,run:RunState|null,filters:HubF
  }
  if(page==='boosters')return `<main class="hub-main"><p class="eyebrow">ABERTURA DE BOOSTERS</p><h1>Cinco cartas. Novas possibilidades.</h1><p>Todos podem conter cartas de qualquer raridade. Ultradimensional contém exatamente um protagonista.</p><div class="stat-grid"><article><b>${p.pity}/40</b><span>garantia de protagonista ${protagonistIds.some(id=>!p.collection[id]?.count)?'novo':''}</span></article><article><b>${p.championShiny}/6</b><span>desde o último protagonista brilhante</span></article></div><div class="booster-grid">${rarities.map(r=>`<article class="booster rarity-${r}"><div class="booster-pack"><span>COLECIONADORES DE ARTEFATOS</span><img src="/art/caps-emblem.png" alt="" width="76" height="76"/><h2>${rarityNames[r]}</h2><small>5 CARTAS</small></div><p>${p.boosters[r]} disponíveis</p>${btn('booster-buy',`Comprar · ${prices[r]} Pedras`,`data-id="${r}" ${p.stones<prices[r]?'disabled':''}`)}${btn('booster-open','Abrir booster',`data-id="${r}" ${!p.boosters[r]?'disabled':''}`)}</article>`).join('')}</div>${p.lastOpening?`<section class="opening-result" aria-live="polite"><h2>Última abertura · ${rarityNames[p.lastOpening.type]}</h2><div class="collection-grid">${p.lastOpening.cards.map(c=>`<article class="collection-card rarity-${fullCatalog[c.id].rarity} ${c.shiny?'shiny':''}">${art(c.id,true)}<h3>${esc(fullCatalog[c.id].name)}</h3><p>${c.newCard?'Nova na coleção':c.excess?'Cópia excedente':'Cópia adicionada'}</p><p>${c.rolledShiny?'✦ Brilhante sorteada':c.shiny?'✦ Visual brilhante já desbloqueado':''}</p>${c.excess?`<strong>+${c.excess} Pedras Filosofais</strong>`:''}</article>`).join('')}</div></section>`:''}<details><summary>Chances e garantias</summary><p>Chance do primeiro protagonista por booster: 0,45% / 2,5% / 5% / 10% / 100%. No 40º, um protagonista é garantido; se faltar algum, ele será novo. Protagonistas adicionais têm chance dividida por 3 sucessivamente, exceto no Ultra.</p><p>Ao obter 5 protagonistas sem brilho, o próximo será brilhante. Duplicatas acima de 3 rendem 5 / 10 / 20 / 50 / 100 Pedras; brilho sorteado dobra o valor. Carta com 3 cópias mantém 25% do peso normal.</p></details></main>`;
  const weekly:{points:number;claimed:number[]}=p.weekly.key===weekKey(Date.now())?p.weekly:{points:0,claimed:[]};
- return `<main class="hub-main"><p class="eyebrow">PERFIL E PROGRESSO</p>${renderProfileSummary(p)}${renderMatchHistory(p)}<section data-view-panel="Marcos semanais"><h2>Marcos semanais · ${weekly.points} pontos</h2><p>Resgate antes de ${esc(new Date(nextReset(Date.now())).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'}))} (Brasília). Reset às segundas, 08h.</p><div class="milestone-grid">${milestones.map(m=>`<article><strong>${m.points} pontos</strong><p>${m.count} booster ${rarityNames[m.type]}</p>${btn('weekly-claim',weekly.claimed.includes(m.points)?'Resgatado':'Resgatar',`data-id="${m.points}" ${weekly.claimed.includes(m.points)||weekly.points<m.points?'disabled':''}`)}</article>`).join('')}</div></section><section data-view-panel="Registro"><h2>Registro das moedas e recompensas</h2><div class="ledger"><table><thead><tr><th>Data</th><th>Registro</th><th>Movimento</th><th>Saldo</th></tr></thead><tbody>${p.ledger.slice().reverse().slice(0,200).map(l=>`<tr><td>${esc(new Date(l.time).toLocaleString('pt-BR'))}</td><td>${esc(l.reason)}</td><td>${l.amount>0?'+':''}${l.amount} ${l.currency==='stones'?'Pedras Filosofais':'Korakacoins'}</td><td>${l.balance}</td></tr>`).join('')||'<tr><td colspan="4">Suas conquistas aparecerão aqui.</td></tr>'}</tbody></table></div><p class="muted">Exibindo os últimos 200 registros. O backup preserva o histórico completo.</p></section></main>`;
+ return `<main class="hub-main profile-page"><p class="eyebrow">PERFIL E PROGRESSO</p>${renderProfileSummary(p)}${renderMatchHistory(p)}<section data-view-panel="Marcos semanais"><h2>Marcos semanais · ${weekly.points} pontos</h2><p>Resgate antes de ${esc(new Date(nextReset(Date.now())).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'}))} (Brasília). Reset às segundas, 08h.</p><div class="milestone-grid">${milestones.map(m=>`<article><strong>${m.points} pontos</strong><p>${m.count} booster ${rarityNames[m.type]}</p>${btn('weekly-claim',weekly.claimed.includes(m.points)?'Resgatado':'Resgatar',`data-id="${m.points}" ${weekly.claimed.includes(m.points)||weekly.points<m.points?'disabled':''}`)}</article>`).join('')}</div></section><section data-view-panel="Registro"><h2>Registro das moedas e recompensas</h2><div class="ledger"><table><thead><tr><th>Data</th><th>Registro</th><th>Movimento</th><th>Saldo</th></tr></thead><tbody>${p.ledger.slice().reverse().slice(0,200).map(l=>`<tr><td>${esc(new Date(l.time).toLocaleString('pt-BR'))}</td><td>${esc(l.reason)}</td><td>${l.amount>0?'+':''}${l.amount} ${l.currency==='stones'?'Pedras Filosofais':'Korakacoins'}</td><td>${l.balance}</td></tr>`).join('')||'<tr><td colspan="4">Suas conquistas aparecerão aqui.</td></tr>'}</tbody></table></div><p class="muted">Exibindo os últimos 200 registros. O backup preserva o histórico completo.</p></section></main>`;
 }
 
 

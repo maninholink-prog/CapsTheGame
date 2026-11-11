@@ -1,13 +1,15 @@
 import {createEnemyDeck} from '../content/felix.js';
+import {caveiraDecks} from '../content/caveira.js';
+import type {CaveiraDeck} from '../content/caveira.js';
 import type {EnemyDeckVariant} from '../content/felix.js';
 import {shuffle} from './random.js';
 import {queueHeal} from './champions.js';
 import {cleanupMarks} from './expansion.js';
 import {syncFelixAura} from './laboratory.js';
 import type {BattleState,BattleEvent,CardInstance,PendingEffect} from './types.js';
-export interface EncounterState {id:EnemyDeckVariant;phase:'single'|'felix'|'king';kingNexus:number;kingDeck?:CardInstance[];energy:number;activatedRound:number;pendingKing?:boolean;shutdownPending?:boolean;dischargeRound?:number;}
-export const encounterNames:Record<EnemyDeckVariant,string>={patrol:'Patrulha Mecânica',cryo:'Ala Criogênica',unstable:'Experimentos Instáveis',labotomia:'Labotomia',tornado:'Tornado',dianamite:'Dianamite',felix:'Dr. Félix',king:'Rei Mecanizado'};
-export function initEncounter(s:BattleState,id:EnemyDeckVariant,enemyNexus:number){s.encounter={id,phase:id==='felix'?'felix':'single',kingNexus:enemyNexus,energy:6,activatedRound:0,...(id==='felix'?{kingDeck:createEnemyDeck('king',`${s.runBattleId??'encounter'}-king`)}:{})};}
+export interface EncounterState {id:EnemyDeckVariant|CaveiraDeck;phase:'single'|'felix'|'king';kingNexus:number;kingDeck?:CardInstance[];energy:number;activatedRound:number;pendingKing?:boolean;shutdownPending?:boolean;dischargeRound?:number;}
+export const encounterNames:Record<EnemyDeckVariant|CaveiraDeck,string>={patrol:'Patrulha Mecânica',cryo:'Ala Criogênica',unstable:'Experimentos Instáveis',coils:'Oficina de Bobinas',infirmary:'Enfermaria Experimental',discharge:'Câmara de Descarga',labotomia:'Labotomia',tornado:'Tornado',dianamite:'Dianamite',felix:'Dr. Félix',king:'Rei Mecanizado',...Object.fromEntries(Object.entries(caveiraDecks).map(([id,deck])=>[id,deck.name]))} as Record<EnemyDeckVariant|CaveiraDeck,string>;
+export function initEncounter(s:BattleState,id:EnemyDeckVariant|CaveiraDeck,enemyNexus:number){s.encounter={id,phase:id==='felix'?'felix':'single',kingNexus:enemyNexus,energy:6,activatedRound:0,...(id==='felix'?{kingDeck:createEnemyDeck('king',`${s.runBattleId??'encounter'}-king`)}:{})};}
 export function deferFelixVictory(s:BattleState,p1Dead:boolean,p2Dead:boolean){if(!p1Dead&&p2Dead&&s.encounter?.phase==='felix'){s.encounter.pendingKing=true;return true;}return false;}
 export function finishEncounterResolution(s:BattleState,events:BattleEvent[]){
  const e=s.encounter;if(!e||s.phase==='ended'||s.stack.length||s.combat||s.formChoices?.length||s.choices?.length||s.laboratoryChoices?.length)return;

@@ -1,10 +1,6 @@
 /* Compact tactical view, scoped to battle so the collection keeps its layout. */
 .hub:has(.tactical-battle){max-width:1920px;padding:8px 16px 12px}
-.hub:has(.tactical-battle)>.hub-header{min-height:30px;padding-bottom:6px;gap:12px}
-.hub:has(.tactical-battle)>.hub-header .eyebrow{display:none}
-.hub:has(.tactical-battle)>.hub-header strong{font-size:12px;letter-spacing:1px;color:#c7b58e}
-.hub:has(.tactical-battle) .wallet{display:flex;gap:16px;align-items:center;font-size:11px}
-.hub:has(.tactical-battle) .wallet small{font-size:10px}
+
 .hub:has(.tactical-battle)>.hub-nav{padding:7px 0;gap:5px}
 .hub:has(.tactical-battle)>.hub-nav .button{min-height:28px;padding:5px 11px;font-size:10px}
 .tactical-battle.app-shell{max-width:none;padding:0}
@@ -163,7 +159,7 @@
  .tactical-battle .lane-divider{padding:1px 0}.tactical-battle .turn-strip{min-height:28px}
  .tactical-battle .round-medallion{height:28px;width:28px}.tactical-battle .turn-strip h2{font-size:15px}
  .tactical-battle .table-column{gap:5px}.tactical-battle .hand-section{padding-top:4px}
- .hub:has(.tactical-battle)>.hub-nav{padding:4px 0}.hub:has(.tactical-battle)>.hub-header{min-height:24px;padding-bottom:3px}
+ .hub:has(.tactical-battle)>.hub-nav{padding:4px 0}
 }
 @media(max-width:1099px){
  .tactical-battle .battle-layout{grid-template-columns:minmax(0,1fr) 230px;gap:8px}
@@ -175,8 +171,8 @@
  .tactical-battle .unit-name{font-size:11px}.tactical-battle .unit-stats>span>small{font-size:6px}
 }
 @media(max-width:760px){
- .hub:has(.tactical-battle){padding:8px}.hub:has(.tactical-battle)>.hub-header{flex-direction:row}
- .hub:has(.tactical-battle) .wallet small{display:none}
+ .hub:has(.tactical-battle){padding:8px}
+
  .tactical-battle .battle-layout{display:flex;flex-direction:column}.tactical-battle .table-column{width:100%}
  .tactical-battle .sidebar{position:static;width:100%;display:grid;grid-template-columns:1fr}
  .tactical-battle .action-panel,.tactical-battle .inspector-panel{max-height:none}
@@ -194,7 +190,6 @@
  .tactical-battle .unit-stats b{font-size:22px}.tactical-battle .unit-stats>span>small{font-size:7px}
  .tactical-battle .hand-card .card-copy>strong{font-size:12px;min-height:29px}
 }
-.hub:has(.tactical-battle)>.hub-header strong::before{content:"C.A.P.S. · ";color:#efd19a}
 
 html,body{overflow:clip}
 #app [hidden]{display:none!important}

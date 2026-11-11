@@ -1,4 +1,5 @@
 import {laboratoryBlocked} from './laboratory.js';
+import {caveiraBlocked} from './caveira.js';
 import {narrativeBlock} from './narrative.js';
 import { opponent } from './types.js';
 import type { BattleEvent, BattleState, CardInstance, PendingEffect, Result } from './types.js';
@@ -51,6 +52,7 @@ export function prepareAttackEffects(state: BattleState, command: PrepareCommand
   next.priorityOwner = opponent(command.player);
   next.combat!.stage = 'responses';
   narrativeBlock(next,opponent(command.player),next.combat!.pendingBlockers??[],events);delete next.combat!.pendingBlockers;laboratoryBlocked(next,next.combat!,events);
+  caveiraBlocked(next,next.combat!,events);
   next.consecutivePasses = 0;
   return { ok: true, state: next, events };
 }

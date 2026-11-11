@@ -1,13 +1,14 @@
 import {heroPortrait} from './profile-view.js';
 import {fullCatalog} from '../content/decks.js';
-import {difficultyRules} from '../run/difficulty.js';
+import {adventureNames,caveiraVerse} from '../run/caveira-adventure.js';
+import {encounterHealth} from '../run/run.js';
 import {encounterNames} from '../battle/encounters.js';
 import {rarityNames} from '../profile/profile.js';
-import {esc,icon} from './html.js';
+import {esc,icon,korakoinIcon} from './html.js';
 import {availableNodes} from '../run/adventure.js';
 import type {RunState} from '../run/run.js';
 import type {MapNode} from '../run/map.js';
-export function nodeName(n:MapNode){return n.kind==='midboss'?'Chefe intermediário':n.kind==='finalboss'?'Chefe final':n.kind==='battle'?'Batalha':n.event==='shop-standard'?'Loja padrão':n.event==='shop-specialized'?'Loja especializada':'Evento desconhecido';}
+export function nodeName(n:MapNode){return n.kind==='midboss'?'Chefe intermediário':n.kind==='finalboss'?'Chefe final':n.kind==='battle'?'Batalha':n.event==='shop-standard'?'Loja padrão':n.event==='shop-specialized'?'Loja especializada':n.event==='caveira-trial'?'Prova de rima e silêncio':'Evento desconhecido';}
 export function renderMap(r:RunState,deck='',error=''):string {
  const map=r.map!;
  const rows=Math.max(...map.nodes.map(node=>node.row))+1;
@@ -25,7 +26,7 @@ export function renderMap(r:RunState,deck='',error=''):string {
  return `<main class="expedition-map">
   <header class="expedition-header">
    <button class="button secondary" data-action="run-exit">← Voltar ao início</button>
-   <div><p class="eyebrow">${rarityNames[r.difficulty??'common']} · ${map.nodes.length} casas · MAPA DA AVENTURA</p><h1>${r.adventure==='dr-felix'?'Laboratório do Dr. Félix':'Rota da aventura'}</h1></div>
+   <div><p class="eyebrow">${rarityNames[r.difficulty??'common']} · ${map.nodes.length} casas · MAPA DA AVENTURA</p><h1>${r.adventure?adventureNames[r.adventure]:'Rota da aventura'}</h1></div>
   </header>
   ${error?`<p class="expedition-error" role="alert">${esc(error)}</p>`:''}
   <div class="expedition-scroll" tabindex="0" aria-label="Rota da aventura. Role para explorar.">
@@ -49,8 +50,9 @@ export function renderMap(r:RunState,deck='',error=''):string {
   </div>
   <footer class="expedition-footer">
    <div class="expedition-hero"><span class="expedition-avatar">${heroPortrait(hero)}</span><strong>${name}</strong></div>
-   <dl><div><dt>Vínculo</dt><dd>${r.nexus}/${r.maxNexus}</dd></div><div><dt>Korakacoins</dt><dd>${r.coins}</dd></div><div><dt>Reviver</dt><dd>${r.revives}/5</dd></div></dl>
+   <dl><div><dt>Vínculo</dt><dd>${r.nexus}/${r.maxNexus}</dd></div><div><dt>Korakacoins</dt><dd>${korakoinIcon()} ${r.coins}</dd></div><div><dt>Reviver</dt><dd>${r.revives}/5</dd></div></dl>
    ${deck}
+   ${r.caveiraHint?`<p class="muted">Cantiga dos esqueletos · “${caveiraVerse}”</p>`:''}
   </footer>
  </main>`;
 }
@@ -62,18 +64,18 @@ export function focusMapPosition(root:HTMLElement):void {
  const top=current.getBoundingClientRect().top-viewport.getBoundingClientRect().top;
  viewport.scrollTop+=top-viewport.clientHeight*.32;
 }
-export function renderEvent(r:RunState){const n=r.map!.nodes.find(x=>x.id===r.map!.current)!;const label=n.event==='rest'?'Recuperar 5 de vida':n.event==='supplies'?'Escolher uma carta':'Receber 1 carga de reviver';const detail=n.event==='rest'?`Seu Vínculo está em ${r.nexus}/${r.maxNexus}. Recupera até 5, sem ultrapassar o máximo.`:n.event==='supplies'?'Escolha entre cartas elegíveis para adicionar duas cópias; também poderá recusar.':`Você tem ${r.revives}/5 cargas. Reviver restaura toda a vida e pode repetir a batalha ou voltar ao checkpoint ativo.`;return `<span class="eyebrow">EVENTO DE TESTE · GRATUITO</span><h2>${n.event==='rest'?'Descanso':n.event==='supplies'?'Suprimentos':'Resgate'}</h2><p>${detail}</p><button class="button primary" data-action="run-event-accept" ${n.event==='rescue'&&r.revives>=5?'disabled':''}>${label}</button><button class="button secondary" data-action="run-event-skip">Seguir sem aceitar</button>`;}
+export function renderEvent(r:RunState){const n=r.map!.nodes.find(x=>x.id===r.map!.current)!;if(n.event==='caveira-trial')return `<span class="eyebrow">PROVA DA ILHA</span><h2>Rima e silêncio</h2><p>Os esqueletos pedem um verso. Depois, fazem sinal para você ficar em silêncio e ouvir a resposta.</p><button class="button primary" data-action="run-event-accept">Fazer a prova</button><button class="button secondary" data-action="run-event-skip">Seguir sem fazer a prova</button>`;const label=n.event==='rest'?'Recuperar 5 de vida':n.event==='supplies'?'Escolher uma carta':'Receber 1 carga de reviver';const detail=n.event==='rest'?`Seu Vínculo está em ${r.nexus}/${r.maxNexus}. Recupera até 5, sem ultrapassar o máximo.`:n.event==='supplies'?'Escolha entre cartas elegíveis para adicionar duas cópias; também poderá recusar.':`Você tem ${r.revives}/5 cargas. Reviver restaura toda a vida e pode repetir a batalha ou voltar ao checkpoint ativo.`;return `<span class="eyebrow">EVENTO DE TESTE · GRATUITO</span><h2>${n.event==='rest'?'Descanso':n.event==='supplies'?'Suprimentos':'Resgate'}</h2><p>${detail}</p><button class="button primary" data-action="run-event-accept" ${n.event==='rescue'&&r.revives>=5?'disabled':''}>${label}</button><button class="button secondary" data-action="run-event-skip">Seguir sem aceitar</button>`;}
 export function renderDefeat(r:RunState){return `<p>Você tem ${r.revives} carga(s). Cada retorno consome uma carga e restaura toda a vida.</p><button class="button primary" data-action="run-retry">Repetir batalha · 1 carga</button>${r.checkpoint?'<button class="button secondary" data-action="run-checkpoint">Voltar ao checkpoint · 1 carga</button><p>O retorno desfaz cartas, eventos e ganhos posteriores ao chefe. Cargas já consumidas não voltam.</p>':''}<button class="button secondary" data-action="run-abandon">Encerrar a run</button>`;}
 
 
 export function renderEncounterPreview(r:RunState,id:string):string {
  const node=availableNodes(r).find(candidate=>candidate.id===id);
- const encounter=r.adventure==='dr-felix'?r.encounters?.[id]:undefined;
+ const encounter=r.adventure?r.encounters?.[id]:undefined;
  if(!node||node.kind==='event'||!encounter)return '';
- const health=difficultyRules[r.difficulty??'common'].enemyNexus[node.kind==='midboss'?1:node.kind==='finalboss'?2:0];
+ const health=encounterHealth(r,id);
  return `<dialog class="encounter-preview" aria-labelledby="encounter-preview-title">
   <div class="encounter-preview-mark" aria-hidden="true">${icon('sword')}</div>
-  <p class="eyebrow">LABORATÓRIO DO DR. FÉLIX · ${nodeName(node)}</p>
+  <p class="eyebrow">${adventureNames[r.adventure!].toLocaleUpperCase('pt-BR')} · ${encounter==='caveira-megalodon'?'Elite opcional':nodeName(node)}</p>
   <h2 id="encounter-preview-title">${esc(encounterNames[encounter])}</h2>
   <dl><div><dt>Vínculo inimigo</dt><dd>${health}</dd></div><div><dt>Seu Vínculo</dt><dd>${r.nexus}/${r.maxNexus}</dd></div></dl>
   ${encounter==='felix'?'<p><strong>Duas fases</strong> · Ao derrotar Dr. Félix, você enfrenta o Rei Mecanizado.</p>':''}
