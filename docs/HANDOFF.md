@@ -258,4 +258,4 @@ Commit `4612b95283d482549439e0634e7b8cda40b96206` em `main`; [pré-lançamento p
 
 ## Backup integral verificado — 11/11/2026
 
-Snapshot completo em `C:/Users/Bruxo/Documents/Backups/CAPS-Game/snapshots/20261111-173733`; manifesto e log em `C:/Users/Bruxo/Documents/Backups/CAPS-Game`. Restauração isolada em `C:/Users/Bruxo/Documents/Backups/CAPS-Game-restore-test/20261111-173733`, 33.173 hashes comparados, zero divergências. Depois de registrar esta verificação, sincronizar documentos/metadados Git no snapshot e reconferir. Origem e backup ficam no mesmo disco C:.
+Snapshot completo em `C:/Users/Bruxo/Documents/Backups/CAPS-Game/snapshots/20261111-173733`; manifesto e log em `C:/Users/Bruxo/Documents/Backups/CAPS-Game`. Restauração isolada em `C:/Users/Bruxo/Documents/Backups/CAPS-Game-restore-test/20261111-173733`, 33.173 hashes comparados, zero divergências. Depois do registro, documentos/metadados Git foram sincronizados no snapshot e na restauração; o manifesto foi atualizado e as mudanças foram reconferidas sem divergências. Contagem e hashes finais estão no JSON de síntese. Origem e backup ficam no mesmo disco C:.
