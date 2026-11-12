@@ -295,3 +295,7 @@ Pacote local em [C.A.P.S.exe](../release/CAPS-20261111-204500-win-x64/C.A.P.S.ex
 ## Pré-lançamento público playtest.7 — 11/11/2026
 
 Commit `f33c2e2` está em `main`; a [prévia v0.1.0-playtest.7](https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.7) contém o pacote Windows e seis partes mais o `.cmd`. Tamanhos e SHA-256 dos sete anexos conferem com os arquivos locais; SHA-256 do ZIP montado: `82270A1CDEB9C12302C017FB3F0921798F494E2E8C5D6F08E3FC9DA6AC843A8E`. Suíte integral: 455/459 passaram, quatro falhas registradas em PROGRESS. Próximo: concluir snapshot e restauração de teste.
+
+## Backup local do pré-lançamento playtest.7 — 11/11/2026
+
+Snapshot em `Documents/Backups/CAPS-Game/snapshots/20261111-210441`; restauração separada em `Documents/Backups/CAPS-Game-restore-test/20261111-211500`. 34.665 arquivos regulares atuais e 29.090.662.842 bytes foram comparados por SHA-256, sem ausências ou divergências; restore idêntico ao snapshot. Os dois conservam 182 arquivos extras anteriores. O bloqueio inicial do Edge envolveu arquivos temporários do perfil Playwright; ao validar, eles já não existiam na origem. Manifestos e logs ficam no destino externo. Esse backup está no mesmo disco C: da origem.
