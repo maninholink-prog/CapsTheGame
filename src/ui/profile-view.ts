@@ -3,15 +3,16 @@ import type {Champion} from '../content/schema.js';
 import {matchModes,matchResults,profileFrames,topHeroes} from '../profile/matches.js';
 import {collectibleIds,masteryInfo} from '../profile/profile.js';
 import type {Profile} from '../profile/profile.js';
+import type {SaveSummary} from '../profile/save-store.js';
 import {art,esc,icon,regionSymbol} from './html.js';
 import {playableRelicIds} from '../run/relics.js';
 
 export function heroPortrait(id:Champion):string {
- const file=id==='youro'?'youro.png':id==='kuara'?'kuara.png':id==='arcata'?'arcata-mastery-v2.png':id==='abe'||id==='rubel'||id==='kylast'?`${id}-mastery.png`:null;
+ const file=id==='youro'?'youro.png':id==='kuara'?'kuara.png':id==='thalion'?'thalion-card.png':id==='arcata'?'arcata-mastery-v2.png':id==='abe'||id==='rubel'||id==='kylast'?`${id}-mastery.png`:null;
  return file?`<img class="portrait" src="/art/${file}" alt=""/>`:art(id);
 }
 
-export function renderProfileSummary(p:Profile):string {
+export function renderProfileSummary(p:Profile,profiles:SaveSummary[]=[],activeId:string|null=null):string {
  const available=protagonistIds.filter(id=>p.collection[id]?.count);
  const avatar=p.avatar??available[0]??'kylast';
  const frame=p.frame??'gold';
@@ -25,7 +26,7 @@ export function renderProfileSummary(p:Profile):string {
  const relicCount=playableRelicIds.filter(id=>p.relicCollection?.[id]?.conquered).length;
  const shinyCount=collectibleIds.filter(id=>p.collection[id]?.shiny).length;
  const regions=[...new Set(available.flatMap(id=>fullCatalog[id].regions??[]))];
- return `<section data-view-panel="Resumo">
+ return `<section data-view-panel="Resumo">${renderProfileManagement(profiles,activeId)}
   <div class="profile-overview">
    <article class="profile-player-card">
     <header><h2>${esc(p.name)}</h2><button class="button profile-edit" data-action="profile-customize" aria-label="Editar foto e dados do perfil">${icon('settings')}</button></header>
@@ -63,6 +64,10 @@ export function renderProfileSummary(p:Profile):string {
    <footer><div class="profile-avatar-preview frame-${frame}">${heroPortrait(avatar)}</div><div class="profile-avatar-caption"><strong>${esc(champion.name??avatar)}</strong><small>Ícone de protagonista</small></div><label>Moldura<select id="profile-frame">${Object.entries(profileFrames).map(([id,name])=>`<option value="${id}" ${id===frame?'selected':''}>${name}</option>`).join('')}</select></label><button class="button primary" data-action="profile-rename">Salvar perfil</button></footer>
   </dialog>
  </section>`;
+}
+
+export function renderProfileManagement(profiles:SaveSummary[],activeId:string|null):string {
+ return `<section class="profile-management" aria-labelledby="profiles-title"><div><p class="eyebrow">SALVOS LOCAIS</p><h2 id="profiles-title">Perfis</h2><p>Progresso e aventura ficam juntos no arquivo de cada perfil.</p></div><button class="button primary" data-action="profile-add">Criar perfil</button><div class="profile-list" role="group" aria-label="Escolher perfil">${profiles.map(item=>`<button class="profile-choice" data-action="profile-switch" data-id="${esc(item.id)}" aria-current="${item.id===activeId?'true':'false'}" ${item.valid?'':'disabled'}><strong>${esc(item.name)}</strong><small>${esc(fullCatalog[item.hero].name??item.hero)}${item.id===activeId?' · Ativo':''}</small></button>`).join('')}</div></section>`;
 }
 
 export function renderMatchHistory(p:Profile):string {

@@ -11,7 +11,8 @@ it('unlocks every starter for testing without resetting existing progress',()=>{
 });
 it('offers the test unlock on the home and adventure screens',()=>{
  const p=createProfile('Teste','abe',42,0),filters={search:'',rarity:'',region:'',owned:''};
- for(const page of ['home','adventure'] as const)expect(hubContent(p,page,null,filters)).toContain('data-action="hub-unlock-test"');
+ expect(hubContent(p,'home',null,filters)).not.toContain('data-action="hub-unlock-test"');
+ expect(hubContent(p,'adventure',null,filters)).toContain('data-action="hub-unlock-test"');
  const html=hubContent(unlockPlaytestHeroes(p),'adventure',null,filters);
  expect(html).not.toContain('>Bloqueado</button>');
  expect(html.match(/data-action="hub-start"/g)).toHaveLength(8);

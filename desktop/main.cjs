@@ -1,10 +1,16 @@
-const {app,BrowserWindow,protocol,net,Menu,session}=require('electron');
+const {app,BrowserWindow,protocol,net,Menu,session,ipcMain}=require('electron');
 const path=require('node:path');
 const {pathToFileURL}=require('node:url');
-app.setName('CAPS');
-app.setPath('userData',path.join(app.getPath('appData'),'CAPS-Game'));
-protocol.registerSchemesAsPrivileged([{scheme:'caps',privileges:{standard:true,secure:true,supportFetchAPI:true}}]);
+const {createSaveStore}=require('./save-store.cjs');
+const {resolveSmokeUserData,waitForSmokeText}=require('./smoke.cjs');
 const smoke=process.argv.includes('--caps-smoke');
+app.setName('CAPS');
+app.setPath('userData',resolveSmokeUserData(app.getPath('appData'),smoke,process.env.CAPS_SMOKE_USER_DATA));
+const saves=createSaveStore(app.getPath('userData'));
+ipcMain.handle('caps-saves:list',()=>saves.list());
+ipcMain.handle('caps-saves:read',(_event,id)=>saves.read(id));
+ipcMain.handle('caps-saves:write',(_event,id,raw)=>{if(typeof raw!=='string'||raw.length>50_000_000)throw Error('Save inválido.');return saves.write(id,raw);});
+protocol.registerSchemesAsPrivileged([{scheme:'caps',privileges:{standard:true,secure:true,supportFetchAPI:true}}]);
 if(!app.requestSingleInstanceLock())app.quit();
 else {
  let window;
@@ -23,14 +29,14 @@ else {
    done(permission==='fullscreen'&&contents===window?.webContents&&contents.getURL().startsWith('caps://game/'));
   });
   Menu.setApplicationMenu(null);
-  window=new BrowserWindow({title:'C.A.P.S.',icon:path.join(__dirname,'caps.ico'),width:1440,height:960,minWidth:960,minHeight:700,show:!smoke,backgroundColor:'#0b1419',webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true}});
+  window=new BrowserWindow({title:'C.A.P.S.',icon:path.join(__dirname,'caps.ico'),width:1440,height:960,minWidth:960,minHeight:700,show:!smoke,backgroundColor:'#0b1419',webPreferences:{preload:path.join(__dirname,'preload.cjs'),nodeIntegration:false,contextIsolation:true,sandbox:true}});
   window.once('ready-to-show',()=>{if(!smoke)window.show();});
   window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
   window.webContents.on('will-navigate',(event,url)=>{if(!url.startsWith('caps://game/'))event.preventDefault();});
   await window.loadURL('caps://game/index.html');
   if(smoke){
-   const text=await window.webContents.executeJavaScript('document.body.innerText');
-   const result={ok:text.includes('Sua coleção começa aqui.')||text.includes('SEU PRÓXIMO CAPÍTULO'),title:await window.getTitle(),text};
+   const text=await waitForSmokeText(()=>window.webContents.executeJavaScript('document.body.innerText'));
+   const result={ok:text.includes('Sua coleção começa aqui.')||text.includes('SEU PRÓXIMO CAPÍTULO'),title:await window.getTitle(),userData:app.getPath('userData'),text};
    require('node:fs').writeFileSync(process.env.CAPS_SMOKE_RESULT||path.join(app.getPath('temp'),'caps-smoke.json'),JSON.stringify(result,null,2));
    app.exit(result.ok?0:1);
   }

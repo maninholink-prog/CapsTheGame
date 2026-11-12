@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { freshDraft, actionCommand } from '../../src/ui/forms.js';
+import { freshDraft, actionCommand, parseDraggedUnit } from '../../src/ui/forms.js';
 import { createSession } from '../../src/ui/session.js';
 import { preview } from '../../src/ui/presentation.js';
+import { render } from '../../src/ui/render.js';
 import { enterKylast, kylastFixture } from '../battle/kylast-fixtures.js';
 import { give, putUnit } from '../battle/fixtures.js';
 
@@ -45,5 +46,37 @@ describe('comandos dos formulários', () => {
     state.players.p1.board[0].equipment = [{ card: { instanceId: 'sword', definitionId: 'sword-kylast' }, used: false }];
     const draft = freshDraft(); draft.mode = 'attack'; draft.attackers = ['a']; draft.weapons.a = [null];
     expect(actionCommand({ ...createSession(1), state }, draft)).toMatchObject({ attackers: [{ unitId: 'a', weapons: [null] }] });
+  });
+
+  it('mantém o painel de ataque sem formulário; a mesa recebe as seleções', () => {
+    const state = kylastFixture();
+    putUnit(state, 'p1', 'a');
+    const draft = freshDraft(); draft.mode = 'attack'; draft.attackers = ['a'];
+    const html = render({ ...createSession(1), state }, draft);
+    const panel=html.match(/<section class="action-panel panel"[\s\S]*?<\/section>/)?.[0]??'';
+    expect(panel).toContain('data-action="confirm"');
+    expect(panel).toContain('Declarar ataque');
+    expect(panel).not.toContain('attacker-toggles');
+    expect(panel).not.toContain('order-left');
+    expect(panel).not.toContain('Passar ação');
+    expect(panel).not.toContain('Golpe 1');
+    expect(panel).not.toContain('<select');
+    expect(panel.match(/<button/g)).toHaveLength(1);
+    expect(html).toContain('data-drop="attack"');
+    expect(html).toContain('draggable="true" data-drag-unit="true"');
+  });
+
+  it('offers a single back button before choosing an attacker',()=>{
+    const state=kylastFixture();const draft=freshDraft();draft.mode='attack';
+    const html=render({...createSession(1),state},draft);
+    const panel=html.match(/<section class="action-panel panel"[\s\S]*?<\/section>/)?.[0]??'';
+    expect(panel).toContain('data-action="cancel-attack"');
+    expect(panel).toContain('Voltar às cartas');
+    expect(panel.match(/<button/g)).toHaveLength(1);
+  });
+
+  it('preserva os dois-pontos do ID da unidade arrastada',()=>{
+    expect(parseDraggedUnit('unit:p1:j1:wang-jianxi:0')).toEqual({owner:'p1',id:'j1:wang-jianxi:0'});
+    expect(parseDraggedUnit('unit:p3:bad')).toBeNull();
   });
 });

@@ -6,6 +6,8 @@ import {stealCards,summonUnits,markWeakest,recordDamage,expandedResolved} from '
 import {talentDamage} from './kylast-talents.js';
 import {youroReduceDamage} from './youro-talents.js';
 import {kuaraHasTalent} from './kuara-talents.js';
+import {thalionUnused,thalionUse} from './thalion-talents.js';
+import {lazaroHealing,lazaroSteedResolved} from './lazaro-talents.js';
 import {advanceRound} from './round.js';
 import {narrativeResolved,addAttack,drawInto} from './narrative.js';
 import { championUnit, progress, evolveAllies, fabricate } from './champions.js';
@@ -48,13 +50,16 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
   let fizzled = pending.targets.length > 0 && valid.length === 0 || definition.id==='steed-entry'&&!next.executionMarks?.[pending.owner]||definition.id==='lab-collector-draw'&&next.laboratory?.deathRounds[pending.owner]!==next.round;
   if(definition.failIfKeywordPresent&&definition.effect.type==='keyword'&&valid.every(t=>t.kind==='unit'&&next.players[t.player].board.find(u=>u.card.instanceId===t.instanceId)?.keywords?.includes((definition.effect as {keyword:import('../content/schema.js').Keyword}).keyword)))fizzled=true;
   let actualHealing=0,healedAllies=0,successfulUpgrade=true;
+  const metalBonus=definition.id==='heat-metal'&&thalionUnused(next,pending.owner,'thalion-resonant-metal')?1:0;
+  const prideBonus=definition.id==='pride-curse'&&thalionUnused(next,pending.owner,'thalion-wounded-pride')?1:0;
   if (!fizzled) {
+    if(definition.id==='steed-entry')lazaroSteedResolved(next,pending.owner);
     const effect = definition.effect;
     const extraLife=rubelMaxLifeBonus(next,pending.owner,definition);
     const bonus=arcataSpellBonus(next,pending.owner,definition,pending.targets.length);
     if(effect.type==='steal'){const evolvesOnThisActivation=definition.id==='kuara-strike'&&!progress(next,pending.owner).evolved.kuara;stealCards(next,pending.owner,pending.abilityAmount??effect.amount,effect.emptyFatigue??false,events);if(evolvesOnThisActivation&&(championUnit(next,pending.owner,'kuara')?.health??0)>0&&progress(next,pending.owner).evolved.kuara&&kuaraHasTalent(next,pending.owner,'kuara-magic-hands'))stealCards(next,pending.owner,1,false,events);}
     if(effect.type==='summon')summonUnits(next,pending.owner,effect.unit,effect.count,events);
-    if(effect.type==='mark')markWeakest(next,pending.owner,pending.abilitySourceId);
+    if(effect.type==='mark')markWeakest(next,pending.owner,pending.abilitySourceId,events);
     for (const target of valid) {
       if (effect.type === 'counter' && target.kind === 'stack') {
         const index = next.stack.findIndex(e => e.id === target.effectId);
@@ -66,7 +71,7 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
         const unit = target.kind === 'unit' ? player.board.find(u => u.card.instanceId === target.instanceId)! : null;
         if (effect.type === 'damage') {
           const base=definition.dynamicDamage==='attack'?Math.max(0,unit?.attack??0):definition.dynamicDamage==='equipped'&&(unit?.equipment?.length??0)>0?2:effect.amount;
-          const amount=unit?youroReduceDamage(next,target.player,unit,base+bonus.damage+(pending.damageBonus??0)+(definition.fire&&pending.mode!=='ability'&&championUnit(next,pending.owner,'arcata')?.evolved?1:0)):base+bonus.damage+(pending.damageBonus??0)+(definition.fire&&pending.mode!=='ability'&&championUnit(next,pending.owner,'arcata')?.evolved?1:0);
+          const amount=unit?youroReduceDamage(next,target.player,unit,base+bonus.damage+metalBonus+prideBonus+(pending.damageBonus??0)+(definition.fire&&pending.mode!=='ability'&&championUnit(next,pending.owner,'arcata')?.evolved?1:0)):base+bonus.damage+metalBonus+prideBonus+(pending.damageBonus??0)+(definition.fire&&pending.mode!=='ability'&&championUnit(next,pending.owner,'arcata')?.evolved?1:0);
           if (unit) unit.health = Math.max(0, unit.health - amount);
           else player.nexus = Math.max(0, player.nexus - amount);
           events.push({ type: 'damageApplied', target, amount });
@@ -82,12 +87,12 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
           const amount=youroReduceDamage(next,target.player,unit,marked?unit.health:3);unit.health=Math.max(0,unit.health-amount);recordDamage(next,target,pending.owner);events.push({type:'damageApplied',target,amount});
           talentDamage(next,target.player,unit,amount,events);
         } else if(effect.type==='weaken'&&unit){
-          const loss=Math.min(Math.max(0,unit.attack),effect.amount);
+          const loss=Math.min(Math.max(0,unit.attack),effect.amount+(definition.id==='blindness'&&thalionUnused(next,pending.owner,'thalion-deep-blindness')?1:0));
           addAttack(unit,-loss,!effect.nextRound);
           if(effect.nextRound)(unit.timedAttackLoss??=[]).push({until:next.round+1,amount:loss});
         } else if(effect.type==='keyword'&&unit){unit.keywords??=[];if(!unit.keywords.includes(effect.keyword)){unit.keywords.push(effect.keyword);if(effect.temporary)(unit.temporaryKeywords??=[]).push(effect.keyword);}
         } else if (effect.type === 'heal') {
-          const amount=effect.amount*(championUnit(next,pending.owner,'rubel')?.evolved?2:1)+rubelHealBonus(next,pending,definition,target);
+            const amount=effect.amount*(championUnit(next,pending.owner,'rubel')?.evolved?2:1)+rubelHealBonus(next,pending,definition,target)+lazaroHealing(next,pending.owner,definition.id);
           const before=unit?unit.health:player.nexus;
           if (unit) unit.health = Math.min(unit.maxHealth, unit.health + amount);
           else player.nexus = Math.min(player.maxNexus, player.nexus + amount);
@@ -107,6 +112,7 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
           removeUnit(next, target.player, unit.card.instanceId, events, effect.type);if(effect.type==='recall'&&definition.afterRecallDraw)drawInto(next,pending.owner,events);
         } else if (effect.type === 'stun' && unit) {
           unit.stunnedUntilRound = next.round;
+          if(definition.id==='tashas-laughter'&&thalionUnused(next,pending.owner,'thalion-lingering-laughter')&&unit.attack>0)addAttack(unit,-1,true);
           events.push({ type: 'unitStunned', player: target.player, instanceId: unit.card.instanceId });
           // Generic stun removes a combatant but preserves an established block.
           if (next.combat) {
@@ -117,6 +123,11 @@ export function resolveEffect(state: BattleState, pending: PendingEffect): Resul
     }
   }
   if (!fizzled) {
+    if(definition.id==='heat-metal')thalionUse(next,pending.owner,'thalion-resonant-metal');
+    if(definition.id==='pride-curse')thalionUse(next,pending.owner,'thalion-wounded-pride');
+    if(definition.id==='blindness')thalionUse(next,pending.owner,'thalion-deep-blindness');
+    if(definition.id==='tashas-laughter')thalionUse(next,pending.owner,'thalion-lingering-laughter');
+    if(definition.id==='charm-monster')thalionUse(next,pending.owner,'thalion-long-charm');
     if(definition.effect.type==='fire-boost'){const player=next.players[pending.owner];player.fireBoost=(player.fireBoostRound===next.round?player.fireBoost??0:0)+definition.effect.amount;player.fireBoostRound=next.round;}
     if(definition.effect.type==='fabricate'||definition.fabricate)fabricate(next,pending.owner);
     if(definition.championCopy)insertChampionCopy(next,pending.owner,definition.championCopy,pending.source.instanceId);

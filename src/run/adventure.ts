@@ -1,5 +1,5 @@
 import {felixEncounters} from './felix-adventure.js';
-import {caveiraRoute,hasOpenChart} from './caveira-adventure.js';
+import {caveiraRoute,hasOpenChart,jupiterRoute} from './caveira-adventure.js';
 import type {AdventureId} from './caveira-adventure.js';
 import type {Champion} from '../content/schema.js';
 import {openShop} from './shops.js';
@@ -9,10 +9,11 @@ import type {Difficulty} from './difficulty.js';
 import {snapshot,restore,markVisited} from './adventure-state.js';
 import {nextInt} from '../battle/random.js';
 import type {RunState} from './run.js';
-export function createMapRun(seed:number,protagonist:Champion='kylast',difficulty:Difficulty='common',adventure:AdventureId='dr-felix'):RunState {
- const r=createRun(seed,protagonist);
+export function createMapRun(seed:number,protagonist:Champion='kylast',difficulty:Difficulty='common',adventure:AdventureId='dr-felix',initialDeckIds?:readonly string[]):RunState {
+ const r=createRun(seed,protagonist,initialDeckIds);
  r.difficulty=difficulty;r.adventure=adventure;r.stage='map';r.battle=0;
  if(adventure==='caveira-dourada')Object.assign(r,caveiraRoute(seed,difficulty));
+ else if(adventure==='jupiter')Object.assign(r,jupiterRoute(seed,difficulty));
  else {r.map=generateMap(seed,difficulty);r.encounters=felixEncounters(r.map,seed);}
  return r;
 }

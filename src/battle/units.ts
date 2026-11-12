@@ -8,6 +8,8 @@ import {laboratoryEntry} from './laboratory.js';
 import {tornadoEntry} from './lab-specials.js';
 import {narrativeEntry} from './narrative.js';
 import {hasTalent} from './kylast-talents.js';
+import {thalionHasTalent} from './thalion-talents.js';
+import {lazaroBaseLife} from './lazaro-talents.js';
 import {expandedEntry} from './expansion.js';
 import {caveiraEntry} from './caveira.js';
 import {drawOne} from './draw.js';
@@ -25,12 +27,13 @@ export function enterUnit(state: BattleState, owner: PlayerId, source: CardInsta
     return def?.kind === 'unit' && def.champion === definition.champion;
   })) return false;
   const evolved = definition.champion === 'kylast' && state.evolvedKylast[owner];
-  const life=(definition.champion==='youro'&&youroBaseLife(state,owner)||definition.champion==='kylast'&&hasTalent(state,owner,'iron-constitution')||definition.champion==='abe'&&abeHasTalent(state,owner,'abe-frame')||definition.champion==='arcata'&&arcataHasTalent(state,owner,'arcata-life')||definition.champion==='rubel'&&rubelHasTalent(state,owner,'rubel-vigor'))?1:0;
+  const life=(definition.champion==='youro'&&youroBaseLife(state,owner)||definition.champion==='kylast'&&hasTalent(state,owner,'iron-constitution')||definition.champion==='abe'&&abeHasTalent(state,owner,'abe-frame')||definition.champion==='arcata'&&arcataHasTalent(state,owner,'arcata-life')||definition.champion==='rubel'&&rubelHasTalent(state,owner,'rubel-vigor')||definition.champion==='thalion'&&thalionHasTalent(state,owner,'thalion-voice')||definition.champion==='lazaro'&&lazaroBaseLife(state,owner)||definition.id==='illusory-instrument'&&thalionHasTalent(state,owner,'thalion-tuned-instrument'))?1:0;
   const kuaraLife=definition.champion==='kuara'?kuaraBaseLife(state,owner):0;
   const mastery=evolved&&hasTalent(state,owner,'master-of-all')?1:0;
   const unit = { card: source, attack: definition.attack + (evolved ? 1 : 0)+mastery, health: definition.health + (evolved ? 1 : 0)+life+kuaraLife,
     maxHealth: definition.health + (evolved ? 1 : 0)+life+kuaraLife, evolved, ...(definition.keyword?{keywords:[definition.keyword]}:{}) };
   kuaraStolenUnitEntry(state,owner,source,unit);
+
   state.players[owner].board.splice(position, 0, unit);
   events.push({ type: 'unitEntered', player: owner, instanceId: source.instanceId, position });
   onUnitEntered(state, owner, unit, events);

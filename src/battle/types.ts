@@ -21,7 +21,7 @@ export type TargetRef =
   | { kind: 'nexus'; player: PlayerId }
   | { kind: 'stack'; effectId: number };
 export interface PendingEffect {
-  paidTalentGrip?:boolean;
+  paidTalentGrip?:boolean;paidTalentLazaro?:boolean;
   rubelEvolution?:boolean;
   damageBonus?:number;kingDischarge?:boolean; abilitySourceId?:string; abilityAmount?:number;
   id: number; owner: PlayerId; source: CardInstance; targets: TargetRef[];

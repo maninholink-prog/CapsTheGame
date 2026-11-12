@@ -47,7 +47,7 @@ export function settle(state: BattleState, events: BattleEvent[]): void {
     }
   }
   syncFelixAura(state);cleanupMarks(state);
-  if(deaths.length)for(const o of ['p1','p2'] as const)evolveExpanded(state,o,events);
+  if(deaths.length){for(const o of ['p1','p2'] as const)evolveExpanded(state,o,events);for(const owner of ['p1','p2'] as const){const hero=state.players[owner].board.find(u=>state.definitions[u.card.definitionId]?.kind==='unit'&&(state.definitions[u.card.definitionId] as import('../content/schema.js').CardDefinition & {kind:'unit'}).champion==='lazaro'),died=deaths.some(d=>d.owner===owner&&state.definitions[d.unit.card.definitionId]?.kind==='unit'&&(state.definitions[d.unit.card.definitionId] as import('../content/schema.js').CardDefinition & {kind:'unit'}).champion==='lazaro');if(hero?.evolved&&died&&state.talentLoadouts?.[owner]?.includes('lazaro-unbroken-oath')&&!state.talentState?.[owner]?.lazaro?.used.includes('lazaro-unbroken-oath')){state.talentState??={};const talent=state.talentState[owner]??={};talent.lazaro??={used:[]};talent.lazaro.used.push('lazaro-unbroken-oath');state.players[owner].nexus=Math.min(state.players[owner].maxNexus,state.players[owner].nexus+2);}}}
   const p1Dead = state.players.p1.nexus <= 0;
   const p2Dead = state.players.p2.nexus <= 0;
   if(deferFelixVictory(state,p1Dead,p2Dead))return;

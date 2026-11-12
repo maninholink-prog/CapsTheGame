@@ -128,3 +128,115 @@ O autor aprovou a proposta de quinze talentos de Pilantragem e forneceu duas ref
 ### Complemento de DEC-018 — artes da carta de campeão Youro — 11/11/2026
 
 Fonte: pedido do autor nesta conversa para produzir as versões base e evoluída da carta de Youro. Ambas mantêm a aparência aprovada de gato ruivo, capuz verde, manto de penas e bolsa, sem máscara. A versão evoluída usa ecos espirituais de Urso e Tigre, motivo já aprovado na arte de maestria. Assets da carta em `public/art/youro-card.png` e `public/art/youro-evolved.png`; o retrato da interface permanece `public/art/youro.png`. Apenas a apresentação visual muda; IDs, atributos, deck e regras permanecem iguais.
+
+## DEC-020 — Perfis locais independentes — 11/11/2026
+
+Fonte: aprovação explícita do autor nesta conversa para um arquivo completo por perfil. Cada JSON contém progresso, jornada e sessão, com UUID, em `%APPDATA%\CAPS-Game\Saves`; a preferência do último perfil fica separada. O save `caps.profile.v1` é validado e migrado uma única vez, sem remoção da chave original. A UI permite criar e alternar perfis; esta etapa não inclui exclusão, renomeação, cloud, slots extras ou backup automático. A decisão foi implementada conforme a [especificação](superpowers/specs/2026-11-11-perfis-e-pasta-de-saves.md). Compatibilidade v1, IDs e regras permanecem preservados.
+
+## DEC-021 — Base de Thalion para proposta de maestria — 12/11/2026
+
+Fonte: aprovação explícita do autor neste chat da síntese de características de Thalion, baseada na [ala narrativa](../personagens/THALION.md), nas [identidades aprovadas](../design/IDENTIDADES_DOS_PROTAGONISTAS.md) e no [deck aprovado](../design/THALION_DECK_EFEITOS.md). A aprovação cobre a base para elaborar a árvore; **não aprova novos talentos, efeitos, conexões, imagem ou implementação**. A [proposta de 15 nós](../design/THALION_MAESTRIA_PROPOSTA.md) aguarda decisão do autor. O processo sequencial para Thalion e protagonistas futuros está registrado nesse documento.
+
+## DEC-022 — Árvore de Thalion aprovada — 12/11/2026
+
+Fonte: aprovação explícita do autor neste chat após receber a proposta completa. A aprovação cobre os quinze nós, efeitos, níveis, pré-requisitos e conexões em [THALION_MAESTRIA_PROPOSTA](../design/THALION_MAESTRIA_PROPOSTA.md). A disposição de referência está em [SVG](../design/THALION_MAESTRIA_LAYOUT.svg); o documento textual governa os dados. As três artes geradas a partir da referência visual fornecida pelo autor aguardam aprovação para integração ao jogo. A decisão não altera o cânone do RPG.
+
+## DEC-023 — Artes de Thalion — 12/11/2026
+
+Fonte: o autor aprovou explicitamente neste chat as três ilustrações geradas a partir da referência fornecida. Uso aprovado: `public/art/thalion-card.png` como carta base, `public/art/thalion-evolved.png` como carta evoluída e `public/art/thalion-mastery.png` como fundo da árvore. Preservam a identidade visual da referência e a personalidade de bardo. Integração usa os caminhos já existentes no renderizador; não altera dados ou IDs de cartas.
+
+## DEC-024 — Último Grito e referência visual de Lázaro — 12/11/2026
+
+Fonte: esclarecimento explícito do autor neste chat: a arma principal de Lázaro chama-se Último Grito e é uma **Greatsword**. Isso resolve a divergência até então mantida entre o cadastro e a descrição de machado na cena CAPS 48; o registro histórico da cena não é apagado. O autor também aprovou a imagem anexada nesta conversa como referência visual para as artes de Lázaro. A imagem guia aparência ilustrada, sem converter detalhes nela em fatos de lore. Aplicação documentada em [ala de Lázaro](../personagens/LAZARO.md) e [deck narrativo](../design/LAZARO_DECK_EFEITOS.md). A aprovação não cobre árvore de maestria, efeitos novos ou implementação.
+
+## DEC-025 — Características de Lázaro aprovadas para proposta — 12/11/2026
+
+O autor aprovou neste chat a síntese de características em [LAZARO_MAESTRIA_PROPOSTA](../design/LAZARO_MAESTRIA_PROPOSTA.md): fatos limitados da ficha/cenas, Execução por marca aprovada, custo/atributos/regiões/deck e correção de Último Grito como Greatsword. A imagem aprovada é referência visual, não fonte adicional de lore. A aprovação permite propor a árvore; **não aprova seus 15 nós, efeitos, conexões, imagem de disposição ou implementação**. A proposta aguarda decisão explícita do autor.
+
+## DEC-026 — Árvore de maestria de Lázaro aprovada — 12/11/2026
+
+Fonte: aprovação explícita do autor neste chat. Estão aprovados os quinze nós, níveis, efeitos, pré-requisitos e conexões descritos em [LAZARO_MAESTRIA_PROPOSTA](../design/LAZARO_MAESTRIA_PROPOSTA.md). A disposição visual de referência, criada após a aprovação, está em [LAZARO_MAESTRIA_LAYOUT.svg](../design/LAZARO_MAESTRIA_LAYOUT.svg); a especificação textual governa os dados. Os efeitos continuam sendo adaptações do jogo, não cânone do RPG. Esta decisão não aprova artes novas nem inicia implementação.
+
+## DEC-027 — Direção das artes dos protagonistas — 12/11/2026
+
+Preferência autoral para protagonistas atuais e futuros: representar suas cartas em situações épicas ou em momentos cotidianos, escolhendo a cena conforme a versão da carta e a personalidade aprovada. Manter o estilo de fantasia pintada de *Legends of Runeterra* como referência de direção artística, sem copiar personagens ou ilustrações. Imagens fornecidas pelo autor guiam apenas os aspectos explicitamente aprovados; não servem para inventar lore. Registrar a seleção de cena e manter consistência de identidade entre as formas base e evoluída.
+
+## DEC-028 — Direção artística de todas as cartas — 12/11/2026
+
+Correção de escopo solicitada pelo autor após DEC-027: a preferência vale para **todas as cartas**, não somente protagonistas. As ilustrações podem mostrar momentos épicos ou cotidianos conforme personagem, criatura ou objeto e função da carta. Manter fantasia pintada de *Legends of Runeterra* como referência de direção artística, sem copiar personagens ou artes. Referências do autor guiam somente os aspectos explicitamente aprovados e não criam lore ou regras. DEC-027 permanece como registro histórico da preferência inicial de escopo mais restrito; DEC-028 é a regra vigente para o acervo completo e cartas futuras.
+
+## DEC-029 — Candidatas de arte de Lázaro aguardam aprovação — 12/11/2026
+
+Com base na referência visual de aparência aprovada pelo autor e na direção artística vigente de DEC-028, foram criadas três candidatas: [carta base cotidiana](../design/art-proposals/lazaro/lazaro-card-candidate.png), [carta evoluída épica](../design/art-proposals/lazaro/lazaro-evolved-candidate.png) e [fundo da maestria](../design/art-proposals/lazaro/lazaro-mastery-candidate.png). São propostas, ainda não aprovadas e não incluídas no jogo. A composição não acrescenta lore ou regras; Último Grito aparece como Greatsword conforme correção autoral.
+
+## DEC-030 — Candidatas visuais de Lázaro rejeitadas — 12/11/2026
+
+O autor rejeitou explicitamente as três imagens de DEC-029. Nenhuma delas está aprovada para integração. Os arquivos permanecem na pasta de propostas como histórico local, sem cópia para `public/` ou pacote. Não iniciar outra geração até receber direção revisada do autor. A regra geral de estilo e cenas de DEC-028 permanece vigente para futuras propostas.
+
+## DEC-031 — Revisão da direção visual de Lázaro — 12/11/2026
+
+Após rejeitar as primeiras candidatas, o autor pediu que novas imagens priorizem o traço pintado/ilustrado de fantasia de *Legends of Runeterra*; as ideias das cenas foram consideradas boas. Carta base: momento cotidiano e simples. Forma evoluída e fundo da maestria: momentos épicos. Mostrar a presença séria e estratégica de Lázaro a partir das cenas resumidas em sua ficha, sem afirmar personalidade além das fontes e sem copiar arte de referência. A preferência global de estilo para todas as cartas continua em DEC-028.
+
+## DEC-032 — Identidade visual própria por personagem — 12/11/2026
+
+O autor pediu que cada personagem tenha imagens de maestria com composição própria, sem repetir a composição de Thalion. A qualidade/técnica pictórica do jogo pode ser compartilhada; enquadramento, cenário, gesto e organização visual devem expressar a identidade aprovada de cada personagem. O fundo de maestria de Lázaro deve ser redesenhado com composição distintiva e não será aprovado por apenas repetir o palco/negativo lateral de Thalion. Regra a aplicar também às artes futuras de outros personagens.
+
+## DEC-033 — Cartas base e evoluída de Lázaro aprovadas — 12/11/2026
+
+O autor aprovou as duas artes de carta da segunda rodada, após pedir traço pintado mais próximo à direção de *Legends of Runeterra*: [carta base](../public/art/lazaro-card.png), em momento cotidiano simples, e [carta evoluída](../public/art/lazaro-evolved.png), em momento épico. A aparência segue a referência visual aprovada e Último Grito aparece como Greatsword. Essas duas artes estão aprovadas para o jogo. O fundo da maestria continua pendente de uma composição visual própria para Lázaro; a versão com composição parecida à de Thalion não será integrada.
+
+## DEC-034 — Nova composição candidata para a maestria de Lázaro — 12/11/2026
+
+Criada uma nova proposta de fundo em [lazaro-mastery-candidate-v3.png](../design/art-proposals/lazaro/lazaro-mastery-candidate-v3.png), com Lázaro no centro de uma encruzilhada de pedra e três caminhos ao fundo. A composição é distinta do palco lateral de Thalion e mantém a linguagem pintada de fantasia aprovada. **Ainda aguarda aprovação do autor**; não copiar para `public/` nem integrar ao jogo antes dessa aprovação.
+
+## DEC-035 — Pose de costas na maestria de Lázaro — 12/11/2026
+
+O autor aprovou o conceito de caminhos que se dividem, mas pediu Lázaro de costas, sem saber qual seguir. Aplicar isso como composição/sentimento da imagem, não como novo fato narrativo. A próxima candidata deve preservar o traço aprovado das cartas, a Greatsword Último Grito e a encruzilhada, com pose e leitura próprias para Lázaro. A v3 continua apenas como proposta não aprovada.
+
+## DEC-036 — Candidata de maestria de Lázaro de costas — 12/11/2026
+
+Gerada a versão 4 em [lazaro-mastery-candidate-v4.png](../design/art-proposals/lazaro/lazaro-mastery-candidate-v4.png), com Lázaro visto de costas diante dos caminhos que se dividem. A pose de escolha incerta é visual, não fato de lore. A imagem segue a arte pintada aprovada para suas cartas e usa composição própria. **Aguardando aprovação**; não integrar até o autor aprovar.
+
+## DEC-037 — Arte de maestria de Lázaro aprovada — 12/11/2026
+
+O autor aprovou a versão 4. Uso aprovado: `public/art/lazaro-mastery.png` como fundo único da maestria de Lázaro, junto das cartas base/evoluída já aprovadas em DEC-033. A imagem mostra Lázaro de costas diante de caminhos divergentes, seguindo a direção global de fantasia pintada e a exigência de composição própria por personagem. A indecisão é linguagem visual, não fato de lore.
+
+## DEC-038 — Integração da maestria de Lázaro — 12/11/2026
+
+Aprovação anterior de DEC-026 e artes de DEC-033/037 habilita a integração dos quinze nós aprovados em `src/profile/talents.ts`, efeitos de batalha, validação/serialização, interface e renderização das três artes. A integração preserva IDs de carta, aplica efeitos apenas à carga aprovada de talentos e mantém compatibilidade de saves antigos por campos opcionais. Os testes da nova mecânica devem cobrir alocação, combate, cura, descontos, marca e round-trip de save. Não autoriza commit, push, publicação ou backup.
+
+## DEC-039 — Deck inicial editável na maestria 15 — 12/11/2026
+
+O autor aprovou que cada protagonista com maestria 15 ou mais possa configurar, por perfil, o deck de aventuras novas. Manter tamanho original e preservar exatamente o pacote característico aprovado (duas cópias do campeão e duas de cada assinatura); as demais vagas usam cartas possuídas, até duas cópias, respeitando regiões, neutralidade Korakarom e exclusividade de campeão. `enemyOnly` possuídas e regionais são permitidas somente nesta configuração; DEC-017 continua em vigor nos demais fluxos. Saves legados sem loadout continuam no deck original e jornadas abertas não mudam. Detalhes em [especificação](superpowers/specs/2026-11-12-deck-inicial-maestria-15.md). Implementação não autoriza commit, push, publicação, atualização de pacote Windows ou backup.
+
+## DEC-040 — Artes de carta de Arcata — 12/11/2026
+
+O autor aprovou as artes base e evoluída propostas para Arcata. Integração usa `public/art/arcata-card.png` e `public/art/arcata-evolved.png`; não acrescenta lore ou regras de jogo.
+
+## DEC-041 — Apresentação do combate e resultado — 12/11/2026
+
+Pedido explícito do autor: ataques que realmente reduzirem o Vínculo devem mostrar o atacante sem bloqueio avançando até ele e retornando; o Vínculo recebe destaque visual no impacto. É animação de apresentação após a resolução do motor, sem alteração de dano, bloqueios ou regras. A tela de vitória/derrota recebe tratamento visual inspirado na referência LoR fornecida, preservando mensagens e ações atuais.
+
+## DEC-042 — Escolhas de Upgrade e eventos da aventura — 12/11/2026
+
+Por pedido do autor, escolhas de fabricação de Abe aparecem como cartas em diálogo central com foco inicial, seguindo o padrão de escolha de cartas. A página de eventos da aventura recebe hierarquia visual e ações agrupadas, inspiradas na referência fornecida. Custos, opções, eventos e efeitos não mudam.
+
+## DEC-043 — Candidatas de carta de Rubel — 12/11/2026
+
+O autor pediu Rubel simples na carta base e se tornando um avatar de Vitumirim na evoluída. As candidatas foram criadas em `design/art-proposals/rubel/rubel-card-candidate.png` e `design/art-proposals/rubel/rubel-evolved-candidate.png`, usando a arte aprovada de maestria como referência de identidade. São propostas visuais, não fatos novos de lore; aguardam aprovação antes de cópia para `public/art` ou integração.
+
+## DEC-044 — Artes de Rubel aprovadas e integradas — 12/11/2026
+
+O autor aprovou a primeira candidata como arte base e a terceira como arte evoluída. Foram copiadas para `public/art/rubel-card.png` e `public/art/rubel-evolved.png`, e o helper compartilhado de cartas passa a escolher entre elas conforme o estado evoluído. A imagem evoluída representa visualmente Rubel como avatar de Vitumirim, conforme direção do autor; não acrescenta lore, habilidade ou regra.
+
+## DEC-045 — Novas propostas de arte para Kylast — 12/11/2026
+
+Por pedido do autor para ajustar as duas artes de Kylast, foram criadas propostas de carta base e evoluída em `design/art-proposals/kylast/kylast-card-candidate.png` e `kylast-evolved-candidate.png`. Ambas mantêm os traços de identidade e equipamentos documentados em [KYLAST_DECK.md](../design/KYLAST_DECK.md); luz azul e ação são escolhas de representação para distinguir a forma evoluída, não novas regras ou fatos narrativos. Permanecem candidatas: não substituem `public/art/kylast.png` nem entram no jogo até aprovação explícita.
+
+## DEC-046 — Resumo visual dos resultados da run — 12/11/2026
+
+A tela de conclusão e derrota organiza deck final, vida restante e Korakacoins em cartões de resumo, preservando dados, mensagens e ações existentes. A apresentação responsiva usa o estado real da run; não muda recompensas nem progressão.
+
+## DEC-047 — Artes de Kylast aprovadas e integradas — 12/11/2026
+
+O autor aprovou as duas candidatas de DEC-045. Uso aprovado: `public/art/kylast-card.png` para a carta base e `public/art/kylast-evolved.png` para a evoluída. A renderização escolhe a arte conforme a evolução; propostas originais permanecem em `design/art-proposals/kylast/`. Não altera lore, regras ou IDs.

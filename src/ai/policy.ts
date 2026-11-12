@@ -4,6 +4,7 @@ import {effectiveDefinition} from '../battle/champions.js';
 import { applyCommand } from '../battle/commands.js';
 import { opponent } from '../battle/types.js';
 import { isLegalTarget } from '../battle/targets.js';
+import {thalionTargetRule} from '../battle/thalion-talents.js';
 import { equipmentPrice } from '../battle/supports.js';
 import { planningState } from './observation.js';
 import { attackCandidates, banjoCommand, blockCommand, unitValue } from './tactics.js';
@@ -150,11 +151,12 @@ export function chooseAiCommand(observation: AiObservation): AiDecision | null {
           (unitValue(state,unit)-(old?unitValue(state,old):0))*1.3-def.cost*.15+(chosen.length?(def.entrySpell==='gwen-entry'?-1:def.entrySpell==='caveira-bite'?2:0):0),'Desenvolver o campo com uma unidade útil.');
       }
     } else {
-      if(def.target.max===0){add({type:'play',player:o.self,instanceId:card.instanceId,targets:[]},def.effect.type==='fabricate'?3:def.effect.type==='fire-boost'?1:def.area?4:def.effect.type==='steal'?4:def.effect.type==='summon'?5:0,'Usar magia sem alvo escolhido.');continue;}
-      const ranked = targetsFor(state, o.self, def.target).map(target => ({ target, score: effectScore(state, o.self, def, target) })).sort((a, b) => b.score - a.score);
-      const max = Math.min(def.target.max, ranked.length);
-      if (ranked.length < def.target.min) continue;
-      for (let count = Math.max(1, def.target.min); count <= max; count++) {
+      const rule=thalionTargetRule(state,o.self,def)!;
+      if(rule.max===0){add({type:'play',player:o.self,instanceId:card.instanceId,targets:[]},def.effect.type==='fabricate'?3:def.effect.type==='fire-boost'?1:def.area?4:def.effect.type==='steal'?4:def.effect.type==='summon'?5:0,'Usar magia sem alvo escolhido.');continue;}
+      const ranked = targetsFor(state, o.self, rule).map(target => ({ target, score: effectScore(state, o.self, def, target) })).sort((a, b) => b.score - a.score);
+      const max = Math.min(rule.max, ranked.length);
+      if (ranked.length < rule.min) continue;
+      for (let count = Math.max(1, rule.min); count <= max; count++) {
         const group = ranked.slice(0, count);
         add({ type: 'play', player: o.self, instanceId: card.instanceId, targets: group.map(g => g.target) },
           group.reduce((sum, g) => sum + g.score, 0) - def.cost * .2, 'Responder a uma ameaça ou aproveitar um alvo visível.');

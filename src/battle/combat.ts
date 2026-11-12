@@ -4,6 +4,7 @@ import {laboratoryAttack,laboratoryBlocked,laboratoryAfterAttack} from './labora
 import {finishEncounterResolution} from './encounters.js';
 import {recordDamage,nexusStrike} from './expansion.js';
 import {kuaraStrikeBonus} from './kuara-talents.js';
+import {lazaroCommitStrike,lazaroHasTalent,lazaroUnused,lazaroWeaponKill} from './lazaro-talents.js';
 import {markTalentAttack,talentStrikeBonus,talentDamage} from './kylast-talents.js';
 import {youroCombatKill,youroReduceDamage,youroStrikeBonus} from './youro-talents.js';
 import {narrativeBlock,shieldTriggers,queueShields} from './narrative.js';
@@ -102,13 +103,17 @@ export function resolveCombat(state: BattleState): Result {
       const blocker = next.players[defender].board.find(u => u.card.instanceId === lane.blockerId);
       const weapon = (attacker.equipment ?? []).find(e => e.card.instanceId === lane.weapons[strike]);
       const definition = weapon && next.definitions[weapon.card.definitionId];
-      if(weapon&&(blocker||!lane.blocked||brokeBlock)){lane.laboratoryUsedWeapons??=[];if(!lane.laboratoryUsedWeapons.includes(weapon.card.instanceId))lane.laboratoryUsedWeapons.push(weapon.card.instanceId);}
-      const executionBonus=blocker&&definition?.expansion==='last-cry'&&next.executionMarks?.[combat.attacker]?.targetId===blocker.card.instanceId?1:0;
-      const attack = Math.max(0, attacker.attack + executionBonus +talentStrikeBonus(next,combat.attacker,attacker,lane,strike)+youroStrikeBonus(next,combat.attacker,attacker)+ equipmentDamage(next,attacker,definition));
+      if(weapon&&(blocker||!lane.blocked||brokeBlock)){
+lane.laboratoryUsedWeapons??=[];if(!lane.laboratoryUsedWeapons.includes(weapon.card.instanceId))lane.laboratoryUsedWeapons.push(weapon.card.instanceId);}
+      const executionBonus=blocker&&definition?.kind==='equipment'&&(definition.baseId??definition.id)==='last-cry'&&next.executionMarks?.[combat.attacker]?.targetId===blocker.card.instanceId?1:0;
+      const lazaroBonus=blocker&&next.players[combat.attacker].protagonist==='lazaro'&&next.definitions[attacker.card.definitionId]?.kind==='unit'&&(next.definitions[attacker.card.definitionId] as import('../content/schema.js').CardDefinition & {kind:'unit'}).champion==='lazaro'&&lazaroHasTalent(next,combat.attacker,'lazaro-execution-blow')&&lazaroUnused(next,combat.attacker,'lazaro-execution-blow')&&next.executionMarks?.[combat.attacker]?.targetId===blocker.card.instanceId&&definition?.kind==='equipment'&&definition.expansion==='last-cry'?1:0;
+      if(blocker&&next.players[combat.attacker].protagonist==='lazaro'&&next.definitions[attacker.card.definitionId]?.kind==='unit'&&(next.definitions[attacker.card.definitionId] as import('../content/schema.js').CardDefinition & {kind:'unit'}).champion==='lazaro')lazaroCommitStrike(next,combat.attacker,attacker,blocker.card.instanceId,lane.weapons[strike],events);
+      const attack = Math.max(0, attacker.attack + executionBonus +lazaroBonus+talentStrikeBonus(next,combat.attacker,attacker,lane,strike)+youroStrikeBonus(next,combat.attacker,attacker)+equipmentDamage(next,attacker,definition));
       if (blocker) {
         if(attack>0)retaliations.push(...shieldTriggers(next,blocker,{kind:'unit',player:combat.attacker,instanceId:attacker.card.instanceId}));
         const received=youroReduceDamage(next,defender,blocker,reduceRubelStrike(next,defender,blocker,attack));
         blocker.health = Math.max(0, blocker.health - received);
+        if(blocker.health<=0&&next.players[combat.attacker].protagonist==='lazaro'&&next.definitions[attacker.card.definitionId]?.kind==='unit'&&(next.definitions[attacker.card.definitionId] as import('../content/schema.js').CardDefinition & {kind:'unit'}).champion==='lazaro')lazaroWeaponKill(next,combat.attacker,attacker,blocker,lane.weapons[strike]);
         events.push({ type: 'damageApplied', target: { kind: 'unit', player: defender, instanceId: blocker.card.instanceId }, amount: received });recordDamage(next,{kind:'unit',player:defender,instanceId:blocker.card.instanceId},combat.attacker);
         talentDamage(next,defender,blocker,received,events);
         youroCombatKill(next,combat.attacker,attacker,blocker);

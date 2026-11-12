@@ -44,6 +44,11 @@ export function regionSymbol(region:'north'|'west'|'south'|'east'|'korakarom'):s
   return `<svg class="region-symbol" viewBox="${x} 580 280 200" role="img" aria-label="${name}"><image href="/art/regions/approved-symbols.png" width="1752" height="897"/></svg>`;
 }
 export function art(id: string, small = false, evolved = false): string {
+  if(id==='thalion')return `<img class="portrait ${small?'small':''}" src="/art/thalion-${evolved?'evolved':'card'}.png" alt="Thalion ${evolved?'evoluído em uma apresentação dissonante':'tocando violino em uma taverna'}"/>`;
+  if(id==='arcata')return `<img class="portrait ${small?'small':''}" src="/art/arcata-${evolved?'evolved':'card'}.png" alt="Arcata ${evolved?'evoluído, conduzindo uma espiral de chamas':'praticando um pequeno fogo controlado'}"/>`;
+  if(id==='lazaro')return `<img class="portrait ${small?'small':''}" src="/art/lazaro-${evolved?'evolved':'card'}.png" alt="Lázaro ${evolved?'evoluído com Último Grito':'com expressão séria e armadura ornamentada'}"/>`;
+  if(id==='rubel')return `<img class="portrait ${small?'small':''}" src="/art/rubel-${evolved?'evolved':'card'}.png" alt="Rubel ${evolved?'em sua forma evoluída como avatar de Vitumirim':'em uma forma simples e cotidiana'}"/>`;
+  if(id==='kylast')return `<img class="portrait ${small?'small':''}" src="/art/kylast-${evolved?'evolved':'card'}.png" alt="Kylast Heathcliff ${evolved?'em sua forma evoluída':'em sua forma base'}"/>`;
   if(id==='youro')return `<img class="portrait ${small?'small':''}" src="/art/youro${evolved?'-evolved':'-card'}.png" alt="Youro ${evolved?'evoluído, sem máscara, com ecos espirituais de Urso e Tigre':'em sua forma base, sem máscara'}"/>`;
   if(id==='kuara'&&evolved)return `<img class="portrait ${small?'small':''}" src="/art/kuara-evolved.png" alt="Kuara evoluído, usando a máscara de seu alter-ego"/>`;
   if(id==='kuara')return `<img class="portrait ${small?'small':''}" src="/art/kuara.png" alt="Kuara Yacy, sem máscara"/>`;

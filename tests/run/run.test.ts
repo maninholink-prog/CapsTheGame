@@ -10,5 +10,17 @@ it('loss ends run, draw counts as win with 1 nexus, wrong battle identity reject
 it('reward rejects cards outside offered list and cannot be granted twice',()=>{let r=nextBattle(recruit(won(createRun(4)),'rubel'));r=won(r);expect(()=>reward(r,'kylast')).toThrow();const after=reward(r,null);expect(after.deck).toEqual(r.deck);expect(()=>reward(after,null)).toThrow();});
 
 import {runCatalog} from '../../src/run/run.js';
+import {renderRun} from '../../src/ui/run-view.js';
 it('ordinary rewards cannot silently add a champion outside the group',()=>{for(let seed=0;seed<12;seed++){const r=won(nextBattle(recruit(won(createRun(seed)),'abe')));for(const id of r.rewards){const d=runCatalog[id];expect(d.kind==='unit'&&!!d.champion).toBe(false);}}});
+it('renders run results with a distinct summary while keeping reward and navigation actions',()=>{
+ const wonRun=won(createRun(12),8);wonRun.stage='won';wonRun.deck.push(...Array.from({length:6},(_,i)=>({instanceId:`ally-${i}`,definitionId:'abe'})));wonRun.coinsEarned=177;wonRun.coinsSpent=20;
+ const victory=renderRun(wonRun);
+ expect(victory).toContain('run-result-screen victory');expect(victory).toContain('Run concluída!');
+ expect(victory).toContain('aria-label="Deck final"');expect(victory).toContain('26 cartas');
+ expect(victory).toContain('aria-label="Vida restante"');expect(victory).toContain('8 / 20');
+ expect(victory).toContain('177');expect(victory).toContain('data-action="run-new"');
+ const lostRun={...wonRun,stage:'lost' as const,nexus:0};const defeat=renderRun(lostRun);
+ expect(defeat).toContain('run-result-screen defeat');expect(defeat).toContain('A run terminou');
+ expect(defeat).toContain('data-action="run-new"');
+});
 

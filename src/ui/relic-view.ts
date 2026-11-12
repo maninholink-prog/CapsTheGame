@@ -4,9 +4,9 @@ import type {Profile} from '../profile/profile.js';
 import type {RunState} from '../run/run.js';
 import {esc,icon} from './html.js';
 const rarityNames={common:'Comum',rare:'Rara',legendary:'Lendária'};
-export function relicInitialSelector(p:Profile){
+export function relicInitialSelector(p:Profile,selected=''){
  const owned=playableRelicIds.filter(id=>p.relicCollection?.[id]?.conquered);
- return `<label>Relíquia inicial <select id="run-relic"><option value="">Começar sem relíquia</option>${owned.map(id=>`<option value="${id}">${esc(relicCatalog[id].name)}</option>`).join('')}</select></label><p class="muted">Escolha até uma relíquia conquistada. ${owned.length?'As obtidas durante a run ficam ativas junto dela.':'Conquiste sua primeira ao vencer uma run com ela ativa.'}</p>`;
+ return `<label>Relíquia inicial <select id="run-relic"><option value="">Começar sem relíquia</option>${owned.map(id=>`<option value="${id}" ${selected===id?'selected':''}>${esc(relicCatalog[id].name)}</option>`).join('')}</select></label><p class="muted">Escolha até uma relíquia conquistada. ${owned.length?'As obtidas durante a run ficam ativas junto dela.':'Conquiste sua primeira ao vencer uma run com ela ativa.'}</p>`;
 }
 const relicSymbols:Record<string,string>={
  'artifact-07':'<path d="m5 26 5 5 6-6 3 3 4-4-3-3L30 7l1-6-6 1-14 10-3-3-4 4 3 3-6 6z" fill="#b8dded" stroke="#e8f7ff"/><path d="M12 19 27 5M6 24l3 3" stroke="#5f7ea4" stroke-width="2"/>',

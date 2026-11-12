@@ -36,3 +36,12 @@ it('moves a blocker between lanes and ignores direct input on AI turns',()=>{
  expect(d.blocks).toEqual({enemy2:'a'});
  s.opponentMode='ai';s.state.priorityOwner='p2';expect(chooseBlockUnit(s,d,'p2','enemy')).toBe(false);
 });
+it('makes playable hand cards draggable onto the active field',()=>{
+ const s=setup(),d=freshDraft();s.state.phase='actions';s.state.players.p1.hand=[{instanceId:'hand',definitionId:'damian'}];
+ const html=render(s,d);
+ expect(html).toContain('data-id="hand" draggable="true"');expect(html).toContain('<div class="battle-table" data-drop-field="true">');
+});
+it('does not overlay a hovered or focused hand card over the battle table',()=>{
+ const s=setup();s.state.phase='actions';s.state.players.p1.hand=[{instanceId:'hand',definitionId:'damian'}];
+ expect(render(s,freshDraft())).not.toContain('hand-preview');
+});

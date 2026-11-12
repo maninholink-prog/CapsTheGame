@@ -3,6 +3,7 @@ import type {CardDefinition} from '../content/schema.js';
 import {paidEquipmentUpgrade} from './laboratory.js';
 import { payCost } from './costs.js';
 import {hasTalent,talentCapacity,talentAttached,consumeTalentEquipmentCost} from './kylast-talents.js';
+import {lazaroEquipmentAttached} from './lazaro-talents.js';
 import { returnCard } from './state-events.js';
 import { consumeEquipmentDiscount, equipmentPrice, onEquipmentAttached } from './supports.js';
 import { opponent } from './types.js';
@@ -69,6 +70,7 @@ export function attachEquipment(state: BattleState, owner: PlayerId, source: Car
   const identity=state.definitions[source.definitionId].baseId??source.definitionId;
   talentAttached(state,bearerOwner,bearer,previousIdentities,identity);
   consumeTalentEquipmentCost(state,bearerOwner,unitId,source.instanceId);
+  lazaroEquipmentAttached(state,bearerOwner,bearer,source.definitionId);
   if (!state.equippedIdentities[bearerOwner].includes(identity)) state.equippedIdentities[bearerOwner].push(identity);
   events.push({ type: 'equipmentAttached', player: bearerOwner, equipmentId: source.instanceId, unitId });
   onEquipmentAttached(state, owner, bearerOwner, bearer);

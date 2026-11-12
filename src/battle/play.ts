@@ -2,6 +2,8 @@ import {consumeRubelCosts} from './rubel-talents.js';
 import {consumeArcataCosts} from './arcata-talents.js';
 import {consumeAbeCosts} from './abe-talents.js';
 import {consumeMusicDiscount,expandedResolved} from './expansion.js';
+import {thalionTargetRule} from './thalion-talents.js';
+import {consumeLazaroSpellCost} from './lazaro-talents.js';
 import {kuaraStolenCardPlayed} from './kuara-talents.js';
 import {entryRule,entryTargets,consumeNarrativeCosts} from './narrative.js';
 import { effectiveDefinition, cardCost } from './champions.js';
@@ -64,7 +66,8 @@ export function playCard(state: BattleState, command: PlayCommand): Result {
   } else {
     if (command.replaceUnitId !== undefined || command.position !== undefined) return invalid('Spell has no board position');
     if (definition.speed === 'slow' && (state.combat || state.stackReturnOwner !== null || state.stack.length)) return invalid('Slow spell cannot respond');
-    if (targets.length < definition.target.min || targets.length > definition.target.max ||
+    const targetRule=thalionTargetRule(state,command.player,definition)!;
+    if (targets.length < targetRule.min || targets.length > targetRule.max ||
       new Set(targets.map(targetKey)).size !== targets.length ||
       targets.some(target => !isLegalTarget(state, command.player, definition.target, target))) return invalid('Invalid spell targets');
   }
@@ -78,6 +81,7 @@ export function playCard(state: BattleState, command: PlayCommand): Result {
   consumeArcataCosts(next,command.player,definition);
   consumeRubelCosts(next,command.player,definition);
   consumeMusicDiscount(next,command.player,definition);
+  consumeLazaroSpellCost(next,command.player,definition);
   const damageBonus=consumeNarrativeCosts(next,command.player,definition);
   const sourceIndex = paid.hand.findIndex(c => c.instanceId === card.instanceId);
   const [source] = paid.hand.splice(sourceIndex, 1);

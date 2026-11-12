@@ -1,6 +1,7 @@
 import {paidEquipmentUpgrade} from './laboratory.js';
 import { payCost } from './costs.js';
 import {talentGripAvailable} from './kylast-talents.js';
+import {lazaroEquipmentDiscount} from './lazaro-talents.js';
 import { equipmentError, equipFromHand } from './equipment.js';
 import { shuffle } from './random.js';
 import { opponent } from './types.js';
@@ -41,7 +42,7 @@ export function playArsenal(state: BattleState, command: PlayCommand): Result {
   consumeEquipmentDiscount(next, command.player, weaponDef.cost, equipmentPrice(state,command.player,weaponDef));
   const [source] = paid.hand.splice(paid.hand.findIndex(c => c.instanceId === command.instanceId), 1);
   const pending: PendingEffect = { id: next.nextEffectId++, mode: 'arsenal', owner: command.player, source,
-    paidTalentGrip:talentGripAvailable(state,command.player,targets[0].instanceId),
+    paidTalentGrip:talentGripAvailable(state,command.player,targets[0].instanceId),paidTalentLazaro:lazaroEquipmentDiscount(state,command.player,targets[0].instanceId),
     equipmentId: command.equipmentId, replaceEquipmentId: command.replaceEquipmentId, targets: structuredClone(targets) };
   if (next.stackReturnOwner === null) next.stackReturnOwner = opponent(command.player);
   next.stack.push(pending);

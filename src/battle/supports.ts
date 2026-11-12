@@ -2,6 +2,7 @@ import {cardCost} from './champions.js';
 import {kuaraCardCostDiscount} from './kuara-talents.js';
 import type { CardDefinition } from '../content/schema.js';
 import {talentEquipmentDiscount,talentEntry} from './kylast-talents.js';
+import {lazaroEquipmentDiscount} from './lazaro-talents.js';
 import type { BattleEvent, BattleState, BoardUnit, PlayerId } from './types.js';
 
 export function equipmentPrice(state: BattleState, owner: PlayerId, definition: CardDefinition,unitId?:string,cardId?:string): number {
@@ -11,7 +12,8 @@ export function equipmentPrice(state: BattleState, owner: PlayerId, definition: 
   }).length;
   const card=cardId?state.players[owner].hand.find(c=>c.instanceId===cardId):undefined;
   const base=definition.upgrade||card?cardCost(state,owner,definition,card):definition.cost;
-  return Math.max(0, base - joias-talentEquipmentDiscount(state,owner,unitId,cardId));
+  const price=Math.max(0,base-joias-talentEquipmentDiscount(state,owner,unitId,cardId));
+  return price>1&&lazaroEquipmentDiscount(state,owner,unitId)?price-1:price;
 }
 
 export function consumeEquipmentDiscount(state: BattleState, owner: PlayerId, original: number, paid: number): void {

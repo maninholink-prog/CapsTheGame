@@ -32,3 +32,11 @@ it('preserves escaped rules and the effective display used by the hand preview',
  expect(spell).toContain('caps-card-spell');
  expect(spell).not.toContain('caps-health');
 });
+it('renders Rubel with the approved base and evolved artwork',()=>{
+ expect(cardFace(fullCatalog.rubel)).toContain('src="/art/rubel-card.png"');
+ expect(cardFace(fullCatalog.rubel,{evolved:true})).toContain('src="/art/rubel-evolved.png"');
+});
+it('renders Kylast with the approved base and evolved artwork',()=>{
+ expect(cardFace(fullCatalog.kylast)).toContain('src="/art/kylast-card.png"');
+ expect(cardFace(fullCatalog.kylast,{evolved:true})).toContain('src="/art/kylast-evolved.png"');
+});

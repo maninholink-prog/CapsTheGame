@@ -1,4 +1,5 @@
 import {connectSpellTargets} from './spell-targets.js';
+import {cardFace} from './card-face.js';
 import {fullCatalog,protagonistIds} from '../content/decks.js';
 import {isCaveiraDeck} from '../content/caveira.js';
 import {profileFrames,recordMatch} from '../profile/matches.js';
@@ -16,9 +17,13 @@ import type {TalentId} from '../profile/talents.js';
 import {protagonistSelector} from './protagonist.js';
 import {unlockPlaytestHeroes,createProfile,claimWeekly,ledger,syncWeek} from '../profile/profile.js';
 import type {Profile} from '../profile/profile.js';
+import {masteryInfo} from '../profile/profile.js';
+import {addInitialDeckCard,initialDeckIds,removeInitialDeckCard,saveInitialDeck} from '../profile/initial-decks.js';
 import {buyBooster,openBooster} from '../profile/boosters.js';
 import {startAccount,settleBattle,settleRun} from '../profile/rewards.js';
-import {saveKey,decodeSave,encodeSave,importSave} from '../profile/storage.js';
+import {decodeSave,encodeSave} from '../profile/storage.js';
+import {activeProfileKey,createBrowserSaveStore,createProfileId,loadProfiles} from '../profile/save-store.js';
+import type {SaveStore,SaveSummary} from '../profile/save-store.js';
 import {hubShell,hubContent,onboarding} from './hub.js';
 import {heroPortrait} from './profile-view.js';
 import type {HubPage,HubFilters} from './hub.js';
@@ -41,10 +46,10 @@ import './battle-polish.css';
 import { createSession, sessionFromBattle, dispatchHuman, actingPlayer, concedeSession } from './session.js';
 import { createAiController } from './ai-controller.js';
 import type { BattleSession, OpponentMode } from './session.js';
-import { chooseBlockUnit, chooseDirectTarget, freshDraft, actionCommand, selectedWeapons } from './forms.js';
+import { chooseBlockUnit, chooseDirectTarget, freshDraft, actionCommand, parseDraggedUnit, selectedWeapons } from './forms.js';
 import { render } from './render.js';
-import { handCardMode } from './presentation.js';
-import type { PlayerId } from '../battle/types.js';
+import { handCardMode, preview } from './presentation.js';
+import type { BattleState, PlayerId } from '../battle/types.js';
 import type { Command } from '../battle/commands.js';
 
 const root = document.querySelector<HTMLDivElement>('#app')!;
@@ -65,18 +70,37 @@ let lastGood='';
 let rawSave='';
 let storageIssue='';
 let hubError='';
+let deckEditorHero:Champion|null=null;
+let deckDraft:string[]=[];
+let deckNotice='';
+let runPreparation={adventure:'dr-felix',difficulty:'common' as Rarity,relic:''};
+let profileId:string|null=null;
+let profiles:SaveSummary[]=[];
+let bootstrapped=false;
+let creatingProfile=false;
+let animationHold=false;
+let writeQueue:Promise<void>=Promise.resolve();
+let browserStorage:Storage;
+try{browserStorage=localStorage;}catch{browserStorage={length:0,clear(){},getItem(){return null;},key(){return null;},removeItem(){},setItem(){throw Error('Armazenamento do navegador indisponível.');}} as Storage;storageIssue='O armazenamento local está indisponível; nenhum perfil novo será criado.';}
+const saveStore:SaveStore=window.capsSaves??createBrowserSaveStore(browserStorage);
 const filters:HubFilters={search:'',rarity:'',region:'',owned:''};
-try {rawSave=localStorage.getItem(saveKey)??'';if(rawSave){const saved=decodeSave(rawSave);profile=saved.profile;run=saved.run;adventureSession=saved.session;if(saved.session)session=saved.session;lastGood=rawSave;if(run)selectedProtagonist=run.group[0];}}
-catch(error){storageIssue=error instanceof Error?error.message:'Não foi possível ler o salvamento.';}
+function updateActiveSummary(){if(!profile||!profileId)return;const hero=protagonistIds.find(candidate=>profile!.collection[candidate]?.count)??'kylast',item={id:profileId,name:profile.name,hero,valid:true};profiles=profiles.some(existing=>existing.id===profileId)?profiles.map(existing=>existing.id===profileId?item:existing):[...profiles,item].sort((a,b)=>a.id.localeCompare(b.id));}
+async function bootstrap(){try{const loaded=await loadProfiles(saveStore,localStorage);profiles=loaded.profiles;profileId=loaded.activeId;rawSave=loaded.raw;lastGood=loaded.raw;if(loaded.saved){profile=loaded.saved.profile;run=loaded.saved.run;adventureSession=loaded.saved.session;if(loaded.saved.session)session=loaded.saved.session;if(run)selectedProtagonist=run.group[0];}}
+ catch(error){storageIssue=error instanceof Error?error.message:'Não foi possível ler o salvamento.';}
+ finally{bootstrapped=true;paint();}}
 function download(raw:string,name:string){const url=URL.createObjectURL(new Blob([raw],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function persist(){
- if(!profile||storageIssue)return;
+ if(!bootstrapped||!profile||!profileId||storageIssue)return;
  syncWeek(profile,Date.now());
- const next=encodeSave({profile,run:run?.map?run:null,session:run?.map&&run.stage==='battle'?(training?adventureSession:session):null});
+ const id=profileId,next=encodeSave({profileId:id,profile,run:run?.map?run:null,session:run?.map&&run.stage==='battle'?(training?adventureSession:session):null});
  if(next===lastGood)return;
- try{localStorage.setItem(saveKey,next);lastGood=next;rawSave=next;}
- catch{if(lastGood){const old=decodeSave(lastGood);profile=old.profile;run=old.run;adventureSession=old.session;if(old.session)session=old.session;}storageIssue='Não foi possível salvar no navegador. A última versão salva foi preservada; exporte um backup antes de continuar.';}
+ writeQueue=writeQueue.then(async()=>{if(storageIssue)throw Error(storageIssue);await saveStore.write(id,next);if(profileId===id){lastGood=next;rawSave=next;updateActiveSummary();}}).catch(error=>{if(profileId===id&&lastGood){const old=decodeSave(lastGood);profile=old.profile;run=old.run;adventureSession=old.session;if(old.session)session=old.session;}storageIssue=error instanceof Error?`Não foi possível salvar o perfil. A última versão válida foi preservada: ${error.message}`:'Não foi possível salvar o perfil. A última versão válida foi preservada.';paint();});
 }
+async function flush(){persist();await writeQueue;if(storageIssue)throw Error(storageIssue);}
+async function selectProfile(id:string){try{await flush();const raw=await saveStore.read(id);if(!raw)throw Error('O arquivo do perfil não foi encontrado.');const saved=decodeSave(raw);if(saved.profileId!==id)throw Error('O arquivo não corresponde a este perfil.');localStorage.setItem(activeProfileKey,id);profileId=id;profile=saved.profile;run=saved.run;adventureSession=saved.session;deckEditorHero=null;deckDraft=[];deckNotice='';session=saved.session??createSession(2026,'ai');selectedProtagonist=run?.group[0]??(protagonistIds.find(hero=>profile!.collection[hero]?.count)??'kylast');training=false;battleResult=null;page='profile';lastGood=raw;rawSave=raw;creatingProfile=false;hubError='';paint();}
+ catch(error){hubError=error instanceof Error?error.message:'Não foi possível alternar o perfil.';paint();}}
+async function createNewProfile(name:string,hero:Champion){try{await flush();const id=createProfileId(),created=createProfile(name,hero,crypto.getRandomValues(new Uint32Array(1))[0],Date.now()),raw=encodeSave({profileId:id,profile:created,run:null,session:null});await saveStore.write(id,raw);const savedRaw=await saveStore.read(id);if(savedRaw!==raw||decodeSave(savedRaw??'').profileId!==id)throw Error('Não foi possível confirmar o novo perfil.');localStorage.setItem(activeProfileKey,id);profileId=id;profile=created;run=null;adventureSession=null;deckEditorHero=null;deckDraft=[];deckNotice='';session=createSession(2026,'ai');selectedProtagonist=hero;training=false;battleResult=null;page='home';creatingProfile=false;lastGood=raw;rawSave=raw;updateActiveSummary();hubError='';paint();}
+ catch(error){hubError=error instanceof Error?error.message:'Não foi possível criar o perfil.';paint();}}
 let disconnectSpellTargets=()=>{};
 function paint(): void {
   disconnectSpellTargets();
@@ -91,10 +115,12 @@ root.addEventListener('toggle',()=>fitViewport(root),true);
 root.addEventListener('load',()=>fitViewport(root),true);
 
 function paintScreen(): void {
-  persist();
-  if(storageIssue){aiController.cancel();root.innerHTML=`<main class="hub"><h1>Salvamento protegido</h1><p class="error" role="alert">${esc(storageIssue)}</p><button class="button" data-action="profile-export">Exportar arquivo preservado</button> <button class="button" data-action="storage-retry">Tentar ler novamente</button><p>Você também pode restaurar um backup válido:</p><input type="file" id="import-save" accept="application/json,.json"/></main>`;return;}
+  if(!animationHold)persist();
+  if(!bootstrapped){root.innerHTML='<main class="hub"><p role="status">Carregando perfis…</p></main>';return;}
+  if(storageIssue){aiController.cancel();root.innerHTML=`<main class="hub"><h1>Salvamento protegido</h1><p class="error" role="alert">${esc(storageIssue)}</p>${rawSave?'<button class="button" data-action="profile-export">Exportar arquivo preservado</button> ':''}<button class="button" data-action="storage-retry">Tentar ler novamente</button><p>Você também pode restaurar um backup válido:</p><input type="file" id="import-save" accept="application/json,.json"/></main>`;return;}
+  if(creatingProfile){aiController.cancel();root.innerHTML=onboarding(hubError,true);return;}
   if(!profile){aiController.cancel();root.innerHTML=onboarding(hubError);return;}
-  if(page!=='battle'){aiController.cancel();root.innerHTML=hubShell(page,hubContent(profile,page,run,filters,masteryHero,showMasteryDetails,homeScene,hubError),hubError);return;}
+  if(page!=='battle'){aiController.cancel();root.innerHTML=hubShell(page,hubContent(profile,page,run,filters,masteryHero,showMasteryDetails,homeScene,hubError,profiles,profileId,deckEditorHero?{hero:deckEditorHero,ids:deckDraft,notice:deckNotice}:null,runPreparation),hubError);return;}
   const active = document.activeElement instanceof HTMLElement && root.contains(document.activeElement) ? document.activeElement : null;
   const keys = ['data-action', 'data-id', 'data-field', 'data-unit', 'data-strike', 'data-player', 'data-tab', 'data-definition', 'id', 'value'];
   const identity = active ? keys.filter(key => active.hasAttribute(key)).map(key => [key, active.getAttribute(key)!]) : [];
@@ -130,50 +156,139 @@ function paintScreen(): void {
   });
   const newHand = root.querySelector<HTMLElement>('.hand-row');
   if (newHand && newHand.dataset.player === oldOwner) newHand.scrollLeft = handPosition;
-  if (identity.length) {
+  const upgradeDialog=root.querySelector<HTMLDialogElement>('.upgrade-choice-overlay');
+  if(upgradeDialog&&!upgradeDialog.open){upgradeDialog.addEventListener('cancel',event=>event.preventDefault(),{once:true});upgradeDialog.showModal();}
+  if(upgradeDialog)root.querySelector<HTMLElement>('.upgrade-choice-card')?.focus({preventScroll:true});
+  else if (identity.length) {
     const replacement = [...root.querySelectorAll<HTMLElement>('button,input,select')].find(el => identity.every(([key, value]) => el.getAttribute(key) === value));
     replacement?.focus({ preventScroll: true });
   }
   if(!training&&run&&run.stage!=='battle')aiController.cancel();else aiController.schedule();
 }
+function captureNexusStrike(before:BattleState,after:BattleState){
+ const combat=before.combat;
+ if(!combat||combat.stage!=='responses'||after.combat)return null;
+ const defender:PlayerId=combat.attacker==='p1'?'p2':'p1';
+ if(after.players[defender].nexus>=before.players[defender].nexus)return null;
+ const sources=combat.lanes.filter(lane=>!lane.blockerId).flatMap(lane=>{
+  const card=[...root.querySelectorAll<HTMLElement>('.battle-lane .front-card .unit-face')].find(el=>el.dataset.id===lane.attackerId&&el.dataset.owner===combat.attacker);
+  if(!card)return [];
+  const rect=card.getBoundingClientRect();
+  return rect.width&&rect.height?[{card:card.cloneNode(true) as HTMLElement,rect}]:[];
+ });
+ return sources.length?{defender,sources}:null;
+}
+function playNexusStrike(strike:ReturnType<typeof captureNexusStrike>):void{
+ if(!strike)return;
+ const nexus=root.querySelector<HTMLElement>(`.nexus[data-spell-endpoint="nexus:${strike.defender}"]`);
+ if(!nexus)return;
+ const target=nexus.getBoundingClientRect(),reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ strike.sources.forEach(({card,rect},index)=>{
+  const delay=index*85;
+  if(!reduced){
+   const overlay=document.createElement('div');overlay.className='battle-strike-overlay tactical-battle';overlay.setAttribute('aria-hidden','true');
+   Object.assign(overlay.style,{left:`${rect.left}px`,top:`${rect.top}px`,width:`${rect.width}px`,height:`${rect.height}px`});
+   card.removeAttribute('data-action');card.removeAttribute('data-id');card.removeAttribute('data-owner');overlay.append(card);document.body.append(overlay);
+   const dx=target.left+target.width/2-(rect.left+rect.width/2),dy=target.top+target.height/2-(rect.top+rect.height/2);
+   const motion=overlay.animate([{transform:'translate(0,0) scale(1)',offset:0},{transform:`translate(${dx}px,${dy}px) scale(.62)`,offset:.58},{transform:`translate(${dx}px,${dy}px) scale(.62)`,offset:.67},{transform:'translate(0,0) scale(1)',offset:1}],{duration:720,delay,easing:'cubic-bezier(.18,.72,.24,1)',fill:'forwards'});
+   motion.onfinish=()=>overlay.remove();
+  }
+  window.setTimeout(()=>{nexus.classList.remove('combat-impact');void nexus.offsetWidth;nexus.classList.add('combat-impact');window.setTimeout(()=>nexus.classList.remove('combat-impact'),420);},delay+(reduced?0:410));
+ });
+}
 function receive(next: BattleSession): void {
   const before = session.state;
+  const nexusStrike=captureNexusStrike(before,next.state);
+  const deferResult=Boolean(nexusStrike&&next.state.phase==='ended');
   session = next;
   if(before.phase!=='ended'&&next.state.phase==='ended'){
-    battleResult=next;
+    if(!deferResult)battleResult=next;
     const {winner,players}=next.state;
     if(training&&profile&&winner&&players.p1.protagonist)recordMatch(profile,players.p1.protagonist,'training',winner,Date.now());
   }
-  if(!training&&run?.stage==='battle'&&session.state.phase==='ended'){const beforeRun=run;run=finishBattle(run,session.state);if(profile&&run.map)profile=settleBattle(profile,beforeRun,run,session.state,Date.now());}
+  if(!deferResult&&!training&&run?.stage==='battle'&&session.state.phase==='ended'){const beforeRun=run;run=finishBattle(run,session.state);if(profile&&run.map)profile=settleBattle(profile,beforeRun,run,session.state,Date.now());}
   if (session.state !== before) {
     const { inspectedDefinitionId, sideTab } = draft;
     draft = { ...freshDraft(), inspectedDefinitionId, sideTab };
   }
+  if(deferResult){animationHold=true;root.inert=true;}
   paint();
+  playNexusStrike(nexusStrike);
+  if(deferResult){
+   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+   const duration=reduced?480:800+(nexusStrike!.sources.length-1)*85;
+   window.setTimeout(()=>{
+    root.inert=false;animationHold=false;
+    if(session!==next)return;
+    battleResult=next;
+    if(!training&&run?.stage==='battle'){const beforeRun=run;run=finishBattle(run,session.state);if(profile&&run.map)profile=settleBattle(profile,beforeRun,run,session.state,Date.now());}
+    paint();
+   },duration);
+  }
 }
 function send(command: Command): void { receive(dispatchHuman(session, command)); }
 const aiController = createAiController({ getSession: () => session, commit: receive });
 function toggleAttacker(id: string): void {
   draft.attackers = draft.attackers.includes(id) ? draft.attackers.filter(a => a !== id) : [...draft.attackers, id];
 }
-function showHandPreview(target:EventTarget|null):void {
-  const preview=root.querySelector<HTMLElement>('.hand-preview');
-  if(!preview)return;
-  const card=target instanceof Element?target.closest('.hand-row .hand-card'):null;
-  preview.hidden=!card;
-  if(!card)return;
-  preview.className='hand-preview '+[...card.classList].filter(name=>name.startsWith('rarity-')).join(' ');
-  preview.replaceChildren(...[...card.children].map(node=>node.cloneNode(true)));
+function previewDefinition(target:Element):string|undefined {
+  const hand=target.closest<HTMLElement>('.hand-card[data-id]');
+  if(hand){const card=session.state.players[session.viewPlayer].hand.find(c=>c.instanceId===hand.dataset.id);return card?effectiveDefinition(session.state,session.viewPlayer,card).id:undefined;}
+  const unit=target.closest<HTMLElement>('.unit-face[data-id][data-owner]');
+  if(unit){const owner=unit.dataset.owner as PlayerId;return session.state.players[owner].board.find(u=>u.card.instanceId===unit.dataset.id)?.card.definitionId;}
+  return target.closest<HTMLElement>('[data-definition]')?.dataset.definition;
 }
-root.addEventListener('pointerover',event=>{
-  if((event.target as Element).closest('.hand-card')!==(event.relatedTarget as Element|null)?.closest?.('.hand-card'))showHandPreview(event.target);
+function updateCardPreview(id:string|null):void {
+  draft.inspectedDefinitionId=id;
+  const preview=root.querySelector<HTMLElement>('.card-hover-preview');
+  if(!preview)return;
+  const def=id&&session.state.definitions[id];
+  preview.hidden=!def;
+  preview.innerHTML=def?cardFace(def):'';
+}
+const inspectable='.hand-card[data-id],.unit-face[data-id][data-owner],[data-definition]';
+root.addEventListener('pointerover',event=>{const target=(event.target as Element).closest(inspectable);if(target){const id=previewDefinition(target);if(id&&id!==draft.inspectedDefinitionId)updateCardPreview(id);}});
+root.addEventListener('pointerout',event=>{const from=(event.target as Element).closest(inspectable),to=(event.relatedTarget as Element|null)?.closest(inspectable);if(from&&!to)updateCardPreview(null);});
+root.addEventListener('focusin',event=>{const target=(event.target as Element).closest(inspectable),id=target&&previewDefinition(target);if(id)updateCardPreview(id);});
+root.addEventListener('focusout',event=>{const from=(event.target as Element).closest(inspectable),to=(event.relatedTarget as Element|null)?.closest(inspectable);if(from&&!to)updateCardPreview(null);});
+root.addEventListener('dragstart',event=>{
+  const element=(event.target as Element).closest<HTMLElement>('.hand-card[data-id],.unit-face[data-drag-unit]');
+  if(!element||!event.dataTransfer)return;
+  const source=element.matches('.hand-card')?`card:${element.dataset.id}`:`unit:${element.dataset.owner}:${element.dataset.id}`;
+  event.dataTransfer.setData(source.startsWith('card:')?'application/x-caps-card':'application/x-caps-unit',source);
+  event.dataTransfer.effectAllowed='move';
 });
-root.addEventListener('pointerout',event=>{
-  if((event.target as Element).closest('.hand-card')!==(event.relatedTarget as Element|null)?.closest?.('.hand-card'))showHandPreview(event.relatedTarget);
+root.addEventListener('dragover',event=>{
+  const types=event.dataTransfer?.types??[];
+  const target=event.target as Element;
+  if((types.includes('application/x-caps-card')&&target.closest('[data-drop-field],.unit-face[data-id],.nexus[data-owner]'))||(types.includes('application/x-caps-unit')&&target.closest('[data-drop="attack"]'))){
+    event.preventDefault();if(event.dataTransfer)event.dataTransfer.dropEffect='move';
+  }
 });
-root.addEventListener('focusin',event=>showHandPreview(event.target));
-root.addEventListener('focusout',event=>showHandPreview(event.relatedTarget));
+root.addEventListener('drop',event=>{
+  const source=event.dataTransfer?.getData('application/x-caps-card')||event.dataTransfer?.getData('application/x-caps-unit')||'';
+  const target=event.target as Element;
+  if(source.startsWith('unit:')&&target.closest('[data-drop="attack"]')){
+    event.preventDefault();const dragged=parseDraggedUnit(source);
+    if(dragged&&dragged.owner===session.viewPlayer&&dragged.owner===actingPlayer(session.state)&&session.state.phase==='actions'&&!session.state.combat){toggleAttacker(dragged.id);paint();}
+    return;
+  }
+  if(!source.startsWith('card:')||!target.closest('[data-drop-field],.unit-face[data-id],.nexus[data-owner]'))return;
+  event.preventDefault();const id=source.slice(5),card=session.state.players[session.viewPlayer].hand.find(item=>item.instanceId===id);
+  if(!card||actingPlayer(session.state)!==session.viewPlayer)return;
+  draft={...freshDraft(),sideTab:draft.sideTab,selectedCardId:id,inspectedDefinitionId:effectiveDefinition(session.state,session.viewPlayer,card).id};
+  const unit=target.closest<HTMLElement>('.unit-face[data-id][data-owner]');
+  const nexus=target.closest<HTMLElement>('.nexus[data-owner]');
+  if(unit)chooseDirectTarget(session,draft,{kind:'unit',player:unit.dataset.owner as PlayerId,instanceId:unit.dataset.id!});
+  else if(nexus)chooseDirectTarget(session,draft,{kind:'nexus',player:nexus.dataset.owner as PlayerId});
+  const command=actionCommand(session,draft);
+  const check=command?preview(session.state,command):{ok:false,reason:'Não foi possível jogar esta carta aqui.'};
+  if(!command||!check.ok){session={...session,error:check.reason||'Escolha um alvo válido para esta carta.'};paint();return;}
+  send(command);
+});
 root.addEventListener('click', event => {
+  const reference=root.querySelector<HTMLDetailsElement>('.battle-reference');
+  if(reference?.open&&!reference.contains(event.target as Node))reference.open=false;
   const button = (event.target as Element).closest<HTMLButtonElement>('button[data-action]');
   if (!button || button.disabled) return;
   const action = button.dataset.action!;
@@ -184,15 +299,18 @@ root.addEventListener('click', event => {
   }
   if(action==='profile-customize'){root.querySelector<HTMLDialogElement>('#profile-customization')?.showModal();return;}
   if(action==='profile-customize-close'){root.querySelector<HTMLDialogElement>('#profile-customization')?.close();return;}
-  if(action==='profile-export'){download(storageIssue?rawSave:lastGood,'caps-backup.json');return;}
+  if(action==='profile-export'){if(storageIssue){download(rawSave,'caps-backup.json');return;}void flush().then(()=>download(lastGood,'caps-backup.json')).catch(error=>{hubError=error instanceof Error?error.message:'Falha ao exportar o perfil.';paint();});return;}
   if(action==='storage-retry'){location.reload();return;}
+  if(action==='profile-add'){creatingProfile=true;hubError='';paint();return;}
+  if(action==='profile-cancel'){creatingProfile=false;hubError='';paint();return;}
+  if(action==='profile-create'){void createNewProfile(root.querySelector<HTMLInputElement>('#profile-name')!.value,button.dataset.id as Champion);return;}
+  if(action==='profile-switch'){void selectProfile(button.dataset.id!);return;}
   if(storageIssue)return;
-  if(action==='profile-create'||action.startsWith('hub-')||action.startsWith('booster-')||action==='weekly-claim'||action==='profile-rename'||action.startsWith('talent-')){
+  if(action.startsWith('hub-')||action.startsWith('booster-')||action==='weekly-claim'||action==='profile-rename'||action.startsWith('talent-')){
     aiController.cancel();hubError='';
     try {
       const now=Date.now();
-      if(action==='profile-create'){profile=createProfile(root.querySelector<HTMLInputElement>('#profile-name')!.value,button.dataset.id as Champion,crypto.getRandomValues(new Uint32Array(1))[0],now);}
-      else if(!profile)throw Error('Crie seu perfil primeiro.');
+      if(!profile)throw Error('Crie seu perfil primeiro.');
       else if(action==='hub-nav'){
         const next=button.dataset.id as HubPage;
         if(!training&&run?.stage==='battle')adventureSession=session;
@@ -204,14 +322,30 @@ root.addEventListener('click', event => {
       else if(action==='hub-mastery'){masteryHero=button.dataset.id as Champion;showMasteryDetails=true;}
       else if(action==='hub-mastery-back'){showMasteryDetails=false;}
       else if(action==='hub-unlock-test'){profile=unlockPlaytestHeroes(profile);page='adventure';}
+      else if(action==='hub-deck-edit'){
+        const hero=button.dataset.id as Champion;
+        if(activeAdventure(run))throw Error('Encerre a aventura atual antes de editar um deck inicial.');
+        if(!profile.collection[hero]?.count||!protagonistIds.includes(hero)||masteryInfo(profile.mastery[hero].xp).level<15)throw Error('A edição exige protagonista desbloqueado e maestria 15.');
+        deckEditorHero=hero;deckDraft=[...initialDeckIds(profile,hero)];deckNotice='';
+      }
+      else if(action==='hub-deck-add'&&deckEditorHero){
+        const id=root.querySelector<HTMLSelectElement>('#deck-card-choice')?.value??'';
+        if(!id)throw Error('Escolha uma carta da coleção.');
+        deckDraft=addInitialDeckCard(profile,deckEditorHero,deckDraft,id);deckNotice='Carta adicionada.';
+      }
+      else if(action==='hub-deck-remove'&&deckEditorHero){deckDraft=removeInitialDeckCard(deckEditorHero,deckDraft,button.dataset.id!);deckNotice='Uma cópia removida.';}
+      else if(action==='hub-deck-save'&&deckEditorHero){profile=saveInitialDeck(profile,deckEditorHero,deckDraft);deckNotice='Deck inicial salvo para as próximas aventuras.';}
+      else if(action==='hub-deck-cancel'){deckEditorHero=null;deckDraft=[];deckNotice='';}
       else if(action==='hub-training'){if(!training&&run?.stage==='battle')adventureSession=session;const deck=button.dataset.id??root.querySelector<HTMLSelectElement>('#caveira-training')?.value;training=true;session=createSession(crypto.getRandomValues(new Uint32Array(1))[0],'ai',selectedProtagonist,isCaveiraDeck(deck)?deck:undefined);draft=freshDraft();page='battle';}
       else if(action==='hub-start'){
         const hero=button.dataset.id as Champion;
         if(activeAdventure(run))throw Error('Encerre a aventura atual antes de iniciar outra.');
         if(!profile.collection[hero]?.count)throw Error('Protagonista bloqueado.');
         const initialRelic=root.querySelector<HTMLSelectElement>('#run-relic')?.value??'';if(initialRelic&&!profile.relicCollection?.[initialRelic]?.conquered)throw Error('Conquiste esta relíquia antes de selecioná-la.');
-        const adventure=root.querySelector<HTMLSelectElement>('#run-adventure')?.value==='caveira-dourada'?'caveira-dourada':'dr-felix';
-        selectedProtagonist=hero;run=createMapRun(crypto.getRandomValues(new Uint32Array(1))[0],hero,(root.querySelector<HTMLSelectElement>('#run-difficulty')?.value??'common') as Rarity,adventure);run=enableRelics(run,initialRelic||undefined);run.talents=[...(profile.talents?.[hero]??[])];run.collection=Object.keys(profile.collection);profile=startAccount(profile,run,`${now}-${run.seed}`);training=false;adventureSession=null;page='battle';draft=freshDraft();
+        const selectedAdventure=root.querySelector<HTMLSelectElement>('#run-adventure')?.value;
+        const adventure=selectedAdventure==='caveira-dourada'||selectedAdventure==='jupiter'?selectedAdventure:'dr-felix';
+        if(deckEditorHero)throw Error('Feche o editor do deck antes de iniciar.');
+        selectedProtagonist=hero;run=createMapRun(crypto.getRandomValues(new Uint32Array(1))[0],hero,(root.querySelector<HTMLSelectElement>('#run-difficulty')?.value??'common') as Rarity,adventure,profile.initialDecks?.[hero]);run=enableRelics(run,initialRelic||undefined);run.talents=[...(profile.talents?.[hero]??[])];run.collection=Object.keys(profile.collection);profile=startAccount(profile,run,`${now}-${run.seed}`);training=false;adventureSession=null;page='battle';draft=freshDraft();
       }
       else if(action==='hub-abandon'&&run){
         if(hasOpenChart(run)||run.caveiraAftermath==='battle')run=resolveCaveiraMap(run,'leave');
@@ -230,6 +364,11 @@ root.addEventListener('click', event => {
       if(run?.collection&&profile)run.collection=Object.keys(profile.collection);
     }catch(error){hubError=error instanceof Error?error.message:'Ação indisponível.';}
     paint();
+    if(action.startsWith('hub-deck-'))root.querySelector<HTMLDetailsElement>('.adventure-options')?.setAttribute('open','');
+    if(action==='hub-deck-edit'||action==='hub-deck-add')root.querySelector<HTMLElement>('#deck-card-choice')?.focus({preventScroll:true});
+    if(action==='hub-deck-remove')root.querySelector<HTMLElement>('#deck-card-choice')?.focus({preventScroll:true});
+    if(action==='hub-deck-save')root.querySelector<HTMLElement>('[data-action="hub-deck-save"]')?.focus({preventScroll:true});
+    if(action==='hub-deck-cancel')root.querySelector<HTMLElement>(`[data-action="hub-deck-edit"][data-id="${CSS.escape(button.dataset.id??'')}"]`)?.focus({preventScroll:true});
     if(action==='talent-buy'){
       const panel=root.querySelector<HTMLDetailsElement>('#talent-'+CSS.escape(button.dataset.id??'')+'-details')?.closest('details');
       if(panel){panel.open=true;panel.querySelector('summary')?.focus({preventScroll:true});}
@@ -279,7 +418,7 @@ root.addEventListener('click', event => {
     aiController.cancel();
     const oldRun=run;
     try{
-      if(action==='run-new'||action==='run-map-new'){const input=root.querySelector<HTMLInputElement>('#battle-seed');const seed=run?.seed??(input?Number(input.value):2026);run=action==='run-map-new'||run?.map?createMapRun(seed,selectedProtagonist):createRun(seed,selectedProtagonist);session=run.stage==='battle'?sessionFromBattle(runBattle(run),seed):createSession(seed,'ai');}
+      if(action==='run-new'||action==='run-map-new'){const input=root.querySelector<HTMLInputElement>('#battle-seed');const seed=run?.seed??(input?Number(input.value):2026);run=action==='run-map-new'||run?.map?createMapRun(seed,selectedProtagonist,run?.difficulty??'common',run?.adventure??'dr-felix',profile?.initialDecks?.[selectedProtagonist]):createRun(seed,selectedProtagonist);session=run.stage==='battle'?sessionFromBattle(runBattle(run),seed):createSession(seed,'ai');}
       else if(action==='run-exit'){page='home';}
       else if(run){if(action==='run-node'||action==='run-fight'){
         const next=enterNode(run,button.dataset.id!);
@@ -389,6 +528,14 @@ root.addEventListener('click', event => {
 
 root.addEventListener('change', event => {
   const input = event.target as HTMLInputElement | HTMLSelectElement;
+  if(input.id==='deck-card-choice')return;
+  if(input.id==='run-adventure'||input.id==='run-difficulty'||input.id==='run-relic'){
+    if(input.id==='run-adventure')runPreparation.adventure=input.value;
+    else if(input.id==='run-difficulty')runPreparation.difficulty=input.value as Rarity;
+    else runPreparation.relic=input.value;
+    if(deckEditorHero){paint();root.querySelector<HTMLDetailsElement>('.adventure-options')?.setAttribute('open','');}
+    return;
+  }
   if(input.id==='protagonist'||input.name==='protagonist'){selectedProtagonist=input.value as Champion;return;}
   if(input.name==='profile-avatar'){
     const hero=input.value as Champion;
@@ -401,7 +548,7 @@ root.addEventListener('change', event => {
   }
   if(input.id==='import-save'){
     const file=(input as HTMLInputElement).files?.[0];if(!file)return;
-    void file.text().then(raw=>{const saved=importSave(localStorage,raw);profile=saved.profile;run=saved.run;adventureSession=saved.session;session=saved.session??createSession(2026,'ai');lastGood=raw;rawSave=raw;storageIssue='';hubError='';page='home';training=false;paint();}).catch(error=>{hubError=error instanceof Error?error.message:'Falha na restauração.';if(storageIssue)storageIssue=hubError;paint();});return;
+    void file.text().then(async raw=>{if(!storageIssue)await flush();const imported=decodeSave(raw),id=profileId??createProfileId(),normalized=encodeSave({...imported,profileId:id});await saveStore.write(id,normalized);const verified=await saveStore.read(id);if(verified!==normalized||decodeSave(verified??'').profileId!==id)throw Error('Não foi possível confirmar o backup restaurado.');localStorage.setItem(activeProfileKey,id);profileId=id;profile=imported.profile;run=imported.run;adventureSession=imported.session;deckEditorHero=null;deckDraft=[];deckNotice='';session=imported.session??createSession(2026,'ai');lastGood=normalized;rawSave=normalized;updateActiveSummary();storageIssue='';hubError='';page='home';training=false;creatingProfile=false;paint();}).catch(error=>{hubError=error instanceof Error?error.message:'Falha na restauração.';if(storageIssue)storageIssue=hubError;paint();});return;
   }
   if(input.id.startsWith('collection-')){const key=input.id.slice(11) as keyof HubFilters;filters[key]=input.value;paint();return;}
   const field = input.dataset.field;
@@ -422,4 +569,4 @@ root.addEventListener('change', event => {
   }
   if (field) paint();
 });
-paint();
+void bootstrap();

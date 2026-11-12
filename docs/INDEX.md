@@ -18,6 +18,8 @@ Leia seletivamente. Este índice aponta para fontes existentes; não substitui s
 - [design/](../design/): especificações mecânicas e propostas, preservadas nos nomes originais.
 - [Projeção técnica histórica](../design/PROJECAO_TECNICA.md): não representa sozinha o estado atual. Código atual em [src/](../src/): battle, content, run, profile, ai e ui; cenários em [tests/](../tests/).
 - [Mapa Comum](../design/MAPA_COMUM.md), [mecânicas compartilhadas](../design/MECANICAS_COMPARTILHADAS.md), [maestria](../design/MAESTRIA_PROGRESSAO.md), [catálogo de relíquias](../design/RELIQUIAS_CATALOGO_PROPOSTA.md).
+- [Processo de expansão de personagens, maestrias e cartas](../design/PROCESSO_EXPANSAO_PERSONAGENS_E_CARTAS.md): fluxo reutilizável de fontes, aprovações, arte, integração, testes e pacote Windows.
+- [Deck inicial por maestria 15](superpowers/specs/2026-11-12-deck-inicial-maestria-15.md): decisão DEC-039 e especificação da implementação.
 - [Planos e registros históricos](superpowers/plans/), [especificações de integração](superpowers/specs/). Um plano marcado concluído não substitui verificar o código e testes.
 - [Constelação de Kylast](kylast-constelacao.md), [primeiro lote de relíquias](reliquias-primeiro-lote.md), [lote pausado](reliquias-proximo-lote-pendente.md), [validação de Félix](felix-validacao.md).
 

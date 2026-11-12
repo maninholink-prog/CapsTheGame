@@ -6,6 +6,7 @@ import { actingPlayer, isAiTurn } from './session.js';
 import { requiredBanjos } from '../battle/attack-triggers.js';
 import { effectiveEquipmentCapacity } from '../battle/equipment.js';
 import { isLegalTarget, targetKey } from '../battle/targets.js';
+import {thalionTargetRule} from '../battle/thalion-talents.js';
 import type { BattleState, PlayerId, TargetRef } from '../battle/types.js';
 import type { TargetRule } from '../content/schema.js';
 import { cardName, handCardMode, instanceName, playerName, preview, targetLabel } from './presentation.js';
@@ -25,7 +26,7 @@ export function directTargets(session:BattleSession,draft:Draft):{options:Target
  const card=state.players[viewPlayer].hand.find(c=>c.instanceId===draft.selectedCardId);if(!card)return null;
  const mode=handCardMode(state,viewPlayer,card),def=effectiveDefinition(state,viewPlayer,card);
  if(mode==='equipment'||mode==='arsenal')return {options:state.players[viewPlayer].board.map(u=>({kind:'unit',player:viewPlayer,instanceId:u.card.instanceId})),min:1,max:1,equipment:true};
- const rule=mode==='unit'?entryRule(state.definitions[card.definitionId]):def.kind!=='unit'&&def.kind!=='equipment'?def.target:null;
+ const rule=mode==='unit'?entryRule(state.definitions[card.definitionId]):thalionTargetRule(state,viewPlayer,def);
  return rule?{options:mode==='unit'?entryTargets(state,viewPlayer,card):targetOptions(state,viewPlayer,rule),min:rule.min,max:rule.max,equipment:false}:null;
 }
 export function chooseDirectTarget(session:BattleSession,draft:Draft,target:TargetRef):boolean {
@@ -51,6 +52,10 @@ export function chooseBlockUnit(session:BattleSession,draft:Draft,owner:PlayerId
 export function freshDraft(): Draft {
   return { mode: 'card', selectedCardId: null, mulligan: [], targetId: '', targetKeys: [], equipmentId: '', replaceEquipmentId: '', replaceUnitId: '', position: '',
     attackers: [], weapons: {}, blocks: {}, banjos: {}, inspectedDefinitionId: null, sideTab: 'stack' };
+}
+export function parseDraggedUnit(source:string):{owner:PlayerId;id:string}|null {
+  const match=/^unit:(p1|p2):(.+)$/.exec(source);
+  return match?{owner:match[1] as PlayerId,id:match[2]}:null;
 }
 export function targetOptions(state: BattleState, player: PlayerId, rule: TargetRule): TargetRef[] {
   const refs: TargetRef[] = state.stack.filter(p => p.mode !== 'colar-next').map(p => ({ kind: 'stack', effectId: p.id }));
@@ -100,11 +105,11 @@ function select(field: string, label: string, value: string, options: { value: s
 }
 function directTargetGuide(session:BattleSession,draft:Draft):string {
  const selection=directTargets(session,draft);if(!selection)return '';
- if(selection.max===0)return '<p class="muted">Esta carta não exige alvo. Seu efeito será aplicado automaticamente ao jogar.</p>';
+ if(selection.max===0)return '';
  const keys=selection.equipment?(draft.targetId?[`unit:${session.viewPlayer}:${draft.targetId}`]:[]):draft.targetKeys;
- const selected=selection.options.filter(t=>keys.includes(targetKey(t)));
+ if(selection.options.some(t=>t.kind==='nexus'||t.kind==='unit'&&session.state.players[t.player].board.some(u=>u.card.instanceId===t.instanceId)))return '';
  const special=selection.options.filter(t=>t.kind==='stack'||t.kind==='unit'&&!session.state.players[t.player].board.some(u=>u.card.instanceId===t.instanceId));
- return `<p class="muted">Clique nos alvos destacados na mesa${selection.max>1?` · até ${selection.max} alvos`:''}. Clique novamente para desmarcar.</p><p class="target-summary">${selected.length?selected.map(t=>esc(targetLabel(session.state,t))).join(' · '):selection.max===0?'Esta carta não exige alvo.':'Nenhum alvo selecionado.'}</p>${special.map(t=>`<button class="chip ${keys.includes(targetKey(t))?'chosen':''}" data-action="field-target" data-key="${esc(targetKey(t))}">${esc(t.kind==='unit'?'A própria unidade ao entrar':targetLabel(session.state,t))}</button>`).join('')}`;
+ return special.map(t=>`<button class="chip ${keys.includes(targetKey(t))?'chosen':''}" data-action="field-target" data-key="${esc(targetKey(t))}">${esc(t.kind==='unit'?'A própria unidade ao entrar':targetLabel(session.state,t))}</button>`).join('');
 }
 const primary = (label: string, disabled: boolean) => `<button class="button primary" data-action="confirm" ${disabled ? 'disabled' : ''}>${esc(label)}${icon('chevron')}</button>`;
 
@@ -120,7 +125,7 @@ export function renderActionPanel(session: BattleSession, draft: Draft): string 
   const form=state.formChoices?.[0];
   if(form)return `<div class="phase-title">METAMORFOSE FÚNEBRE · YOURO</div><h2>Escolha sua forma</h2><p>Uma forma ativa. Preserva dano e melhorias; perder vida máxima pode derrotar Youro.</p><button class="button secondary" data-action="form-choice" data-id="bear">Urso · +${state.players[form.owner].board.find(u=>u.card.instanceId===form.unitId)?.evolved?4:2} vida máxima</button><button class="button secondary" data-action="form-choice" data-id="tiger">Tigre · +${state.players[form.owner].board.find(u=>u.card.instanceId===form.unitId)?.evolved?4:2} ataque</button>`;
   const choice=state.choices?.[0];
-  if(choice)return `<div class="phase-title">FABRICAÇÃO · ABE</div><h2>Escolha um Upgrade</h2><p>${(choice.remaining??1)>1?'Obra-Prima: escolha dois Upgrades distintos, um de cada vez.':'Escolha um Upgrade entre as opções restantes.'} O limite da mão é dez cartas.</p>${choice.options.map(id=>`<button class="button secondary" data-action="upgrade-choice" data-id="${esc(id)}">${esc(cardName(state,id))} · ${cardCost(state,choice.owner,state.definitions[id])} mana</button><p class="muted">${esc(state.definitions[id].text??'')}</p>`).join('')}`;
+  if(choice)return `<div class="phase-title">FABRICAÇÃO · ABE</div><h2>Escolha no centro da mesa</h2><p>${(choice.remaining??1)>1?'Obra-Prima: ainda há Upgrades para escolher.':'Selecione uma das cartas.'}</p>`;
   const player = actingPlayer(state);
   const command = actionCommand(session, draft);
   const check = command ? preview(state, command) : { ok: false, reason: '' };
@@ -145,24 +150,18 @@ export function renderActionPanel(session: BattleSession, draft: Draft): string 
       state.players[player === 'p1' ? 'p2' : 'p1'].board.map(u => ({ value: u.card.instanceId, label: cardName(state, u.card.definitionId) })), 'Escolha o inimigo', `data-unit="${esc(b.instanceId)}"`)).join('')}`;
   } else if (draft.mode === 'attack') {
     title = 'Prepare seu ataque'; label = 'Declarar ataque';
-    body = `<p class="muted">Selecione as unidades no campo ou abaixo. A ordem define a linha de combate.</p><div class="attacker-toggles">${state.players[player!].board.map(u => `<button class="chip ${draft.attackers.includes(u.card.instanceId) ? 'chosen' : ''}" data-action="toggle-attacker" data-id="${esc(u.card.instanceId)}" ${(u.stunnedUntilRound ?? -1) >= state.round ? 'disabled' : ''}>${esc(cardName(state, u.card.definitionId))}</button>`).join('')}</div>${draft.attackers.map((id, index) => {
-      const unit = state.players[player!].board.find(u => u.card.instanceId === id)!;
-      return `<div class="attack-choice"><div class="choice-heading"><strong>${index + 1}. ${esc(cardName(state, unit.card.definitionId))}</strong><div><button class="mini-button" data-action="order-left" data-id="${esc(id)}" aria-label="Mover atacante para a esquerda" ${index === 0 ? 'disabled' : ''}>←</button><button class="mini-button" data-action="order-right" data-id="${esc(id)}" aria-label="Mover atacante para a direita" ${index === draft.attackers.length - 1 ? 'disabled' : ''}>→</button></div></div>${selectedWeapons(state, player!, id, draft).map((weapon, strike) => select('weapon', `Golpe ${strike + 1}`, weapon ?? '', (unit.equipment ?? []).map(g => ({ value: g.card.instanceId, label: cardName(state, g.card.definitionId) })), 'Sem arma', `data-unit="${esc(id)}" data-strike="${strike}"`)).join('')}</div>`;
-    }).join('')}<button class="text-button" data-action="cancel-attack">Voltar às cartas</button>`;
+    body = '';
   } else {
     const card = state.players[player!].hand.find(c => c.instanceId === draft.selectedCardId);
-    title = card ? handCardMode(state, player!, card) === 'arsenal' ? 'Troca de Arsenal' : effectiveDefinition(state,player!,card).name??cardName(state,card.definitionId) : 'Sua próxima ação';
+    title = 'Sua próxima ação';
     label = 'Jogar carta';
-    if (!card) body = `<details class="battle-help"><summary>Como jogar</summary><p>Escolha uma carta da mão para jogar ou passe a ação.</p></details>`;
-    else {
+    if (card) {
       const mode = handCardMode(state, player!, card);
       const units = state.players[player!].board;
       if (mode === 'unit') {
         const rule=entryRule(state.definitions[card.definitionId]);
         if(rule)body+=directTargetGuide(session,draft);
         if (units.length >= 5) body += select('replaceUnitId', 'Unidade a substituir · será derrotada', draft.replaceUnitId, units.map(u => ({ value: u.card.instanceId, label: cardName(state, u.card.definitionId) })));
-        const size = units.length - (draft.replaceUnitId ? 1 : 0);
-        body += select('position', 'Posição de entrada', draft.position, Array.from({ length: size + 1 }, (_, i) => ({ value: `${i}`, label: `${i + 1}${i === size ? ' · à direita' : ''}` })), 'À direita do campo');
       } else if (mode === 'equipment' || mode === 'arsenal') {
         if (mode === 'arsenal') {
           body += `<p class="muted">1 mana de magia + custo da arma em mana comum.</p>`;
@@ -179,11 +178,15 @@ export function renderActionPanel(session: BattleSession, draft: Draft): string 
     }
   }
   const canAttack = state.phase === 'actions' && !state.combat && state.stackReturnOwner === null && state.attackAvailable && state.attackOwner === player;
+  const compactAction=state.phase==='actions'&&draft.mode!=='attack'&&Boolean(player)&&session.viewPlayer===player;
   const passCheck = player ? preview(state, { type: 'pass', player }) : { ok: false };
+  if (draft.mode === 'attack') return draft.attackers.length
+    ? primary(label, !check.ok)
+    : '<button class="button primary" data-action="cancel-attack">Voltar às cartas</button>';
   const surgery=state.phase==='actions'&&!state.combat&&!state.stack.length&&state.stackReturnOwner===null&&player&&state.players[player].board.some(u=>state.definitions[u.card.definitionId].encounterSpecial==='labotomia')?state.players[player].board.map(u=>`<button class="button secondary" data-action="lab-surgery" data-id="${esc(u.card.instanceId)}" ${state.laboratory?.weaponRounds[`special-surgery-${player}`]===state.round?'disabled':''}>Cirurgia · ${esc(cardName(state,u.card.definitionId))}</button>`).join(''):'';
-  return `<div class="phase-title">${player ? playerName(player) : 'Preparação'}</div><h2>${esc(title)}</h2>${body}
+  return `${compactAction?'':`<div class="phase-title">${player ? playerName(player) : 'Preparação'}</div><h2>${esc(title)}</h2>`}${body}
     ${surgery}
-    ${command ? primary(label, !check.ok) : ''}${command && !check.ok ? `<p class="action-hint">${esc(check.reason)}</p>` : ''}
-    ${state.phase === 'actions' && !state.combat && draft.mode !== 'attack' ? `<button class="button attack" data-action="attack-mode" ${!canAttack ? 'disabled' : ''}>${icon('sword')}Preparar ataque</button>` : ''}
+    ${command ? primary(label, !check.ok) : ''}${!compactAction&&command&&!check.ok&&check.reason!=='Invalid spell targets' ? `<p class="action-hint">${esc(check.reason)}</p>` : ''}
+    ${state.phase === 'actions' && !state.combat ? `<button class="button attack" data-action="attack-mode" ${!canAttack ? 'disabled' : ''}>${icon('sword')}Preparar ataque</button>` : ''}
     ${state.phase === 'actions' ? `<button class="button secondary" data-action="pass" ${!passCheck.ok ? 'disabled' : ''}>${state.combat || state.stackReturnOwner !== null ? 'Passar resposta' : 'Passar ação'}<span>${state.consecutivePasses}/2</span></button>` : ''}`;
 }

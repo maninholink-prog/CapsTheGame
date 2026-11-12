@@ -44,3 +44,7 @@ Sem código alterado. Integração de abates atribuídos, marca única, morte/re
 ## Aprovação — 02/11/2026
 
 Autor aprovou o lote e esclareceu que apenas protagonistas têm duas regiões. Portanto Norte/Oeste do conjunto indica regiões disponíveis para distribuir apoios, não duas regiões em cada carta. Estatísticas e efeitos aprovados; região única por apoio ainda precisa de distribuição. Ainda não implementado.
+
+## Correção posterior do autor — 12/11/2026
+
+O autor confirmou que a arma principal de Lázaro, Último Grito, é uma **Greatsword**. Essa confirmação prevalece sobre a leitura da cena de CAPS 48 como machado; a leitura permanece preservada como observação da fonte, sem definir a especificação atual. A imagem anexada nesta data foi aprovada como referência visual para arte de Lázaro; não usar detalhes visuais como evidência biográfica ou mecânica. Registro: [DEC-024](../docs/DECISIONS.md#dec-024--último-grito-e-referência-visual-de-lázaro--12112026).

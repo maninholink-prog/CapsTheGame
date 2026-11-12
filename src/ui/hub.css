@@ -369,25 +369,51 @@
 }
 
 .expedition-shop {height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;background:#101b21;color:#f2e6ce}
-.shop-heading,.shop-footer {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px clamp(16px,4vw,52px);background:linear-gradient(110deg,#1d2b31,#151d22);border-block:1px solid #8c7249}
+.shop-heading,.shop-footer {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px clamp(16px,4vw,52px);background:linear-gradient(110deg,#211c31,#151d22 72%);border-block:1px solid #aa8756}
 .shop-heading h1 {font:clamp(23px,4vw,42px) var(--font-display);margin:0;color:#ffe0a2}
 .shop-heading p {margin:0}
-.shop-wallet {display:grid;gap:4px;padding:8px 14px;border:1px solid #af9057;border-radius:8px;background:#121d23;color:#ffe1a4}
+.shop-wallet {display:grid;gap:4px;padding:8px 14px;border:1px solid #c4a365;border-radius:8px;background:linear-gradient(145deg,#30293a,#121d23);color:#ffe1a4;box-shadow:0 4px 18px #0005}
 .shop-wallet small {color:#c3ced0}
-.shop-scroll {overflow:auto;padding:18px clamp(16px,4vw,52px);scrollbar-color:#a7814b #17262c}
+.shop-scroll {overflow:auto;padding:22px clamp(16px,4vw,52px);scrollbar-color:#a7814b #17262c;background:radial-gradient(ellipse at 50% 0,#32284155,transparent 55%)}
 .shop-scroll section+section {margin-top:24px}
 .shop-scroll h2 {margin:0 0 4px;color:#efd2a0;font:24px var(--font-display)}
 .shop-scroll p {margin:0;color:#c6d0d1}
-.shop-scroll .shop-grid {grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));margin:12px 0 0}
-.shop-scroll .shop-offer {padding:0;overflow:hidden;border-color:#796746;gap:0;background:linear-gradient(150deg,#26363b,#17262e)}
-.shop-offer-art {height:86px;display:grid;place-items:center;background:radial-gradient(ellipse,#705a3e55,#18262e)}
-.shop-offer-art>:is(.portrait,.sigil-art) {width:100%;height:86px;object-fit:cover;object-position:top}
-.shop-offer-art>.icon {width:36px;height:36px;color:#e8bb72}
-.shop-offer-copy {padding:12px;display:flex;flex:1;flex-direction:column;gap:6px}
-.shop-offer-copy h3 {font-size:16px}
-.shop-offer-copy strong {margin-top:auto;color:#ffdc99}
+.shop-scroll .shop-grid {grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));align-items:stretch;gap:18px;margin:14px 0 0}
+.shop-scroll .shop-offer {--rarity:#b69a68;display:flex;flex-direction:column;padding:0;overflow:hidden;border:1px solid color-mix(in srgb,var(--rarity) 65%,#544d45);border-radius:10px;gap:0;background:linear-gradient(150deg,#202b35,#131e25);box-shadow:0 8px 22px #0004}
+.shop-scroll .shop-offer.rarity-rare {--rarity:#70b4ff}.shop-scroll .shop-offer.rarity-epic {--rarity:#ed7474}.shop-scroll .shop-offer.rarity-legendary {--rarity:#e5ba58}.shop-scroll .shop-offer.rarity-ultradimensional {--rarity:#be8cff}
+.shop-scroll .shop-offer.purchased {filter:saturate(.55);opacity:.78}
+.shop-offer-art {height:clamp(155px,20vw,230px);position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 70%,color-mix(in srgb,var(--rarity,#b69a68) 38%,transparent),transparent 65%),linear-gradient(155deg,#273842,#101a22)}
+.shop-offer-art::after {content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,#101a22)}
+.shop-card-visual {position:absolute;inset:0;overflow:hidden}
+.shop-card-visual .caps-card {width:100%;height:100%;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none;background:transparent}
+.shop-card-visual .caps-art {inset:0;border-radius:0}
+.shop-card-visual .caps-art>:is(.portrait,.sigil-art) {width:100%;height:100%;object-fit:cover;object-position:center 26%}
+.shop-card-visual :is(.caps-copy,.caps-cost,.caps-footer,.caps-attack,.caps-health) {display:none}
+.shop-offer-art>:is(.portrait,.sigil-art) {width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.shop-offer-art>.sigil-art {display:grid;place-items:center}.shop-offer-art>.sigil-art .icon {width:80px;height:80px;color:var(--rarity,#e8bb72)}
+.shop-offer-art>.icon {width:68px;height:68px;color:var(--rarity,#e8bb72)}
+.shop-offer-art>span {position:absolute;z-index:1;left:12px;bottom:10px;padding:4px 9px;border:1px solid color-mix(in srgb,var(--rarity,#b69a68) 75%,transparent);border-radius:20px;background:#101a22cc;color:var(--rarity,#e8bb72);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.shop-offer-copy {padding:14px;display:flex;flex:1;flex-direction:column;gap:7px}
+.shop-offer-copy h3 {font-size:18px;margin:0;color:#f5e3c2}
+.shop-offer-copy .shop-card-stats {font-size:12px;color:#e7c88e;letter-spacing:.04em}
+.shop-offer-copy .shop-card-description {font-size:13px;line-height:1.5;color:#c6d0d1}
+.shop-offer-copy strong {margin-top:auto;color:#ffdc99;padding-top:8px}
 .shop-offer-copy select {width:100%;max-width:100%}
 .shop-offer-copy .button:disabled {opacity:.48;cursor:default}
 .shop-scroll .shop-error {padding:10px;color:#ffe2d9;background:#512a28}
 .shop-footer .deck-list {margin:0;padding:8px 12px;position:relative}
 .shop-footer .deck-list ul {position:absolute;bottom:100%;left:0;width:min(390px,80vw);max-height:45dvh;overflow:auto;background:#18282f;border:1px solid #967449;padding:14px 26px;margin:0;columns:1;z-index:2}
+@media(max-width:620px){.shop-heading,.shop-footer{padding:12px 16px}.shop-scroll{padding:16px}.shop-offer-art{height:190px}.shop-scroll .shop-grid{grid-template-columns:1fr}}
+.profile-management{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 20px;align-items:center;margin:0 0 24px;padding:20px;border:1px solid #485b5c;border-radius:10px;background:linear-gradient(140deg,#1a2d32,#142229)}.profile-management h2{margin:0}.profile-management p{margin:4px 0;color:#aab6ba}.profile-list{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px}.profile-choice{display:grid;gap:4px;min-width:180px;padding:12px 14px;text-align:left;color:#eee8d8;background:#111f25;border:1px solid #50605b;border-radius:7px;cursor:pointer}.profile-choice[aria-current=true]{border-color:#c5a769;box-shadow:inset 0 0 0 1px #c5a76966}.profile-choice small{color:#aebdbb}.profile-choice:disabled{opacity:.55;cursor:not-allowed}.profile-choice:focus-visible,.profile-management>.button:focus-visible{outline:2px solid #f3d894;outline-offset:3px}@media(max-width:600px){.profile-management{grid-template-columns:1fr}.profile-list{grid-column:auto}.profile-choice{flex:1 1 100%}}
+
+.initial-deck-editor{margin:24px 0;padding:20px;border:1px solid #88744d;border-radius:10px;background:linear-gradient(145deg,#1b2d32,#111f25)}.initial-deck-editor>header,.initial-deck-editor footer,.initial-deck-list li,.initial-deck-list li>span:last-child{display:flex;align-items:center;justify-content:space-between;gap:12px}.initial-deck-editor>header h2{margin:0}.initial-deck-list{list-style:none;padding:0;margin:8px 0 20px}.initial-deck-list li{padding:9px 12px;border-bottom:1px solid #39494c}.initial-deck-list.fixed strong{color:#d8c28d}.initial-deck-add{display:flex;align-items:end;gap:12px;flex-wrap:wrap}.initial-deck-add select{min-width:min(320px,80vw)}.initial-deck-editor footer{justify-content:flex-end;margin-top:18px}.initial-deck-notice{color:#d6c58f}.initial-deck-editor :focus-visible{outline:2px solid #efd393;outline-offset:3px}
+
+.hub:has(.battle-result-page){max-width:none;min-height:100dvh;padding:0;display:grid;align-content:start;background:linear-gradient(90deg,#061012a8,#07151966 45%,#061012a8),linear-gradient(0deg,#071012a8,transparent 68%),url('/art/caps-battle-arena.png') center/cover no-repeat}
+.battle-result-page{width:min(1100px,calc(100% - 48px));margin:22px auto 0}
+.battle-result-panel{width:100%;max-width:none;min-height:280px;padding:48px;background:linear-gradient(115deg,#10272bea,#10272bdc 68%,#1c332fd9);box-shadow:0 18px 60px #0008,inset 0 0 0 1px #d9c48c26}
+.battle-result-panel h1{font-size:clamp(48px,7vw,86px);line-height:1;margin:10px 0 26px}
+.battle-result-page.victory .battle-result-panel{border-color:#c7ad70}
+.battle-result-page.defeat .battle-result-panel{border-color:#956e69;background:linear-gradient(115deg,#211e25ed,#20252ada 68%,#3c242bd9)}
+.battle-result-page.draw .battle-result-panel{border-color:#879698}
+.battle-result-panel>.button{margin:8px 8px 0 0}
+@media(max-width:700px){.battle-result-page{width:calc(100% - 28px);margin-top:14px}.battle-result-panel{min-height:230px;padding:26px}.battle-result-panel h1{font-size:clamp(42px,13vw,64px)}}

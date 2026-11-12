@@ -299,3 +299,166 @@ Commit `f33c2e2` está em `main`; a [prévia v0.1.0-playtest.7](https://github.c
 ## Backup local do pré-lançamento playtest.7 — 11/11/2026
 
 Snapshot em `Documents/Backups/CAPS-Game/snapshots/20261111-210441`; restauração separada em `Documents/Backups/CAPS-Game-restore-test/20261111-211500`. 34.665 arquivos regulares atuais e 29.090.662.842 bytes foram comparados por SHA-256, sem ausências ou divergências; restore idêntico ao snapshot. Os dois conservam 182 arquivos extras anteriores. O bloqueio inicial do Edge envolveu arquivos temporários do perfil Playwright; ao validar, eles já não existiam na origem. Manifestos e logs ficam no destino externo. Esse backup está no mesmo disco C: da origem.
+## Suíte integral estabilizada — 11/11/2026
+
+Quatro testes anteriormente reportados foram atualizados para os contratos atuais de raridade, navegação e mapa; os timeouts de simulações longas de IA/run foram ajustados a 15 s. TypeScript e suíte integral passaram: 84 arquivos, 459 testes. Detalhes em [PROGRESS](PROGRESS.md). Alterações locais ainda sem commit/push.
+Verificação adicional após pedido do autor: 8 arquivos/67 testes focados passaram, incluindo boosters inimigos, exclusão de enemyOnly em recompensa/deck, duelos IA completos e run de três batalhas. A suíte integral segue 459/459.
+## Build local de teste — 11/11/2026
+
+Pacote em `release/CAPS-20261111-220828-win-x64/C.A.P.S.exe`; build Vite e smoke Electron isolado passaram. O smoke final usou cópia temporária e `userData` descartável. A primeira tentativa carregou o perfil padrão e atualizou arquivos de cache/sessão; não foi possível confirmar alteração no save por falta de estado anterior. Detalhes em [PROGRESS](PROGRESS.md). Sem commit/push/publicação.
+
+## Perfis locais — 11/11/2026
+
+DEC-020 implementada: JSON completo por UUID em `Saves`, migração v1 preservando a chave antiga, criação e alternância em Perfil e progresso. Pacote local para teste: [C.A.P.S.exe](../release/CAPS-20261111-224042-win-x64/C.A.P.S.exe). TypeScript, smoke de criação/troca na cópia isolada e 469 testes integrais passaram; depois foi acrescentado e passou um teste adicional de isolamento de run/sessão. Não houve teste de partida completa ou de falha de escrita induzida na UI. Não abrir o userData real para QA; o pacote está pronto para teste manual. Sem commit, push, publicação pública ou backup.
+
+## Thalion: árvore proposta — 12/11/2026
+
+Características aprovadas em DEC-021. Quinze nós e conexões em [proposta de Thalion](../design/THALION_MAESTRIA_PROPOSTA.md), ainda sem aprovação. Próxima ação: obter decisão do autor sobre a árvore; só depois criar imagem de disposição e integrar ao jogo. Nenhuma implementação, teste de jogo, commit, push, publicação ou backup nesta etapa. Preserve as alterações locais preexistentes.
+
+### Thalion: árvore aprovada e artes propostas — 12/11/2026
+
+DEC-022 aprova os quinze nós da [especificação](../design/THALION_MAESTRIA_PROPOSTA.md). [Disposição SVG](../design/THALION_MAESTRIA_LAYOUT.svg) criada. Três artes de personagem salvas em `public/art/thalion-card.png`, `thalion-evolved.png` e `thalion-mastery.png`; aguardam aprovação visual antes de serem integradas. Próxima ação: decisão do autor sobre as artes; depois integrar e testar a maestria no jogo. Sem commit, push, publicação ou backup.
+
+## Thalion concluído — 12/11/2026
+
+Árvore e artes aprovadas e integradas; detalhes e verificações em [PROGRESS](PROGRESS.md), especificação em [THALION_MAESTRIA_PROPOSTA](../design/THALION_MAESTRIA_PROPOSTA.md) e decisão visual em DEC-023. Próximo na ordem aprovada: Lázaro, começando por recuperar as características e fontes e pedir aprovação antes da proposta. TypeScript, 42 testes focados e build Vite passaram. Playwright local expirou; sem inspeção interativa, smoke Electron ou suíte integral. Sem commit, push, publicação ou backup.
+
+## Suíte integral e pacote Windows atualizados — 12/11/2026
+
+Vitest integral: 88 arquivos, 476/476 testes. Build portátil em [C.A.P.S.exe](../release/CAPS-20261112-thalion-win-x64/C.A.P.S.exe); SHA-256 e smoke isolado `ok:true`, exit 0, registrados em [PROGRESS](PROGRESS.md). Próximo na ordem aprovada: começar o ciclo de Lázaro recuperando fontes e pedindo aprovação das características. Sem commit, push, publicação ou backup.
+
+### Lázaro: referência e correção autoral — 12/11/2026
+
+DEC-024 registra a referência visual aprovada e a confirmação de Último Grito como Greatsword, preservando a nota antiga de CAPS 48. Próxima ação: apresentar a síntese das características para aprovação antes dos nós. Nada implementado nesta etapa; sem commit, push, publicação ou backup.
+
+### Lázaro: árvore proposta — 12/11/2026
+
+O autor aprovou as características (DEC-025). A árvore de 15 nós está proposta em [LAZARO_MAESTRIA_PROPOSTA](../design/LAZARO_MAESTRIA_PROPOSTA.md); efeitos novos continuam propostas e a aprovação da árvore está pendente. Próximo passo: aguardar decisão do autor; somente após aprovação criar imagem de disposição. Implementação e arte de jogo seguem pendentes. Alterações locais preexistentes foram preservadas. Sem testes de jogo, commit, push, publicação ou backup nesta etapa.
+
+#### Complemento — árvore aprovada — 12/11/2026
+
+O autor aprovou a árvore (DEC-026). A disposição está em [LAZARO_MAESTRIA_LAYOUT.svg](../design/LAZARO_MAESTRIA_LAYOUT.svg), e a especificação textual atualizada em [LAZARO_MAESTRIA_PROPOSTA.md](../design/LAZARO_MAESTRIA_PROPOSTA.md). Próxima etapa do fluxo: preparar artes de Lázaro com base na imagem de referência aprovada; obter aprovação das artes antes de integrá-las ao jogo. Nenhuma implementação foi iniciada. Sem testes de jogo, commit, push, publicação ou backup nesta etapa.
+
+#### Complemento — direção artística e candidatas — 12/11/2026
+
+DEC-027 registra a preferência global: cartas podem mostrar momentos épicos ou cotidianos e seguem fantasia pintada de *Legends of Runeterra*. Para Lázaro, criar candidatas base, evoluída e maestria; base em cena cotidiana e evoluída em cena épica. Nenhuma candidata será integrada antes de aprovação visual.
+
+#### Correção de escopo — todas as cartas — 12/11/2026
+
+O autor esclareceu que a direção de DEC-027 cobre todas as cartas, atuais e futuras, conforme DEC-028. Usar momentos cotidianos ou épicos conforme o sujeito e o contexto, na direção de fantasia pintada de *Legends of Runeterra*. Para Lázaro, a base candidata é cotidiana e a forma evoluída épica; ambas aguardam aprovação visual. Aplicar essa regra também a cartas que não sejam protagonistas.
+
+#### Candidatas de arte de Lázaro — 12/11/2026
+
+As três propostas estão em [design/art-proposals/lazaro](../design/art-proposals/lazaro): carta base cotidiana, carta evoluída épica e fundo da maestria. DEC-029. Aguardam aprovação antes de integração. A árvore e a imagem SVG já estão aprovadas; implementação da árvore e efeitos segue pendente.
+
+#### Rejeição das artes — 12/11/2026
+
+O autor rejeitou as três candidatas (DEC-030); preservar os arquivos somente como histórico e não integrar. Continuar mecânica/UI sem arte específica. Pergunta de direção para nova proposta foi enviada; nenhuma nova imagem deve ser gerada até resposta.
+
+#### Direção revisada para as artes — 12/11/2026
+
+O autor orientou priorizar o traço pintado de fantasia de *Legends of Runeterra*. A cena da base simples/cotidiana foi aprovada como conceito; evolução e maestria devem ser épicas. Expressão séria e postura estratégica, dentro dos limites de continuidade narrativa. DEC-031. Gerar novas candidatas e pedir aprovação antes de qualquer integração.
+
+#### Composição de maestria única — 12/11/2026
+
+DEC-032: cada personagem precisa de composição própria na arte de maestria. Lázaro não deve repetir palco, pose ou composição de Thalion. O conceito do novo fundo deve ser distintivo, épico e coerente com sua identidade aprovada. Não integrar arte rejeitada.
+
+#### Cartas de Lázaro aprovadas — 12/11/2026
+
+DEC-033 aprova a base e a forma evoluída revisadas, já salvas em `public/art/lazaro-card.png` e `public/art/lazaro-evolved.png`. Elas podem ser integradas no renderizador. Fundo de maestria não aprovado; precisa de composição própria, distinta da de Thalion. Implementação mecânica/UI ainda está pendente.
+
+#### Candidata própria para maestria — 12/11/2026
+
+Nova proposta em [design/art-proposals/lazaro/lazaro-mastery-candidate-v3.png](../design/art-proposals/lazaro/lazaro-mastery-candidate-v3.png), composição central de encruzilhada, registrada em DEC-034. Aguardando aprovação visual. Não integrar antes de aprovação. Base e evoluída seguem aprovadas (DEC-033).
+
+#### Ajuste da composição — 12/11/2026
+
+O autor gostou dos caminhos divergentes e pediu Lázaro visto de costas, sem saber qual caminho seguir (DEC-035). Criar a v4 e solicitar aprovação. Manter as artes base/evoluída aprovadas; não integrar nenhum fundo de maestria anterior.
+
+#### Fundo de maestria aprovado — 12/11/2026
+
+O autor aprovou v4; salva em `public/art/lazaro-mastery.png` (DEC-037). Cartas base/evoluída/fundo de maestria estão aprovadas. Podem ser integradas no renderizador. A implementação da árvore e efeitos está em andamento.
+
+#### Complemento — integração e validação de Lázaro — 12/11/2026
+
+DEC-038 registra o início da integração dos quinze talentos e três artes aprovadas de Lázaro. Código em `src/battle/lazaro-talents.ts`, `src/profile/talents.ts`, fluxos de batalha/UI e validador de saves. Teste focado: `tests/lazaro-mastery.test.ts`. Executar suíte total, typecheck, build e verificações de empacotamento Windows antes de concluir. Preservar o restante das alterações locais. Nenhum commit, push, publicação ou backup autorizado.
+
+#### Fechamento — 12/11/2026
+
+Integração de Lázaro concluída. Quinze nós aprovados, UI e artes base/evoluída/maestria aprovadas integrados; efeitos cobertos por teste focado e saves antigos seguem aceitos com o estado novo opcional. `npm run typecheck`, 7 testes focados, suíte completa (89 arquivos/483 testes), build Vite temporário, pacote Windows e `git diff --check` passaram. Pacote gerado em `release/CAPS-20261112-150303-win-x64/`; sem abertura ou partida manual. Sem commit, push, publicação ou backup. Próximo passo: iniciar o próximo protagonista com as etapas de fontes, características e aprovação, sem antecipar a árvore.
+
+#### Conferência adicional do Windows — 12/11/2026
+
+A pedido do autor, confirmei que o executável e os talentos estão no pacote Windows e que as artes base, evoluída e de maestria têm hashes idênticos aos arquivos aprovados do projeto. Nenhuma substituição foi necessária; o pacote já continha a versão atual. Sem execução manual do aplicativo.
+
+#### Referência para próximas expansões — 12/11/2026
+
+Fluxo solicitado pelo autor registrado em [PROCESSO_EXPANSAO_PERSONAGENS_E_CARTAS](../design/PROCESSO_EXPANSAO_PERSONAGENS_E_CARTAS.md) e indexado em [INDEX](INDEX.md). Usá-lo para cada novo protagonista/ciclo de cartas; continuar um personagem por vez e respeitar as aprovações de cada etapa. Ele complementa as especificações de Thalion e Lázaro sem substituir suas decisões.
+
+## Complemento de continuidade — deck inicial por maestria 15 — 12/11/2026
+
+Implementação aprovada em DEC-039 e especificada em [deck inicial por maestria 15](superpowers/specs/2026-11-12-deck-inicial-maestria-15.md). Editor na preparação aplica a loadout somente em novas aventuras; salva por perfil, mantendo o pacote característico de seis cartas e tamanho original do protagonista. Testes integrais (494/494), TypeScript e build passaram. Sem pacote Windows nem QA manual. Nenhum commit, push, publicação ou backup. Preservar as alterações locais preexistentes.
+
+#### Artes aprovadas de Arcata e pacote Windows — 12/11/2026
+
+O autor aprovou as duas artes de Arcata para as cartas base e evoluída (DEC-040). Foram integradas em `public/art/arcata-card.png` e `public/art/arcata-evolved.png`. Pacote portátil para teste: `release/CAPS-ARCATA-JUPITER-20261112-191610-win-x64/C.A.P.S.exe`, SHA-256 `96EEB14AED926FC51FB162F4BE3B9A58955338CB5E987A8E1EE8317E00C02CD0`. Typecheck, build Vite e smoke Electron isolado passaram; não houve teste automatizado nem inspeção visual jogando. Sem commit, push, publicação ou backup.
+
+#### QA interativo concluído — deck inicial por maestria 15 — 12/11/2026
+
+Playwright no browser local em contexto isolado `caps-deck-qa-2026-11-12`, viewport 960×700. Abe nível 15 editou deck de 20 cartas: pacote de seis permaneceu fixo, uma cópia removida/contagem corrigida, uma carta `enemyOnly` possuída e regional foi adicionada, save persistiu após reload, e nova run iniciou com as 20 cartas. O primeiro combate abriu mão inicial com essa carta na sessão do J1. A conferência detectou e corrigiu o fechamento do painel ao redesenhar, agrupamento duplicado e bloqueio incorreto da carta na validação de saves de runs. O validador permite a identidade inimiga apenas se consta no loadout inicial validado; DEC-017 segue em outros fluxos. Resultado final: 495/495 testes, TypeScript, build Vite temporário e `git diff --check` passaram; zero erros de console. Contexto descartável; nenhum save real tocado. Sem pacote Windows, commit, push, publicação ou backup.
+
+#### Pacote Windows e fechamento do arco — 12/11/2026
+
+Pacote portátil gerado em [C.A.P.S.exe](../release/CAPS-20261112-174458-win-x64/C.A.P.S.exe), SHA-256 `96EEB14AED926FC51FB162F4BE3B9A58955338CB5E987A8E1EE8317E00C02CD0`. Empacotador validou SHA oficial do Electron 45.2.1; bundle e seis artes Thalion/Lázaro conferidos. Smoke em cópia isolada do pacote abriu home com `ok:true`/exit 0 e saves reais comparados sem divergência. Arco do deck inicial concluído: interação no browser e smoke de abertura Windows conferidos. A partida real completa no Windows não foi jogada. Sem commit, push, publicação ou backup; preservar o status local preexistente.
+
+#### Arraste para a mesa e declaração de ataque — 12/11/2026
+
+Cartas podem ser arrastadas da mão ao campo para jogar sem botão extra quando a jogada estiver válida. No modo de ataque, a linha da mesa recebe unidades por arraste/clique; o painel tem somente voltar ou declarar, sem lista de nomes ou seletor de equipamento. QA real no navegador isolado declarou ataque sem erros. Suíte 499/499, typecheck, build Vite e `git diff --check` passaram. Detalhes em [PROGRESS](PROGRESS.md). Sem pacote, commit, push, publicação ou backup.
+
+#### Atualização do pacote Windows — 12/11/2026
+
+Pacote da correção disponível em [C.A.P.S.exe](../release/CAPS-20261112-drag-attack-win-x64/C.A.P.S.exe). SHA-256 `96EEB14AED926FC51FB162F4BE3B9A58955338CB5E987A8E1EE8317E00C02CD0`; smoke isolado abriu home (`ok:true`, exit 0). Build temporária preservou `dist`; sem commit, push, publicação ou backup.
+
+#### Correção de cartas que não entravam ao soltar — 12/11/2026
+
+A mesa inteira agora aceita drop de cartas durante ações normais, não apenas a área de campo próprio; a linha exclusiva do modo de ataque permanece separada. Prévia ampliada de carta removida da tela de batalha. Testes completos passaram (92 arquivos/500 testes), junto de typecheck, build e smoke Electron isolado. Pacote atualizado em `release/CAPS-20261112-DROP-FIX-win-x64/C.A.P.S.exe`. Automação do navegador excedeu o tempo, então não foi possível repetir o arraste interativo nesta rodada. Sem partida completa, commit, push, publicação ou backup.
+
+#### Painel de batalha simplificado — 12/11/2026
+
+Painel de ação da jogada comum agora mantém apenas os botões essenciais; nome, instruções e seletor de posição saíram. Alvos comuns são selecionados clicando no tabuleiro; escolhas que preservam regras existentes aparecem somente quando obrigatórias. “Como jogar” fica dentro do menu de opções e o menu fecha com clique externo. TypeScript/build passaram; teste automatizado e conferência interativa não executados. Pacote local: `release/CAPS-20261112-ACTION-PANEL-win-x64/C.A.P.S.exe`. Sem commit, push, publicação ou backup.
+
+#### Escolha de aliado ilustrada — 12/11/2026
+
+Recrutamento pós-vitória redesenhado após aprovação do autor: três ofertas ilustradas simultâneas, inspiradas na seleção de recompensa do vídeo LoR. Cada oferta mostra retrato de protagonista, regiões, pacote com miniaturas de cartas e duas cópias por identidade. Regras e pacotes permanecem iguais. TypeScript e build passaram; não houve teste automatizado nem inspeção visual interativa. Sem pacote Windows, commit, push, publicação ou backup.
+
+Pacote Windows local para conferir o recrutamento: `release/CAPS-20261112-RECRUIT-LO-REWARD-win-x64/C.A.P.S.exe`. Build incluída conferida por SHA-256; smoke de abertura e conferência visual no Windows permanecem pendentes.
+
+#### Continuidade — loja e mana — 12/11/2026
+
+`src/ui/shop-view.ts` e o bloco de loja em `src/ui/hub.css` foram refinados para uma vitrine de aventura inspirada em LoR, com arte ampliada, raridade, descrição e preço; o fluxo e regras de compra seguem os existentes. O medidor da batalha usa `public/art/mana-rail.svg` em `src/ui/styles.css`, com o valor acima dos dez pips para evitar extrapolar a placa estreita. `src/ui/tactical.css` e `battle-polish.css` removem larguras fixas conflitantes dos pips. Verificados: typecheck, build temporária `tmp/shop-mana-build-20261112`, diff check. Não houve testes automatizados, inspeção no navegador/executável nem pacote Windows. Nenhum commit, push, publicação ou backup; preservar as alterações locais anteriores.
+
+Pacote Windows para o autor testar: `release/CAPS-SHOP-MANA-20261112-190023-128-win-x64/C.A.P.S.exe`, SHA-256 `96EEB14AED926FC51FB162F4BE3B9A58955338CB5E987A8E1EE8317E00C02CD0`. Smoke em cópia descartável abriu a home com `ok:true` e exit 0; nenhuma partida/loja foi testada interativamente. Há duas pastas de tentativas incompletas (`...185832...` e `...190006-671...`); a pasta válida é `...190023-128...`. Sem commit, push, publicação ou backup.
+
+#### Continuidade — Júpiter, hover e artes de Arcata — 12/11/2026
+
+Júpiter passou a ser selecionável e cria uma rota usando os cinco decks aprovados; eventos narrativos e o desfecho do funeral seguem pendentes por falta de condição/regra aprovada para a travessia. Cartas da loja agora reutilizam `cardFace` na faixa de imagem. Hover/foco atualiza uma prévia lateral temporária fora do menu. Artes base/evoluída de Arcata estão apenas como candidatas em `design/art-proposals/arcata`; aprovação do autor é necessária antes da integração. Typecheck/build passaram; sem testes automatizados, inspeção visual ou pacote Windows. Sem commit, push, publicação ou backup.
+
+## Continuidade — animação e telas de batalha — 12/11/2026
+
+A raiz continua `C:/Users/Bruxo/Documents/ChatGPT/Game`. Foram adicionadas animação visual de ataque ao Vínculo, página de resultado inspirada na imagem de referência, painel de eventos e escolha modal central para Upgrades do Abe. DEC-041/042 registram os pedidos e limites. Typecheck, build Vite temporária e diff check passaram; prévia de três estados foi conferida no Playwright isolado. Suíte automatizada, partida com animação real, movimento reduzido e pacote Windows permanecem pendentes.
+
+Candidatas de Rubel em `design/art-proposals/rubel/rubel-card-candidate.png` e `rubel-evolved-candidate.png`: base cotidiana simples; forma evoluída como transformação em avatar de Vitumirim. Ambas aguardam aprovação, seguem fora de `public/art` e não alteram lore. DEC-043.
+
+Nenhum commit, push, publicação ou backup. Preservar o status Git preexistente e todas as outras alterações locais.
+
+## Continuidade — Rubel, resultados e Kylast — 12/11/2026
+
+Rubel aprovado/integrado como DEC-044; resultados reorganizados como DEC-046. A aprovação das duas artes de Kylast e integração base/evoluída estão registradas em DEC-047. Suíte anterior: 93 arquivos/504 testes; typecheck/build/diff-check passaram. Animação real observada no treino de Júpiter; detalhes e limitação do seed em PROGRESS. O pacote anterior `release/CAPS-20261112-200934-win-x64/C.A.P.S.exe` não contém Kylast recém-aprovado; gere e valide nova versão antes de publicar.
+
+#### Fechamento do arco visual e lançamento — 12/11/2026
+
+O autor aprovou as artes base/evoluída de Kylast. Foram integradas do acervo preservado de candidatas; `art()` alterna pela evolução. O lote de entrega deste arco inclui animação de ataque, telas de resultado, eventos, escolha de Upgrade do Abe, artes de Arcata/Rubel/Kylast e melhorias anteriores incluídas no pacote corrente. Rodar suíte, typecheck e build final, gerar pacote portátil Windows e validar smoke com `CAPS_SMOKE_USER_DATA` descartável. O autor autorizou commit, push e release GitHub neste chat; nenhum backup foi autorizado. Registrar hashes, tag, URL e asset após publicação. O smoke histórico que pode ter tocado metadata real está descrito acima; não repetir fora do perfil explicitamente isolado.
+
+Nota de QA: um smoke anterior leu o `userData` real antes de se confirmar que `APPDATA` não o redirecionava; nenhuma ação de jogo ocorreu, mas o bootstrap pode ter escrito metadata de perfil ativo. Smoke final usa caminho explícito temporário. Sem commit, push, publicação ou backup. A sessão deixa mudanças locais anteriores intactas.
+
+Resultado final local: 93 arquivos/505 testes passaram, typecheck/build/diff-check passaram. Pacote `release/CAPS-20261112-202643-win-x64/`, smoke isolado `ok:true`; executável SHA-256 `96EEB14AED926FC51FB162F4BE3B9A58955338CB5E987A8E1EE8317E00C02CD0`. ZIP portátil `release/CAPS-v0.1.0-playtest.8-win-x64.zip` (323.864.298 bytes), SHA-256 `A52C92FCCF68A75B9070583AA1C48025614F73194A2610CBE3B74745332C3B5A`. Tag planejada `v0.1.0-playtest.8`; registrar hash do commit, resultado real do push e URL/assets da Release após confirmar no GitHub.

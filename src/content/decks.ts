@@ -14,8 +14,9 @@ export const starterLists:Record<Exclude<Champion,'kylast'>,string[]>={...expans
  arcata:['arcata','arcata-raven','soarim','salita','gwen','kriv','fire-bolt','burning-hands','control-flames','fire-shield','wall-fire'],
  rubel:['rubel','coroinha','luise','archibald','faith-guardian','mantum','healing-word','prayer','blessing','aid','sacred-flame'],
 };
-export function createProtagonistDeck(champion:Champion,prefix:string):CardInstance[]{
+export function createProtagonistDeck(champion:Champion,prefix:string,definitionIds?:readonly string[]):CardInstance[]{
  if(!protagonistIds.includes(champion))throw Error('Protagonista não implementado');
+ if(definitionIds)return definitionIds.map((definitionId,i)=>({definitionId,instanceId:`${prefix}-${i}`}));
  if(champion==='kylast')return createKylastDeck(prefix);
  return starterLists[champion].flatMap((definitionId,i)=>[0,1].map(copy=>({definitionId,instanceId:`${prefix}-${i}-${copy}`})));
 }

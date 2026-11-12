@@ -37,3 +37,7 @@ Sofre corte no peito e cai duas vezes; curado por aliados. Cutelo ainda parcialm
 ## CAPS 53 — 30/10/2026
 
 Afasta-se ao se desfazer grupo, seguindo rota própria; Yuk o acompanha. Destino posterior desconhecido. [Fontes e limites](../referencias/youtube/CAPS_53.md).
+
+## Correção do autor — Último Grito e referência visual — 12/11/2026
+
+O autor confirma que a arma principal de Lázaro se chama **Último Grito** e é uma **Greatsword**. Esta confirmação posterior resolve a divergência anteriormente preservada entre o cadastro e a descrição da cena de CAPS 48; a observação do episódio continua no histórico como evidência local, não como especificação vigente da arma. O autor também aprovou a imagem anexada em 12/11/2026 como referência visual de Lázaro. Aparência mostrada na referência orienta arte; não acrescenta fatos de lore além dos explicitamente confirmados. Ver [DEC-024](../docs/DECISIONS.md#dec-024--último-grito-e-referência-visual-de-lázaro--12112026).

@@ -13,12 +13,14 @@ const arcataPositions=[[31,79],[34,64],[39,48],[24,48],[16,52],[13,62],[10,75],[
 const rubelPositions=[[51,49],[53,36],[53,24],[40,23],[32,18],[23,14],[15,9],[59,49],[67,60],[76,67],[88,72],[59,34],[68,25],[77,17],[88,11]];
 const kuaraPositions=[[48,84],[43,72],[37,60],[24,67],[17,51],[58,83],[66,71],[74,59],[82,47],[91,37],[55,57],[47,42],[40,29],[30,19],[92,16]];
 const youroPositions=[[50,55],[34,48],[23,39],[15,31],[8,22],[66,48],[77,39],[85,31],[92,23],[97,14],[50,40],[50,29],[50,18],[50,8],[50,2]];
+const thalionPositions=[[73,15],[57,31],[57,44],[57,57],[57,70],[57,83],[73,31],[73,44],[73,57],[73,70],[73,83],[89,31],[89,44],[89,57],[89,70]];
+const lazaroPositions=[[50,15],[16,25],[16,38],[16,52],[16,65],[16,79],[50,25],[50,38],[50,52],[50,65],[50,79],[84,25],[84,38],[84,52],[84,65]];
 
 export function renderTalents(profile:Profile,hero:Champion,runActive:boolean):string {
  const talents=talentsFor(hero);
  if(!talents.length)return '<section class="talent-tree" aria-label="Talentos"><h3>Talentos</h3><p>Árvore de talentos em preparação para este protagonista.</p></section>';
- const abe=hero==='abe',name=hero==='youro'?'Youro':hero==='kuara'?'Kuara':abe?'Abe':hero==='arcata'?'Arcata':hero==='rubel'?'Rubel':'Kylast',positions=hero==='youro'?youroPositions:hero==='kuara'?kuaraPositions:abe?abePositions:hero==='arcata'?arcataPositions:hero==='rubel'?rubelPositions:kylastPositions;
- const artAlt=hero==='youro'?'Youro em sua forma de gato, acompanhado pelos ecos das formas de Urso e Tigre':hero==='kuara'?'Kuara sem máscara e seu alter-ego mascarado após a evolução':hero==='rubel'?'Rubel afasta uma horda com asas de Luz':hero==='arcata'?'Arcata lança uma espiral de fogo':abe?'Abe trabalhando na oficina com um cristal azul':'Kylast atacando com a espada e a foice Alastor';
+ const abe=hero==='abe',name=hero==='youro'?'Youro':hero==='kuara'?'Kuara':hero==='thalion'?'Thalion':hero==='lazaro'?'Lázaro':abe?'Abe':hero==='arcata'?'Arcata':hero==='rubel'?'Rubel':'Kylast',positions=hero==='thalion'?thalionPositions:hero==='lazaro'?lazaroPositions:hero==='youro'?youroPositions:hero==='kuara'?kuaraPositions:abe?abePositions:hero==='arcata'?arcataPositions:hero==='rubel'?rubelPositions:kylastPositions;
+ const artAlt=hero==='thalion'?'Thalion toca violino em um palco sombrio, com espaço para a árvore de talentos':hero==='youro'?'Youro em sua forma de gato, acompanhado pelos ecos das formas de Urso e Tigre':hero==='kuara'?'Kuara sem máscara e seu alter-ego mascarado após a evolução':hero==='rubel'?'Rubel afasta uma horda com asas de Luz':hero==='arcata'?'Arcata lança uma espiral de fogo':hero==='lazaro'?'Lázaro de costas diante de vários caminhos de pedra':'Kylast atacando com a espada e a foice Alastor';
  const owned=getTalents(profile)[hero]??[],info=masteryInfo(profile.mastery[hero].xp),locked=!profile.collection[hero]?.count;
  const available=(t:Talent)=>!runActive&&!locked&&!owned.includes(t.id)&&owned.length<info.points&&info.level>=(t.minLevel??1)&&(!t.parent||owned.includes(t.parent));
  const path=hero!=='kylast'?talents.flatMap((t,i)=>{

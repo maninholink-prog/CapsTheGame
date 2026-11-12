@@ -10,7 +10,7 @@ import {applyBattleTalents} from '../battle/kylast-talents.js';
 import type {TalentId} from '../profile/talents.js';
 import {difficultyRules} from './difficulty.js';
 import type {Difficulty} from './difficulty.js';
-import {expansionPackages} from '../content/expansion.js';
+import {startingPackages} from '../content/deck-packages.js';
 import {fullCatalog,createProtagonistDeck} from '../content/decks.js';
 import {battleCoins,commonCoins,grantCoins} from './economy.js';
 import {battleVariants} from './improvements.js';
@@ -26,11 +26,11 @@ import {allyCatalog} from '../content/allies.js';
 import type {Champion,Region} from '../content/schema.js';
 import type {BattleState,CardInstance} from '../battle/types.js';
 export const runCatalog=fullCatalog;
-export const packages:Record<string,string[]>={...expansionPackages,kylast:['kylast','sword-kylast','joia-rubra'],abe:['abe','aranha','project'],arcata:['arcata','fire-bolt','burning-hands'],rubel:['rubel','healing-word','prayer']};
+export const packages:Record<string,string[]>=startingPackages;
 export interface RunState {relicRun?:RunRelics;adventure?:AdventureId;encounters?:Record<string,EnemyDeckVariant|CaveiraDeck>;caveiraHint?:true;caveiraAftermath?:'chart'|'cove'|'battle'|'won'|'lost';talents?:TalentId[];difficulty?:Difficulty;collection?:string[];coins:number;coinsEarned:number;coinsSpent:number;lastCoins:number;improvements:Record<string,ImprovementId[]>;shops:Record<string,ShopState>;map?:MapProgress;checkpoint?:RunSnapshot;entry?:RunSnapshot;revives:number;revivesSpent:number;seed:number;rngState:number;battle:number;battleSeed:number;stage:'relic'|'battle'|'recruit'|'reward'|'ready'|'won'|'lost'|'map'|'event'|'defeat'|'shop';deck:CardInstance[];group:Champion[];regions:Region[];nexus:number;maxNexus:number;allies:string[];rewards:string[];}
-export function createRun(seed:number,protagonist:Champion='kylast'):RunState {
+export function createRun(seed:number,protagonist:Champion='kylast',initialDeckIds?:readonly string[]):RunState {
  if(!Number.isInteger(seed)||seed<0||seed>0xffffffff)throw Error('Invalid run seed');
- return {coins:0,coinsEarned:0,coinsSpent:0,lastCoins:0,improvements:{},shops:{},revives:0,revivesSpent:0,seed,rngState:seed,battle:1,battleSeed:seed,stage:'battle',deck:createProtagonistDeck(protagonist,'run'),group:[protagonist],regions:[...runCatalog[protagonist].regions!],nexus:20,maxNexus:20,allies:[],rewards:[]};
+ return {coins:0,coinsEarned:0,coinsSpent:0,lastCoins:0,improvements:{},shops:{},revives:0,revivesSpent:0,seed,rngState:seed,battle:1,battleSeed:seed,stage:'battle',deck:createProtagonistDeck(protagonist,'run',initialDeckIds),group:[protagonist],regions:[...runCatalog[protagonist].regions!],nexus:20,maxNexus:20,allies:[],rewards:[]};
 }
 function battleId(r:RunState){return `run-${r.seed}-battle-${r.battle}-${r.battleSeed}`;}
 export function encounterHealth(r:RunState,nodeId:string){

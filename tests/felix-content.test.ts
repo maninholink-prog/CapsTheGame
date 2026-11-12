@@ -1,12 +1,17 @@
 import {describe,it,expect} from 'vitest';
 import {felixCatalog,enemyDeckLists,createEnemyDeck} from '../src/content/felix.js';
-import {validateCatalog} from '../src/content/schema.js';
+import {collectibleIds} from '../src/profile/profile.js';
+import {encounterRarity,validateCatalog} from '../src/content/schema.js';
 describe('approved Félix encounter content',()=>{
- it('keeps twenty supports and four unique encounter specials outside collection',()=>{
+ it('keeps enemy cards collectible by rarity and trigger-only helpers outside collection',()=>{
   expect(()=>validateCatalog(felixCatalog)).not.toThrow();
   const supports=Object.values(felixCatalog).filter(c=>c.enemyOnly&&c.id.startsWith('lab-'));
   expect(supports).toHaveLength(20);
-  for(const c of Object.values(felixCatalog)){expect(c.rarity).toBeUndefined();expect(c.collectible).toBe(false);}
+  const cards=Object.values(felixCatalog),collectible=cards.filter(c=>c.collectible!==false),helpers=cards.filter(c=>c.collectible===false);
+  expect(collectible).toHaveLength(24);
+  expect(helpers.length).toBeGreaterThan(0);
+  for(const c of collectible){expect(c.enemyOnly).toBe(true);expect(c.rarity).toBe(encounterRarity(c.cost));expect(collectibleIds).toContain(c.id);}
+  for(const c of helpers){expect(c.enemyOnly).not.toBe(true);expect(collectibleIds).not.toContain(c.id);}
   for(const id of new Set(Object.values(enemyDeckLists).flat())){const c=felixCatalog[id];expect(c.enemyOnly).toBe(true);expect(c.regions).toHaveLength(1);}
   for(const id of ['labotomia','tornado','dianamite','felix'])expect(felixCatalog[`enemy-${id}`]).toMatchObject({unique:true,encounterSpecial:id});
  });
