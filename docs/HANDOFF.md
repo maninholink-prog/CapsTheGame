@@ -462,3 +462,7 @@ O autor aprovou as artes base/evoluída de Kylast. Foram integradas do acervo pr
 Nota de QA: um smoke anterior leu o `userData` real antes de se confirmar que `APPDATA` não o redirecionava; nenhuma ação de jogo ocorreu, mas o bootstrap pode ter escrito metadata de perfil ativo. Smoke final usa caminho explícito temporário. Sem commit, push, publicação ou backup. A sessão deixa mudanças locais anteriores intactas.
 
 Resultado final local: 93 arquivos/505 testes passaram, typecheck/build/diff-check passaram. Pacote `release/CAPS-20261112-202643-win-x64/`, smoke isolado `ok:true`; executável SHA-256 `96EEB14AED926FC51FB162F4BE3B9A58955338CB5E987A8E1EE8317E00C02CD0`. ZIP portátil `release/CAPS-v0.1.0-playtest.8-win-x64.zip` (323.864.298 bytes), SHA-256 `A52C92FCCF68A75B9070583AA1C48025614F73194A2610CBE3B74745332C3B5A`. Tag planejada `v0.1.0-playtest.8`; registrar hash do commit, resultado real do push e URL/assets da Release após confirmar no GitHub.
+
+#### Publicação concluída — 12/11/2026
+
+Commit de produto `303847d` em `origin/main`; tag `v0.1.0-playtest.8` aponta para a versão testada. Release prévia publicada em https://github.com/maninholink-prog/CapsTheGame/releases/tag/v0.1.0-playtest.8 com ZIP portátil completo e manifesto SHA-256. O asset foi confirmado pelo endpoint público do GitHub com 323.864.298 bytes e SHA-256 `a52c92fccf68a75b9070583aa1c48025614f73194a2610cbe3b74745332c3b5a`. Nenhum backup foi feito.
